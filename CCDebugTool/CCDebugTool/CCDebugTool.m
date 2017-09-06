@@ -141,7 +141,7 @@
         debugTabBar.viewControllers = [NSArray arrayWithObjects:debugHTTPNav, debugLOGNav, degugProfilerNab, nil];
         self.debugTabBar = debugTabBar;
         
-        UIViewController *rootViewController = [[[UIApplication sharedApplication].delegate window] rootViewController];
+        UIViewController *rootViewController = [[[UIApplication sharedApplication].windows firstObject] rootViewController];
         UIViewController *presentedViewController = rootViewController.presentedViewController;
         [presentedViewController ?: rootViewController presentViewController:self.debugTabBar animated:YES completion:nil];
     } else {
