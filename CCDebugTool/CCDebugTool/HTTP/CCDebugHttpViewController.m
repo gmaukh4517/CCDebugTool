@@ -67,13 +67,21 @@
 
 - (void)initControl
 {
-    UITableView *httpViewTableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
+    UITableView *httpViewTableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
     httpViewTableView.backgroundColor = [UIColor clearColor];
     httpViewTableView.delegate = self;
     httpViewTableView.dataSource = self;
     httpViewTableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
     httpViewTableView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     [self.view addSubview:self.httpViewTableView = httpViewTableView];
+    
+    if (@available(iOS 11.0, *)) {
+        httpViewTableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+    }
+    
+    UIView *v = [[UIView alloc] initWithFrame:CGRectZero];
+    v.backgroundColor = [UIColor clearColor];
+    [httpViewTableView setTableFooterView:v];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(initLoadData) name:kCCNotifyKeyReloadHttp object:nil];
 }

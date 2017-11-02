@@ -102,6 +102,10 @@
     scrollview.contentSize = CGSizeMake(scrollview.frame.size.width * 3, 0);
     [self.view addSubview:_scrollView = scrollview];
     
+    if (@available(iOS 11.0, *)) {
+        scrollview.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+    }
+    
     UITableView *crashTableView = [self createTableView:0];
     crashTableView.tag = 1000;
     [scrollview addSubview:crashTableView];
@@ -211,6 +215,10 @@
     logTableView.delegate = self;
     logTableView.dataSource = self.dataSource;
     logTableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+    
+    if (@available(iOS 11.0, *)) {
+        logTableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+    }
     
     UIView *v = [[UIView alloc] initWithFrame:CGRectZero];
     v.backgroundColor = [UIColor clearColor];

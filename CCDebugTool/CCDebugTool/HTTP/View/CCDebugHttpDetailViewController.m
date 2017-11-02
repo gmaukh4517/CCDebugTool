@@ -49,13 +49,21 @@
 
 - (void)initControl
 {
-    self.httpDetailtableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
+    self.httpDetailtableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
     self.httpDetailtableView.backgroundColor = [UIColor clearColor];
     self.httpDetailtableView.delegate = self;
     self.httpDetailtableView.dataSource = self;
     self.httpDetailtableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
     self.httpDetailtableView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     [self.view addSubview:self.httpDetailtableView];
+    
+    if (@available(iOS 11.0, *)) {
+        self.httpDetailtableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+    }
+    
+    UIView *v = [[UIView alloc] initWithFrame:CGRectZero];
+    v.backgroundColor = [UIColor clearColor];
+    [self.httpDetailtableView setTableFooterView:v];
 }
 
 - (void)initLoadData

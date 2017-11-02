@@ -49,18 +49,20 @@
 
 - (void)initControl
 {
-    CGRect frame = self.view.bounds;
-    frame.size.height -= 64;
     if (self.dataArr) {
-        UIScrollView *scrollview = [[UIScrollView alloc] initWithFrame:frame];
+        UIScrollView *scrollview = [[UIScrollView alloc] initWithFrame:self.view.bounds];
         scrollview.pagingEnabled = YES;
         scrollview.showsHorizontalScrollIndicator = NO;
         scrollview.showsVerticalScrollIndicator = NO;
-        scrollview.bounces = NO;
+//        scrollview.bounces = NO;
         scrollview.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
         scrollview.delegate = self;
         scrollview.contentSize = CGSizeMake(scrollview.frame.size.width * self.dataArr.count, 0);
         [self.view addSubview:_scrollView = scrollview];
+        
+        if (@available(iOS 11.0, *)) {
+            scrollview.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+        }
         
         CGRect frame = CGRectMake(0, 0, scrollview.frame.size.width, scrollview.frame.size.height - 64);
         for (NSInteger i = 0; i < self.dataArr.count; i++) {
@@ -85,7 +87,7 @@
         offset.x = scrollview.frame.size.width * self.selectedIndex;
         scrollview.contentOffset = offset;
     } else if (self.content) {
-        UITextView *contentViewText = [[UITextView alloc] initWithFrame:frame];
+        UITextView *contentViewText = [[UITextView alloc] initWithFrame:self.view.bounds];
         [contentViewText setEditable:NO];
         contentViewText.textContainer.lineBreakMode = NSLineBreakByWordWrapping;
         contentViewText.font = [UIFont systemFontOfSize:13];
@@ -93,7 +95,7 @@
         contentViewText.tag = 100;
         [self.view addSubview:contentViewText];
     } else if (self.data) {
-        UIImageView *imageView = [[UIImageView alloc] initWithFrame:frame];
+        UIImageView *imageView = [[UIImageView alloc] initWithFrame:self.view.bounds];
         imageView.contentMode = UIViewContentModeScaleAspectFit;
         imageView.image = [UIImage imageWithData:self.data];
         [self.view addSubview:imageView];
