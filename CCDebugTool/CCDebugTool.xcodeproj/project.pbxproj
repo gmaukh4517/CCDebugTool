@@ -7,6 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		426A79A61FAC1EA200B328C1 /* CCDebugTool.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 426A79A51FAC1EA200B328C1 /* CCDebugTool.bundle */; };
+		426A79AB1FAC3ADA00B328C1 /* CCFilePathTreeView.h in Headers */ = {isa = PBXBuildFile; fileRef = 426A79A91FAC3ADA00B328C1 /* CCFilePathTreeView.h */; };
+		426A79AC1FAC3ADA00B328C1 /* CCFilePathTreeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 426A79AA1FAC3ADA00B328C1 /* CCFilePathTreeView.m */; };
+		426A79AF1FAC3BCC00B328C1 /* SandboxCollectionViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 426A79AD1FAC3BCC00B328C1 /* SandboxCollectionViewCell.h */; };
+		426A79B01FAC3BCC00B328C1 /* SandboxCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 426A79AE1FAC3BCC00B328C1 /* SandboxCollectionViewCell.m */; };
+		428B60661FAC056F002577C0 /* SandboxEntity.h in Headers */ = {isa = PBXBuildFile; fileRef = 428B60641FAC056F002577C0 /* SandboxEntity.h */; };
+		428B60671FAC056F002577C0 /* SandboxEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 428B60651FAC056F002577C0 /* SandboxEntity.m */; };
+		428B606A1FAC0586002577C0 /* SandboxViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 428B60681FAC0586002577C0 /* SandboxViewController.h */; };
+		428B606B1FAC0586002577C0 /* SandboxViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 428B60691FAC0586002577C0 /* SandboxViewController.m */; };
+		428B606E1FAC05A0002577C0 /* SandboxTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 428B606C1FAC05A0002577C0 /* SandboxTableViewCell.h */; };
+		428B606F1FAC05A0002577C0 /* SandboxTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 428B606D1FAC05A0002577C0 /* SandboxTableViewCell.m */; };
 		42F0A37A1F59350100ACD4FA /* CCDebugTool.h in Headers */ = {isa = PBXBuildFile; fileRef = 42F0A3781F59350100ACD4FA /* CCDebugTool.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		42F0A4291F59355E00ACD4FA /* CCBacktraceLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = 42F0A3831F59355E00ACD4FA /* CCBacktraceLogger.h */; };
 		42F0A42A1F59355E00ACD4FA /* CCBacktraceLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 42F0A3841F59355E00ACD4FA /* CCBacktraceLogger.m */; };
@@ -135,6 +146,17 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		426A79A51FAC1EA200B328C1 /* CCDebugTool.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = CCDebugTool.bundle; sourceTree = "<group>"; };
+		426A79A91FAC3ADA00B328C1 /* CCFilePathTreeView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCFilePathTreeView.h; sourceTree = "<group>"; };
+		426A79AA1FAC3ADA00B328C1 /* CCFilePathTreeView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CCFilePathTreeView.m; sourceTree = "<group>"; };
+		426A79AD1FAC3BCC00B328C1 /* SandboxCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SandboxCollectionViewCell.h; sourceTree = "<group>"; };
+		426A79AE1FAC3BCC00B328C1 /* SandboxCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SandboxCollectionViewCell.m; sourceTree = "<group>"; };
+		428B60641FAC056F002577C0 /* SandboxEntity.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SandboxEntity.h; sourceTree = "<group>"; };
+		428B60651FAC056F002577C0 /* SandboxEntity.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SandboxEntity.m; sourceTree = "<group>"; };
+		428B60681FAC0586002577C0 /* SandboxViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SandboxViewController.h; sourceTree = "<group>"; };
+		428B60691FAC0586002577C0 /* SandboxViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SandboxViewController.m; sourceTree = "<group>"; };
+		428B606C1FAC05A0002577C0 /* SandboxTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SandboxTableViewCell.h; sourceTree = "<group>"; };
+		428B606D1FAC05A0002577C0 /* SandboxTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SandboxTableViewCell.m; sourceTree = "<group>"; };
 		42F0A3751F59350100ACD4FA /* CCDebugTool.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CCDebugTool.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		42F0A3781F59350100ACD4FA /* CCDebugTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCDebugTool.h; sourceTree = "<group>"; };
 		42F0A3791F59350100ACD4FA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -276,6 +298,63 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		427010DA1FAB1E6800BE8E8F /* Sandbox */ = {
+			isa = PBXGroup;
+			children = (
+				428B602F1FABF676002577C0 /* Controller */,
+				428B602E1FABF676002577C0 /* Model */,
+				428B60301FABF676002577C0 /* Resources */,
+				428B60321FABF676002577C0 /* View */,
+			);
+			path = Sandbox;
+			sourceTree = "<group>";
+		};
+		428B602E1FABF676002577C0 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				428B60641FAC056F002577C0 /* SandboxEntity.h */,
+				428B60651FAC056F002577C0 /* SandboxEntity.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		428B602F1FABF676002577C0 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				428B60681FAC0586002577C0 /* SandboxViewController.h */,
+				428B60691FAC0586002577C0 /* SandboxViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		428B60301FABF676002577C0 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				426A79A51FAC1EA200B328C1 /* CCDebugTool.bundle */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		428B60321FABF676002577C0 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				428B606C1FAC05A0002577C0 /* SandboxTableViewCell.h */,
+				428B606D1FAC05A0002577C0 /* SandboxTableViewCell.m */,
+				426A79A91FAC3ADA00B328C1 /* CCFilePathTreeView.h */,
+				426A79AA1FAC3ADA00B328C1 /* CCFilePathTreeView.m */,
+				426A79AD1FAC3BCC00B328C1 /* SandboxCollectionViewCell.h */,
+				426A79AE1FAC3BCC00B328C1 /* SandboxCollectionViewCell.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		42D5AD3C1FAC60540063C136 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "New Group";
+			sourceTree = "<group>";
+		};
 		42F0A36B1F59350100ACD4FA = {
 			isa = PBXGroup;
 			children = (
@@ -295,13 +374,15 @@
 		42F0A3771F59350100ACD4FA /* CCDebugTool */ = {
 			isa = PBXGroup;
 			children = (
+				42D5AD3C1FAC60540063C136 /* New Group */,
+				427010DA1FAB1E6800BE8E8F /* Sandbox */,
 				42F0A3811F59355E00ACD4FA /* CCAppFluecyMonitor */,
 				42F0A3881F59355E00ACD4FA /* CCExceptionCatching */,
 				42F0A38B1F59355E00ACD4FA /* HTTP */,
 				42F0A39F1F59355E00ACD4FA /* Log */,
 				42F0A3AE1F59355E00ACD4FA /* MemoryProfiler */,
 				42F0A4111F59355E00ACD4FA /* Monitor */,
-				42F0A4261F59355E00ACD4FA /* Tool */,
+				42F0A4261F59355E00ACD4FA /* ContentController */,
 				42F0A3781F59350100ACD4FA /* CCDebugTool.h */,
 				42F0A3871F59355E00ACD4FA /* CCDebugTool.m */,
 				42F0A3791F59350100ACD4FA /* Info.plist */,
@@ -728,14 +809,14 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		42F0A4261F59355E00ACD4FA /* Tool */ = {
+		42F0A4261F59355E00ACD4FA /* ContentController */ = {
 			isa = PBXGroup;
 			children = (
 				42F0A4271F59355E00ACD4FA /* CCDebugContentViewController.h */,
 				42F0A4281F59355E00ACD4FA /* CCDebugContentViewController.m */,
 				42F0A4A91F59368C00ACD4FA /* CCMacros.h */,
 			);
-			path = Tool;
+			path = ContentController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -761,6 +842,7 @@
 				42F0A4991F59355E00ACD4FA /* CCMonitorHelper.h in Headers */,
 				42F0A4611F59355E00ACD4FA /* FBRetainCycleDetector+Internal.h in Headers */,
 				42F0A45F1F59355E00ACD4FA /* FBNodeEnumerator.h in Headers */,
+				426A79AB1FAC3ADA00B328C1 /* CCFilePathTreeView.h in Headers */,
 				42F0A4401F59355E00ACD4FA /* CCDebugLogViewController.h in Headers */,
 				42F0A4661F59355E00ACD4FA /* FBStandardGraphEdgeFilters.h in Headers */,
 				42F0A4841F59355E00ACD4FA /* FBIvarReference.h in Headers */,
@@ -768,12 +850,14 @@
 				42F0A4321F59355E00ACD4FA /* NSURLResponse+Data.h in Headers */,
 				42F0A44D1F59355E00ACD4FA /* FBAllocationTrackerHelpers.h in Headers */,
 				42F0A4721F59355E00ACD4FA /* FBObjectiveCGraphElement+Internal.h in Headers */,
+				428B606E1FAC05A0002577C0 /* SandboxTableViewCell.h in Headers */,
 				42F0A43A1F59355E00ACD4FA /* CCDebugHttpDataSource.h in Headers */,
 				42F0A45C1F59355E00ACD4FA /* FBAssociationManager.h in Headers */,
 				42F0A46E1F59355E00ACD4FA /* FBObjectiveCGraphElement.h in Headers */,
 				42F0A4891F59355E00ACD4FA /* CCMemoryProfilerViewController.h in Headers */,
 				42F0A4641F59355E00ACD4FA /* FBRetainCycleUtils.h in Headers */,
 				42F0A4441F59355E00ACD4FA /* CCDebugDataSource.h in Headers */,
+				428B606A1FAC0586002577C0 /* SandboxViewController.h in Headers */,
 				42F0A4421F59355E00ACD4FA /* CCDebugCrashHelper.h in Headers */,
 				42F0A46A1F59355E00ACD4FA /* FBObjectGraphConfiguration.h in Headers */,
 				42F0A4521F59355E00ACD4FA /* FBAllocationTrackerSummary.h in Headers */,
@@ -790,12 +874,14 @@
 				42F0A48D1F59355E00ACD4FA /* CCSingleRetainCycleViewController.h in Headers */,
 				42F0A4461F59355E00ACD4FA /* CCDebugEnterLOGHelper.h in Headers */,
 				42F0A4A71F59355E00ACD4FA /* CCDebugContentViewController.h in Headers */,
+				428B60661FAC056F002577C0 /* SandboxEntity.h in Headers */,
 				42F0A4621F59355E00ACD4FA /* FBRetainCycleDetector.h in Headers */,
 				42F0A4761F59355E00ACD4FA /* FBBlockStrongLayout.h in Headers */,
 				42F0A44E1F59355E00ACD4FA /* FBAllocationTrackerImpl.h in Headers */,
 				42F0A4811F59355E00ACD4FA /* Struct.h in Headers */,
 				42F0A37A1F59350100ACD4FA /* CCDebugTool.h in Headers */,
 				42F0A4581F59355E00ACD4FA /* FBAllocationTrackerNSZombieSupport.h in Headers */,
+				426A79AF1FAC3BCC00B328C1 /* SandboxCollectionViewCell.h in Headers */,
 				42F0A44C1F59355E00ACD4FA /* FBAllocationTrackerFunctors.h in Headers */,
 				42F0A4A11F59355E00ACD4FA /* CCPerformanceStatusBar.h in Headers */,
 				42F0A4731F59355E00ACD4FA /* FBObjectiveCNSCFTimer.h in Headers */,
@@ -874,6 +960,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				426A79A61FAC1EA200B328C1 /* CCDebugTool.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -887,6 +974,7 @@
 				42F0A42C1F59355E00ACD4FA /* CCAppFluecyMonitor.m in Sources */,
 				42F0A4511F59355E00ACD4FA /* FBAllocationTrackerManager.mm in Sources */,
 				42F0A4A81F59355E00ACD4FA /* CCDebugContentViewController.m in Sources */,
+				428B606F1FAC05A0002577C0 /* SandboxTableViewCell.m in Sources */,
 				42F0A4411F59355E00ACD4FA /* CCDebugLogViewController.m in Sources */,
 				42F0A42F1F59355E00ACD4FA /* CCUncaughtExceptionHandler.m in Sources */,
 				42F0A49E1F59355E00ACD4FA /* CCPerformanceConfig.m in Sources */,
@@ -903,6 +991,7 @@
 				42F0A4A01F59355E00ACD4FA /* Reachability.m in Sources */,
 				42F0A42A1F59355E00ACD4FA /* CCBacktraceLogger.m in Sources */,
 				42F0A45D1F59355E00ACD4FA /* FBAssociationManager.mm in Sources */,
+				426A79AC1FAC3ADA00B328C1 /* CCFilePathTreeView.m in Sources */,
 				42F0A4591F59355E00ACD4FA /* FBAllocationTrackerNSZombieSupport.mm in Sources */,
 				42F0A4551F59355E00ACD4FA /* FBAllocationTrackerGeneration.mm in Sources */,
 				42F0A4451F59355E00ACD4FA /* CCDebugDataSource.m in Sources */,
@@ -915,6 +1004,8 @@
 				42F0A4391F59355E00ACD4FA /* CCDebugHttpViewController.m in Sources */,
 				42F0A42D1F59355E00ACD4FA /* CCDebugTool.m in Sources */,
 				42F0A47D1F59355E00ACD4FA /* FBClassStrongLayoutHelpers.m in Sources */,
+				428B606B1FAC0586002577C0 /* SandboxViewController.m in Sources */,
+				426A79B01FAC3BCC00B328C1 /* SandboxCollectionViewCell.m in Sources */,
 				42F0A44F1F59355E00ACD4FA /* FBAllocationTrackerImpl.mm in Sources */,
 				42F0A43F1F59355E00ACD4FA /* CCDebugHttpDetailViewController.m in Sources */,
 				42F0A48E1F59355E00ACD4FA /* CCSingleRetainCycleViewController.m in Sources */,
@@ -932,6 +1023,7 @@
 				42F0A4631F59355E00ACD4FA /* FBRetainCycleDetector.mm in Sources */,
 				42F0A49C1F59355E00ACD4FA /* CCMonitorService.m in Sources */,
 				42F0A48C1F59355E00ACD4FA /* CCRetainCyclePresenter.m in Sources */,
+				428B60671FAC056F002577C0 /* SandboxEntity.m in Sources */,
 				42F0A4651F59355E00ACD4FA /* FBRetainCycleUtils.m in Sources */,
 				42F0A45B1F59355E00ACD4FA /* NSObject+FBAllocationTracker.mm in Sources */,
 				42F0A4801F59355E00ACD4FA /* FBStructEncodingParser.mm in Sources */,

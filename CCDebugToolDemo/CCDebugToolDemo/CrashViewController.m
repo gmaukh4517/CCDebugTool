@@ -21,31 +21,42 @@ typedef struct Test {
     // Do any additional setup after loading the view, typically from a nib.
     self.view.backgroundColor = [UIColor whiteColor];
     
-    UIButton *crashExcButton = [[UIButton alloc] initWithFrame:CGRectMake(50, 200, 120, 100)];
-    crashExcButton.backgroundColor = [UIColor redColor];
-    [crashExcButton setTitle:@"Exception" forState:UIControlStateNormal];
-    [crashExcButton addTarget:self action:@selector(crashExcClick) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:crashExcButton];
+    CGFloat spacing = 10;
     
-    UIButton *crashSignalEGVButton = [[UIButton alloc] initWithFrame:CGRectMake(200, 200, 120, 100)];
-    crashSignalEGVButton.backgroundColor = [UIColor redColor];
-    [crashSignalEGVButton setTitle:@"Signal(EGV)" forState:UIControlStateNormal];
-    [crashSignalEGVButton addTarget:self action:@selector(crashSignalEGVClick) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:crashSignalEGVButton];
+    NSInteger rowNumber = 2;
+    CGFloat x = spacing,y = 20;
+    CGFloat width = (self.view.bounds.size.width - 10 * (rowNumber + 1)) / rowNumber;
     
-    UIButton *crashSignalBRTButton = [[UIButton alloc] initWithFrame:CGRectMake(200, 350, 120, 100)];
-    crashSignalBRTButton.backgroundColor = [UIColor redColor];
-    [crashSignalBRTButton setTitle:@"Signal(ABRT)" forState:UIControlStateNormal];
-    [crashSignalBRTButton addTarget:self action:@selector(crashSignalBRTClick) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:crashSignalBRTButton];
+    NSArray *arr = @[@"Exception" , @"Signal(EGV)" , @"Signal(ABRT)" , @"Signal(BUS)"];
     
-    UIButton *crashSignalBUSButton = [[UIButton alloc] initWithFrame:CGRectMake(50, 350, 120, 100)];
-    crashSignalBUSButton.backgroundColor = [UIColor redColor];
-    [crashSignalBUSButton setTitle:@"Signal(BUS)" forState:UIControlStateNormal];
-    [crashSignalBUSButton addTarget:self action:@selector(crashSignalBUSClick) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:crashSignalBUSButton];
+    for (NSInteger i = 0; i < arr.count; i++) {
+        UIButton *crashButton = [[UIButton alloc] initWithFrame:CGRectMake(x, y, width, width)];
+        crashButton.backgroundColor = [UIColor redColor];
+        crashButton.tag = i;
+        [crashButton setTitle:[arr objectAtIndex:i] forState:UIControlStateNormal];
+        [crashButton addTarget:self action:@selector(crashButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+        [self.view addSubview:crashButton];
+        
+        x = crashButton.frame.origin.x + crashButton.frame.size.width + spacing;
+        if ( (i + 1) % rowNumber == 0) {
+            x = spacing;
+            y += crashButton.bounds.size.height + spacing;
+        }
+    }
 }
 
+-(void)crashButtonClick:(UIButton *)sender
+{
+    if (sender.tag == 0) {
+        [self crashExcClick];
+    }else if (sender.tag == 1){
+        [self crashSignalEGVClick];
+    }else if (sender.tag == 2){
+        [self crashSignalBRTClick];
+    }else if (sender.tag == 3){
+        [self crashSignalBUSClick];
+    }
+}
 
 - (void)crashSignalEGVClick
 {

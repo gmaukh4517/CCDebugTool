@@ -14,8 +14,8 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    self.title = @"页面卡顿";
     self.view.backgroundColor = [UIColor whiteColor];
-    
     sleep(3);
 }
 
