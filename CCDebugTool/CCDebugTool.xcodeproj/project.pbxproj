@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		426A79A61FAC1EA200B328C1 /* CCDebugTool.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 426A79A51FAC1EA200B328C1 /* CCDebugTool.bundle */; };
 		426A79AB1FAC3ADA00B328C1 /* CCFilePathTreeView.h in Headers */ = {isa = PBXBuildFile; fileRef = 426A79A91FAC3ADA00B328C1 /* CCFilePathTreeView.h */; };
 		426A79AC1FAC3ADA00B328C1 /* CCFilePathTreeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 426A79AA1FAC3ADA00B328C1 /* CCFilePathTreeView.m */; };
 		426A79AF1FAC3BCC00B328C1 /* SandboxCollectionViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 426A79AD1FAC3BCC00B328C1 /* SandboxCollectionViewCell.h */; };
@@ -146,7 +145,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		426A79A51FAC1EA200B328C1 /* CCDebugTool.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = CCDebugTool.bundle; sourceTree = "<group>"; };
 		426A79A91FAC3ADA00B328C1 /* CCFilePathTreeView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCFilePathTreeView.h; sourceTree = "<group>"; };
 		426A79AA1FAC3ADA00B328C1 /* CCFilePathTreeView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CCFilePathTreeView.m; sourceTree = "<group>"; };
 		426A79AD1FAC3BCC00B328C1 /* SandboxCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SandboxCollectionViewCell.h; sourceTree = "<group>"; };
@@ -303,7 +301,6 @@
 			children = (
 				428B602F1FABF676002577C0 /* Controller */,
 				428B602E1FABF676002577C0 /* Model */,
-				428B60301FABF676002577C0 /* Resources */,
 				428B60321FABF676002577C0 /* View */,
 			);
 			path = Sandbox;
@@ -325,14 +322,6 @@
 				428B60691FAC0586002577C0 /* SandboxViewController.m */,
 			);
 			path = Controller;
-			sourceTree = "<group>";
-		};
-		428B60301FABF676002577C0 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				426A79A51FAC1EA200B328C1 /* CCDebugTool.bundle */,
-			);
-			path = Resources;
 			sourceTree = "<group>";
 		};
 		428B60321FABF676002577C0 /* View */ = {
@@ -960,7 +949,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				426A79A61FAC1EA200B328C1 /* CCDebugTool.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
