@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		426A79A81FAC391200B328C1 /* CCDebugTool.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 426A79A71FAC391100B328C1 /* CCDebugTool.bundle */; };
+		42D5AD5A1FAC6F960063C136 /* libz.1.2.5.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 42D5AD581FAC6B750063C136 /* libz.1.2.5.tbd */; };
 		42F0A4B81F593D7700ACD4FA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 42F0A4B71F593D7700ACD4FA /* main.m */; };
 		42F0A4BB1F593D7700ACD4FA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 42F0A4BA1F593D7700ACD4FA /* AppDelegate.m */; };
 		42F0A4BE1F593D7700ACD4FA /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42F0A4BD1F593D7700ACD4FA /* ViewController.m */; };
@@ -20,6 +21,7 @@
 
 /* Begin PBXFileReference section */
 		426A79A71FAC391100B328C1 /* CCDebugTool.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = CCDebugTool.bundle; sourceTree = "<group>"; };
+		42D5AD581FAC6B750063C136 /* libz.1.2.5.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.1.2.5.tbd; path = usr/lib/libz.1.2.5.tbd; sourceTree = SDKROOT; };
 		42F0A4B31F593D7700ACD4FA /* CCDebugToolDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CCDebugToolDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		42F0A4B71F593D7700ACD4FA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		42F0A4B91F593D7700ACD4FA /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -41,6 +43,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				42D5AD5A1FAC6F960063C136 /* libz.1.2.5.tbd in Frameworks */,
 				42F0A4CF1F593E3000ACD4FA /* CCDebugTool.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -96,6 +99,7 @@
 		42F0A4CD1F593E2F00ACD4FA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				42D5AD581FAC6B750063C136 /* libz.1.2.5.tbd */,
 				42F0A4CE1F593E3000ACD4FA /* CCDebugTool.framework */,
 			);
 			name = Frameworks;

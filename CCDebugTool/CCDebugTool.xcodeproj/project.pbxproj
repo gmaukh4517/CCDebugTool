@@ -7,16 +7,34 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		421E6BE21FB13EB70068FB1E /* CCSpeedTestViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 421E6BE01FB13EB70068FB1E /* CCSpeedTestViewController.h */; };
+		421E6BE31FB13EB70068FB1E /* CCSpeedTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 421E6BE11FB13EB70068FB1E /* CCSpeedTestViewController.m */; };
+		421E6BE71FB140E00068FB1E /* CCSpeedView.h in Headers */ = {isa = PBXBuildFile; fileRef = 421E6BE51FB140E00068FB1E /* CCSpeedView.h */; };
+		421E6BE81FB140E00068FB1E /* CCSpeedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 421E6BE61FB140E00068FB1E /* CCSpeedView.m */; };
+		421E6BFA1FB1B2FF0068FB1E /* UINavigationController+CCAdd.h in Headers */ = {isa = PBXBuildFile; fileRef = 421E6BF81FB1B2FF0068FB1E /* UINavigationController+CCAdd.h */; };
+		421E6BFB1FB1B2FF0068FB1E /* UINavigationController+CCAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = 421E6BF91FB1B2FF0068FB1E /* UINavigationController+CCAdd.m */; };
+		424603081FAFF05000467266 /* ToolViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 424603061FAFF05000467266 /* ToolViewController.h */; };
+		424603091FAFF05000467266 /* ToolViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 424603071FAFF05000467266 /* ToolViewController.m */; };
+		424603151FB00FEF00467266 /* CCSpeedTestManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 424603131FB00FEF00467266 /* CCSpeedTestManager.h */; };
+		424603161FB00FEF00467266 /* CCSpeedTestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 424603141FB00FEF00467266 /* CCSpeedTestManager.m */; };
 		426A79AB1FAC3ADA00B328C1 /* CCFilePathTreeView.h in Headers */ = {isa = PBXBuildFile; fileRef = 426A79A91FAC3ADA00B328C1 /* CCFilePathTreeView.h */; };
 		426A79AC1FAC3ADA00B328C1 /* CCFilePathTreeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 426A79AA1FAC3ADA00B328C1 /* CCFilePathTreeView.m */; };
-		426A79AF1FAC3BCC00B328C1 /* SandboxCollectionViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 426A79AD1FAC3BCC00B328C1 /* SandboxCollectionViewCell.h */; };
-		426A79B01FAC3BCC00B328C1 /* SandboxCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 426A79AE1FAC3BCC00B328C1 /* SandboxCollectionViewCell.m */; };
-		428B60661FAC056F002577C0 /* SandboxEntity.h in Headers */ = {isa = PBXBuildFile; fileRef = 428B60641FAC056F002577C0 /* SandboxEntity.h */; };
-		428B60671FAC056F002577C0 /* SandboxEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 428B60651FAC056F002577C0 /* SandboxEntity.m */; };
-		428B606A1FAC0586002577C0 /* SandboxViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 428B60681FAC0586002577C0 /* SandboxViewController.h */; };
-		428B606B1FAC0586002577C0 /* SandboxViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 428B60691FAC0586002577C0 /* SandboxViewController.m */; };
-		428B606E1FAC05A0002577C0 /* SandboxTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 428B606C1FAC05A0002577C0 /* SandboxTableViewCell.h */; };
-		428B606F1FAC05A0002577C0 /* SandboxTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 428B606D1FAC05A0002577C0 /* SandboxTableViewCell.m */; };
+		426A79AF1FAC3BCC00B328C1 /* CCSandboxCollectionViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 426A79AD1FAC3BCC00B328C1 /* CCSandboxCollectionViewCell.h */; };
+		426A79B01FAC3BCC00B328C1 /* CCSandboxCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 426A79AE1FAC3BCC00B328C1 /* CCSandboxCollectionViewCell.m */; };
+		428B60661FAC056F002577C0 /* CCSandboxEntity.h in Headers */ = {isa = PBXBuildFile; fileRef = 428B60641FAC056F002577C0 /* CCSandboxEntity.h */; };
+		428B60671FAC056F002577C0 /* CCSandboxEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 428B60651FAC056F002577C0 /* CCSandboxEntity.m */; };
+		428B606A1FAC0586002577C0 /* CCSandboxViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 428B60681FAC0586002577C0 /* CCSandboxViewController.h */; };
+		428B606B1FAC0586002577C0 /* CCSandboxViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 428B60691FAC0586002577C0 /* CCSandboxViewController.m */; };
+		428B606E1FAC05A0002577C0 /* CCSandboxTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 428B606C1FAC05A0002577C0 /* CCSandboxTableViewCell.h */; };
+		428B606F1FAC05A0002577C0 /* CCSandboxTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 428B606D1FAC05A0002577C0 /* CCSandboxTableViewCell.m */; };
+		42D5AD4A1FAC62AF0063C136 /* STSimplePing.h in Headers */ = {isa = PBXBuildFile; fileRef = 42D5AD481FAC62AF0063C136 /* STSimplePing.h */; };
+		42D5AD4B1FAC62AF0063C136 /* STSimplePing.m in Sources */ = {isa = PBXBuildFile; fileRef = 42D5AD491FAC62AF0063C136 /* STSimplePing.m */; };
+		42D5AD4E1FAC62CD0063C136 /* CCPingServices.h in Headers */ = {isa = PBXBuildFile; fileRef = 42D5AD4C1FAC62CD0063C136 /* CCPingServices.h */; };
+		42D5AD4F1FAC62CD0063C136 /* CCPingServices.m in Sources */ = {isa = PBXBuildFile; fileRef = 42D5AD4D1FAC62CD0063C136 /* CCPingServices.m */; };
+		42D5AD521FAC64E80063C136 /* CCPingTextView.h in Headers */ = {isa = PBXBuildFile; fileRef = 42D5AD501FAC64E80063C136 /* CCPingTextView.h */; };
+		42D5AD531FAC64E80063C136 /* CCPingTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 42D5AD511FAC64E80063C136 /* CCPingTextView.m */; };
+		42D5AD561FAC65680063C136 /* CCPingViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 42D5AD541FAC65680063C136 /* CCPingViewController.h */; };
+		42D5AD571FAC65680063C136 /* CCPingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42D5AD551FAC65680063C136 /* CCPingViewController.m */; };
 		42F0A37A1F59350100ACD4FA /* CCDebugTool.h in Headers */ = {isa = PBXBuildFile; fileRef = 42F0A3781F59350100ACD4FA /* CCDebugTool.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		42F0A4291F59355E00ACD4FA /* CCBacktraceLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = 42F0A3831F59355E00ACD4FA /* CCBacktraceLogger.h */; };
 		42F0A42A1F59355E00ACD4FA /* CCBacktraceLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 42F0A3841F59355E00ACD4FA /* CCBacktraceLogger.m */; };
@@ -145,16 +163,34 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		421E6BE01FB13EB70068FB1E /* CCSpeedTestViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCSpeedTestViewController.h; sourceTree = "<group>"; };
+		421E6BE11FB13EB70068FB1E /* CCSpeedTestViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CCSpeedTestViewController.m; sourceTree = "<group>"; };
+		421E6BE51FB140E00068FB1E /* CCSpeedView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCSpeedView.h; sourceTree = "<group>"; };
+		421E6BE61FB140E00068FB1E /* CCSpeedView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CCSpeedView.m; sourceTree = "<group>"; };
+		421E6BF81FB1B2FF0068FB1E /* UINavigationController+CCAdd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+CCAdd.h"; sourceTree = "<group>"; };
+		421E6BF91FB1B2FF0068FB1E /* UINavigationController+CCAdd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+CCAdd.m"; sourceTree = "<group>"; };
+		424603061FAFF05000467266 /* ToolViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ToolViewController.h; sourceTree = "<group>"; };
+		424603071FAFF05000467266 /* ToolViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ToolViewController.m; sourceTree = "<group>"; };
+		424603131FB00FEF00467266 /* CCSpeedTestManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCSpeedTestManager.h; sourceTree = "<group>"; };
+		424603141FB00FEF00467266 /* CCSpeedTestManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CCSpeedTestManager.m; sourceTree = "<group>"; };
 		426A79A91FAC3ADA00B328C1 /* CCFilePathTreeView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCFilePathTreeView.h; sourceTree = "<group>"; };
 		426A79AA1FAC3ADA00B328C1 /* CCFilePathTreeView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CCFilePathTreeView.m; sourceTree = "<group>"; };
-		426A79AD1FAC3BCC00B328C1 /* SandboxCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SandboxCollectionViewCell.h; sourceTree = "<group>"; };
-		426A79AE1FAC3BCC00B328C1 /* SandboxCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SandboxCollectionViewCell.m; sourceTree = "<group>"; };
-		428B60641FAC056F002577C0 /* SandboxEntity.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SandboxEntity.h; sourceTree = "<group>"; };
-		428B60651FAC056F002577C0 /* SandboxEntity.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SandboxEntity.m; sourceTree = "<group>"; };
-		428B60681FAC0586002577C0 /* SandboxViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SandboxViewController.h; sourceTree = "<group>"; };
-		428B60691FAC0586002577C0 /* SandboxViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SandboxViewController.m; sourceTree = "<group>"; };
-		428B606C1FAC05A0002577C0 /* SandboxTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SandboxTableViewCell.h; sourceTree = "<group>"; };
-		428B606D1FAC05A0002577C0 /* SandboxTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SandboxTableViewCell.m; sourceTree = "<group>"; };
+		426A79AD1FAC3BCC00B328C1 /* CCSandboxCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCSandboxCollectionViewCell.h; sourceTree = "<group>"; };
+		426A79AE1FAC3BCC00B328C1 /* CCSandboxCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CCSandboxCollectionViewCell.m; sourceTree = "<group>"; };
+		428B60641FAC056F002577C0 /* CCSandboxEntity.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCSandboxEntity.h; sourceTree = "<group>"; };
+		428B60651FAC056F002577C0 /* CCSandboxEntity.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CCSandboxEntity.m; sourceTree = "<group>"; };
+		428B60681FAC0586002577C0 /* CCSandboxViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCSandboxViewController.h; sourceTree = "<group>"; };
+		428B60691FAC0586002577C0 /* CCSandboxViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CCSandboxViewController.m; sourceTree = "<group>"; };
+		428B606C1FAC05A0002577C0 /* CCSandboxTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCSandboxTableViewCell.h; sourceTree = "<group>"; };
+		428B606D1FAC05A0002577C0 /* CCSandboxTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CCSandboxTableViewCell.m; sourceTree = "<group>"; };
+		42D5AD481FAC62AF0063C136 /* STSimplePing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STSimplePing.h; sourceTree = "<group>"; };
+		42D5AD491FAC62AF0063C136 /* STSimplePing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STSimplePing.m; sourceTree = "<group>"; };
+		42D5AD4C1FAC62CD0063C136 /* CCPingServices.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCPingServices.h; sourceTree = "<group>"; };
+		42D5AD4D1FAC62CD0063C136 /* CCPingServices.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CCPingServices.m; sourceTree = "<group>"; };
+		42D5AD501FAC64E80063C136 /* CCPingTextView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCPingTextView.h; sourceTree = "<group>"; };
+		42D5AD511FAC64E80063C136 /* CCPingTextView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CCPingTextView.m; sourceTree = "<group>"; };
+		42D5AD541FAC65680063C136 /* CCPingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCPingViewController.h; sourceTree = "<group>"; };
+		42D5AD551FAC65680063C136 /* CCPingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CCPingViewController.m; sourceTree = "<group>"; };
 		42F0A3751F59350100ACD4FA /* CCDebugTool.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CCDebugTool.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		42F0A3781F59350100ACD4FA /* CCDebugTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCDebugTool.h; sourceTree = "<group>"; };
 		42F0A3791F59350100ACD4FA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -296,6 +332,60 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		421E6BE41FB140680068FB1E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				421E6BE51FB140E00068FB1E /* CCSpeedView.h */,
+				421E6BE61FB140E00068FB1E /* CCSpeedView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		421E6BF61FB1B2FF0068FB1E /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				421E6BF71FB1B2FF0068FB1E /* UINavigationController */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
+		421E6BF71FB1B2FF0068FB1E /* UINavigationController */ = {
+			isa = PBXGroup;
+			children = (
+				421E6BF81FB1B2FF0068FB1E /* UINavigationController+CCAdd.h */,
+				421E6BF91FB1B2FF0068FB1E /* UINavigationController+CCAdd.m */,
+			);
+			path = UINavigationController;
+			sourceTree = "<group>";
+		};
+		424603101FB00F1700467266 /* SpeedTest */ = {
+			isa = PBXGroup;
+			children = (
+				421E6BE41FB140680068FB1E /* View */,
+				424603121FB00F6B00467266 /* Model */,
+				424603111FB00F6000467266 /* Controller */,
+			);
+			path = SpeedTest;
+			sourceTree = "<group>";
+		};
+		424603111FB00F6000467266 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				421E6BE01FB13EB70068FB1E /* CCSpeedTestViewController.h */,
+				421E6BE11FB13EB70068FB1E /* CCSpeedTestViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		424603121FB00F6B00467266 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				424603131FB00FEF00467266 /* CCSpeedTestManager.h */,
+				424603141FB00FEF00467266 /* CCSpeedTestManager.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		427010DA1FAB1E6800BE8E8F /* Sandbox */ = {
 			isa = PBXGroup;
 			children = (
@@ -309,8 +399,8 @@
 		428B602E1FABF676002577C0 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				428B60641FAC056F002577C0 /* SandboxEntity.h */,
-				428B60651FAC056F002577C0 /* SandboxEntity.m */,
+				428B60641FAC056F002577C0 /* CCSandboxEntity.h */,
+				428B60651FAC056F002577C0 /* CCSandboxEntity.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -318,8 +408,8 @@
 		428B602F1FABF676002577C0 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				428B60681FAC0586002577C0 /* SandboxViewController.h */,
-				428B60691FAC0586002577C0 /* SandboxViewController.m */,
+				428B60681FAC0586002577C0 /* CCSandboxViewController.h */,
+				428B60691FAC0586002577C0 /* CCSandboxViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -327,21 +417,73 @@
 		428B60321FABF676002577C0 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				428B606C1FAC05A0002577C0 /* SandboxTableViewCell.h */,
-				428B606D1FAC05A0002577C0 /* SandboxTableViewCell.m */,
+				428B606C1FAC05A0002577C0 /* CCSandboxTableViewCell.h */,
+				428B606D1FAC05A0002577C0 /* CCSandboxTableViewCell.m */,
 				426A79A91FAC3ADA00B328C1 /* CCFilePathTreeView.h */,
 				426A79AA1FAC3ADA00B328C1 /* CCFilePathTreeView.m */,
-				426A79AD1FAC3BCC00B328C1 /* SandboxCollectionViewCell.h */,
-				426A79AE1FAC3BCC00B328C1 /* SandboxCollectionViewCell.m */,
+				426A79AD1FAC3BCC00B328C1 /* CCSandboxCollectionViewCell.h */,
+				426A79AE1FAC3BCC00B328C1 /* CCSandboxCollectionViewCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
 		};
-		42D5AD3C1FAC60540063C136 /* New Group */ = {
+		42D5AD3D1FAC61B60063C136 /* Tool */ = {
 			isa = PBXGroup;
 			children = (
+				424603101FB00F1700467266 /* SpeedTest */,
+				42D5AD3E1FAC61D00063C136 /* PingTest */,
+				427010DA1FAB1E6800BE8E8F /* Sandbox */,
+				424603061FAFF05000467266 /* ToolViewController.h */,
+				424603071FAFF05000467266 /* ToolViewController.m */,
 			);
-			path = "New Group";
+			path = Tool;
+			sourceTree = "<group>";
+		};
+		42D5AD3E1FAC61D00063C136 /* PingTest */ = {
+			isa = PBXGroup;
+			children = (
+				42D5AD431FAC626B0063C136 /* Controller */,
+				42D5AD421FAC62670063C136 /* View */,
+				42D5AD411FAC62540063C136 /* Services */,
+				42D5AD3F1FAC62350063C136 /* PingTester */,
+			);
+			path = PingTest;
+			sourceTree = "<group>";
+		};
+		42D5AD3F1FAC62350063C136 /* PingTester */ = {
+			isa = PBXGroup;
+			children = (
+				42D5AD481FAC62AF0063C136 /* STSimplePing.h */,
+				42D5AD491FAC62AF0063C136 /* STSimplePing.m */,
+			);
+			path = PingTester;
+			sourceTree = "<group>";
+		};
+		42D5AD411FAC62540063C136 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				42D5AD4C1FAC62CD0063C136 /* CCPingServices.h */,
+				42D5AD4D1FAC62CD0063C136 /* CCPingServices.m */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		42D5AD421FAC62670063C136 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				42D5AD501FAC64E80063C136 /* CCPingTextView.h */,
+				42D5AD511FAC64E80063C136 /* CCPingTextView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		42D5AD431FAC626B0063C136 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				42D5AD541FAC65680063C136 /* CCPingViewController.h */,
+				42D5AD551FAC65680063C136 /* CCPingViewController.m */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 		42F0A36B1F59350100ACD4FA = {
@@ -363,8 +505,8 @@
 		42F0A3771F59350100ACD4FA /* CCDebugTool */ = {
 			isa = PBXGroup;
 			children = (
-				42D5AD3C1FAC60540063C136 /* New Group */,
-				427010DA1FAB1E6800BE8E8F /* Sandbox */,
+				421E6BF61FB1B2FF0068FB1E /* Category */,
+				42D5AD3D1FAC61B60063C136 /* Tool */,
 				42F0A3811F59355E00ACD4FA /* CCAppFluecyMonitor */,
 				42F0A3881F59355E00ACD4FA /* CCExceptionCatching */,
 				42F0A38B1F59355E00ACD4FA /* HTTP */,
@@ -826,11 +968,16 @@
 				42F0A4751F59355E00ACD4FA /* FBBlockInterface.h in Headers */,
 				42F0A4911F59355E00ACD4FA /* ProfilerTableHeader.h in Headers */,
 				42F0A4861F59355E00ACD4FA /* FBObjectInStructReference.h in Headers */,
+				42D5AD4A1FAC62AF0063C136 /* STSimplePing.h in Headers */,
 				42F0A42B1F59355E00ACD4FA /* CCAppFluecyMonitor.h in Headers */,
 				42F0A45E1F59355E00ACD4FA /* FBAssociationManager+Internal.h in Headers */,
+				42D5AD4E1FAC62CD0063C136 /* CCPingServices.h in Headers */,
 				42F0A4991F59355E00ACD4FA /* CCMonitorHelper.h in Headers */,
+				421E6BFA1FB1B2FF0068FB1E /* UINavigationController+CCAdd.h in Headers */,
 				42F0A4611F59355E00ACD4FA /* FBRetainCycleDetector+Internal.h in Headers */,
+				421E6BE71FB140E00068FB1E /* CCSpeedView.h in Headers */,
 				42F0A45F1F59355E00ACD4FA /* FBNodeEnumerator.h in Headers */,
+				421E6BE21FB13EB70068FB1E /* CCSpeedTestViewController.h in Headers */,
 				426A79AB1FAC3ADA00B328C1 /* CCFilePathTreeView.h in Headers */,
 				42F0A4401F59355E00ACD4FA /* CCDebugLogViewController.h in Headers */,
 				42F0A4661F59355E00ACD4FA /* FBStandardGraphEdgeFilters.h in Headers */,
@@ -839,19 +986,20 @@
 				42F0A4321F59355E00ACD4FA /* NSURLResponse+Data.h in Headers */,
 				42F0A44D1F59355E00ACD4FA /* FBAllocationTrackerHelpers.h in Headers */,
 				42F0A4721F59355E00ACD4FA /* FBObjectiveCGraphElement+Internal.h in Headers */,
-				428B606E1FAC05A0002577C0 /* SandboxTableViewCell.h in Headers */,
+				428B606E1FAC05A0002577C0 /* CCSandboxTableViewCell.h in Headers */,
 				42F0A43A1F59355E00ACD4FA /* CCDebugHttpDataSource.h in Headers */,
 				42F0A45C1F59355E00ACD4FA /* FBAssociationManager.h in Headers */,
 				42F0A46E1F59355E00ACD4FA /* FBObjectiveCGraphElement.h in Headers */,
 				42F0A4891F59355E00ACD4FA /* CCMemoryProfilerViewController.h in Headers */,
 				42F0A4641F59355E00ACD4FA /* FBRetainCycleUtils.h in Headers */,
 				42F0A4441F59355E00ACD4FA /* CCDebugDataSource.h in Headers */,
-				428B606A1FAC0586002577C0 /* SandboxViewController.h in Headers */,
+				428B606A1FAC0586002577C0 /* CCSandboxViewController.h in Headers */,
 				42F0A4421F59355E00ACD4FA /* CCDebugCrashHelper.h in Headers */,
 				42F0A46A1F59355E00ACD4FA /* FBObjectGraphConfiguration.h in Headers */,
 				42F0A4521F59355E00ACD4FA /* FBAllocationTrackerSummary.h in Headers */,
 				42F0A4341F59355E00ACD4FA /* NSURLSession+Swizzling.h in Headers */,
 				42F0A47F1F59355E00ACD4FA /* FBStructEncodingParser.h in Headers */,
+				424603081FAFF05000467266 /* ToolViewController.h in Headers */,
 				42F0A44A1F59355E00ACD4FA /* FBAllocationTracker.h in Headers */,
 				42F0A4701F59355E00ACD4FA /* FBObjectiveCObject.h in Headers */,
 				42F0A4931F59355E00ACD4FA /* ProfilerDataSource.h in Headers */,
@@ -863,14 +1011,15 @@
 				42F0A48D1F59355E00ACD4FA /* CCSingleRetainCycleViewController.h in Headers */,
 				42F0A4461F59355E00ACD4FA /* CCDebugEnterLOGHelper.h in Headers */,
 				42F0A4A71F59355E00ACD4FA /* CCDebugContentViewController.h in Headers */,
-				428B60661FAC056F002577C0 /* SandboxEntity.h in Headers */,
+				428B60661FAC056F002577C0 /* CCSandboxEntity.h in Headers */,
 				42F0A4621F59355E00ACD4FA /* FBRetainCycleDetector.h in Headers */,
 				42F0A4761F59355E00ACD4FA /* FBBlockStrongLayout.h in Headers */,
 				42F0A44E1F59355E00ACD4FA /* FBAllocationTrackerImpl.h in Headers */,
 				42F0A4811F59355E00ACD4FA /* Struct.h in Headers */,
 				42F0A37A1F59350100ACD4FA /* CCDebugTool.h in Headers */,
 				42F0A4581F59355E00ACD4FA /* FBAllocationTrackerNSZombieSupport.h in Headers */,
-				426A79AF1FAC3BCC00B328C1 /* SandboxCollectionViewCell.h in Headers */,
+				42D5AD561FAC65680063C136 /* CCPingViewController.h in Headers */,
+				426A79AF1FAC3BCC00B328C1 /* CCSandboxCollectionViewCell.h in Headers */,
 				42F0A44C1F59355E00ACD4FA /* FBAllocationTrackerFunctors.h in Headers */,
 				42F0A4A11F59355E00ACD4FA /* CCPerformanceStatusBar.h in Headers */,
 				42F0A4731F59355E00ACD4FA /* FBObjectiveCNSCFTimer.h in Headers */,
@@ -878,6 +1027,7 @@
 				42F0A47C1F59355E00ACD4FA /* FBClassStrongLayoutHelpers.h in Headers */,
 				42F0A4381F59355E00ACD4FA /* CCDebugHttpViewController.h in Headers */,
 				42F0A44B1F59355E00ACD4FA /* FBAllocationTrackerDefines.h in Headers */,
+				424603151FB00FEF00467266 /* CCSpeedTestManager.h in Headers */,
 				42F0A4831F59355E00ACD4FA /* Type.h in Headers */,
 				42F0A4481F59355E00ACD4FA /* CCDebugFluencyHelper.h in Headers */,
 				42F0A45A1F59355E00ACD4FA /* NSObject+FBAllocationTracker.h in Headers */,
@@ -887,6 +1037,7 @@
 				42F0A47E1F59355E00ACD4FA /* BaseType.h in Headers */,
 				42F0A46C1F59355E00ACD4FA /* FBObjectiveCBlock.h in Headers */,
 				42F0A4691F59355E00ACD4FA /* fishhook.h in Headers */,
+				42D5AD521FAC64E80063C136 /* CCPingTextView.h in Headers */,
 				42F0A4881F59355E00ACD4FA /* FBObjectReference.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -962,23 +1113,27 @@
 				42F0A42C1F59355E00ACD4FA /* CCAppFluecyMonitor.m in Sources */,
 				42F0A4511F59355E00ACD4FA /* FBAllocationTrackerManager.mm in Sources */,
 				42F0A4A81F59355E00ACD4FA /* CCDebugContentViewController.m in Sources */,
-				428B606F1FAC05A0002577C0 /* SandboxTableViewCell.m in Sources */,
+				42D5AD4F1FAC62CD0063C136 /* CCPingServices.m in Sources */,
+				428B606F1FAC05A0002577C0 /* CCSandboxTableViewCell.m in Sources */,
 				42F0A4411F59355E00ACD4FA /* CCDebugLogViewController.m in Sources */,
 				42F0A42F1F59355E00ACD4FA /* CCUncaughtExceptionHandler.m in Sources */,
 				42F0A49E1F59355E00ACD4FA /* CCPerformanceConfig.m in Sources */,
 				42F0A4961F59355E00ACD4FA /* RetainCycleAnalysisCache.m in Sources */,
 				42F0A4431F59355E00ACD4FA /* CCDebugCrashHelper.m in Sources */,
+				424603161FB00FEF00467266 /* CCSpeedTestManager.m in Sources */,
 				42F0A4941F59355E00ACD4FA /* ProfilerDataSource.m in Sources */,
 				42F0A46F1F59355E00ACD4FA /* FBObjectiveCGraphElement.mm in Sources */,
 				42F0A4871F59355E00ACD4FA /* FBObjectInStructReference.m in Sources */,
 				42F0A4601F59355E00ACD4FA /* FBNodeEnumerator.mm in Sources */,
 				42F0A4371F59355E00ACD4FA /* NSURLSessionTask+Data.m in Sources */,
 				42F0A4A21F59355E00ACD4FA /* CCPerformanceStatusBar.m in Sources */,
+				42D5AD571FAC65680063C136 /* CCPingViewController.m in Sources */,
 				42F0A4571F59355E00ACD4FA /* FBAllocationTrackerGenerationManager.mm in Sources */,
 				42F0A4851F59355E00ACD4FA /* FBIvarReference.m in Sources */,
 				42F0A4A01F59355E00ACD4FA /* Reachability.m in Sources */,
 				42F0A42A1F59355E00ACD4FA /* CCBacktraceLogger.m in Sources */,
 				42F0A45D1F59355E00ACD4FA /* FBAssociationManager.mm in Sources */,
+				421E6BE81FB140E00068FB1E /* CCSpeedView.m in Sources */,
 				426A79AC1FAC3ADA00B328C1 /* CCFilePathTreeView.m in Sources */,
 				42F0A4591F59355E00ACD4FA /* FBAllocationTrackerNSZombieSupport.mm in Sources */,
 				42F0A4551F59355E00ACD4FA /* FBAllocationTrackerGeneration.mm in Sources */,
@@ -990,28 +1145,33 @@
 				42F0A4681F59355E00ACD4FA /* fishhook.c in Sources */,
 				42F0A48A1F59355E00ACD4FA /* CCMemoryProfilerViewController.m in Sources */,
 				42F0A4391F59355E00ACD4FA /* CCDebugHttpViewController.m in Sources */,
+				421E6BE31FB13EB70068FB1E /* CCSpeedTestViewController.m in Sources */,
 				42F0A42D1F59355E00ACD4FA /* CCDebugTool.m in Sources */,
 				42F0A47D1F59355E00ACD4FA /* FBClassStrongLayoutHelpers.m in Sources */,
-				428B606B1FAC0586002577C0 /* SandboxViewController.m in Sources */,
-				426A79B01FAC3BCC00B328C1 /* SandboxCollectionViewCell.m in Sources */,
+				428B606B1FAC0586002577C0 /* CCSandboxViewController.m in Sources */,
+				426A79B01FAC3BCC00B328C1 /* CCSandboxCollectionViewCell.m in Sources */,
 				42F0A44F1F59355E00ACD4FA /* FBAllocationTrackerImpl.mm in Sources */,
 				42F0A43F1F59355E00ACD4FA /* CCDebugHttpDetailViewController.m in Sources */,
 				42F0A48E1F59355E00ACD4FA /* CCSingleRetainCycleViewController.m in Sources */,
 				42F0A4771F59355E00ACD4FA /* FBBlockStrongLayout.m in Sources */,
+				421E6BFB1FB1B2FF0068FB1E /* UINavigationController+CCAdd.m in Sources */,
 				42F0A47B1F59355E00ACD4FA /* FBClassStrongLayout.mm in Sources */,
 				42F0A4671F59355E00ACD4FA /* FBStandardGraphEdgeFilters.mm in Sources */,
 				42F0A43B1F59355E00ACD4FA /* CCDebugHttpDataSource.m in Sources */,
+				42D5AD4B1FAC62AF0063C136 /* STSimplePing.m in Sources */,
 				42F0A4821F59355E00ACD4FA /* Struct.mm in Sources */,
 				42F0A4A41F59355E00ACD4FA /* CCMonitorLabel.m in Sources */,
 				42F0A4711F59355E00ACD4FA /* FBObjectiveCObject.m in Sources */,
 				42F0A46B1F59355E00ACD4FA /* FBObjectGraphConfiguration.m in Sources */,
+				424603091FAFF05000467266 /* ToolViewController.m in Sources */,
 				42F0A4351F59355E00ACD4FA /* NSURLSession+Swizzling.m in Sources */,
 				42F0A4791F59355E00ACD4FA /* FBBlockStrongRelationDetector.m in Sources */,
 				42F0A4921F59355E00ACD4FA /* ProfilerTableHeader.m in Sources */,
+				42D5AD531FAC64E80063C136 /* CCPingTextView.m in Sources */,
 				42F0A4631F59355E00ACD4FA /* FBRetainCycleDetector.mm in Sources */,
 				42F0A49C1F59355E00ACD4FA /* CCMonitorService.m in Sources */,
 				42F0A48C1F59355E00ACD4FA /* CCRetainCyclePresenter.m in Sources */,
-				428B60671FAC056F002577C0 /* SandboxEntity.m in Sources */,
+				428B60671FAC056F002577C0 /* CCSandboxEntity.m in Sources */,
 				42F0A4651F59355E00ACD4FA /* FBRetainCycleUtils.m in Sources */,
 				42F0A45B1F59355E00ACD4FA /* NSObject+FBAllocationTracker.mm in Sources */,
 				42F0A4801F59355E00ACD4FA /* FBStructEncodingParser.mm in Sources */,

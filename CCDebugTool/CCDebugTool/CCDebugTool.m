@@ -33,6 +33,8 @@
 #import "FBAllocationTrackerManager.h"
 #import "FBAssociationManager.h"
 
+#import "UINavigationController+CCAdd.h"
+
 @interface CCDebugWindow : UIWindow
 
 @end
@@ -136,7 +138,7 @@
         UINavigationController *debugHTTPNav = [self initializationNav:NSClassFromString(@"CCDebugHttpViewController") tabBarItemName:@"HTTP"];
         UINavigationController *debugLOGNav = [self initializationNav:NSClassFromString(@"CCDebugLogViewController") tabBarItemName:@"LOG"];
         UINavigationController *debugProfilerNav = [self initializationNav:NSClassFromString(@"CCMemoryProfilerViewController") tabBarItemName:@"Cycle"];
-        UINavigationController *debugSandBoxNav = [self initializationNav:NSClassFromString(@"SandboxViewController") tabBarItemName:@"SBOX"];
+        UINavigationController *debugSandBoxNav = [self initializationNav:NSClassFromString(@"ToolViewController") tabBarItemName:@"TOOL"];
         //        UINavigationController *debugMonitorNav = [self initializationNav:[CCMonitorViewController new] tabBarItemName:@"Monitor"];
         
         debugTabBar.viewControllers = [NSArray arrayWithObjects:debugHTTPNav, debugLOGNav, debugProfilerNav,debugSandBoxNav, nil];
