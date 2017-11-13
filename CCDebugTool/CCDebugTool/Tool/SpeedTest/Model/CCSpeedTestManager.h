@@ -23,6 +23,4 @@
 
 + (NSString *)formatBandWidth:(NSInteger)size
                          unit:(NSString **)unit;
-
-+ (NSString *)getWifiName;
 @end

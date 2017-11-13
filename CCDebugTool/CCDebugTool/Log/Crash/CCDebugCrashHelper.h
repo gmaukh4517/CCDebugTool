@@ -29,6 +29,9 @@
 
 + (instancetype)manager;
 
+/** 记录操作步骤 **/
+@property (nonatomic, copy) NSMutableArray *crashLastStep;
+
 /**
  *  @author CC, 16-03-05
  *

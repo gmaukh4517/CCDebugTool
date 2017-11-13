@@ -46,6 +46,12 @@
     });
 }
 
+-(void)layoutSubviews
+{
+    [super layoutSubviews];
+    self.filePathCollectionView.frame = self.bounds;
+}
+
 #pragma mark -
 #pragma mark :. UICollectionViewDelegate && UICollectionViewDataSourse
 

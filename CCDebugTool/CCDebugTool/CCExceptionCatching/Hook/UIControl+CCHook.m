@@ -1,15 +1,16 @@
 //
-//  UINavigationController+CCAdd.m
+//  UIControl+CCHook.m
 //  CCDebugTool
 //
-//  Created by CC on 2017/11/6.
+//  Created by CC on 2017/11/10.
 //  Copyright © 2017年 CC. All rights reserved.
 //
 
-#import "UINavigationController+CCAdd.h"
+#import "UIControl+CCHook.h"
 #import <objc/runtime.h>
+#import "CCDebugCrashHelper.h"
 
-@implementation UINavigationController (CCAdd)
+@implementation UIControl (CCHook)
 
 static inline void AutomaticWritingSwizzleSelector(Class class, SEL originalSelector, SEL swizzledSelector)
 {
@@ -22,20 +23,17 @@ static inline void AutomaticWritingSwizzleSelector(Class class, SEL originalSele
     }
 }
 
-+ (void)load
++ (void)CCHook
 {
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        AutomaticWritingSwizzleSelector([self class], @selector(pushViewController:animated:), @selector(cc_pushViewController:animated:));
-    });
+    AutomaticWritingSwizzleSelector([self class], @selector(sendAction:to:forEvent:), @selector(cc_sendAction:to:forEvent:));
 }
 
-- (void)cc_pushViewController:(UIViewController *)viewController animated:(BOOL)animated
+- (void)cc_sendAction:(SEL)action to:(id)target forEvent:(UIEvent *)event
 {
-    if (self.viewControllers.count)
-        viewController.hidesBottomBarWhenPushed = YES;
+    [self cc_sendAction:action to:target forEvent:event];
     
-    [self cc_pushViewController:viewController animated:animated];
+    NSString *actionDetailInfo = [NSString stringWithFormat:@" %@ - %@ - %@", NSStringFromClass([target class]), NSStringFromClass([self class]), NSStringFromSelector(action)];
+    NSLog(@"%@",actionDetailInfo);
 }
 
 @end

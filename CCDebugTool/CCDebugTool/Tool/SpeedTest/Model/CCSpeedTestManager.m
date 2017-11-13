@@ -7,7 +7,6 @@
 //
 
 #import "CCSpeedTestManager.h"
-#import <NetworkExtension/NetworkExtension.h>
 
 #define urlString @"http://down.sandai.net/thunder7/Thunder_dl_7.9.34.4908.exe"//30M
 
@@ -234,31 +233,6 @@
     }
     
     return formattedStr;
-}
-
-+ (NSString *)getWifiName
-{
-    NSArray * networkInterfaces = [NEHotspotHelper supportedNetworkInterfaces];
-    
-    NSLog(@"Networks %@",networkInterfaces);
-    
-    //获取wifi列表
-    
-    for(NEHotspotNetwork *hotspotNetwork in [NEHotspotHelper supportedNetworkInterfaces]) {
-        
-        NSString *ssid = hotspotNetwork.SSID;
-        
-        NSString *bssid = hotspotNetwork.BSSID;
-        
-        BOOL secure = hotspotNetwork.secure;
-        
-        BOOL autoJoined = hotspotNetwork.autoJoined;
-        
-        double signalStrength = hotspotNetwork.signalStrength;
-        
-    }
-    
-    return @"";
 }
 
 

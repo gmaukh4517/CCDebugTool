@@ -73,9 +73,9 @@
     [array addObject:@{ @"CachePolicy" : self.detail.requestCachePolicy }];
     [array addObject:@{ @"Method" : self.detail.method }];
     [array addObject:@{ @"Status Code" : self.detail.statusCode }];
-    [array addObject:@{ @"Mime Type" : self.detail.mineType }];
-    [array addObject:@{ @"Start Time" : self.detail.startTime }];
-    [array addObject:@{ @"Total Duration" : self.detail.totalDuration }];
+    [array addObject:@{ @"Mime Type" : self.detail.mineType?:@"" }];
+    [array addObject:@{ @"Start Time" : self.detail.showStartTime }];
+    [array addObject:@{ @"Total Duration" : self.detail.showTotalDuration }];
     
     [array addObject:@{ @"Request Header" : [NSString stringWithFormat:@"User-Agent : %@", [self.detail.requestAllHeaderFields objectForKey:@"User-Agent"]] }];
     NSString *value;
@@ -187,10 +187,10 @@
         vc.title = @"接口地址";
     } else if ([key isEqualToString:@"Request Header"]) {
         vc.title = @"请求Header";
-        vc.content = [CCDebugHttpDataSource prettyJSONStringFromData:self.detail.requestAllHeaderFields];
+        vc.content = self.detail.showRequestAllHeaderFields;
     } else if ([key isEqualToString:@"Response Header"]) {
         vc.title = @"返回Header";
-        vc.content = [CCDebugHttpDataSource prettyJSONStringFromData:self.detail.responseAllHeaderFields];
+        vc.content = self.detail.showResponseAllHeaderFields;
     } else if ([key isEqualToString:@"Request Body"] && ![value isEqualToString:@"Empty"]) {
         vc.content = self.detail.requestBody;
         vc.title = @"请求数据";

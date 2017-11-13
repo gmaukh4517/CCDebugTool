@@ -31,6 +31,9 @@
 #include <libkern/OSAtomic.h>
 #include <sys/signal.h>
 
+#import "UIControl+CCHook.h"
+#import "UIViewController+CCHook.h"
+
 @interface CCUncaughtExceptionHandler () {
     BOOL dismissed;
 }
@@ -80,7 +83,6 @@ static SignalHandler previousSignalHandler = NULL;
 {
     dismissed = NO;
 }
-
 
 - (void)validateAndSaveCriticalApplicationData:(NSException *)exception
 {
@@ -272,4 +274,7 @@ void InstalCrashHandler(void)
 {
     CCExceptionRegister();
     CCSignalInstal();
+    
+    [UIControl CCHook];
+    [UIViewController CCHook];
 }

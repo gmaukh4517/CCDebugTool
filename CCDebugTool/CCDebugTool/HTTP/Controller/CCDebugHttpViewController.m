@@ -24,14 +24,28 @@
 //
 
 #import "CCDebugHttpViewController.h"
-#import "CCDebugHttpDataSource.h"
+//#import "CCDebugHttpDataSource.h"
 #import "CCDebugHttpDetailViewController.h"
-#import "CCDebugTool.h"
+#import "CCHTTPTableViewCell.h"
+#import <pthread.h>
+
+#import "CCNetworkRecorder.h"
+
+static inline void cc_dispatch_async_on_main_queue(void (^block)(void))
+{
+    if (pthread_main_np()) {
+        block();
+    } else {
+        dispatch_async(dispatch_get_main_queue(), block);
+    }
+}
 
 @interface CCDebugHttpViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, weak) UITableView *httpViewTableView;
 @property (nonatomic, strong) NSArray *dataArray;
+
+@property (nonatomic, assign) BOOL rowInsertInProgress;
 
 @end
 
@@ -43,7 +57,12 @@
     self.view.backgroundColor = [UIColor whiteColor];
     [self initNavigation];
     [self initControl];
-    [self initLoadData];
+    [self updateTransactions];
+}
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)initNavigation
@@ -73,6 +92,7 @@
     httpViewTableView.dataSource = self;
     httpViewTableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
     httpViewTableView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    [httpViewTableView registerClass:[CCHTTPTableViewCell class] forCellReuseIdentifier:@"CCHTTPTableViewCellIdentifier"];
     [self.view addSubview:self.httpViewTableView = httpViewTableView];
     
     if (@available(iOS 11.0, *)) {
@@ -83,19 +103,92 @@
     v.backgroundColor = [UIColor clearColor];
     [httpViewTableView setTableFooterView:v];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(initLoadData) name:kCCNotifyKeyReloadHttp object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleNewTransactionRecordedNotification:) name:kCCNetworkRecorderNewTransactionNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleTransactionUpdatedNotification:) name:kCCNetworkRecorderTransactionUpdatedNotification object:nil];
 }
 
 - (void)clearAction
 {
-    [[CCDebugHttpDataSource manager] clear];
+    [[CCNetworkRecorder defaultRecorder] clearRecordedActivity];
     self.dataArray = nil;
     [self.httpViewTableView reloadData];
 }
 
-- (void)initLoadData
+#pragma mark -
+#pragma mark :. Notification handle
+- (void)handleNewTransactionRecordedNotification:(NSNotification *)notification
 {
-    self.dataArray = [[[CCDebugHttpDataSource manager] httpArray] copy];
+    [self tryUpdateTransactions];
+}
+
+- (void)handleTransactionUpdatedNotification:(NSNotification *)notification
+{
+    CCNetworkTransaction *transaction = notification.userInfo[kCCNetworkRecorderUserInfoTransactionKey];
+    
+    // Update both the main table view and search table view if needed.
+    for (CCHTTPTableViewCell *cell in [self.httpViewTableView visibleCells]) {
+        if ([cell.transaction isEqual:transaction]) {
+            // Using -[UITableView reloadRowsAtIndexPaths:withRowAnimation:] is overkill here and kicks off a lot of
+            // work that can make the table view somewhat unresponseive when lots of updates are streaming in.
+            // We just need to tell the cell that it needs to re-layout.
+            [cell setNeedsLayout];
+            break;
+        }
+    }
+    [self updateNavigation];
+}
+
+#pragma mark -
+#pragma mark :. Logic handle
+
+- (void)updateTransactions
+{
+    self.dataArray = [[CCNetworkRecorder defaultRecorder] networkTransactions];
+}
+
+-(void)tryUpdateTransactions
+{
+    if (self.rowInsertInProgress) {
+        return;
+    }
+    
+    NSInteger existingRowCount = [self.dataArray count];
+    [self updateTransactions];
+    NSInteger newRowCount = [self.dataArray count];
+    NSInteger addedRowCount = newRowCount - existingRowCount;
+    
+    if (addedRowCount != 0) {
+        // Insert animation if we're at the top.
+        if (self.httpViewTableView.contentOffset.y <= 0.0 && addedRowCount > 0) {
+            [CATransaction begin];
+            
+            self.rowInsertInProgress = YES;
+            [CATransaction setCompletionBlock:^{
+                self.rowInsertInProgress = NO;
+                [self tryUpdateTransactions];
+            }];
+            
+            NSMutableArray *indexPathsToReload = [NSMutableArray array];
+            for (NSInteger row = 0; row < addedRowCount; row++) {
+                [indexPathsToReload addObject:[NSIndexPath indexPathForRow:row inSection:0]];
+            }
+            [self.httpViewTableView insertRowsAtIndexPaths:indexPathsToReload withRowAnimation:UITableViewRowAnimationAutomatic];
+            
+            [CATransaction commit];
+        } else {
+            // Maintain the user's position if they've scrolled down.
+            CGSize existingContentSize = self.httpViewTableView.contentSize;
+            [self.httpViewTableView reloadData];
+            CGFloat contentHeightChange = self.httpViewTableView.contentSize.height - existingContentSize.height;
+            self.httpViewTableView.contentOffset = CGPointMake(self.httpViewTableView.contentOffset.x, self.httpViewTableView.contentOffset.y + contentHeightChange);
+        }
+    }
+}
+
+/** 修改导航栏请求流量 **/
+-(void)updateNavigation
+{
     __block double flowCount = 0;
     [self.dataArray enumerateObjectsUsingBlock:^(id _Nonnull obj, NSUInteger idx, BOOL *_Nonnull stop) {
         flowCount += [obj expectedContentLength];
@@ -105,23 +198,26 @@
         flowCount = 0.0;
     }
     
-    NSMutableDictionary *flowDic = [NSMutableDictionary dictionaryWithDictionary:[UINavigationBar appearance].titleTextAttributes];
-    [flowDic setObject:[UIFont systemFontOfSize:12.0] forKey:NSFontAttributeName];
-    
-    NSMutableAttributedString *titleString = [[NSMutableAttributedString alloc] initWithString:@"HTTP\n"
-                                                                                    attributes:[UINavigationBar appearance].titleTextAttributes];
-    
-    NSMutableAttributedString *flowCountString = [[NSMutableAttributedString alloc] initWithString:[self dataSize:flowCount]
-                                                                                        attributes:flowDic];
-    
-    NSMutableAttributedString *attrText = [[NSMutableAttributedString alloc] init];
-    [attrText appendAttributedString:titleString];
-    [attrText appendAttributedString:flowCountString];
-    
-    UILabel *titleText = (UILabel *)self.navigationItem.titleView;
-    titleText.attributedText = attrText;
-    
-    [self.httpViewTableView reloadData];
+    cc_dispatch_async_on_main_queue(^(){
+        NSMutableDictionary *flowDic = [NSMutableDictionary dictionaryWithDictionary:[UINavigationBar appearance].titleTextAttributes];
+        [flowDic setObject:[UIFont systemFontOfSize:12.0] forKey:NSFontAttributeName];
+        
+        NSMutableAttributedString *titleString = [[NSMutableAttributedString alloc] initWithString:@"HTTP\n"
+                                                                                        attributes:[UINavigationBar appearance].titleTextAttributes];
+        
+        NSMutableAttributedString *flowCountString = [[NSMutableAttributedString alloc] initWithString:[self dataSize:flowCount]
+                                                                                            attributes:flowDic];
+        
+        NSMutableAttributedString *attrText = [[NSMutableAttributedString alloc] init];
+        [attrText appendAttributedString:titleString];
+        [attrText appendAttributedString:flowCountString];
+        
+        UILabel *titleText = (UILabel *)self.navigationItem.titleView;
+        titleText.attributedText = attrText;
+        
+        [self.httpViewTableView reloadData];
+        
+    });
 }
 
 #define KB (1024)
@@ -142,7 +238,8 @@
     return value;
 }
 
-#pragma mark - UITableView Delegate
+#pragma mark -
+#pragma mark :. UITableView Delegate
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return 1;
@@ -170,31 +267,9 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *identifer = @"httpcell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifer];
-    if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifer];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-        cell.textLabel.textColor = [CCDebugTool manager].mainColor;
-        cell.textLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:19];
-    }
-    
-    CCDebugHttpModel *model = [self.dataArray objectAtIndex:indexPath.row];
-    
-    cell.textLabel.text = model.url.host;
-    
-    NSString *detailText = [NSString stringWithFormat:@"%@ %@ %@", model.method, model.statusCode, model.totalDuration];
-    
-    NSMutableAttributedString *detailAtt = [[NSMutableAttributedString alloc] initWithString:detailText];
-    [detailAtt addAttribute:NSForegroundColorAttributeName value:[UIColor lightGrayColor] range:NSMakeRange(0, detailText.length)];
-    
-    if ([model.statusCode integerValue] != 200) {
-        [detailAtt addAttribute:NSForegroundColorAttributeName value:[UIColor redColor] range:NSMakeRange(model.method.length + 1, model.statusCode.length)];
-    }
-    
-    cell.detailTextLabel.attributedText = detailAtt;
-    
+    static NSString *identifer = @"CCHTTPTableViewCellIdentifier";
+    CCHTTPTableViewCell *cell = (CCHTTPTableViewCell *) [tableView dequeueReusableCellWithIdentifier:identifer];
+    [cell cc_cellWillDisplayWithModel:[self.dataArray objectAtIndex:indexPath.row]];
     return cell;
 }
 

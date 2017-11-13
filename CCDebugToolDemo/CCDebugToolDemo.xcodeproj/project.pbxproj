@@ -9,12 +9,14 @@
 /* Begin PBXBuildFile section */
 		426A79A81FAC391200B328C1 /* CCDebugTool.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 426A79A71FAC391100B328C1 /* CCDebugTool.bundle */; };
 		42D5AD5A1FAC6F960063C136 /* libz.1.2.5.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 42D5AD581FAC6B750063C136 /* libz.1.2.5.tbd */; };
+		42EA10AA1FB427BE0078D439 /* CCDebugTool.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42EA10AB1FB427BE0078D439 /* CCDebugTool.framework */; };
+		42EA115D1FB42F260078D439 /* libstdc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 42EA115C1FB42F260078D439 /* libstdc++.tbd */; };
+		42EA11651FB43CB90078D439 /* NetworkRequestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42EA11641FB43CB90078D439 /* NetworkRequestViewController.m */; };
 		42F0A4B81F593D7700ACD4FA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 42F0A4B71F593D7700ACD4FA /* main.m */; };
 		42F0A4BB1F593D7700ACD4FA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 42F0A4BA1F593D7700ACD4FA /* AppDelegate.m */; };
 		42F0A4BE1F593D7700ACD4FA /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42F0A4BD1F593D7700ACD4FA /* ViewController.m */; };
 		42F0A4C31F593D7700ACD4FA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 42F0A4C21F593D7700ACD4FA /* Assets.xcassets */; };
 		42F0A4C61F593D7700ACD4FA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42F0A4C41F593D7700ACD4FA /* LaunchScreen.storyboard */; };
-		42F0A4CF1F593E3000ACD4FA /* CCDebugTool.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42F0A4CE1F593E3000ACD4FA /* CCDebugTool.framework */; };
 		42F0A4D21F594C7600ACD4FA /* FluecyMonitorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42F0A4D11F594C7600ACD4FA /* FluecyMonitorViewController.m */; };
 		42F0A4D51F594C8B00ACD4FA /* CrashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42F0A4D41F594C8B00ACD4FA /* CrashViewController.m */; };
 /* End PBXBuildFile section */
@@ -22,6 +24,12 @@
 /* Begin PBXFileReference section */
 		426A79A71FAC391100B328C1 /* CCDebugTool.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = CCDebugTool.bundle; sourceTree = "<group>"; };
 		42D5AD581FAC6B750063C136 /* libz.1.2.5.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.1.2.5.tbd; path = usr/lib/libz.1.2.5.tbd; sourceTree = SDKROOT; };
+		42EA10AB1FB427BE0078D439 /* CCDebugTool.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CCDebugTool.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		42EA115B1FB42E8E0078D439 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		42EA115C1FB42F260078D439 /* libstdc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.tbd"; path = "usr/lib/libstdc++.tbd"; sourceTree = SDKROOT; };
+		42EA115E1FB434500078D439 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		42EA11631FB43CB90078D439 /* NetworkRequestViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NetworkRequestViewController.h; sourceTree = "<group>"; };
+		42EA11641FB43CB90078D439 /* NetworkRequestViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NetworkRequestViewController.m; sourceTree = "<group>"; };
 		42F0A4B31F593D7700ACD4FA /* CCDebugToolDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CCDebugToolDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		42F0A4B71F593D7700ACD4FA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		42F0A4B91F593D7700ACD4FA /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -43,14 +51,33 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				42EA10AA1FB427BE0078D439 /* CCDebugTool.framework in Frameworks */,
 				42D5AD5A1FAC6F960063C136 /* libz.1.2.5.tbd in Frameworks */,
-				42F0A4CF1F593E3000ACD4FA /* CCDebugTool.framework in Frameworks */,
+				42EA115D1FB42F260078D439 /* libstdc++.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		42EA11691FB43E100078D439 /* NetworkRequest */ = {
+			isa = PBXGroup;
+			children = (
+				42EA11631FB43CB90078D439 /* NetworkRequestViewController.h */,
+				42EA11641FB43CB90078D439 /* NetworkRequestViewController.m */,
+			);
+			path = NetworkRequest;
+			sourceTree = "<group>";
+		};
+		42EA116B1FB43E3F0078D439 /* Carsh */ = {
+			isa = PBXGroup;
+			children = (
+				42F0A4D31F594C8B00ACD4FA /* CrashViewController.h */,
+				42F0A4D41F594C8B00ACD4FA /* CrashViewController.m */,
+			);
+			path = Carsh;
+			sourceTree = "<group>";
+		};
 		42F0A4AA1F593D7700ACD4FA = {
 			isa = PBXGroup;
 			children = (
@@ -71,17 +98,15 @@
 		42F0A4B51F593D7700ACD4FA /* CCDebugToolDemo */ = {
 			isa = PBXGroup;
 			children = (
+				42EA116B1FB43E3F0078D439 /* Carsh */,
+				42EA11691FB43E100078D439 /* NetworkRequest */,
 				426A79A71FAC391100B328C1 /* CCDebugTool.bundle */,
 				42F0A4B91F593D7700ACD4FA /* AppDelegate.h */,
 				42F0A4BA1F593D7700ACD4FA /* AppDelegate.m */,
 				42F0A4BC1F593D7700ACD4FA /* ViewController.h */,
 				42F0A4BD1F593D7700ACD4FA /* ViewController.m */,
-				42F0A4D31F594C8B00ACD4FA /* CrashViewController.h */,
-				42F0A4D41F594C8B00ACD4FA /* CrashViewController.m */,
 				42F0A4D01F594C7600ACD4FA /* FluecyMonitorViewController.h */,
 				42F0A4D11F594C7600ACD4FA /* FluecyMonitorViewController.m */,
-				42F0A4C21F593D7700ACD4FA /* Assets.xcassets */,
-				42F0A4C41F593D7700ACD4FA /* LaunchScreen.storyboard */,
 				42F0A4C71F593D7700ACD4FA /* Info.plist */,
 				42F0A4B61F593D7700ACD4FA /* Supporting Files */,
 			);
@@ -91,6 +116,8 @@
 		42F0A4B61F593D7700ACD4FA /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				42F0A4C21F593D7700ACD4FA /* Assets.xcassets */,
+				42F0A4C41F593D7700ACD4FA /* LaunchScreen.storyboard */,
 				42F0A4B71F593D7700ACD4FA /* main.m */,
 			);
 			name = "Supporting Files";
@@ -99,6 +126,10 @@
 		42F0A4CD1F593E2F00ACD4FA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				42EA115E1FB434500078D439 /* CoreTelephony.framework */,
+				42EA115C1FB42F260078D439 /* libstdc++.tbd */,
+				42EA115B1FB42E8E0078D439 /* UIKit.framework */,
+				42EA10AB1FB427BE0078D439 /* CCDebugTool.framework */,
 				42D5AD581FAC6B750063C136 /* libz.1.2.5.tbd */,
 				42F0A4CE1F593E3000ACD4FA /* CCDebugTool.framework */,
 			);
@@ -180,6 +211,7 @@
 				42F0A4D51F594C8B00ACD4FA /* CrashViewController.m in Sources */,
 				42F0A4BE1F593D7700ACD4FA /* ViewController.m in Sources */,
 				42F0A4BB1F593D7700ACD4FA /* AppDelegate.m in Sources */,
+				42EA11651FB43CB90078D439 /* NetworkRequestViewController.m in Sources */,
 				42F0A4B81F593D7700ACD4FA /* main.m in Sources */,
 				42F0A4D21F594C7600ACD4FA /* FluecyMonitorViewController.m in Sources */,
 			);
@@ -297,6 +329,7 @@
 				DEVELOPMENT_TEAM = EMAE5F6UE9;
 				INFOPLIST_FILE = CCDebugToolDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cc.CCDebugToolDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -311,6 +344,7 @@
 				DEVELOPMENT_TEAM = EMAE5F6UE9;
 				INFOPLIST_FILE = CCDebugToolDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cc.CCDebugToolDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

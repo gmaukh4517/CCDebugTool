@@ -24,7 +24,7 @@
 //
 
 #import "CCDebugTool.h"
-#import "CCDebugHttpProtocol.h"
+#import "CCNetworkObserver.h"
 
 #import "CCAppFluecyMonitor.h"
 #import "CCMonitorService.h"
@@ -33,7 +33,10 @@
 #import "FBAllocationTrackerManager.h"
 #import "FBAssociationManager.h"
 
-#import "UINavigationController+CCAdd.h"
+#import "CCDebugHttpViewController.h"
+#import "CCDebugLogViewController.h"
+#import "CCMemoryProfilerViewController.h"
+#import "ToolViewController.h"
 
 @interface CCDebugWindow : UIWindow
 
@@ -111,7 +114,8 @@
 - (void)enableDebugMode
 {
 #if DEBUG
-    [NSURLProtocol registerClass:[CCDebugHttpProtocol class]];
+    [CCNetworkObserver setEnabled:YES];
+//    [NSURLProtocol registerClass:[CCDebugHttpProtocol class]];
     InstalCrashHandler();
     [[CCAppFluecyMonitor sharedMonitor] startMonitoring];
     [self enableProfiler];
@@ -135,10 +139,10 @@
     if (!self.debugTabBar) {
         UITabBarController *debugTabBar = [[UITabBarController alloc] init];
         
-        UINavigationController *debugHTTPNav = [self initializationNav:NSClassFromString(@"CCDebugHttpViewController") tabBarItemName:@"HTTP"];
-        UINavigationController *debugLOGNav = [self initializationNav:NSClassFromString(@"CCDebugLogViewController") tabBarItemName:@"LOG"];
-        UINavigationController *debugProfilerNav = [self initializationNav:NSClassFromString(@"CCMemoryProfilerViewController") tabBarItemName:@"Cycle"];
-        UINavigationController *debugSandBoxNav = [self initializationNav:NSClassFromString(@"ToolViewController") tabBarItemName:@"TOOL"];
+        UINavigationController *debugHTTPNav = [self initializationNav:[CCDebugHttpViewController new] tabBarItemName:@"HTTP"];
+        UINavigationController *debugLOGNav = [self initializationNav:[CCDebugLogViewController new]  tabBarItemName:@"LOG"];
+        UINavigationController *debugProfilerNav = [self initializationNav:[CCMemoryProfilerViewController new]  tabBarItemName:@"Cycle"];
+        UINavigationController *debugSandBoxNav = [self initializationNav:[ToolViewController new]  tabBarItemName:@"TOOL"];
         //        UINavigationController *debugMonitorNav = [self initializationNav:[CCMonitorViewController new] tabBarItemName:@"Monitor"];
         
         debugTabBar.viewControllers = [NSArray arrayWithObjects:debugHTTPNav, debugLOGNav, debugProfilerNav,debugSandBoxNav, nil];
@@ -153,9 +157,9 @@
     }
 }
 
-- (UINavigationController *)initializationNav:(Class)viewController tabBarItemName:(NSString *)tabBarItemName
+- (UINavigationController *)initializationNav:(UIViewController *)viewController tabBarItemName:(NSString *)tabBarItemName
 {
-    UINavigationController *debugNav = [[UINavigationController alloc] initWithRootViewController:[viewController new]];
+    UINavigationController *debugNav = [[UINavigationController alloc] initWithRootViewController:viewController];
     debugNav.tabBarItem = [[UITabBarItem alloc] init];
     debugNav.tabBarItem.title = tabBarItemName;
     [debugNav.tabBarItem setTitleTextAttributes:@{ NSForegroundColorAttributeName : [UIColor lightGrayColor],

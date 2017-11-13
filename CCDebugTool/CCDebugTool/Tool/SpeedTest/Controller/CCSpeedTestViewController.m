@@ -41,8 +41,7 @@
     CCSpeedView *speedView = [[CCSpeedView alloc] initWithFrame:CGRectMake(spacing / 2, 40, width , width)];
     [self.view addSubview:_speedView = speedView];
     [self initSpeedContentView];
-//    [_speedTest startDownLoad];
-    [CCSpeedTestManager getWifiName];
+    [_speedTest startDownLoad];
 }
 
 -(void)initSpeedTest

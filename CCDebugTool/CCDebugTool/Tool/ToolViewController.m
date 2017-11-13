@@ -9,6 +9,10 @@
 #import "ToolViewController.h"
 #import "CCDebugTool.h"
 
+#import "CCSandboxViewController.h"
+#import "CCPingViewController.h"
+#import "CCSpeedTestViewController.h"
+
 @interface ToolViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic, strong) UITableView *tooTableView;
@@ -25,8 +29,6 @@
     [self initNavigation];
     [self initControl];
     [self initLoadData];
-    
-    
 }
 
 - (void)initNavigation
@@ -87,15 +89,17 @@
     
     UIViewController *viewController;
     if (indexPath.row == 0) {
-        viewController = [NSClassFromString(@"CCSandboxViewController") new];
+        viewController = [CCSandboxViewController new];
     }else if (indexPath.row == 1){
-        viewController = [NSClassFromString(@"CCPingViewController") new];
+        viewController = [CCPingViewController new];
     }else if (indexPath.row == 2){
-        viewController = [NSClassFromString(@"CCSpeedTestViewController") new];
+        viewController = [CCSpeedTestViewController new];
     }
     
-    if (viewController)
+    if (viewController){
+         viewController.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:viewController animated:YES];
+    }
 }
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath

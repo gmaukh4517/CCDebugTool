@@ -87,7 +87,7 @@
         offset.x = scrollview.frame.size.width * self.selectedIndex;
         scrollview.contentOffset = offset;
     } else if (self.content) {
-        UITextView *contentViewText = [[UITextView alloc] initWithFrame:self.view.bounds];
+        UITextView *contentViewText = [[UITextView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height - 64)];
         [contentViewText setEditable:NO];
         contentViewText.textContainer.lineBreakMode = NSLineBreakByWordWrapping;
         contentViewText.font = [UIFont systemFontOfSize:13];
@@ -95,7 +95,7 @@
         contentViewText.tag = 100;
         [self.view addSubview:contentViewText];
     } else if (self.data) {
-        UIImageView *imageView = [[UIImageView alloc] initWithFrame:self.view.bounds];
+        UIImageView *imageView = [[UIImageView alloc] initWithFrame: CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height - 64)];
         imageView.contentMode = UIViewContentModeScaleAspectFit;
         imageView.image = [UIImage imageWithData:self.data];
         [self.view addSubview:imageView];

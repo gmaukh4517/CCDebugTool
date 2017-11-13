@@ -10,7 +10,9 @@
 #import "ViewController.h"
 #import <CCDebugTool/CCDebugTool.h>
 
-@interface AppDelegate ()
+@interface AppDelegate () <NSURLConnectionDataDelegate, NSURLSessionDataDelegate>
+
+@property (nonatomic, strong) NSMutableArray *connections;
 
 @end
 
@@ -28,6 +30,8 @@
     self.window.backgroundColor = [UIColor whiteColor];
     self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:[ViewController new]];
     [self.window makeKeyAndVisible];
+    
+    [self sendExampleNetworkRequests];
     
     return YES;
 }
@@ -75,6 +79,93 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+#pragma mark - Networking Example
+
+- (void)sendExampleNetworkRequests
+{
+    // Async NSURLConnection
+    [NSURLConnection sendAsynchronousRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"https://api.github.com/repos/gmaukh4517/CCDebugTool/issues"]] queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+        
+    }];
+    
+    // Sync NSURLConnection
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        [NSURLConnection sendSynchronousRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://lorempixel.com/320/480/"]] returningResponse:NULL error:NULL];
+    });
+    
+    // NSURLSession
+    NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
+    config.timeoutIntervalForRequest = 10.0;
+    NSURLSession *mySession = [NSURLSession sessionWithConfiguration:config delegate:self delegateQueue:[NSOperationQueue mainQueue]];
+    
+    NSMutableArray *pendingTasks = [NSMutableArray array];
+    
+    // NSURLSessionDataTask with delegate
+    [pendingTasks addObject:[mySession dataTaskWithURL:[NSURL URLWithString:@"http://cdn.flipboard.com/serviceIcons/v2/social-icon-flipboard-96.png"]]];
+    
+    // NSURLSessionDownloadTask with delegate
+    [pendingTasks addObject:[mySession downloadTaskWithURL:[NSURL URLWithString:@"https://assets-cdn.github.com/images/icons/emoji/unicode/1f44d.png?v5"]]];
+    
+    // Async NSURLSessionDownloadTask
+    [pendingTasks addObject:[[NSURLSession sharedSession] downloadTaskWithURL:[NSURL URLWithString:@"http://lorempixel.com/1024/1024/"] completionHandler:^(NSURL *location, NSURLResponse *response, NSError *error) {
+        
+    }]];
+    
+    // Async NSURLSessionDataTask
+    [pendingTasks addObject:[[NSURLSession sharedSession] dataTaskWithURL:[NSURL URLWithString:@"https://api.github.com/emojis"] completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        
+    }]];
+    
+    // Async NSURLSessionUploadTask
+    NSMutableURLRequest *uploadRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"https://google.com/"]];
+    uploadRequest.HTTPMethod = @"POST";
+    NSData *data = [@"q=test" dataUsingEncoding:NSUTF8StringEncoding];
+    [pendingTasks addObject:[mySession uploadTaskWithRequest:uploadRequest fromData:data completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        
+    }]];
+    
+    // Remaining requests made through NSURLConnection with a delegate
+    NSArray *requestURLStrings = @[ @"http://lorempixel.com/400/400/",
+                                    @"http://google.com",
+                                    @"http://lorempixel.com/750/1334/" ];
+    
+    NSTimeInterval delayTime = 10.0;
+    const NSTimeInterval stagger = 1.0;
+    
+    // Send off the NSURLSessionTasks (staggered)
+    for (NSURLSessionTask *task in pendingTasks) {
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayTime * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [task resume];
+        });
+        delayTime += stagger;
+    }
+    
+    // Begin the NSURLConnection requests (staggered)
+    self.connections = [NSMutableArray array];
+    for (NSString *urlString in requestURLStrings) {
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayTime * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:urlString]];
+            [self.connections addObject:[[NSURLConnection alloc] initWithRequest:request delegate:self]];
+        });
+        delayTime += stagger;
+    }
+}
+
+- (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask didReceiveResponse:(NSURLResponse *)response completionHandler:(void (^)(NSURLSessionResponseDisposition))completionHandler
+{
+    completionHandler(NSURLSessionResponseAllow);
+}
+
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection
+{
+    [self.connections removeObject:connection];
+}
+
+- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
+{
+    [self.connections removeObject:connection];
 }
 
 

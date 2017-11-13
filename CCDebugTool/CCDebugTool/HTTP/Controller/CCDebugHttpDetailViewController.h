@@ -1,5 +1,5 @@
 //
-//  CCDebugHttpProtocol.h
+//  CCDebugHttpDetailViewController.h
 //  CCKit
 //
 // Copyright (c) 2015 CC ( https://github.com/gmaukh4517/CCKit )
@@ -23,8 +23,11 @@
 // THE SOFTWARE.
 //
 
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
+#import "CCNetworkTransaction.h"
 
-@interface CCDebugHttpProtocol : NSURLProtocol
+@interface CCDebugHttpDetailViewController : UIViewController
+
+@property(nonatomic, strong) CCNetworkTransaction *detail;
 
 @end

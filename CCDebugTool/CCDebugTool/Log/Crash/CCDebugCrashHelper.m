@@ -80,6 +80,8 @@ const int maxCrashLogNum = 20;
         _crashLogPlist = [[NSMutableArray arrayWithContentsOfFile:[_crashLogPath stringByAppendingPathComponent:carshPlistName]] mutableCopy];
     else
         _crashLogPlist = [NSMutableArray new];
+    
+    _crashLastStep = [NSMutableArray array];
 }
 
 /**
