@@ -31,9 +31,8 @@ static inline void AutomaticWritingSwizzleSelector(Class class, SEL originalSele
 - (void)cc_sendAction:(SEL)action to:(id)target forEvent:(UIEvent *)event
 {
     [self cc_sendAction:action to:target forEvent:event];
-    
-    NSString *actionDetailInfo = [NSString stringWithFormat:@" %@ - %@ - %@", NSStringFromClass([target class]), NSStringFromClass([self class]), NSStringFromSelector(action)];
-    NSLog(@"%@",actionDetailInfo);
+    NSString *actionDetailInfo = [NSString stringWithFormat:@" %@ -> %@ -> %@", NSStringFromClass([target class]), NSStringFromClass([self class]), NSStringFromSelector(action)];
+    [[CCDebugCrashHelper manager].crashLastStep addObject:actionDetailInfo];
 }
 
 @end

@@ -26,7 +26,13 @@
     _transaction = cModel;
     self.textLabel.text = cModel.url.host;
     
-    NSString *detailText = [NSString stringWithFormat:@"%@ %@ %@ ",cModel.method,cModel.statusCode,cModel.showTotalDuration];
+    NSString *detailText;
+    if (_transaction.transactionState == CCNetworkTransactionStateFinished || _transaction.transactionState == CCNetworkTransactionStateFailed) {
+        detailText = [NSString stringWithFormat:@"%@ %@ %@ ",cModel.method,cModel.statusCode,cModel.showTotalDuration];
+    }else{
+        NSString *state = [CCNetworkTransaction readableStringFromTransactionState:_transaction.transactionState];
+        detailText = [NSString stringWithFormat:@"%@ %@",cModel.method,state];
+    }
     
     NSMutableAttributedString *detailAtt = [[NSMutableAttributedString alloc] initWithString:detailText];
     [detailAtt addAttribute:NSForegroundColorAttributeName value:[UIColor lightGrayColor] range:NSMakeRange(0, detailText.length)];

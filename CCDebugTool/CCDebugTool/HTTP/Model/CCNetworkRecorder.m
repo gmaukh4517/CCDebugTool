@@ -199,6 +199,7 @@ NSString *const kCCNetworkRecorderTransactionsClearedNotification = @"kCCNetwork
         if (!transaction) {
             return;
         }
+        transaction.transactionState = CCNetworkTransactionStateFinished;
         transaction.totalDuration = -[transaction.startTime timeIntervalSinceDate:finishedDate];
         
         NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)transaction.response;

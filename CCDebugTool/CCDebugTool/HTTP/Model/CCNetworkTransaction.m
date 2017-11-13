@@ -68,4 +68,32 @@
     }
 }
 
++ (NSString *)readableStringFromTransactionState:(CCNetworkTransactionState)state
+{
+    NSString *readableString = nil;
+    switch (state) {
+        case CCNetworkTransactionStateUnstarted:
+            readableString = @"Unstarted";
+            break;
+            
+        case CCNetworkTransactionStateAwaitingResponse:
+            readableString = @"Awaiting Response";
+            break;
+            
+        case CCNetworkTransactionStateReceivingData:
+            readableString = @"Receiving Data";
+            break;
+            
+        case CCNetworkTransactionStateFinished:
+            readableString = @"Finished";
+            break;
+            
+        case CCNetworkTransactionStateFailed:
+            readableString = @"Failed";
+            break;
+    }
+    return readableString;
+}
+
+
 @end

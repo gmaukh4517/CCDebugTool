@@ -99,6 +99,12 @@ static SignalHandler previousSignalHandler = NULL;
     [errorStr appendFormat:@"Error Cause：%@\n", [exception reason]];
     [errorStr appendFormat:@"%@ \n", [[exception userInfo] objectForKey:UncaughtExceptionHandlerAddressesKey]];
     
+    NSArray *arr = [CCDebugCrashHelper manager].crashLastStep;
+    if (arr.count) {
+        [errorStr appendString:@"Last Operation：\n"];
+        [errorStr appendFormat:@"%@",[arr componentsJoinedByString:@"\n"]];
+    }
+    
     NSMutableDictionary *carsDic = [NSMutableDictionary dictionary];
     [carsDic setObject:exception.name forKey:@"ErrName"];
     [carsDic setObject:[exception reason] forKey:@"ErrCause"];

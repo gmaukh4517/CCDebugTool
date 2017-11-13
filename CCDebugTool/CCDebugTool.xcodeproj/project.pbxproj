@@ -523,11 +523,11 @@
 			isa = PBXGroup;
 			children = (
 				42EA10B41FB42CD30078D439 /* CCSingleRetainCycleViewController.h */,
-				42EA10B51FB42CD30078D439 /* CCRetainCyclePresenter.m */,
-				42EA10B61FB42CD30078D439 /* CCMemoryProfilerViewController.m */,
 				42EA10B71FB42CD30078D439 /* CCSingleRetainCycleViewController.m */,
 				42EA10B81FB42CD30078D439 /* CCMemoryProfilerViewController.h */,
+				42EA10B61FB42CD30078D439 /* CCMemoryProfilerViewController.m */,
 				42EA10B91FB42CD30078D439 /* CCRetainCyclePresenter.h */,
+				42EA10B51FB42CD30078D439 /* CCRetainCyclePresenter.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";

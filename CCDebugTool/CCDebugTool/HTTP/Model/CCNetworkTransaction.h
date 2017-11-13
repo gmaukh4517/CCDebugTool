@@ -61,4 +61,6 @@ typedef NS_ENUM(NSInteger, CCNetworkTransactionState) {
 
 - (void)cpmversopmCachePolicy:(NSInteger)cachePolicy;
 
++ (NSString *)readableStringFromTransactionState:(CCNetworkTransactionState)state;
+
 @end
