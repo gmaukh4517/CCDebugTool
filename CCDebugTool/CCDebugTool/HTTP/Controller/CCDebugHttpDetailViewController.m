@@ -72,7 +72,7 @@
     [array addObject:@{ @"Request Url" : self.detail.url.absoluteString }];
     [array addObject:@{ @"CachePolicy" : self.detail.requestCachePolicy }];
     [array addObject:@{ @"Method" : self.detail.method }];
-    [array addObject:@{ @"Status Code" : self.detail.statusCode }];
+    [array addObject:@{ @"Status Code" : self.detail.statusCode?:@"" }];
     [array addObject:@{ @"Mime Type" : self.detail.mineType?:@"" }];
     [array addObject:@{ @"Start Time" : self.detail.showStartTime }];
     [array addObject:@{ @"Total Duration" : self.detail.showTotalDuration }];
@@ -152,6 +152,16 @@
         [key isEqualToString:@"Response Header"] ||
         (([key isEqualToString:@"Request Body"] || [key isEqualToString:@"Response Body"]) && ![value isEqualToString:@"Empty"]))
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    
+    if ([cell respondsToSelector:@selector(setSeparatorInset:)]) {
+        [cell setSeparatorInset:UIEdgeInsetsZero];
+    }
+    if ([cell respondsToSelector:@selector(setPreservesSuperviewLayoutMargins:)]) {
+        [cell setPreservesSuperviewLayoutMargins:NO];
+    }
+    if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
+        [cell setLayoutMargins:UIEdgeInsetsZero];
+    }
 }
 
 #define KB (1024)

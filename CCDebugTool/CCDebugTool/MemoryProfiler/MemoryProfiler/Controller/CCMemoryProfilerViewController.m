@@ -262,15 +262,16 @@ static NSString *const kProfilerSectionHeaderIdentifier = @"kProfilerSectionHead
 - (UITableView *)profilerTableView
 {
     if (!_profilerTableView) {
-        _profilerTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height - 50) style:UITableViewStylePlain];
+        CGRect frame = self.view.bounds;
+        frame.size.height -= 114;
+        
+        _profilerTableView = [[UITableView alloc] initWithFrame:frame style:UITableViewStylePlain];
         UIView *v = [[UIView alloc] initWithFrame:CGRectZero];
         v.backgroundColor = [UIColor clearColor];
         [_profilerTableView setTableFooterView:v];
         
         if (@available(iOS 11.0, *)) {
             _profilerTableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
-            _profilerTableView.contentInset = UIEdgeInsetsMake(64, 0, 0, 0);
-            _profilerTableView.scrollIndicatorInsets = _profilerTableView.contentInset;
         }
     }
     return _profilerTableView;

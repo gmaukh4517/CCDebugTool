@@ -54,7 +54,7 @@
 
 @interface CCDebugTool ()
 
-@property (nonatomic, weak) UITabBarController *debugTabBar;
+@property (nonatomic, strong) UITabBarController *debugTabBar;
 @property (nonatomic, strong) CCDebugWindow *debugWindow;
 
 @property (nonatomic, strong) NSTimer *debugTimer;
@@ -77,7 +77,7 @@
 {
     self = [super init];
     if (self) {
-        self.mainColor = [UIColor colorWithRed:28 / 255.f green:134 / 255.f blue:238 / 255.f alpha:1.f];
+        self.mainColor = [UIColor colorWithRed:0.223 green:0.698 blue:1 alpha:1.f];
         self.maxCrashCount = 20;
         self.maxLogsCount = 50;
         self.debugWindow = [[CCDebugWindow alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 20)];
@@ -115,7 +115,6 @@
 {
 #if DEBUG
     [CCNetworkObserver setEnabled:YES];
-//    [NSURLProtocol registerClass:[CCDebugHttpProtocol class]];
     InstalCrashHandler();
     [[CCAppFluecyMonitor sharedMonitor] startMonitoring];
     [self enableProfiler];
@@ -137,16 +136,14 @@
 - (void)showDebug
 {
     if (!self.debugTabBar) {
-        UITabBarController *debugTabBar = [[UITabBarController alloc] init];
+        self.debugTabBar = [[UITabBarController alloc] init];
+        self.debugTabBar.tabBar.tintColor = self.mainColor;
         
-        UINavigationController *debugHTTPNav = [self initializationNav:[CCDebugHttpViewController new] tabBarItemName:@"HTTP"];
-        UINavigationController *debugLOGNav = [self initializationNav:[CCDebugLogViewController new]  tabBarItemName:@"LOG"];
-        UINavigationController *debugProfilerNav = [self initializationNav:[CCMemoryProfilerViewController new]  tabBarItemName:@"Cycle"];
-        UINavigationController *debugSandBoxNav = [self initializationNav:[ToolViewController new]  tabBarItemName:@"TOOL"];
+        [self initializationNav:[CCDebugHttpViewController new] title:@"HTTP" imageNamed:@"tabbar_http" selectedImage:@"tabbar_http_yes"];
+        [self initializationNav:[CCDebugLogViewController new]  title:@"LOG"  imageNamed:@"tabbar_log" selectedImage:@"tabbar_log_yes"];
+        [self initializationNav:[CCMemoryProfilerViewController new]  title:@"Cycle"  imageNamed:@"tabbar_cycle" selectedImage:@"tabbar_cycle_yes"];
+        [self initializationNav:[ToolViewController new]  title:@"TOOL" imageNamed:@"tabbar_tool" selectedImage:@"tabbar_tool_yes"];
         //        UINavigationController *debugMonitorNav = [self initializationNav:[CCMonitorViewController new] tabBarItemName:@"Monitor"];
-        
-        debugTabBar.viewControllers = [NSArray arrayWithObjects:debugHTTPNav, debugLOGNav, debugProfilerNav,debugSandBoxNav, nil];
-        self.debugTabBar = debugTabBar;
         
         UIViewController *rootViewController = [[[UIApplication sharedApplication].windows firstObject] rootViewController];
         UIViewController *presentedViewController = rootViewController.presentedViewController;
@@ -157,18 +154,15 @@
     }
 }
 
-- (UINavigationController *)initializationNav:(UIViewController *)viewController tabBarItemName:(NSString *)tabBarItemName
+- (void)initializationNav:(UIViewController *)viewController title:(NSString *)title imageNamed:(NSString *)imageNamed selectedImage:(NSString *)selectedImage
 {
     UINavigationController *debugNav = [[UINavigationController alloc] initWithRootViewController:viewController];
-    debugNav.tabBarItem = [[UITabBarItem alloc] init];
-    debugNav.tabBarItem.title = tabBarItemName;
-    [debugNav.tabBarItem setTitleTextAttributes:@{ NSForegroundColorAttributeName : [UIColor lightGrayColor],
-                                                   NSFontAttributeName : [UIFont systemFontOfSize:30] }
-                                       forState:UIControlStateNormal];
-    [debugNav.tabBarItem setTitleTextAttributes:@{ NSForegroundColorAttributeName : self.mainColor,
-                                                   NSFontAttributeName : [UIFont systemFontOfSize:30] }
-                                       forState:UIControlStateSelected];
-    return debugNav;
+    debugNav.navigationItem.title = title;
+    debugNav.tabBarItem.title = title;
+    debugNav.tabBarItem.image = [[CCDebugTool tabbarImage:imageNamed] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    debugNav.tabBarItem.selectedImage = [[CCDebugTool tabbarImage:selectedImage] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    
+    [self.debugTabBar addChildViewController:debugNav];
 }
 
 - (NSArray *)CatonLogger
@@ -179,5 +173,41 @@
 - (NSArray *)CrashLogger
 {
     return [CCUncaughtExceptionHandler obtainCrashLogs];
+}
+
++(UIImage *)tabbarImage:(NSString *)fileName
+{
+    return [CCDebugTool cc_bundle:fileName inDirectory:@"tabbar"];
+}
+
++(UIImage *)cc_bundle:(NSString *)fileName
+{
+    return [CCDebugTool cc_bundle:fileName inDirectory:nil];
+}
+
++(UIImage *)cc_bundle:(NSString *)fileName
+          inDirectory:(NSString *)inDirectory
+{
+    NSBundle *imageBundle = [CCDebugTool cc_debugBundle];
+    fileName = [fileName stringByAppendingString:@"@2x"];
+    NSString *imagePath = [imageBundle pathForResource:fileName ofType:@"png"];
+    if (inDirectory)
+        imagePath = [imageBundle pathForResource:fileName ofType:@"png" inDirectory:inDirectory];
+    
+    UIImage *image = [UIImage imageWithContentsOfFile:imagePath];
+    if (!image) {
+        fileName = [fileName stringByReplacingOccurrencesOfString:@"@2x" withString:@""];
+        image = [UIImage imageNamed:fileName];
+    }
+    return image;
+}
+
++ (NSBundle *)cc_debugBundle
+{
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"CCDebugTool" ofType:@"bundle"];
+    if (!path) {
+        path = [[NSBundle mainBundle] pathForResource:@"CCDebugTool" ofType:@"bundle" inDirectory:@"CCDebugTool.framework/"];
+    }
+    return [NSBundle bundleWithPath:path];
 }
 @end

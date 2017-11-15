@@ -53,4 +53,9 @@
 /** 奔溃日志 **/
 - (NSArray *)CrashLogger;
 
++(UIImage *)cc_bundle:(NSString *)fileName;
+
++(UIImage *)cc_bundle:(NSString *)fileName
+          inDirectory:(NSString *)inDirectory;
+
 @end

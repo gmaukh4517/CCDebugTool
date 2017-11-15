@@ -41,17 +41,28 @@
     }
     
     self.detailTextLabel.attributedText = detailAtt;
+//    self.imageView.image = cModel.responseThumbnail;
 }
 
 -(void)layoutSubviews
 {
     [super layoutSubviews];
     
+    const CGFloat kLeftPadding = 10.0;
+    
+//    CGRect imageViewFrame = self.imageView.frame;
+//    imageViewFrame.origin.x = kLeftPadding;
+//    imageViewFrame.origin.y = 5;
+//    imageViewFrame.size = CGSizeMake(imageViewFrame.size.width - kLeftPadding, imageViewFrame.size.height - kLeftPadding);
+//    self.imageView.frame = imageViewFrame;
+    
     CGRect textLabelFrame = self.textLabel.frame;
+//    textLabelFrame.origin.x = imageViewFrame.origin.x + imageViewFrame.size.width + kLeftPadding;
     textLabelFrame.origin.y = 7;
     self.textLabel.frame = textLabelFrame;
     
     CGRect detailTextLabelFrame = self.detailTextLabel.frame;
+//    detailTextLabelFrame.origin.x = imageViewFrame.origin.x + imageViewFrame.size.width + kLeftPadding;
     detailTextLabelFrame.origin.y = textLabelFrame.origin.y + textLabelFrame.size.height + 5;
     self.detailTextLabel.frame = detailTextLabelFrame;
 }

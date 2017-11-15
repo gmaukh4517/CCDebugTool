@@ -44,7 +44,9 @@
 
 -(void)initLoadData
 {
-    self.dataArr = @[@"Sandbox",@"Ping",@"SpeedTest"];
+    self.dataArr = @[@{@"image":@"tool_sandbox",@"title" : @"Sandbox"},
+                     @{@"image":@"tool_ping",@"title":@"Ping"},
+                     @{@"image":@"tool_speedtest",@"title":@"SpeedTest"}];
 }
 
 #pragma mark -
@@ -77,8 +79,11 @@
         cell.textLabel.textColor = [CCDebugTool manager].mainColor;
         cell.textLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:19];
     }
+
+    NSDictionary *item = [self.dataArr objectAtIndex:indexPath.row];
     
-    cell.textLabel.text = [self.dataArr objectAtIndex:indexPath.row];
+    cell.textLabel.text = [item objectForKey:@"title"];
+    cell.imageView.image = [CCDebugTool cc_bundle:[item objectForKey:@"image"] inDirectory:@"tool"];
     
     return cell;
 }

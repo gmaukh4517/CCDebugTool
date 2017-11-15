@@ -20,7 +20,7 @@
 @interface CCSpeedTestManager () <NSURLSessionDelegate,NSURLSessionDataDelegate>
 
 @property (nonatomic, strong) NSURLSession *session;
-@property (nonatomic, assign) NSInteger connectSize;
+@property (nonatomic, assign) long long connectSize;
 @property (nonatomic, assign) NSInteger speedSize;
 
 @property (nonatomic, strong) NSTimer *speedTime;
@@ -187,13 +187,13 @@
 {
     NSString *formattedStr = nil;
     if (size > 0 && size < 1024)
-        formattedStr = [NSString stringWithFormat:@"%zi", size], *unit = @"B";
+        (void)(formattedStr = [NSString stringWithFormat:@"%zi", size]), *unit = @"B";
     else if (size >= 1024 && size < pow(1024, 2))
-        formattedStr = [NSString stringWithFormat:@"%.2f", (size / 1024.)], *unit = @"KB";
+        (void)(formattedStr = [NSString stringWithFormat:@"%.2f", (size / 1024.)]), *unit = @"KB";
     else  if (size >= pow(1024, 2) && size < pow(1024, 3))
-        formattedStr = [NSString stringWithFormat:@"%.2f", (size / pow(1024, 2))], *unit = @"MB";
+        (void)(formattedStr = [NSString stringWithFormat:@"%.2f", (size / pow(1024, 2))]), *unit = @"MB";
     else if (size >= pow(1024, 3))
-        formattedStr = [NSString stringWithFormat:@"%.2f", (size / pow(1024, 3))], *unit = @"GB";
+        (void)(formattedStr = [NSString stringWithFormat:@"%.2f", (size / pow(1024, 3))]), *unit = @"GB";
     return formattedStr;
 }
 

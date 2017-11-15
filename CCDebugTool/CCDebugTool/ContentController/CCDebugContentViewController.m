@@ -94,6 +94,10 @@
         contentViewText.text = self.content;
         contentViewText.tag = 100;
         [self.view addSubview:contentViewText];
+        
+        if (@available(iOS 11.0, *)) {
+            contentViewText.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+        }
     } else if (self.data) {
         UIImageView *imageView = [[UIImageView alloc] initWithFrame: CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height - 64)];
         imageView.contentMode = UIViewContentModeScaleAspectFit;
