@@ -116,9 +116,7 @@
 - (void)setBarWindow:(UIWindow *)window
 {
     self.statusBarWindow = window;
-    CGFloat width = 150;
-    
-    _monitorStatusBar = [[CCPerformanceStatusBar alloc] initWithFrame:CGRectMake(([UIScreen mainScreen].bounds.size.width - width) / 2, 2, width, 20)];
+    _monitorStatusBar = [[CCPerformanceStatusBar alloc] initWithFrame:CGRectMake(0, 2, window.frame.size.width, 20)];
     self.statusBarWindow.hidden = YES;
     self.statusBarWindow.windowLevel = UIWindowLevelAlert + 1;
     [self.statusBarWindow addSubview:self.monitorStatusBar];

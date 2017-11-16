@@ -24,10 +24,11 @@
 //
 
 #import "CCDebugContentViewController.h"
+#import "CCDebugTool.h"
 
-@interface CCDebugContentViewController () <UIScrollViewDelegate>
+@interface CCDebugContentViewController () <UICollectionViewDataSource,UICollectionViewDelegate,UIScrollViewDelegate>
 
-@property (nonatomic, strong) UIScrollView *scrollView;
+@property (nonatomic, strong) UICollectionView *logCollectionView;
 
 @end
 
@@ -50,42 +51,14 @@
 - (void)initControl
 {
     if (self.dataArr) {
-        UIScrollView *scrollview = [[UIScrollView alloc] initWithFrame:self.view.bounds];
-        scrollview.pagingEnabled = YES;
-        scrollview.showsHorizontalScrollIndicator = NO;
-        scrollview.showsVerticalScrollIndicator = NO;
-//        scrollview.bounces = NO;
-        scrollview.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
-        scrollview.delegate = self;
-        scrollview.contentSize = CGSizeMake(scrollview.frame.size.width * self.dataArr.count, 0);
-        [self.view addSubview:_scrollView = scrollview];
+        self.logCollectionView.contentSize = CGSizeMake(self.dataArr.count * (self.view.frame.size.width + 20), 0);
+        [self.view addSubview:self.logCollectionView];
         
-        if (@available(iOS 11.0, *)) {
-            scrollview.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
-        }
+        NSString *title = [[self.dataArr objectAtIndex:self.selectedIndex] objectForKey:@"ErrDate"];
+        if (!title)
+            title = [[self.dataArr objectAtIndex:self.selectedIndex] objectForKey:@"fileName"];
         
-        CGRect frame = CGRectMake(0, 0, scrollview.frame.size.width, scrollview.frame.size.height - 64);
-        for (NSInteger i = 0; i < self.dataArr.count; i++) {
-            NSDictionary *dataDic = [self.dataArr objectAtIndex:i];
-            
-            UITextView *contentViewText = [[UITextView alloc] initWithFrame:frame];
-            [contentViewText setEditable:NO];
-            contentViewText.textContainer.lineBreakMode = NSLineBreakByWordWrapping;
-            contentViewText.font = [UIFont systemFontOfSize:13];
-            contentViewText.text = [dataDic objectForKey:@"ErrMsg"];
-            contentViewText.tag = 100 + i;
-            [scrollview addSubview:contentViewText];
-            
-            if (i == self.selectedIndex) {
-                self.title = [dataDic objectForKey:@"ErrDate"];
-            }
-            
-            frame.origin.x += frame.size.width;
-        }
-        
-        CGPoint offset = scrollview.contentOffset;
-        offset.x = scrollview.frame.size.width * self.selectedIndex;
-        scrollview.contentOffset = offset;
+        self.title = title;
     } else if (self.content) {
         UITextView *contentViewText = [[UITextView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height - 64)];
         [contentViewText setEditable:NO];
@@ -127,14 +100,80 @@
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
-    if ([scrollView isEqual:self.scrollView]) {
+    if ([scrollView isEqual:self.logCollectionView]) {
         CGFloat x = scrollView.contentOffset.x;
         NSInteger selectIndex = x / scrollView.frame.size.width;
         self.selectedIndex = selectIndex;
-        NSString *title = [[self.dataArr objectAtIndex:selectIndex] objectForKey:@"ErrDate"];
+        
+        NSDictionary *dataDic = [self.dataArr objectAtIndex:selectIndex];
+        NSString *title = [dataDic objectForKey:@"ErrDate"];
+        if (!title)
+           title = [dataDic objectForKey:@"fileName"];
+        
         self.title = title;
-        //        [self reloadData:selectIndex];
     }
 }
+
+#pragma mark -
+#pragma mark :. UICollectionViewDataSource && Delegate
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    return self.dataArr.count;
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    UICollectionViewCell *logCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"LOGCollectionViewCell" forIndexPath:indexPath];
+    
+    UITextView *contentViewText = (UITextView *)[logCell viewWithTag:123];
+    if (!contentViewText) {
+        contentViewText = [[UITextView alloc] initWithFrame:CGRectMake(10, 0, logCell.frame.size.width - 20, logCell.frame.size.height)];
+        [contentViewText setEditable:NO];
+        contentViewText.textContainer.lineBreakMode = NSLineBreakByWordWrapping;
+        contentViewText.font = [UIFont systemFontOfSize:13];
+        contentViewText.tag = 123;
+        [logCell addSubview:contentViewText];
+    }
+
+    NSDictionary *dataDic = [self.dataArr objectAtIndex:indexPath.row];
+    NSString *content;
+    if ([dataDic objectForKey:@"fileName"]) {
+        content = [NSString stringWithContentsOfFile:[dataDic objectForKey:@"filePath"] encoding:NSUTF8StringEncoding error:nil];
+    }else{
+        content = [dataDic objectForKey:@"ErrMsg"];
+    }
+    contentViewText.text = content;
+    
+    return logCell;
+}
+
+#pragma mark -
+#pragma mark :. getter/setter
+
+-(UICollectionView *)logCollectionView
+{
+    if (!_logCollectionView) {
+        UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
+        layout.itemSize = CGSizeMake(self.view.bounds.size.width + 20, self.view.bounds.size.height - 64);
+        layout.minimumInteritemSpacing = 0;
+        layout.minimumLineSpacing = 0;
+        layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
+        
+        _logCollectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(-10, 0, self.view.bounds.size.width + 20, self.view.bounds.size.height - 64) collectionViewLayout:layout];
+        _logCollectionView.backgroundColor = [UIColor colorWithRed:0.949 green:0.949 blue:0.949 alpha:1];
+        _logCollectionView.dataSource = self;
+        _logCollectionView.delegate = self;
+        _logCollectionView.pagingEnabled = YES;
+        _logCollectionView.scrollsToTop = NO;
+        _logCollectionView.showsHorizontalScrollIndicator = NO;
+        _logCollectionView.contentOffset = CGPointMake(0, 0);
+        [_logCollectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"LOGCollectionViewCell"];
+        
+        if (@available(iOS 11.0, *))
+            _logCollectionView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+    }
+    return _logCollectionView;
+}
+
 
 @end

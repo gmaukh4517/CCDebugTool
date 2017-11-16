@@ -7,6 +7,7 @@
 //
 
 #import "CCSandboxCollectionViewCell.h"
+#import "CCDebugTool.h"
 
 @interface CCSandboxCollectionViewCell ()
 
@@ -26,8 +27,7 @@
         [self.contentView addSubview:_titleLabel = titleLabel];
         
         UIImageView *separateImageView = [UIImageView new];
-        NSBundle *bundle =  [NSBundle bundleWithURL:[[NSBundle mainBundle] URLForResource:@"CCDebugTool" withExtension:@"bundle"]];
-        separateImageView.image = [UIImage imageWithContentsOfFile:[[bundle resourcePath] stringByAppendingPathComponent:@"TableViewArrow"]];
+        separateImageView.image =  [CCDebugTool cc_bundle:@"TableViewArrow" inDirectory:@"sandbox"];
         [separateImageView sizeToFit];
         [self.contentView addSubview:_separateImageView = separateImageView];
     }

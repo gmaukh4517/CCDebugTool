@@ -26,7 +26,6 @@
 #import "CCDebugLogViewController.h"
 #import "CCDebugContentViewController.h"
 #import "CCDebugDataSource.h"
-#import "CCDebugEnterLOGHelper.h"
 #import "CCDebugTool.h"
 
 @interface CCDebugLogViewController () <UITableViewDelegate, UIScrollViewDelegate>
@@ -114,10 +113,9 @@
     cationTableView.tag = 2000;
     [scrollview addSubview:cationTableView];
     
-    UITextView *logTextView = [[UITextView alloc] initWithFrame:CGRectMake(self.view.frame.size.width * 2, 0, self.view.frame.size.width, self.view.frame.size.height - 114)];
-    [logTextView setEditable:NO];
-    logTextView.tag = 3000;
-    [scrollview addSubview:logTextView];
+    UITableView *logTableView = [self createTableView:self.view.frame.size.width * 2];
+    logTableView.tag = 3000;
+    [scrollview addSubview:logTableView];
 }
 
 #pragma mark -
@@ -141,35 +139,12 @@
             tableView.scrollEnabled = YES;
             [tableView reloadData];
         } else if (selectIndex == 2) {
-            [self refreshLogs];
+            UITableView *tableView = [_scrollView viewWithTag:3000];
+            _dataSource.sourceType = CCDebugDataSourceTypeLog;
+            tableView.scrollEnabled = YES;
+            [tableView reloadData];
         }
     }
-}
-
-- (void)refreshLogs
-{
-    __weak UITextView *weakTxt = [_scrollView viewWithTag:3000];
-    dispatch_async(dispatch_get_global_queue(0, 0), ^{
-        NSArray *arr = [CCDebugEnterLOGHelper logs:[CCDebugTool manager].maxLogsCount];
-        if (arr.count > 0) {
-            NSMutableAttributedString *string = [[NSMutableAttributedString alloc] init];
-            for (CCDebugLogModel *model in arr) {
-                NSString *date = [CCDebugLogModel stringFormatFromDate:model.date];
-                NSMutableAttributedString *att = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@：", date]];
-                [att addAttribute:NSForegroundColorAttributeName value:[CCDebugTool manager].mainColor range:NSMakeRange(0, att.string.length)];
-                
-                NSMutableAttributedString *att2 = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@\n\n", model.messageText]];
-                [att2 addAttribute:NSForegroundColorAttributeName value:[UIColor blackColor] range:NSMakeRange(0, att2.string.length)];
-                
-                [string appendAttributedString:att];
-                [string appendAttributedString:att2];
-            }
-            
-            dispatch_async(dispatch_get_main_queue(), ^{
-                weakTxt.attributedText = string;
-            });
-        }
-    });
 }
 
 #pragma mark -

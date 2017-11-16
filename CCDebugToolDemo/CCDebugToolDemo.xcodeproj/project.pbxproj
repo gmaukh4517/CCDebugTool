@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		426A79A81FAC391200B328C1 /* CCDebugTool.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 426A79A71FAC391100B328C1 /* CCDebugTool.bundle */; };
+		42B185091FBD88C1002B066F /* CCDebugTool.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 42B185081FBD88C1002B066F /* CCDebugTool.bundle */; };
 		42D5AD5A1FAC6F960063C136 /* libz.1.2.5.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 42D5AD581FAC6B750063C136 /* libz.1.2.5.tbd */; };
 		42EA10AA1FB427BE0078D439 /* CCDebugTool.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42EA10AB1FB427BE0078D439 /* CCDebugTool.framework */; };
 		42EA115D1FB42F260078D439 /* libstdc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 42EA115C1FB42F260078D439 /* libstdc++.tbd */; };
@@ -22,7 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		426A79A71FAC391100B328C1 /* CCDebugTool.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = CCDebugTool.bundle; sourceTree = "<group>"; };
+		42B185081FBD88C1002B066F /* CCDebugTool.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = CCDebugTool.bundle; sourceTree = "<group>"; };
 		42D5AD581FAC6B750063C136 /* libz.1.2.5.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.1.2.5.tbd; path = usr/lib/libz.1.2.5.tbd; sourceTree = SDKROOT; };
 		42EA10AB1FB427BE0078D439 /* CCDebugTool.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CCDebugTool.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		42EA115B1FB42E8E0078D439 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -100,7 +100,7 @@
 			children = (
 				42EA116B1FB43E3F0078D439 /* Carsh */,
 				42EA11691FB43E100078D439 /* NetworkRequest */,
-				426A79A71FAC391100B328C1 /* CCDebugTool.bundle */,
+				42B185081FBD88C1002B066F /* CCDebugTool.bundle */,
 				42F0A4B91F593D7700ACD4FA /* AppDelegate.h */,
 				42F0A4BA1F593D7700ACD4FA /* AppDelegate.m */,
 				42F0A4BC1F593D7700ACD4FA /* ViewController.h */,
@@ -196,7 +196,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				42F0A4C61F593D7700ACD4FA /* LaunchScreen.storyboard in Resources */,
-				426A79A81FAC391200B328C1 /* CCDebugTool.bundle in Resources */,
+				42B185091FBD88C1002B066F /* CCDebugTool.bundle in Resources */,
 				42F0A4C31F593D7700ACD4FA /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

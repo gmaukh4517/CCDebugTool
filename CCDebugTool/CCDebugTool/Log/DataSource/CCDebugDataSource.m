@@ -27,6 +27,7 @@
 #import "CCDebugCrashHelper.h"
 #import "CCDebugFluencyHelper.h"
 #import "CCDebugTool.h"
+#import "CCLogMonitoring.h"
 
 static NSString *const kCCDebugLogCellIdentifier = @"kCCDebugLogCellIdentifier";
 
@@ -39,9 +40,19 @@ static NSString *const kCCDebugLogCellIdentifier = @"kCCDebugLogCellIdentifier";
 
 - (void)refilter
 {
-    _dataArr = [CCDebugFluencyHelper obtainFluencyLogs];
-    if (_sourceType == CCDebugDataSourceTypeCrash)
-        _dataArr = [CCDebugCrashHelper obtainCrashLogs];
+    switch (_sourceType) {
+        case CCDebugDataSourceTypeCrash:
+            _dataArr = [CCDebugCrashHelper obtainCrashLogs];
+            break;
+        case CCDebugDataSourceTypeFluency:
+            _dataArr = [CCDebugFluencyHelper obtainFluencyLogs];
+            break;
+        case CCDebugDataSourceTypeLog:
+            _dataArr = [CCLogMonitoring obtainLogs];
+            break;
+        default:
+            break;
+    }
 }
 
 - (void)setSourceType:(CCDebugDataSourceType)sourceType
@@ -79,8 +90,17 @@ static NSString *const kCCDebugLogCellIdentifier = @"kCCDebugLogCellIdentifier";
     }
     
     NSDictionary *dic = [self.dataArr objectAtIndex:indexPath.row];
-    cell.textLabel.text = [dic objectForKey:@"ErrDate"];
-    cell.detailTextLabel.text = [dic objectForKey:@"ErrCause"];
+    
+    NSString *title,*detail;
+    if (_sourceType == CCDebugDataSourceTypeLog) {
+        title = [dic objectForKey:@"fileName"];
+    }else{
+        title =  [dic objectForKey:@"ErrDate"];
+        detail = [dic objectForKey:@"ErrCause"];
+    }
+    
+    cell.textLabel.text = title;
+    cell.detailTextLabel.text = detail;
     
     return cell;
 }

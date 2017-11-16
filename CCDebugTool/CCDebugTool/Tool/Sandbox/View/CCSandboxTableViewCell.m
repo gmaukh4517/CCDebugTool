@@ -34,7 +34,6 @@
 
 -(UIImage *)typeImage:(CCFileType)type
 {
-    NSBundle *bundle =  [NSBundle bundleWithURL:[[NSBundle mainBundle] URLForResource:@"CCDebugTool" withExtension:@"bundle"]];
     NSString *fileName = @"";
     switch (type) {
         case CCFileTypeBundle:
@@ -80,7 +79,7 @@
             break;
     }
     
-    return [UIImage imageWithContentsOfFile:[[bundle resourcePath] stringByAppendingPathComponent:fileName]];
+    return [CCDebugTool cc_bundle:fileName inDirectory:@"sandbox"];
 }
 
 -(void)layoutSubviews

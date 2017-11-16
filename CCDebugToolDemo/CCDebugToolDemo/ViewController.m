@@ -38,7 +38,7 @@
     imageView.backgroundColor = [UIColor lightGrayColor];
     [self.view addSubview:_imageView = imageView];
     
-    NSInteger rowNumber = 2;
+    NSInteger rowNumber = 4;
     CGFloat x = spacing,y = imageView.frame.origin.y + imageView.frame.size.height + spacing;
     CGFloat width = (self.view.bounds.size.width - 10 * (rowNumber + 1)) / rowNumber;
     
@@ -56,6 +56,7 @@
             x = spacing;
             y += button.bounds.size.height + spacing;
         }
+        NSLog(@"123131313123");
     }
 }
 

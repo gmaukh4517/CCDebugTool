@@ -29,6 +29,7 @@
 #import "CCAppFluecyMonitor.h"
 #import "CCMonitorService.h"
 #import "CCUncaughtExceptionHandler.h"
+#import "CCLogMonitoring.h"
 
 #import "FBAllocationTrackerManager.h"
 #import "FBAssociationManager.h"
@@ -80,7 +81,8 @@
         self.mainColor = [UIColor colorWithRed:0.223 green:0.698 blue:1 alpha:1.f];
         self.maxCrashCount = 20;
         self.maxLogsCount = 50;
-        self.debugWindow = [[CCDebugWindow alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 20)];
+        
+        self.debugWindow = [[CCDebugWindow alloc] initWithFrame:CGRectMake(([UIScreen mainScreen].bounds.size.width - 150) / 2, 0, 150, 20)];
     }
     return self;
 }
@@ -98,8 +100,7 @@
     [CCMonitorService start:self.debugWindow];
     [CCMonitorService mainColor:[UIColor colorWithRed:245 / 255.f green:116 / 255.f blue:91 / 255.f alpha:1.f]];
     
-    CGFloat width = [UIScreen mainScreen].bounds.size.width;
-    UIButton *debugButton = [[UIButton alloc] initWithFrame:CGRectMake((width - 150) / 2, 0, 150, 22)];
+    UIButton *debugButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 150, 22)];
     [debugButton addTarget:self action:@selector(showDebug) forControlEvents:UIControlEventTouchUpInside];
     [self.debugWindow addSubview:debugButton];
     [self.debugWindow bringSubviewToFront:debugButton];
@@ -115,6 +116,7 @@
 {
 #if DEBUG
     [CCNetworkObserver setEnabled:YES];
+    [[CCLogMonitoring manager] startMonitoring];
     InstalCrashHandler();
     [[CCAppFluecyMonitor sharedMonitor] startMonitoring];
     [self enableProfiler];
@@ -189,16 +191,14 @@
           inDirectory:(NSString *)inDirectory
 {
     NSBundle *imageBundle = [CCDebugTool cc_debugBundle];
-    fileName = [fileName stringByAppendingString:@"@2x"];
-    NSString *imagePath = [imageBundle pathForResource:fileName ofType:@"png"];
+    NSString *imagePath = [[imageBundle resourcePath] stringByAppendingPathComponent:fileName];
     if (inDirectory)
-        imagePath = [imageBundle pathForResource:fileName ofType:@"png" inDirectory:inDirectory];
+        imagePath =   [[[imageBundle resourcePath] stringByAppendingPathComponent:inDirectory] stringByAppendingPathComponent:fileName];
     
     UIImage *image = [UIImage imageWithContentsOfFile:imagePath];
-    if (!image) {
-        fileName = [fileName stringByReplacingOccurrencesOfString:@"@2x" withString:@""];
+    if (!image)
         image = [UIImage imageNamed:fileName];
-    }
+    
     return image;
 }
 
