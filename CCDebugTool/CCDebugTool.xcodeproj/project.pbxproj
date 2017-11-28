@@ -15,6 +15,8 @@
 		424603091FAFF05000467266 /* ToolViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 424603071FAFF05000467266 /* ToolViewController.m */; };
 		424603151FB00FEF00467266 /* CCSpeedTestManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 424603131FB00FEF00467266 /* CCSpeedTestManager.h */; };
 		424603161FB00FEF00467266 /* CCSpeedTestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 424603141FB00FEF00467266 /* CCSpeedTestManager.m */; };
+		424B39401FC513DC003B03FC /* CCCookieManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 424B393E1FC513DC003B03FC /* CCCookieManager.h */; };
+		424B39411FC513DC003B03FC /* CCCookieManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 424B393F1FC513DC003B03FC /* CCCookieManager.m */; };
 		426A79AB1FAC3ADA00B328C1 /* CCFilePathTreeView.h in Headers */ = {isa = PBXBuildFile; fileRef = 426A79A91FAC3ADA00B328C1 /* CCFilePathTreeView.h */; };
 		426A79AC1FAC3ADA00B328C1 /* CCFilePathTreeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 426A79AA1FAC3ADA00B328C1 /* CCFilePathTreeView.m */; };
 		426A79AF1FAC3BCC00B328C1 /* CCSandboxCollectionViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 426A79AD1FAC3BCC00B328C1 /* CCSandboxCollectionViewCell.h */; };
@@ -162,6 +164,12 @@
 		42F0A4A41F59355E00ACD4FA /* CCMonitorLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 42F0A4231F59355E00ACD4FA /* CCMonitorLabel.m */; };
 		42F0A4A71F59355E00ACD4FA /* CCDebugContentViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 42F0A4271F59355E00ACD4FA /* CCDebugContentViewController.h */; };
 		42F0A4A81F59355E00ACD4FA /* CCDebugContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42F0A4281F59355E00ACD4FA /* CCDebugContentViewController.m */; };
+		42FC5B4B1FC4154700375959 /* CCCookiesViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 42FC5B491FC4154700375959 /* CCCookiesViewController.h */; };
+		42FC5B4C1FC4154700375959 /* CCCookiesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42FC5B4A1FC4154700375959 /* CCCookiesViewController.m */; };
+		42FC5B4F1FC418AF00375959 /* CCCookieDetailViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 42FC5B4D1FC418AF00375959 /* CCCookieDetailViewController.h */; };
+		42FC5B501FC418AF00375959 /* CCCookieDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42FC5B4E1FC418AF00375959 /* CCCookieDetailViewController.m */; };
+		42FC5B541FC41AC400375959 /* CCCookiesTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 42FC5B521FC41AC400375959 /* CCCookiesTableViewCell.h */; };
+		42FC5B551FC41AC400375959 /* CCCookiesTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 42FC5B531FC41AC400375959 /* CCCookiesTableViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -173,6 +181,8 @@
 		424603071FAFF05000467266 /* ToolViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ToolViewController.m; sourceTree = "<group>"; };
 		424603131FB00FEF00467266 /* CCSpeedTestManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCSpeedTestManager.h; sourceTree = "<group>"; };
 		424603141FB00FEF00467266 /* CCSpeedTestManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CCSpeedTestManager.m; sourceTree = "<group>"; };
+		424B393E1FC513DC003B03FC /* CCCookieManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCCookieManager.h; sourceTree = "<group>"; };
+		424B393F1FC513DC003B03FC /* CCCookieManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CCCookieManager.m; sourceTree = "<group>"; };
 		426A79A91FAC3ADA00B328C1 /* CCFilePathTreeView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCFilePathTreeView.h; sourceTree = "<group>"; };
 		426A79AA1FAC3ADA00B328C1 /* CCFilePathTreeView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CCFilePathTreeView.m; sourceTree = "<group>"; };
 		426A79AD1FAC3BCC00B328C1 /* CCSandboxCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCSandboxCollectionViewCell.h; sourceTree = "<group>"; };
@@ -323,6 +333,12 @@
 		42F0A4271F59355E00ACD4FA /* CCDebugContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCDebugContentViewController.h; sourceTree = "<group>"; };
 		42F0A4281F59355E00ACD4FA /* CCDebugContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCDebugContentViewController.m; sourceTree = "<group>"; };
 		42F0A4A91F59368C00ACD4FA /* CCMacros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCMacros.h; sourceTree = "<group>"; };
+		42FC5B491FC4154700375959 /* CCCookiesViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCCookiesViewController.h; sourceTree = "<group>"; };
+		42FC5B4A1FC4154700375959 /* CCCookiesViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CCCookiesViewController.m; sourceTree = "<group>"; };
+		42FC5B4D1FC418AF00375959 /* CCCookieDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCCookieDetailViewController.h; sourceTree = "<group>"; };
+		42FC5B4E1FC418AF00375959 /* CCCookieDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CCCookieDetailViewController.m; sourceTree = "<group>"; };
+		42FC5B521FC41AC400375959 /* CCCookiesTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCCookiesTableViewCell.h; sourceTree = "<group>"; };
+		42FC5B531FC41AC400375959 /* CCCookiesTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CCCookiesTableViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -371,6 +387,15 @@
 				424603141FB00FEF00467266 /* CCSpeedTestManager.m */,
 				42EA115F1FB435210078D439 /* CCNetwork.h */,
 				42EA11601FB435210078D439 /* CCNetwork.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		424B393D1FC512CC003B03FC /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				424B393E1FC513DC003B03FC /* CCCookieManager.h */,
+				424B393F1FC513DC003B03FC /* CCCookieManager.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -459,6 +484,7 @@
 		42D5AD3D1FAC61B60063C136 /* Tool */ = {
 			isa = PBXGroup;
 			children = (
+				42FC5B471FC412F700375959 /* Cookies */,
 				424603101FB00F1700467266 /* SpeedTest */,
 				42D5AD3E1FAC61D00063C136 /* PingTest */,
 				427010DA1FAB1E6800BE8E8F /* Sandbox */,
@@ -940,6 +966,36 @@
 			path = ContentController;
 			sourceTree = "<group>";
 		};
+		42FC5B471FC412F700375959 /* Cookies */ = {
+			isa = PBXGroup;
+			children = (
+				424B393D1FC512CC003B03FC /* Model */,
+				42FC5B511FC41AAD00375959 /* View */,
+				42FC5B481FC4141600375959 /* Controller */,
+			);
+			path = Cookies;
+			sourceTree = "<group>";
+		};
+		42FC5B481FC4141600375959 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				42FC5B491FC4154700375959 /* CCCookiesViewController.h */,
+				42FC5B4A1FC4154700375959 /* CCCookiesViewController.m */,
+				42FC5B4D1FC418AF00375959 /* CCCookieDetailViewController.h */,
+				42FC5B4E1FC418AF00375959 /* CCCookieDetailViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		42FC5B511FC41AAD00375959 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				42FC5B521FC41AC400375959 /* CCCookiesTableViewCell.h */,
+				42FC5B531FC41AC400375959 /* CCCookiesTableViewCell.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -964,6 +1020,7 @@
 				42D5AD4E1FAC62CD0063C136 /* CCPingServices.h in Headers */,
 				42EA11301FB42CD30078D439 /* FBClassStrongLayout.h in Headers */,
 				42F0A4991F59355E00ACD4FA /* CCMonitorHelper.h in Headers */,
+				42FC5B4B1FC4154700375959 /* CCCookiesViewController.h in Headers */,
 				421E6BE71FB140E00068FB1E /* CCSpeedView.h in Headers */,
 				42EA11421FB42CD30078D439 /* FBRetainCycleUtils.h in Headers */,
 				42BA41A81FB545B000B0B0C5 /* UIControl+CCHook.h in Headers */,
@@ -1006,6 +1063,7 @@
 				42EA11611FB435210078D439 /* CCNetwork.h in Headers */,
 				42F0A37A1F59350100ACD4FA /* CCDebugTool.h in Headers */,
 				42EA114F1FB42CD30078D439 /* NSObject+FBAllocationTracker.h in Headers */,
+				42FC5B4F1FC418AF00375959 /* CCCookieDetailViewController.h in Headers */,
 				42EA113D1FB42CD30078D439 /* FBObjectiveCGraphElement+Internal.h in Headers */,
 				42EA11591FB42CD30078D439 /* FBAllocationTrackerDefines.h in Headers */,
 				42D5AD561FAC65680063C136 /* CCPingViewController.h in Headers */,
@@ -1019,6 +1077,8 @@
 				42F0A4381F59355E00ACD4FA /* CCDebugHttpViewController.h in Headers */,
 				424603151FB00FEF00467266 /* CCSpeedTestManager.h in Headers */,
 				42EA11381FB42CD30078D439 /* FBObjectiveCNSCFTimer.h in Headers */,
+				424B39401FC513DC003B03FC /* CCCookieManager.h in Headers */,
+				42FC5B541FC41AC400375959 /* CCCookiesTableViewCell.h in Headers */,
 				42EA114B1FB42CD30078D439 /* FBAllocationTrackerImpl.h in Headers */,
 				42EA11341FB42CD30078D439 /* FBObjectInStructReference.h in Headers */,
 				42BA41A41FB5430200B0B0C5 /* UIViewController+CCHook.h in Headers */,
@@ -1110,6 +1170,7 @@
 				42F0A4411F59355E00ACD4FA /* CCDebugLogViewController.m in Sources */,
 				42EA11151FB42CD30078D439 /* CCSingleRetainCycleViewController.m in Sources */,
 				42F0A42F1F59355E00ACD4FA /* CCUncaughtExceptionHandler.m in Sources */,
+				42FC5B4C1FC4154700375959 /* CCCookiesViewController.m in Sources */,
 				42EA112F1FB42CD30078D439 /* FBClassStrongLayout.mm in Sources */,
 				42EA11391FB42CD30078D439 /* FBObjectiveCNSCFTimer.mm in Sources */,
 				42EA111F1FB42CD30078D439 /* FBStandardGraphEdgeFilters.mm in Sources */,
@@ -1131,6 +1192,7 @@
 				42F0A42A1F59355E00ACD4FA /* CCBacktraceLogger.m in Sources */,
 				42EA11501FB42CD30078D439 /* FBAllocationTrackerImpl.mm in Sources */,
 				421E6BE81FB140E00068FB1E /* CCSpeedView.m in Sources */,
+				424B39411FC513DC003B03FC /* CCCookieManager.m in Sources */,
 				42EA11481FB42CD30078D439 /* FBRetainCycleUtils.m in Sources */,
 				426A79AC1FAC3ADA00B328C1 /* CCFilePathTreeView.m in Sources */,
 				42EA11441FB42CD30078D439 /* FBNodeEnumerator.mm in Sources */,
@@ -1155,8 +1217,10 @@
 				428B606B1FAC0586002577C0 /* CCSandboxViewController.m in Sources */,
 				42EA11131FB42CD30078D439 /* CCRetainCyclePresenter.m in Sources */,
 				42EA11551FB42CD30078D439 /* FBAllocationTrackerGeneration.mm in Sources */,
+				42FC5B501FC418AF00375959 /* CCCookieDetailViewController.m in Sources */,
 				42BA41A51FB5430200B0B0C5 /* UIViewController+CCHook.m in Sources */,
 				42EA114E1FB42CD30078D439 /* FBAllocationTrackerManager.mm in Sources */,
+				42FC5B551FC41AC400375959 /* CCCookiesTableViewCell.m in Sources */,
 				42EA11711FB43F0C0078D439 /* CCHTTPTableViewCell.m in Sources */,
 				426A79B01FAC3BCC00B328C1 /* CCSandboxCollectionViewCell.m in Sources */,
 				42F0A43F1F59355E00ACD4FA /* CCDebugHttpDetailViewController.m in Sources */,

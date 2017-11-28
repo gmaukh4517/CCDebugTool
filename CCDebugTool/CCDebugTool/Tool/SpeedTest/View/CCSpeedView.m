@@ -166,15 +166,15 @@ static const CGFloat kEndAngle = 0.51;
     UIBezierPath *progressPath  = [UIBezierPath bezierPathWithArcCenter:_speedCenter radius:progressRadius startAngle:-kStartAngle endAngle:kEndAngle clockwise:YES];
     
     CAShapeLayer *progressLayer = [CAShapeLayer layer];
-    progressLayer.lineWidth = 2.0f;
-    progressLayer.lineCap = kCALineCapRound;
-    progressLayer.lineJoin = kCALineJoinRound;
     progressLayer.fillColor = [UIColor clearColor].CGColor;
     progressLayer.strokeColor = [UIColor whiteColor].CGColor;
     progressLayer.path = progressPath.CGPath;
+    progressLayer.lineWidth = 2.0f;
     progressLayer.strokeStart = 0;
     progressLayer.strokeEnd = 1;
     progressLayer.strokeEnd = 0.001;
+    progressLayer.lineCap = kCALineCapRound;
+    progressLayer.lineJoin = kCALineJoinRound;
     [self.layer addSublayer:_progressLayer = progressLayer];
 }
 
