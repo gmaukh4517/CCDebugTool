@@ -17,6 +17,16 @@
 		424603161FB00FEF00467266 /* CCSpeedTestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 424603141FB00FEF00467266 /* CCSpeedTestManager.m */; };
 		424B39401FC513DC003B03FC /* CCCookieManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 424B393E1FC513DC003B03FC /* CCCookieManager.h */; };
 		424B39411FC513DC003B03FC /* CCCookieManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 424B393F1FC513DC003B03FC /* CCCookieManager.m */; };
+		425F00701FD7BD0000368E4E /* DatabaseViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 425F006E1FD7BD0000368E4E /* DatabaseViewController.h */; };
+		425F00711FD7BD0000368E4E /* DatabaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 425F006F1FD7BD0000368E4E /* DatabaseViewController.m */; };
+		425F00761FD7C36000368E4E /* DatabaseViewModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 425F00741FD7C36000368E4E /* DatabaseViewModel.h */; };
+		425F00771FD7C36000368E4E /* DatabaseViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 425F00751FD7C36000368E4E /* DatabaseViewModel.m */; };
+		425F007A1FD7C5D900368E4E /* DatabaseManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 425F00781FD7C5D900368E4E /* DatabaseManager.h */; };
+		425F007B1FD7C5D900368E4E /* DatabaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 425F00791FD7C5D900368E4E /* DatabaseManager.m */; };
+		425F007F1FD7CB4200368E4E /* LeftDatabaseView.h in Headers */ = {isa = PBXBuildFile; fileRef = 425F007D1FD7CB4200368E4E /* LeftDatabaseView.h */; };
+		425F00801FD7CB4200368E4E /* LeftDatabaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 425F007E1FD7CB4200368E4E /* LeftDatabaseView.m */; };
+		425F008D1FD7DA1300368E4E /* DatabaseTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 425F008B1FD7DA1300368E4E /* DatabaseTableViewCell.h */; };
+		425F008E1FD7DA1300368E4E /* DatabaseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 425F008C1FD7DA1300368E4E /* DatabaseTableViewCell.m */; };
 		426A79AB1FAC3ADA00B328C1 /* CCFilePathTreeView.h in Headers */ = {isa = PBXBuildFile; fileRef = 426A79A91FAC3ADA00B328C1 /* CCFilePathTreeView.h */; };
 		426A79AC1FAC3ADA00B328C1 /* CCFilePathTreeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 426A79AA1FAC3ADA00B328C1 /* CCFilePathTreeView.m */; };
 		426A79AF1FAC3BCC00B328C1 /* CCSandboxCollectionViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 426A79AD1FAC3BCC00B328C1 /* CCSandboxCollectionViewCell.h */; };
@@ -183,6 +193,16 @@
 		424603141FB00FEF00467266 /* CCSpeedTestManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CCSpeedTestManager.m; sourceTree = "<group>"; };
 		424B393E1FC513DC003B03FC /* CCCookieManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCCookieManager.h; sourceTree = "<group>"; };
 		424B393F1FC513DC003B03FC /* CCCookieManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CCCookieManager.m; sourceTree = "<group>"; };
+		425F006E1FD7BD0000368E4E /* DatabaseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DatabaseViewController.h; sourceTree = "<group>"; };
+		425F006F1FD7BD0000368E4E /* DatabaseViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DatabaseViewController.m; sourceTree = "<group>"; };
+		425F00741FD7C36000368E4E /* DatabaseViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DatabaseViewModel.h; sourceTree = "<group>"; };
+		425F00751FD7C36000368E4E /* DatabaseViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DatabaseViewModel.m; sourceTree = "<group>"; };
+		425F00781FD7C5D900368E4E /* DatabaseManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DatabaseManager.h; sourceTree = "<group>"; };
+		425F00791FD7C5D900368E4E /* DatabaseManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DatabaseManager.m; sourceTree = "<group>"; };
+		425F007D1FD7CB4200368E4E /* LeftDatabaseView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LeftDatabaseView.h; sourceTree = "<group>"; };
+		425F007E1FD7CB4200368E4E /* LeftDatabaseView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LeftDatabaseView.m; sourceTree = "<group>"; };
+		425F008B1FD7DA1300368E4E /* DatabaseTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DatabaseTableViewCell.h; sourceTree = "<group>"; };
+		425F008C1FD7DA1300368E4E /* DatabaseTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DatabaseTableViewCell.m; sourceTree = "<group>"; };
 		426A79A91FAC3ADA00B328C1 /* CCFilePathTreeView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCFilePathTreeView.h; sourceTree = "<group>"; };
 		426A79AA1FAC3ADA00B328C1 /* CCFilePathTreeView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CCFilePathTreeView.m; sourceTree = "<group>"; };
 		426A79AD1FAC3BCC00B328C1 /* CCSandboxCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCSandboxCollectionViewCell.h; sourceTree = "<group>"; };
@@ -400,6 +420,55 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		425F006A1FD79E7300368E4E /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				425F007C1FD7CB1A00368E4E /* View */,
+				425F00721FD7C1D300368E4E /* Model */,
+				425F006B1FD79E9800368E4E /* Controller */,
+				425F00731FD7C34400368E4E /* ViewModel */,
+			);
+			path = Database;
+			sourceTree = "<group>";
+		};
+		425F006B1FD79E9800368E4E /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				425F006E1FD7BD0000368E4E /* DatabaseViewController.h */,
+				425F006F1FD7BD0000368E4E /* DatabaseViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		425F00721FD7C1D300368E4E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				425F00781FD7C5D900368E4E /* DatabaseManager.h */,
+				425F00791FD7C5D900368E4E /* DatabaseManager.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		425F00731FD7C34400368E4E /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				425F00741FD7C36000368E4E /* DatabaseViewModel.h */,
+				425F00751FD7C36000368E4E /* DatabaseViewModel.m */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		425F007C1FD7CB1A00368E4E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				425F007D1FD7CB4200368E4E /* LeftDatabaseView.h */,
+				425F007E1FD7CB4200368E4E /* LeftDatabaseView.m */,
+				425F008B1FD7DA1300368E4E /* DatabaseTableViewCell.h */,
+				425F008C1FD7DA1300368E4E /* DatabaseTableViewCell.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		427010DA1FAB1E6800BE8E8F /* Sandbox */ = {
 			isa = PBXGroup;
 			children = (
@@ -484,6 +553,7 @@
 		42D5AD3D1FAC61B60063C136 /* Tool */ = {
 			isa = PBXGroup;
 			children = (
+				425F006A1FD79E7300368E4E /* Database */,
 				42FC5B471FC412F700375959 /* Cookies */,
 				424603101FB00F1700467266 /* SpeedTest */,
 				42D5AD3E1FAC61D00063C136 /* PingTest */,
@@ -1013,6 +1083,7 @@
 				42F0A42E1F59355E00ACD4FA /* CCUncaughtExceptionHandler.h in Headers */,
 				42EA11511FB42CD30078D439 /* FBAllocationTrackerFunctors.h in Headers */,
 				42EA11561FB42CD30078D439 /* FBAllocationTrackerNSZombieSupport.h in Headers */,
+				425F00701FD7BD0000368E4E /* DatabaseViewController.h in Headers */,
 				42D5AD4A1FAC62AF0063C136 /* STSimplePing.h in Headers */,
 				42EA11161FB42CD30078D439 /* CCMemoryProfilerViewController.h in Headers */,
 				42F0A42B1F59355E00ACD4FA /* CCAppFluecyMonitor.h in Headers */,
@@ -1027,9 +1098,11 @@
 				42EA11291FB42CD30078D439 /* Type.h in Headers */,
 				42EA11121FB42CD30078D439 /* CCSingleRetainCycleViewController.h in Headers */,
 				42BA41B41FB5A4AC00B0B0C5 /* CCNetworkObserver.h in Headers */,
+				425F008D1FD7DA1300368E4E /* DatabaseTableViewCell.h in Headers */,
 				42EA11471FB42CD30078D439 /* FBRetainCycleDetector+Internal.h in Headers */,
 				42EA11231FB42CD30078D439 /* FBBlockStrongLayout.h in Headers */,
 				42EA11431FB42CD30078D439 /* FBRetainCycleDetector.h in Headers */,
+				425F00761FD7C36000368E4E /* DatabaseViewModel.h in Headers */,
 				421E6BE21FB13EB70068FB1E /* CCSpeedTestViewController.h in Headers */,
 				42EA11521FB42CD30078D439 /* FBAllocationTrackerGeneration.h in Headers */,
 				42EA113B1FB42CD30078D439 /* FBObjectiveCObject.h in Headers */,
@@ -1044,6 +1117,7 @@
 				42EA113A1FB42CD30078D439 /* FBObjectGraphConfiguration.h in Headers */,
 				42EA114C1FB42CD30078D439 /* FBAllocationTrackerSummary.h in Headers */,
 				42EA11411FB42CD30078D439 /* FBObjectiveCGraphElement.h in Headers */,
+				425F007A1FD7C5D900368E4E /* DatabaseManager.h in Headers */,
 				42BA41B01FB588FE00B0B0C5 /* CCNetworkRecorder.h in Headers */,
 				42EA11191FB42CD30078D439 /* ProfilerTableHeader.h in Headers */,
 				42F0A4441F59355E00ACD4FA /* CCDebugDataSource.h in Headers */,
@@ -1077,6 +1151,7 @@
 				42F0A4381F59355E00ACD4FA /* CCDebugHttpViewController.h in Headers */,
 				424603151FB00FEF00467266 /* CCSpeedTestManager.h in Headers */,
 				42EA11381FB42CD30078D439 /* FBObjectiveCNSCFTimer.h in Headers */,
+				425F007F1FD7CB4200368E4E /* LeftDatabaseView.h in Headers */,
 				424B39401FC513DC003B03FC /* CCCookieManager.h in Headers */,
 				42FC5B541FC41AC400375959 /* CCCookiesTableViewCell.h in Headers */,
 				42EA114B1FB42CD30078D439 /* FBAllocationTrackerImpl.h in Headers */,
@@ -1206,12 +1281,15 @@
 				42BA41B11FB588FE00B0B0C5 /* CCNetworkRecorder.m in Sources */,
 				42EA113E1FB42CD30078D439 /* FBObjectGraphConfiguration.m in Sources */,
 				42EA11261FB42CD30078D439 /* FBBlockStrongLayout.m in Sources */,
+				425F00771FD7C36000368E4E /* DatabaseViewModel.m in Sources */,
 				42EA112D1FB42CD30078D439 /* FBStructEncodingParser.mm in Sources */,
 				42F0A4391F59355E00ACD4FA /* CCDebugHttpViewController.m in Sources */,
 				421E6BE31FB13EB70068FB1E /* CCSpeedTestViewController.m in Sources */,
 				42EA11361FB42CD30078D439 /* FBIvarReference.m in Sources */,
 				42EA11571FB42CD30078D439 /* FBAllocationTrackerNSZombieSupport.mm in Sources */,
+				425F008E1FD7DA1300368E4E /* DatabaseTableViewCell.m in Sources */,
 				42EA11401FB42CD30078D439 /* FBObjectiveCObject.m in Sources */,
+				425F00711FD7BD0000368E4E /* DatabaseViewController.m in Sources */,
 				42F0A42D1F59355E00ACD4FA /* CCDebugTool.m in Sources */,
 				42EA111E1FB42CD30078D439 /* FBAssociationManager.mm in Sources */,
 				428B606B1FAC0586002577C0 /* CCSandboxViewController.m in Sources */,
@@ -1231,9 +1309,11 @@
 				42B185051FBD3EB6002B066F /* CCLogMonitoring.m in Sources */,
 				424603091FAFF05000467266 /* ToolViewController.m in Sources */,
 				42D5AD531FAC64E80063C136 /* CCPingTextView.m in Sources */,
+				425F00801FD7CB4200368E4E /* LeftDatabaseView.m in Sources */,
 				42F0A49C1F59355E00ACD4FA /* CCMonitorService.m in Sources */,
 				42BA41A91FB545B000B0B0C5 /* UIControl+CCHook.m in Sources */,
 				42EA11491FB42CD30078D439 /* NSObject+FBAllocationTracker.mm in Sources */,
+				425F007B1FD7C5D900368E4E /* DatabaseManager.m in Sources */,
 				428B60671FAC056F002577C0 /* CCSandboxEntity.m in Sources */,
 				42EA11111FB42CD30078D439 /* ProfilerDataSource.m in Sources */,
 				42F0A4491F59355E00ACD4FA /* CCDebugFluencyHelper.m in Sources */,

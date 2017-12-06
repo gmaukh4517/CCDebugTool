@@ -13,6 +13,7 @@
 #import "CCPingViewController.h"
 #import "CCSpeedTestViewController.h"
 #import "CCCookiesViewController.h"
+#import "DatabaseViewController.h"
 
 @interface ToolViewController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -48,7 +49,8 @@
     self.dataArr = @[@{@"image":@"tool_sandbox",@"title" : @"Sandbox"},
                      @{@"image":@"tool_ping",@"title":@"Ping"},
                      @{@"image":@"tool_speedtest",@"title":@"SpeedTest"},
-                     @{@"image":@"tool_cookies",@"title":@"Cookies"}];
+                     @{@"image":@"tool_cookies",@"title":@"Cookies"},
+                     @{@"image":@"tool_database",@"title":@"Database"}];
 }
 
 #pragma mark -
@@ -103,6 +105,8 @@
         viewController = [CCSpeedTestViewController new];
     } else if (indexPath.row == 3){
         viewController = [CCCookiesViewController new];
+    } else if (indexPath.row == 4){
+        viewController = [DatabaseViewController new];
     }
     
     if (viewController){

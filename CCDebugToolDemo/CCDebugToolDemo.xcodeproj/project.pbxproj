@@ -7,11 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		425F00821FD7D61E00368E4E /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 425F00811FD7D61D00368E4E /* libsqlite3.0.tbd */; };
 		42B185091FBD88C1002B066F /* CCDebugTool.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 42B185081FBD88C1002B066F /* CCDebugTool.bundle */; };
 		42D5AD5A1FAC6F960063C136 /* libz.1.2.5.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 42D5AD581FAC6B750063C136 /* libz.1.2.5.tbd */; };
 		42EA10AA1FB427BE0078D439 /* CCDebugTool.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42EA10AB1FB427BE0078D439 /* CCDebugTool.framework */; };
 		42EA115D1FB42F260078D439 /* libstdc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 42EA115C1FB42F260078D439 /* libstdc++.tbd */; };
 		42EA11651FB43CB90078D439 /* NetworkRequestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42EA11641FB43CB90078D439 /* NetworkRequestViewController.m */; };
+		42EDDFD31FD8024E00B6AB59 /* Car.db in Resources */ = {isa = PBXBuildFile; fileRef = 42EDDFD01FD8024E00B6AB59 /* Car.db */; };
+		42EDDFD41FD8024E00B6AB59 /* test.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 42EDDFD11FD8024E00B6AB59 /* test.sqlite */; };
+		42EDDFD51FD8024E00B6AB59 /* Contact.db in Resources */ = {isa = PBXBuildFile; fileRef = 42EDDFD21FD8024E00B6AB59 /* Contact.db */; };
 		42F0A4B81F593D7700ACD4FA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 42F0A4B71F593D7700ACD4FA /* main.m */; };
 		42F0A4BB1F593D7700ACD4FA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 42F0A4BA1F593D7700ACD4FA /* AppDelegate.m */; };
 		42F0A4BE1F593D7700ACD4FA /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42F0A4BD1F593D7700ACD4FA /* ViewController.m */; };
@@ -22,6 +26,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		425F00811FD7D61D00368E4E /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 		42B185081FBD88C1002B066F /* CCDebugTool.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = CCDebugTool.bundle; sourceTree = "<group>"; };
 		42D5AD581FAC6B750063C136 /* libz.1.2.5.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.1.2.5.tbd; path = usr/lib/libz.1.2.5.tbd; sourceTree = SDKROOT; };
 		42EA10AB1FB427BE0078D439 /* CCDebugTool.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CCDebugTool.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -30,6 +35,9 @@
 		42EA115E1FB434500078D439 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		42EA11631FB43CB90078D439 /* NetworkRequestViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NetworkRequestViewController.h; sourceTree = "<group>"; };
 		42EA11641FB43CB90078D439 /* NetworkRequestViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NetworkRequestViewController.m; sourceTree = "<group>"; };
+		42EDDFD01FD8024E00B6AB59 /* Car.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = Car.db; sourceTree = "<group>"; };
+		42EDDFD11FD8024E00B6AB59 /* test.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = test.sqlite; sourceTree = "<group>"; };
+		42EDDFD21FD8024E00B6AB59 /* Contact.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = Contact.db; sourceTree = "<group>"; };
 		42F0A4B31F593D7700ACD4FA /* CCDebugToolDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CCDebugToolDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		42F0A4B71F593D7700ACD4FA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		42F0A4B91F593D7700ACD4FA /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -53,6 +61,7 @@
 			files = (
 				42EA10AA1FB427BE0078D439 /* CCDebugTool.framework in Frameworks */,
 				42D5AD5A1FAC6F960063C136 /* libz.1.2.5.tbd in Frameworks */,
+				425F00821FD7D61E00368E4E /* libsqlite3.0.tbd in Frameworks */,
 				42EA115D1FB42F260078D439 /* libstdc++.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -60,6 +69,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		425F00831FD7D6DF00368E4E /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				42EDDFD01FD8024E00B6AB59 /* Car.db */,
+				42EDDFD21FD8024E00B6AB59 /* Contact.db */,
+				42EDDFD11FD8024E00B6AB59 /* test.sqlite */,
+			);
+			path = Database;
+			sourceTree = "<group>";
+		};
 		42EA11691FB43E100078D439 /* NetworkRequest */ = {
 			isa = PBXGroup;
 			children = (
@@ -98,6 +117,7 @@
 		42F0A4B51F593D7700ACD4FA /* CCDebugToolDemo */ = {
 			isa = PBXGroup;
 			children = (
+				425F00831FD7D6DF00368E4E /* Database */,
 				42EA116B1FB43E3F0078D439 /* Carsh */,
 				42EA11691FB43E100078D439 /* NetworkRequest */,
 				42B185081FBD88C1002B066F /* CCDebugTool.bundle */,
@@ -126,6 +146,7 @@
 		42F0A4CD1F593E2F00ACD4FA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				425F00811FD7D61D00368E4E /* libsqlite3.0.tbd */,
 				42EA115E1FB434500078D439 /* CoreTelephony.framework */,
 				42EA115C1FB42F260078D439 /* libstdc++.tbd */,
 				42EA115B1FB42E8E0078D439 /* UIKit.framework */,
@@ -195,8 +216,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				42EDDFD31FD8024E00B6AB59 /* Car.db in Resources */,
 				42F0A4C61F593D7700ACD4FA /* LaunchScreen.storyboard in Resources */,
 				42B185091FBD88C1002B066F /* CCDebugTool.bundle in Resources */,
+				42EDDFD41FD8024E00B6AB59 /* test.sqlite in Resources */,
+				42EDDFD51FD8024E00B6AB59 /* Contact.db in Resources */,
 				42F0A4C31F593D7700ACD4FA /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
