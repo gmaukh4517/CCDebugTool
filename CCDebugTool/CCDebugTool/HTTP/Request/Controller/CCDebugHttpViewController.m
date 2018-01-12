@@ -24,7 +24,7 @@
 //
 
 #import "CCDebugHttpViewController.h"
-//#import "CCDebugHttpDataSource.h"
+#import "CCNetworkInfoViewController.h"
 #import "CCDebugHttpDetailViewController.h"
 #import "CCHTTPTableViewCell.h"
 #import <pthread.h>
@@ -74,21 +74,24 @@ static inline void cc_dispatch_async_on_main_queue(void (^block)(void))
     titleText.numberOfLines = 0;
     titleText.text = @"HTTP";
     self.navigationItem.titleView = titleText;
-    
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"关闭" style:UIBarButtonItemStyleDone target:self action:@selector(dismissViewController)];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"清空" style:UIBarButtonItemStyleDone target:self action:@selector(clearAction)];
+
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"清空" style:UIBarButtonItemStyleDone target:self action:@selector(clearAction)];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"网络" style:UIBarButtonItemStyleDone target:self action:@selector(networkViewController)];
 }
 
-- (void)dismissViewController
+- (void)networkViewController
 {
-    [self dismissViewControllerAnimated:YES completion:nil];
+    CCNetworkInfoViewController *viewController = [CCNetworkInfoViewController new];
+    viewController.hidesBottomBarWhenPushed = YES;
+    self.navigationController.topViewController.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"HTTP" style:UIBarButtonItemStylePlain target:self action:nil];
+    [self.navigationController pushViewController:viewController animated:YES];
 }
 
 - (void)initControl
 {
     CGRect frame = self.view.bounds;
     frame.size.height -= 50;
-    
+
     UITableView *httpViewTableView = [[UITableView alloc] initWithFrame:frame style:UITableViewStylePlain];
     httpViewTableView.backgroundColor = [UIColor clearColor];
     httpViewTableView.delegate = self;
@@ -97,16 +100,16 @@ static inline void cc_dispatch_async_on_main_queue(void (^block)(void))
     httpViewTableView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     [httpViewTableView registerClass:[CCHTTPTableViewCell class] forCellReuseIdentifier:@"CCHTTPTableViewCellIdentifier"];
     [self.view addSubview:self.httpViewTableView = httpViewTableView];
-    
+
     if (@available(iOS 11.0, *)) {
         httpViewTableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
     }
-    
+
     UIView *v = [[UIView alloc] initWithFrame:CGRectZero];
     v.backgroundColor = [UIColor clearColor];
     [httpViewTableView setTableFooterView:v];
-    
-    
+
+
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleNewTransactionRecordedNotification:) name:kCCNetworkRecorderNewTransactionNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleTransactionUpdatedNotification:) name:kCCNetworkRecorderTransactionUpdatedNotification object:nil];
 }
@@ -127,14 +130,10 @@ static inline void cc_dispatch_async_on_main_queue(void (^block)(void))
 
 - (void)handleTransactionUpdatedNotification:(NSNotification *)notification
 {
-    CCNetworkTransaction *transaction = notification.userInfo[kCCNetworkRecorderUserInfoTransactionKey];
-    
-    // Update both the main table view and search table view if needed.
+    CCNetworkTransaction *transaction = notification.userInfo[ kCCNetworkRecorderUserInfoTransactionKey ];
+
     for (CCHTTPTableViewCell *cell in [self.httpViewTableView visibleCells]) {
         if ([cell.transaction isEqual:transaction]) {
-            // Using -[UITableView reloadRowsAtIndexPaths:withRowAnimation:] is overkill here and kicks off a lot of
-            // work that can make the table view somewhat unresponseive when lots of updates are streaming in.
-            // We just need to tell the cell that it needs to re-layout.
             [cell setNeedsLayout];
             break;
         }
@@ -148,36 +147,37 @@ static inline void cc_dispatch_async_on_main_queue(void (^block)(void))
 - (void)updateTransactions
 {
     self.dataArray = [[CCNetworkRecorder defaultRecorder] networkTransactions];
+    [self updateNavigation];
 }
 
--(void)tryUpdateTransactions
+- (void)tryUpdateTransactions
 {
     if (self.rowInsertInProgress) {
         return;
     }
-    
+
     NSInteger existingRowCount = [self.dataArray count];
     [self updateTransactions];
     NSInteger newRowCount = [self.dataArray count];
     NSInteger addedRowCount = newRowCount - existingRowCount;
-    
+
     if (addedRowCount != 0) {
         // Insert animation if we're at the top.
         if (self.httpViewTableView.contentOffset.y <= 0.0 && addedRowCount > 0) {
             [CATransaction begin];
-            
+
             self.rowInsertInProgress = YES;
             [CATransaction setCompletionBlock:^{
                 self.rowInsertInProgress = NO;
                 [self tryUpdateTransactions];
             }];
-            
+
             NSMutableArray *indexPathsToReload = [NSMutableArray array];
             for (NSInteger row = 0; row < addedRowCount; row++) {
                 [indexPathsToReload addObject:[NSIndexPath indexPathForRow:row inSection:0]];
             }
             [self.httpViewTableView insertRowsAtIndexPaths:indexPathsToReload withRowAnimation:UITableViewRowAnimationAutomatic];
-            
+
             [CATransaction commit];
         } else {
             // Maintain the user's position if they've scrolled down.
@@ -190,36 +190,36 @@ static inline void cc_dispatch_async_on_main_queue(void (^block)(void))
 }
 
 /** 修改导航栏请求流量 **/
--(void)updateNavigation
+- (void)updateNavigation
 {
     __block double flowCount = 0;
     [self.dataArray enumerateObjectsUsingBlock:^(id _Nonnull obj, NSUInteger idx, BOOL *_Nonnull stop) {
         flowCount += [obj expectedContentLength];
     }];
-    
+
     if (!flowCount) {
         flowCount = 0.0;
     }
-    
-    cc_dispatch_async_on_main_queue(^(){
+
+    cc_dispatch_async_on_main_queue(^() {
         NSMutableDictionary *flowDic = [NSMutableDictionary dictionaryWithDictionary:[UINavigationBar appearance].titleTextAttributes];
         [flowDic setObject:[UIFont systemFontOfSize:12.0] forKey:NSFontAttributeName];
-        
+
         NSMutableAttributedString *titleString = [[NSMutableAttributedString alloc] initWithString:@"HTTP\n"
                                                                                         attributes:[UINavigationBar appearance].titleTextAttributes];
-        
+
         NSMutableAttributedString *flowCountString = [[NSMutableAttributedString alloc] initWithString:[self dataSize:flowCount]
                                                                                             attributes:flowDic];
-        
+
         NSMutableAttributedString *attrText = [[NSMutableAttributedString alloc] init];
         [attrText appendAttributedString:titleString];
         [attrText appendAttributedString:flowCountString];
-        
+
         UILabel *titleText = (UILabel *)self.navigationItem.titleView;
         titleText.attributedText = attrText;
-        
-        [self.httpViewTableView reloadData];
-        
+
+        //        [self.httpViewTableView reloadData];
+
     });
 }
 
@@ -271,7 +271,7 @@ static inline void cc_dispatch_async_on_main_queue(void (^block)(void))
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *identifer = @"CCHTTPTableViewCellIdentifier";
-    CCHTTPTableViewCell *cell = (CCHTTPTableViewCell *) [tableView dequeueReusableCellWithIdentifier:identifer];
+    CCHTTPTableViewCell *cell = (CCHTTPTableViewCell *)[tableView dequeueReusableCellWithIdentifier:identifer];
     [cell cc_cellWillDisplayWithModel:[self.dataArray objectAtIndex:indexPath.row]];
     return cell;
 }
@@ -292,7 +292,7 @@ static inline void cc_dispatch_async_on_main_queue(void (^block)(void))
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
+
     CCDebugHttpDetailViewController *viewController = [[CCDebugHttpDetailViewController alloc] init];
     viewController.hidesBottomBarWhenPushed = YES;
     viewController.detail = [self.dataArray objectAtIndex:indexPath.row];

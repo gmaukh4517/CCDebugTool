@@ -27,6 +27,13 @@
 		425F00801FD7CB4200368E4E /* LeftDatabaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 425F007E1FD7CB4200368E4E /* LeftDatabaseView.m */; };
 		425F008D1FD7DA1300368E4E /* DatabaseTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 425F008B1FD7DA1300368E4E /* DatabaseTableViewCell.h */; };
 		425F008E1FD7DA1300368E4E /* DatabaseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 425F008C1FD7DA1300368E4E /* DatabaseTableViewCell.m */; };
+		4266D3AB20089EC500D6EE07 /* CCNetworkInfoViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 4266D3A920089EC500D6EE07 /* CCNetworkInfoViewController.h */; };
+		4266D3AC20089EC500D6EE07 /* CCNetworkInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4266D3AA20089EC500D6EE07 /* CCNetworkInfoViewController.m */; };
+		4266D3AF2008A03900D6EE07 /* CCNetworkInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 4266D3AD2008A03900D6EE07 /* CCNetworkInfo.h */; };
+		4266D3B02008A03900D6EE07 /* CCNetworkInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 4266D3AE2008A03900D6EE07 /* CCNetworkInfo.m */; };
+		4266D3B52008B16400D6EE07 /* getgateway.h in Headers */ = {isa = PBXBuildFile; fileRef = 4266D3B22008B16300D6EE07 /* getgateway.h */; };
+		4266D3B62008B16400D6EE07 /* getgateway.c in Sources */ = {isa = PBXBuildFile; fileRef = 4266D3B32008B16300D6EE07 /* getgateway.c */; };
+		4266D3B72008B16400D6EE07 /* route.h in Headers */ = {isa = PBXBuildFile; fileRef = 4266D3B42008B16300D6EE07 /* route.h */; };
 		426A79AB1FAC3ADA00B328C1 /* CCFilePathTreeView.h in Headers */ = {isa = PBXBuildFile; fileRef = 426A79A91FAC3ADA00B328C1 /* CCFilePathTreeView.h */; };
 		426A79AC1FAC3ADA00B328C1 /* CCFilePathTreeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 426A79AA1FAC3ADA00B328C1 /* CCFilePathTreeView.m */; };
 		426A79AF1FAC3BCC00B328C1 /* CCSandboxCollectionViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 426A79AD1FAC3BCC00B328C1 /* CCSandboxCollectionViewCell.h */; };
@@ -203,6 +210,13 @@
 		425F007E1FD7CB4200368E4E /* LeftDatabaseView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LeftDatabaseView.m; sourceTree = "<group>"; };
 		425F008B1FD7DA1300368E4E /* DatabaseTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DatabaseTableViewCell.h; sourceTree = "<group>"; };
 		425F008C1FD7DA1300368E4E /* DatabaseTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DatabaseTableViewCell.m; sourceTree = "<group>"; };
+		4266D3A920089EC500D6EE07 /* CCNetworkInfoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCNetworkInfoViewController.h; sourceTree = "<group>"; };
+		4266D3AA20089EC500D6EE07 /* CCNetworkInfoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CCNetworkInfoViewController.m; sourceTree = "<group>"; };
+		4266D3AD2008A03900D6EE07 /* CCNetworkInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCNetworkInfo.h; sourceTree = "<group>"; };
+		4266D3AE2008A03900D6EE07 /* CCNetworkInfo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CCNetworkInfo.m; sourceTree = "<group>"; };
+		4266D3B22008B16300D6EE07 /* getgateway.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = getgateway.h; sourceTree = "<group>"; };
+		4266D3B32008B16300D6EE07 /* getgateway.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = getgateway.c; sourceTree = "<group>"; };
+		4266D3B42008B16300D6EE07 /* route.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = route.h; sourceTree = "<group>"; };
 		426A79A91FAC3ADA00B328C1 /* CCFilePathTreeView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCFilePathTreeView.h; sourceTree = "<group>"; };
 		426A79AA1FAC3ADA00B328C1 /* CCFilePathTreeView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CCFilePathTreeView.m; sourceTree = "<group>"; };
 		426A79AD1FAC3BCC00B328C1 /* CCSandboxCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCSandboxCollectionViewCell.h; sourceTree = "<group>"; };
@@ -467,6 +481,46 @@
 				425F008C1FD7DA1300368E4E /* DatabaseTableViewCell.m */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		4266D3B12008B14700D6EE07 /* RouteAddress */ = {
+			isa = PBXGroup;
+			children = (
+				4266D3B32008B16300D6EE07 /* getgateway.c */,
+				4266D3B22008B16300D6EE07 /* getgateway.h */,
+				4266D3B42008B16300D6EE07 /* route.h */,
+			);
+			path = RouteAddress;
+			sourceTree = "<group>";
+		};
+		4266D3B82008B71200D6EE07 /* NetworkInfo */ = {
+			isa = PBXGroup;
+			children = (
+				4266D3B92008B72400D6EE07 /* Model */,
+				4266D3B12008B14700D6EE07 /* RouteAddress */,
+				4266D3A920089EC500D6EE07 /* CCNetworkInfoViewController.h */,
+				4266D3AA20089EC500D6EE07 /* CCNetworkInfoViewController.m */,
+			);
+			path = NetworkInfo;
+			sourceTree = "<group>";
+		};
+		4266D3B92008B72400D6EE07 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				4266D3AD2008A03900D6EE07 /* CCNetworkInfo.h */,
+				4266D3AE2008A03900D6EE07 /* CCNetworkInfo.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		4266D3BA2008B74100D6EE07 /* Request */ = {
+			isa = PBXGroup;
+			children = (
+				42EA116C1FB43ED50078D439 /* Controller */,
+				42F0A3971F59355E00ACD4FA /* Model */,
+				42F0A39C1F59355E00ACD4FA /* View */,
+			);
+			path = Request;
 			sourceTree = "<group>";
 		};
 		427010DA1FAB1E6800BE8E8F /* Sandbox */ = {
@@ -932,9 +986,8 @@
 		42F0A38B1F59355E00ACD4FA /* HTTP */ = {
 			isa = PBXGroup;
 			children = (
-				42EA116C1FB43ED50078D439 /* Controller */,
-				42F0A3971F59355E00ACD4FA /* Model */,
-				42F0A39C1F59355E00ACD4FA /* View */,
+				4266D3BA2008B74100D6EE07 /* Request */,
+				4266D3B82008B71200D6EE07 /* NetworkInfo */,
 			);
 			path = HTTP;
 			sourceTree = "<group>";
@@ -1085,6 +1138,7 @@
 				42EA11561FB42CD30078D439 /* FBAllocationTrackerNSZombieSupport.h in Headers */,
 				425F00701FD7BD0000368E4E /* DatabaseViewController.h in Headers */,
 				42D5AD4A1FAC62AF0063C136 /* STSimplePing.h in Headers */,
+				4266D3B72008B16400D6EE07 /* route.h in Headers */,
 				42EA11161FB42CD30078D439 /* CCMemoryProfilerViewController.h in Headers */,
 				42F0A42B1F59355E00ACD4FA /* CCAppFluecyMonitor.h in Headers */,
 				42EA111C1FB42CD30078D439 /* FBAssociationManager.h in Headers */,
@@ -1142,7 +1196,9 @@
 				42EA11591FB42CD30078D439 /* FBAllocationTrackerDefines.h in Headers */,
 				42D5AD561FAC65680063C136 /* CCPingViewController.h in Headers */,
 				426A79AF1FAC3BCC00B328C1 /* CCSandboxCollectionViewCell.h in Headers */,
+				4266D3AF2008A03900D6EE07 /* CCNetworkInfo.h in Headers */,
 				42EA112B1FB42CD30078D439 /* FBStructEncodingParser.h in Headers */,
+				4266D3AB20089EC500D6EE07 /* CCNetworkInfoViewController.h in Headers */,
 				42EA112C1FB42CD30078D439 /* Struct.h in Headers */,
 				42F0A4A11F59355E00ACD4FA /* CCPerformanceStatusBar.h in Headers */,
 				42B185041FBD3EB6002B066F /* CCLogMonitoring.h in Headers */,
@@ -1163,6 +1219,7 @@
 				42F0A4291F59355E00ACD4FA /* CCBacktraceLogger.h in Headers */,
 				42D5AD521FAC64E80063C136 /* CCPingTextView.h in Headers */,
 				42BA41A01FB5412800B0B0C5 /* UINavigationController+CCHook.h in Headers */,
+				4266D3B52008B16400D6EE07 /* getgateway.h in Headers */,
 				42EA11171FB42CD30078D439 /* CCRetainCyclePresenter.h in Headers */,
 				42EA11181FB42CD30078D439 /* ProfilerGenerationsSectionHeaderView.h in Headers */,
 			);
@@ -1241,11 +1298,13 @@
 				42D5AD4F1FAC62CD0063C136 /* CCPingServices.m in Sources */,
 				42EA113C1FB42CD30078D439 /* FBObjectiveCGraphElement.mm in Sources */,
 				42EA11241FB42CD30078D439 /* FBBlockStrongRelationDetector.m in Sources */,
+				4266D3B02008A03900D6EE07 /* CCNetworkInfo.m in Sources */,
 				428B606F1FAC05A0002577C0 /* CCSandboxTableViewCell.m in Sources */,
 				42F0A4411F59355E00ACD4FA /* CCDebugLogViewController.m in Sources */,
 				42EA11151FB42CD30078D439 /* CCSingleRetainCycleViewController.m in Sources */,
 				42F0A42F1F59355E00ACD4FA /* CCUncaughtExceptionHandler.m in Sources */,
 				42FC5B4C1FC4154700375959 /* CCCookiesViewController.m in Sources */,
+				4266D3B62008B16400D6EE07 /* getgateway.c in Sources */,
 				42EA112F1FB42CD30078D439 /* FBClassStrongLayout.mm in Sources */,
 				42EA11391FB42CD30078D439 /* FBObjectiveCNSCFTimer.mm in Sources */,
 				42EA111F1FB42CD30078D439 /* FBStandardGraphEdgeFilters.mm in Sources */,
@@ -1305,6 +1364,7 @@
 				42D5AD4B1FAC62AF0063C136 /* STSimplePing.m in Sources */,
 				42BA41A11FB5412800B0B0C5 /* UINavigationController+CCHook.m in Sources */,
 				42EA11751FB43FE60078D439 /* CCNetworkTransaction.m in Sources */,
+				4266D3AC20089EC500D6EE07 /* CCNetworkInfoViewController.m in Sources */,
 				42F0A4A41F59355E00ACD4FA /* CCMonitorLabel.m in Sources */,
 				42B185051FBD3EB6002B066F /* CCLogMonitoring.m in Sources */,
 				424603091FAFF05000467266 /* ToolViewController.m in Sources */,
