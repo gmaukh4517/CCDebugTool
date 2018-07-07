@@ -25,14 +25,17 @@ static inline void AutomaticWritingSwizzleSelector(Class class, SEL originalSele
 
 + (void)CCHook
 {
-    AutomaticWritingSwizzleSelector([self class], @selector(sendAction:to:forEvent:), @selector(cc_sendAction:to:forEvent:));
+    AutomaticWritingSwizzleSelector([self class], @selector(sendAction:to:forEvent:), @selector(CCDebutTool_sendAction:to:forEvent:));
 }
 
-- (void)cc_sendAction:(SEL)action to:(id)target forEvent:(UIEvent *)event
+- (void)CCDebutTool_sendAction:(SEL)action to:(id)target forEvent:(UIEvent *)event
 {
-    [self cc_sendAction:action to:target forEvent:event];
-    NSString *actionDetailInfo = [NSString stringWithFormat:@" %@ -> %@ -> %@", NSStringFromClass([target class]), NSStringFromClass([self class]), NSStringFromSelector(action)];
-    [[CCDebugCrashHelper manager].crashLastStep addObject:actionDetailInfo];
+    NSString *mClassName = NSStringFromClass([target class]);
+    if (![mClassName hasPrefix:@"CC"]) {
+        NSString *actionDetailInfo = [NSString stringWithFormat:@" %@ -> %@ -> %@", mClassName, NSStringFromClass([self class]), NSStringFromSelector(action)];
+        [[CCDebugCrashHelper manager].crashLastStep addObject:actionDetailInfo];
+    }
+    [self CCDebutTool_sendAction:action to:target forEvent:event];
 }
 
 @end

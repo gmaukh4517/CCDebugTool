@@ -24,17 +24,18 @@ static inline void AutomaticWritingSwizzleSelector(Class class, SEL originalSele
 
 +(void)CCHook
 {
-    AutomaticWritingSwizzleSelector([self class], @selector(pushViewController:animated:), @selector(cc_pushViewController:animated:));
-    AutomaticWritingSwizzleSelector([self class], @selector(popViewControllerAnimated:), @selector(cc_popViewControllerAnimated:));
+    AutomaticWritingSwizzleSelector([self class], @selector(pushViewController:animated:), @selector(CCDebutTool_pushViewController:animated:));
+    AutomaticWritingSwizzleSelector([self class], @selector(popViewControllerAnimated:), @selector(CCDebutTool_popViewControllerAnimated:));
 }
 
-- (void)cc_pushViewController:(UIViewController *)viewController animated:(BOOL)animated
+- (void)CCDebutTool_pushViewController:(UIViewController *)viewController animated:(BOOL)animated
 {
+    [self CCDebutTool_pushViewController:viewController animated:animated];
 }
 
--(void)cc_popViewControllerAnimated:(BOOL)animated
+-(void)CCDebutTool_popViewControllerAnimated:(BOOL)animated
 {
-    
+    [self CCDebutTool_popViewControllerAnimated:animated];
 }
 
 @end

@@ -28,7 +28,7 @@
 
 @interface CCMonitorService : NSObject
 
-+ (void)start:(UIWindow *)monitorWindow;
++ (void)start:(UIView *)monitorWindow;
 
 + (void)stop;
 

@@ -33,8 +33,8 @@
 /** 主色调 **/
 @property (nonatomic, copy) UIColor *mainColor;
 
-/** 日志最大数量，默认50条 **/
-@property (nonatomic, assign) int maxLogsCount;
+/** 日志最大数量，默认20条 **/
+@property (nonatomic, assign) NSInteger maxLogsCount;
 
 /** Crash日志最大数量，默认20条  **/
 @property (nonatomic, assign) NSInteger maxCrashCount;

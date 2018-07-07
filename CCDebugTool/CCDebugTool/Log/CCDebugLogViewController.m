@@ -27,6 +27,7 @@
 #import "CCDebugContentViewController.h"
 #import "CCDebugDataSource.h"
 #import "CCDebugTool.h"
+#import "UIViewController+CCDebug.h"
 
 @interface CCDebugLogViewController () <UITableViewDelegate, UIScrollViewDelegate>
 
@@ -55,7 +56,7 @@
     UISegmentedControl *segmentedControl = [[UISegmentedControl alloc] initWithItems:_itemTitle];
     segmentedControl.selectedSegmentIndex = 0;
     segmentedControl.clipsToBounds = YES;
-    segmentedControl.tintColor = [UIColor whiteColor];
+    segmentedControl.tintColor = self.navigationController.navigationBar.tintColor;
     segmentedControl.frame = CGRectMake(0, 0, 200, 30);
     segmentedControl.momentary = NO;
     [segmentedControl addTarget:self action:@selector(didSegmentedControl:) forControlEvents:UIControlEventValueChanged];
@@ -164,7 +165,7 @@
     viewController.hidesBottomBarWhenPushed = YES;
     viewController.dataArr = self.dataSource.dataArr;
     viewController.selectedIndex = indexPath.row;
-    [self.navigationController pushViewController:viewController animated:YES];
+    [self pushNewViewController:viewController];
 }
 
 #pragma mark -

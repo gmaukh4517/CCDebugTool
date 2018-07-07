@@ -87,19 +87,19 @@
     [super layoutSubviews];
     CGRect imageFrame = self.imageView.frame;
     imageFrame.origin.x = 10;
-    imageFrame.size.width = 55;
-    imageFrame.size.height = 55;
+    imageFrame.size.width = self.contentView.frame.size.height - 10;
+    imageFrame.size.height = imageFrame.size.width;
     self.imageView.frame = imageFrame;
     self.imageView.center = CGPointMake(self.imageView.center.x, self.contentView.center.y);
     
     CGRect textLabelFrame = self.textLabel.frame;
     textLabelFrame.origin.x = imageFrame.origin.x + imageFrame.size.width + 10;
-    textLabelFrame.origin.y = imageFrame.origin.y - 5;
+//    textLabelFrame.origin.y = imageFrame.origin.y - 5;
     self.textLabel.frame = textLabelFrame;
     
     CGRect detailTextLabelFrame = self.detailTextLabel.frame;
     detailTextLabelFrame.origin.x = textLabelFrame.origin.x;
-    detailTextLabelFrame.origin.y = detailTextLabelFrame.origin.y + 5;
+//    detailTextLabelFrame.origin.y = detailTextLabelFrame.origin.y + 5;
     self.detailTextLabel.frame = detailTextLabelFrame;
 }
 

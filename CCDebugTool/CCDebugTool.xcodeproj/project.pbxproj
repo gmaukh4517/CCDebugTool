@@ -6,6 +6,20 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		425A6E4E208B14560097DD5D /* CCAggregate */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 425A6E51208B14560097DD5D /* Build configuration list for PBXAggregateTarget "CCAggregate" */;
+			buildPhases = (
+				425A6E52208B146C0097DD5D /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = CCAggregate;
+			productName = CCAggregate;
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
 		421E6BE21FB13EB70068FB1E /* CCSpeedTestViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 421E6BE01FB13EB70068FB1E /* CCSpeedTestViewController.h */; };
 		421E6BE31FB13EB70068FB1E /* CCSpeedTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 421E6BE11FB13EB70068FB1E /* CCSpeedTestViewController.m */; };
@@ -27,6 +41,9 @@
 		425F00801FD7CB4200368E4E /* LeftDatabaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 425F007E1FD7CB4200368E4E /* LeftDatabaseView.m */; };
 		425F008D1FD7DA1300368E4E /* DatabaseTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 425F008B1FD7DA1300368E4E /* DatabaseTableViewCell.h */; };
 		425F008E1FD7DA1300368E4E /* DatabaseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 425F008C1FD7DA1300368E4E /* DatabaseTableViewCell.m */; };
+		4265FBBA20F05FF700DE2854 /* UIViewController+CCDebug.h in Headers */ = {isa = PBXBuildFile; fileRef = 4265FBB820F05FF700DE2854 /* UIViewController+CCDebug.h */; };
+		4265FBBB20F05FF700DE2854 /* UIViewController+CCDebug.m in Sources */ = {isa = PBXBuildFile; fileRef = 4265FBB920F05FF700DE2854 /* UIViewController+CCDebug.m */; };
+		4265FBC920F06AEA00DE2854 /* QuickLook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4265FBC820F06AEA00DE2854 /* QuickLook.framework */; };
 		4266D3AB20089EC500D6EE07 /* CCNetworkInfoViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 4266D3A920089EC500D6EE07 /* CCNetworkInfoViewController.h */; };
 		4266D3AC20089EC500D6EE07 /* CCNetworkInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4266D3AA20089EC500D6EE07 /* CCNetworkInfoViewController.m */; };
 		4266D3AF2008A03900D6EE07 /* CCNetworkInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 4266D3AD2008A03900D6EE07 /* CCNetworkInfo.h */; };
@@ -38,6 +55,8 @@
 		426A79AC1FAC3ADA00B328C1 /* CCFilePathTreeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 426A79AA1FAC3ADA00B328C1 /* CCFilePathTreeView.m */; };
 		426A79AF1FAC3BCC00B328C1 /* CCSandboxCollectionViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 426A79AD1FAC3BCC00B328C1 /* CCSandboxCollectionViewCell.h */; };
 		426A79B01FAC3BCC00B328C1 /* CCSandboxCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 426A79AE1FAC3BCC00B328C1 /* CCSandboxCollectionViewCell.m */; };
+		427408E520F08F9D008C3E6D /* CCPreviewItem.h in Headers */ = {isa = PBXBuildFile; fileRef = 427408E320F08F9D008C3E6D /* CCPreviewItem.h */; };
+		427408E620F08F9D008C3E6D /* CCPreviewItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 427408E420F08F9D008C3E6D /* CCPreviewItem.m */; };
 		428B60661FAC056F002577C0 /* CCSandboxEntity.h in Headers */ = {isa = PBXBuildFile; fileRef = 428B60641FAC056F002577C0 /* CCSandboxEntity.h */; };
 		428B60671FAC056F002577C0 /* CCSandboxEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 428B60651FAC056F002577C0 /* CCSandboxEntity.m */; };
 		428B606A1FAC0586002577C0 /* CCSandboxViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 428B60681FAC0586002577C0 /* CCSandboxViewController.h */; };
@@ -173,8 +192,8 @@
 		42F0A49C1F59355E00ACD4FA /* CCMonitorService.m in Sources */ = {isa = PBXBuildFile; fileRef = 42F0A4191F59355E00ACD4FA /* CCMonitorService.m */; };
 		42F0A49D1F59355E00ACD4FA /* CCPerformanceConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = 42F0A41A1F59355E00ACD4FA /* CCPerformanceConfig.h */; };
 		42F0A49E1F59355E00ACD4FA /* CCPerformanceConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 42F0A41B1F59355E00ACD4FA /* CCPerformanceConfig.m */; };
-		42F0A49F1F59355E00ACD4FA /* Reachability.h in Headers */ = {isa = PBXBuildFile; fileRef = 42F0A41C1F59355E00ACD4FA /* Reachability.h */; };
-		42F0A4A01F59355E00ACD4FA /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 42F0A41D1F59355E00ACD4FA /* Reachability.m */; };
+		42F0A49F1F59355E00ACD4FA /* CCDebugReachability.h in Headers */ = {isa = PBXBuildFile; fileRef = 42F0A41C1F59355E00ACD4FA /* CCDebugReachability.h */; };
+		42F0A4A01F59355E00ACD4FA /* CCDebugReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 42F0A41D1F59355E00ACD4FA /* CCDebugReachability.m */; };
 		42F0A4A11F59355E00ACD4FA /* CCPerformanceStatusBar.h in Headers */ = {isa = PBXBuildFile; fileRef = 42F0A41F1F59355E00ACD4FA /* CCPerformanceStatusBar.h */; };
 		42F0A4A21F59355E00ACD4FA /* CCPerformanceStatusBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 42F0A4201F59355E00ACD4FA /* CCPerformanceStatusBar.m */; };
 		42F0A4A31F59355E00ACD4FA /* CCMonitorLabel.h in Headers */ = {isa = PBXBuildFile; fileRef = 42F0A4221F59355E00ACD4FA /* CCMonitorLabel.h */; };
@@ -210,6 +229,9 @@
 		425F007E1FD7CB4200368E4E /* LeftDatabaseView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LeftDatabaseView.m; sourceTree = "<group>"; };
 		425F008B1FD7DA1300368E4E /* DatabaseTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DatabaseTableViewCell.h; sourceTree = "<group>"; };
 		425F008C1FD7DA1300368E4E /* DatabaseTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DatabaseTableViewCell.m; sourceTree = "<group>"; };
+		4265FBB820F05FF700DE2854 /* UIViewController+CCDebug.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+CCDebug.h"; sourceTree = "<group>"; };
+		4265FBB920F05FF700DE2854 /* UIViewController+CCDebug.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+CCDebug.m"; sourceTree = "<group>"; };
+		4265FBC820F06AEA00DE2854 /* QuickLook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuickLook.framework; path = System/Library/Frameworks/QuickLook.framework; sourceTree = SDKROOT; };
 		4266D3A920089EC500D6EE07 /* CCNetworkInfoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCNetworkInfoViewController.h; sourceTree = "<group>"; };
 		4266D3AA20089EC500D6EE07 /* CCNetworkInfoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CCNetworkInfoViewController.m; sourceTree = "<group>"; };
 		4266D3AD2008A03900D6EE07 /* CCNetworkInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCNetworkInfo.h; sourceTree = "<group>"; };
@@ -221,6 +243,8 @@
 		426A79AA1FAC3ADA00B328C1 /* CCFilePathTreeView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CCFilePathTreeView.m; sourceTree = "<group>"; };
 		426A79AD1FAC3BCC00B328C1 /* CCSandboxCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCSandboxCollectionViewCell.h; sourceTree = "<group>"; };
 		426A79AE1FAC3BCC00B328C1 /* CCSandboxCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CCSandboxCollectionViewCell.m; sourceTree = "<group>"; };
+		427408E320F08F9D008C3E6D /* CCPreviewItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCPreviewItem.h; sourceTree = "<group>"; };
+		427408E420F08F9D008C3E6D /* CCPreviewItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CCPreviewItem.m; sourceTree = "<group>"; };
 		428B60641FAC056F002577C0 /* CCSandboxEntity.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCSandboxEntity.h; sourceTree = "<group>"; };
 		428B60651FAC056F002577C0 /* CCSandboxEntity.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CCSandboxEntity.m; sourceTree = "<group>"; };
 		428B60681FAC0586002577C0 /* CCSandboxViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCSandboxViewController.h; sourceTree = "<group>"; };
@@ -358,8 +382,8 @@
 		42F0A4191F59355E00ACD4FA /* CCMonitorService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCMonitorService.m; sourceTree = "<group>"; };
 		42F0A41A1F59355E00ACD4FA /* CCPerformanceConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCPerformanceConfig.h; sourceTree = "<group>"; };
 		42F0A41B1F59355E00ACD4FA /* CCPerformanceConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCPerformanceConfig.m; sourceTree = "<group>"; };
-		42F0A41C1F59355E00ACD4FA /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
-		42F0A41D1F59355E00ACD4FA /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		42F0A41C1F59355E00ACD4FA /* CCDebugReachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCDebugReachability.h; sourceTree = "<group>"; };
+		42F0A41D1F59355E00ACD4FA /* CCDebugReachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCDebugReachability.m; sourceTree = "<group>"; };
 		42F0A41F1F59355E00ACD4FA /* CCPerformanceStatusBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCPerformanceStatusBar.h; sourceTree = "<group>"; };
 		42F0A4201F59355E00ACD4FA /* CCPerformanceStatusBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCPerformanceStatusBar.m; sourceTree = "<group>"; };
 		42F0A4221F59355E00ACD4FA /* CCMonitorLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCMonitorLabel.h; sourceTree = "<group>"; };
@@ -380,6 +404,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4265FBC920F06AEA00DE2854 /* QuickLook.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -483,6 +508,23 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		4265FBB720F05FD900DE2854 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				4265FBB820F05FF700DE2854 /* UIViewController+CCDebug.h */,
+				4265FBB920F05FF700DE2854 /* UIViewController+CCDebug.m */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
+		4265FBC720F06AEA00DE2854 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4265FBC820F06AEA00DE2854 /* QuickLook.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		4266D3B12008B14700D6EE07 /* RouteAddress */ = {
 			isa = PBXGroup;
 			children = (
@@ -526,9 +568,9 @@
 		427010DA1FAB1E6800BE8E8F /* Sandbox */ = {
 			isa = PBXGroup;
 			children = (
+				428B60321FABF676002577C0 /* View */,
 				428B602F1FABF676002577C0 /* Controller */,
 				428B602E1FABF676002577C0 /* Model */,
-				428B60321FABF676002577C0 /* View */,
 			);
 			path = Sandbox;
 			sourceTree = "<group>";
@@ -538,6 +580,8 @@
 			children = (
 				428B60641FAC056F002577C0 /* CCSandboxEntity.h */,
 				428B60651FAC056F002577C0 /* CCSandboxEntity.m */,
+				427408E320F08F9D008C3E6D /* CCPreviewItem.h */,
+				427408E420F08F9D008C3E6D /* CCPreviewItem.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -689,8 +733,8 @@
 			isa = PBXGroup;
 			children = (
 				42EA10AF1FB42CD30078D439 /* RetainCycleAnalysisCache.h */,
-				42EA10B01FB42CD30078D439 /* ProfilerDataSource.h */,
 				42EA10B11FB42CD30078D439 /* RetainCycleAnalysisCache.m */,
+				42EA10B01FB42CD30078D439 /* ProfilerDataSource.h */,
 				42EA10B21FB42CD30078D439 /* ProfilerDataSource.m */,
 			);
 			path = ViewModel;
@@ -713,9 +757,9 @@
 			isa = PBXGroup;
 			children = (
 				42EA10BB1FB42CD30078D439 /* ProfilerGenerationsSectionHeaderView.h */,
+				42EA10BE1FB42CD30078D439 /* ProfilerGenerationsSectionHeaderView.m */,
 				42EA10BC1FB42CD30078D439 /* ProfilerTableHeader.h */,
 				42EA10BD1FB42CD30078D439 /* ProfilerTableHeader.m */,
-				42EA10BE1FB42CD30078D439 /* ProfilerGenerationsSectionHeaderView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -728,8 +772,8 @@
 				42EA10C81FB42CD30078D439 /* fishhook */,
 				42EA10CB1FB42CD30078D439 /* Layout */,
 				42EA10E41FB42CD30078D439 /* Graph */,
-				42EA10F21FB42CD30078D439 /* FBRetainCycleUtils.h */,
 				42EA10F31FB42CD30078D439 /* Detector */,
+				42EA10F21FB42CD30078D439 /* FBRetainCycleUtils.h */,
 				42EA10F91FB42CD30078D439 /* FBRetainCycleUtils.m */,
 			);
 			path = FBRetainCycleDetector;
@@ -833,16 +877,16 @@
 		42EA10E41FB42CD30078D439 /* Graph */ = {
 			isa = PBXGroup;
 			children = (
-				42EA10E51FB42CD30078D439 /* FBObjectiveCBlock.h */,
-				42EA10E61FB42CD30078D439 /* Specialization */,
-				42EA10E91FB42CD30078D439 /* FBObjectGraphConfiguration.h */,
-				42EA10EA1FB42CD30078D439 /* FBObjectiveCObject.h */,
-				42EA10EB1FB42CD30078D439 /* FBObjectiveCGraphElement.mm */,
 				42EA10EC1FB42CD30078D439 /* Internal */,
-				42EA10EE1FB42CD30078D439 /* FBObjectGraphConfiguration.m */,
+				42EA10E61FB42CD30078D439 /* Specialization */,
+				42EA10E51FB42CD30078D439 /* FBObjectiveCBlock.h */,
 				42EA10EF1FB42CD30078D439 /* FBObjectiveCBlock.m */,
+				42EA10E91FB42CD30078D439 /* FBObjectGraphConfiguration.h */,
+				42EA10EE1FB42CD30078D439 /* FBObjectGraphConfiguration.m */,
+				42EA10EA1FB42CD30078D439 /* FBObjectiveCObject.h */,
 				42EA10F01FB42CD30078D439 /* FBObjectiveCObject.m */,
 				42EA10F11FB42CD30078D439 /* FBObjectiveCGraphElement.h */,
+				42EA10EB1FB42CD30078D439 /* FBObjectiveCGraphElement.mm */,
 			);
 			path = Graph;
 			sourceTree = "<group>";
@@ -879,19 +923,19 @@
 		42EA10FA1FB42CD30078D439 /* FBAllocationTracker */ = {
 			isa = PBXGroup;
 			children = (
+				42EA11011FB42CD30078D439 /* NSObject+FBAllocationTracker.h */,
 				42EA10FB1FB42CD30078D439 /* NSObject+FBAllocationTracker.mm */,
 				42EA10FC1FB42CD30078D439 /* FBAllocationTracker.h */,
 				42EA10FD1FB42CD30078D439 /* FBAllocationTrackerImpl.h */,
-				42EA10FE1FB42CD30078D439 /* FBAllocationTrackerSummary.h */,
-				42EA10FF1FB42CD30078D439 /* FBAllocationTrackerHelpers.h */,
-				42EA11001FB42CD30078D439 /* FBAllocationTrackerManager.mm */,
-				42EA11011FB42CD30078D439 /* NSObject+FBAllocationTracker.h */,
 				42EA11021FB42CD30078D439 /* FBAllocationTrackerImpl.mm */,
+				42EA10FE1FB42CD30078D439 /* FBAllocationTrackerSummary.h */,
+				42EA110D1FB42CD30078D439 /* FBAllocationTrackerSummary.m */,
+				42EA10FF1FB42CD30078D439 /* FBAllocationTrackerHelpers.h */,
+				42EA110B1FB42CD30078D439 /* FBAllocationTrackerManager.h */,
+				42EA11001FB42CD30078D439 /* FBAllocationTrackerManager.mm */,
 				42EA11031FB42CD30078D439 /* FBAllocationTrackerFunctors.h */,
 				42EA11041FB42CD30078D439 /* Generations */,
-				42EA110B1FB42CD30078D439 /* FBAllocationTrackerManager.h */,
 				42EA110C1FB42CD30078D439 /* FBAllocationTrackerDefines.h */,
-				42EA110D1FB42CD30078D439 /* FBAllocationTrackerSummary.m */,
 			);
 			path = FBAllocationTracker;
 			sourceTree = "<group>";
@@ -925,6 +969,7 @@
 			children = (
 				42F0A3771F59350100ACD4FA /* CCDebugTool */,
 				42F0A3761F59350100ACD4FA /* Products */,
+				4265FBC720F06AEA00DE2854 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -939,6 +984,7 @@
 		42F0A3771F59350100ACD4FA /* CCDebugTool */ = {
 			isa = PBXGroup;
 			children = (
+				4265FBB720F05FD900DE2854 /* Category */,
 				42EA10AC1FB42CD30078D439 /* MemoryProfiler */,
 				42D5AD3D1FAC61B60063C136 /* Tool */,
 				42F0A38B1F59355E00ACD4FA /* HTTP */,
@@ -1055,8 +1101,8 @@
 				42F0A4191F59355E00ACD4FA /* CCMonitorService.m */,
 				42F0A41A1F59355E00ACD4FA /* CCPerformanceConfig.h */,
 				42F0A41B1F59355E00ACD4FA /* CCPerformanceConfig.m */,
-				42F0A41C1F59355E00ACD4FA /* Reachability.h */,
-				42F0A41D1F59355E00ACD4FA /* Reachability.m */,
+				42F0A41C1F59355E00ACD4FA /* CCDebugReachability.h */,
+				42F0A41D1F59355E00ACD4FA /* CCDebugReachability.m */,
 			);
 			path = PerformanceHelper;
 			sourceTree = "<group>";
@@ -1145,6 +1191,7 @@
 				42D5AD4E1FAC62CD0063C136 /* CCPingServices.h in Headers */,
 				42EA11301FB42CD30078D439 /* FBClassStrongLayout.h in Headers */,
 				42F0A4991F59355E00ACD4FA /* CCMonitorHelper.h in Headers */,
+				4265FBBA20F05FF700DE2854 /* UIViewController+CCDebug.h in Headers */,
 				42FC5B4B1FC4154700375959 /* CCCookiesViewController.h in Headers */,
 				421E6BE71FB140E00068FB1E /* CCSpeedView.h in Headers */,
 				42EA11421FB42CD30078D439 /* FBRetainCycleUtils.h in Headers */,
@@ -1179,7 +1226,7 @@
 				42F0A4421F59355E00ACD4FA /* CCDebugCrashHelper.h in Headers */,
 				424603081FAFF05000467266 /* ToolViewController.h in Headers */,
 				42F0A43E1F59355E00ACD4FA /* CCDebugHttpDetailViewController.h in Headers */,
-				42F0A49F1F59355E00ACD4FA /* Reachability.h in Headers */,
+				42F0A49F1F59355E00ACD4FA /* CCDebugReachability.h in Headers */,
 				42EA11741FB43FE60078D439 /* CCNetworkTransaction.h in Headers */,
 				42EA11281FB42CD30078D439 /* FBClassStrongLayoutHelpers.h in Headers */,
 				42F0A49B1F59355E00ACD4FA /* CCMonitorService.h in Headers */,
@@ -1189,6 +1236,7 @@
 				42EA11451FB42CD30078D439 /* FBNodeEnumerator.h in Headers */,
 				428B60661FAC056F002577C0 /* CCSandboxEntity.h in Headers */,
 				42EA11611FB435210078D439 /* CCNetwork.h in Headers */,
+				427408E520F08F9D008C3E6D /* CCPreviewItem.h in Headers */,
 				42F0A37A1F59350100ACD4FA /* CCDebugTool.h in Headers */,
 				42EA114F1FB42CD30078D439 /* NSObject+FBAllocationTracker.h in Headers */,
 				42FC5B4F1FC418AF00375959 /* CCCookieDetailViewController.h in Headers */,
@@ -1255,6 +1303,10 @@
 				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = "\U001bCC";
 				TargetAttributes = {
+					425A6E4E208B14560097DD5D = {
+						CreatedOnToolsVersion = 9.3;
+						ProvisioningStyle = Automatic;
+					};
 					42F0A3741F59350100ACD4FA = {
 						CreatedOnToolsVersion = 8.3.3;
 						ProvisioningStyle = Automatic;
@@ -1274,6 +1326,7 @@
 			projectRoot = "";
 			targets = (
 				42F0A3741F59350100ACD4FA /* CCDebugTool */,
+				425A6E4E208B14560097DD5D /* CCAggregate */,
 			);
 		};
 /* End PBXProject section */
@@ -1287,6 +1340,22 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		425A6E52208B146C0097DD5D /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Sets the target folders and the final framework product.\nFMK_NAME=${PROJECT_NAME}\nFMK_VERSION=CC\nOPEN_PATH=${SRCROOT}/Products\n\n# Install dir will be the final output to the framework or bundle.\n# The following line create it in the root folder of the current project.\nINSTALL_DIR=${OPEN_PATH}/${FMK_NAME}.framework\n#INSTALL_BUNDLE=${OPEN_PATH}/${FMK_NAME}.bundle\n\n# Working dir will be deleted after the framework or bundle creation.\nWRK_DIR=build\n\n# framework\nDEVICE_DIR=${WRK_DIR}/Release-iphoneos/${FMK_NAME}.framework\nSIMULATOR_DIR=${WRK_DIR}/Debug-iphonesimulator/${FMK_NAME}.framework\n\n# bundle\n#DEVICE_BUNDLE=${WRK_DIR}/Release-iphoneos/${FMK_NAME}.bundle\n#SIMULATOR_BUNDLE=${WRK_DIR}/Debug-iphonesimulator/${FMK_NAME}.bundle\n\n# -configuration ${CONFIGURATION}\n# Clean and Building both architectures.\nxcodebuild -configuration \"Release\" -target \"${FMK_NAME}\" -sdk iphoneos clean build\nxcodebuild -configuration \"Debug\" -target \"${FMK_NAME}\" -sdk iphonesimulator clean build\n\n# Cleaning the oldest.\nif [ -d \"${OPEN_PATH}\" ]\nthen\nrm -rf \"${OPEN_PATH}\"\nfi\n\n# Creates and renews the final product folder.\nmkdir -p \"${INSTALL_DIR}\"\nmkdir -p \"${INSTALL_DIR}/Versions\"\nmkdir -p \"${INSTALL_DIR}/Versions/${FMK_VERSION}\"\nmkdir -p \"${INSTALL_DIR}/Versions/${FMK_VERSION}/Resources\"\nmkdir -p \"${INSTALL_DIR}/Versions/${FMK_VERSION}/Headers\"\n\n# bundle\n#mkdir -p \"${INSTALL_BUNDLE}\"\n\n# Creates the internal links.\n# It MUST uses relative path, otherwise will not work when the folder is copied/moved.\nln -s \"${FMK_VERSION}\" \"${INSTALL_DIR}/Versions/Current\"\nln -s \"Versions/Current/Headers\" \"${INSTALL_DIR}/Headers\"\nln -s \"Versions/Current/Resources\" \"${INSTALL_DIR}/Resources\"\nln -s \"Versions/Current/${FMK_NAME}\" \"${INSTALL_DIR}/${FMK_NAME}\"\n\n# Copies the headers and resources files to the final product folder.\ncp -R \"${DEVICE_DIR}/Headers/\" \"${INSTALL_DIR}/Versions/${FMK_VERSION}/Headers/\"\ncp -R \"${DEVICE_DIR}/\" \"${INSTALL_DIR}/Versions/${FMK_VERSION}/Resources/\"\n\n# bundle\n#cp -R \"${DEVICE_BUNDLE}/\" \"${INSTALL_BUNDLE}/\"\n\n# Removes the binary and header from the resources folder.\nrm -r \"${INSTALL_DIR}/Versions/${FMK_VERSION}/Resources/Headers\"\nrm -r \"${INSTALL_DIR}/Versions/${FMK_VERSION}/Resources/${FMK_NAME}\"\n\n# Uses the Lipo Tool to merge both binary files (i386 + armv6/armv7) into one Universal final product.\nlipo -create \"${DEVICE_DIR}/${FMK_NAME}\" \"${SIMULATOR_DIR}/${FMK_NAME}\" -output \"${INSTALL_DIR}/${FMK_NAME}\"\n#lipo -create \"${DEVICE_BUNDLE}/${FMK_NAME}\" \"${SIMULATOR_BUNDLE}/${FMK_NAME}\" -output \"${INSTALL_BUNDLE}/${FMK_NAME}\"\n\nrm -r \"${WRK_DIR}\"\n\nopen \"${OPEN_PATH}\"";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		42F0A3701F59350100ACD4FA /* Sources */ = {
@@ -1318,7 +1387,7 @@
 				42F0A4A21F59355E00ACD4FA /* CCPerformanceStatusBar.m in Sources */,
 				42EA11101FB42CD30078D439 /* RetainCycleAnalysisCache.m in Sources */,
 				42D5AD571FAC65680063C136 /* CCPingViewController.m in Sources */,
-				42F0A4A01F59355E00ACD4FA /* Reachability.m in Sources */,
+				42F0A4A01F59355E00ACD4FA /* CCDebugReachability.m in Sources */,
 				42EA112A1FB42CD30078D439 /* Struct.mm in Sources */,
 				42EA11461FB42CD30078D439 /* FBRetainCycleDetector.mm in Sources */,
 				42EA11141FB42CD30078D439 /* CCMemoryProfilerViewController.m in Sources */,
@@ -1333,6 +1402,7 @@
 				42EA115A1FB42CD30078D439 /* FBAllocationTrackerSummary.m in Sources */,
 				42EA11311FB42CD30078D439 /* FBClassStrongLayoutHelpers.m in Sources */,
 				42EA111B1FB42CD30078D439 /* ProfilerGenerationsSectionHeaderView.m in Sources */,
+				4265FBBB20F05FF700DE2854 /* UIViewController+CCDebug.m in Sources */,
 				42F0A4451F59355E00ACD4FA /* CCDebugDataSource.m in Sources */,
 				42EA11211FB42CD30078D439 /* fishhook.c in Sources */,
 				42EA111A1FB42CD30078D439 /* ProfilerTableHeader.m in Sources */,
@@ -1343,6 +1413,7 @@
 				425F00771FD7C36000368E4E /* DatabaseViewModel.m in Sources */,
 				42EA112D1FB42CD30078D439 /* FBStructEncodingParser.mm in Sources */,
 				42F0A4391F59355E00ACD4FA /* CCDebugHttpViewController.m in Sources */,
+				427408E620F08F9D008C3E6D /* CCPreviewItem.m in Sources */,
 				421E6BE31FB13EB70068FB1E /* CCSpeedTestViewController.m in Sources */,
 				42EA11361FB42CD30078D439 /* FBIvarReference.m in Sources */,
 				42EA11571FB42CD30078D439 /* FBAllocationTrackerNSZombieSupport.mm in Sources */,
@@ -1383,6 +1454,22 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
+		425A6E4F208B14560097DD5D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		425A6E50208B14560097DD5D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		42F0A37B1F59350100ACD4FA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1544,6 +1631,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		425A6E51208B14560097DD5D /* Build configuration list for PBXAggregateTarget "CCAggregate" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				425A6E4F208B14560097DD5D /* Debug */,
+				425A6E50208B14560097DD5D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		42F0A36F1F59350100ACD4FA /* Build configuration list for PBXProject "CCDebugTool" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

@@ -37,7 +37,6 @@
 @interface CCUncaughtExceptionHandler () {
     BOOL dismissed;
 }
-
 @end
 
 
@@ -59,15 +58,15 @@ static SignalHandler previousSignalHandler = NULL;
 
 + (NSArray *)backtrace
 {
-    void *callstack[128];
+    void *callstack[ 128 ];
     int frames = backtrace(callstack, 128);
     char **strs = backtrace_symbols(callstack, frames);
-    
+
     NSMutableArray *backtrace = [NSMutableArray arrayWithCapacity:frames];
     for (int i = skipAddressCount; i < skipAddressCount + reportAddressCount; i++)
-        [backtrace addObject:[NSString stringWithUTF8String:strs[i]]];
+        [backtrace addObject:[NSString stringWithUTF8String:strs[ i ]]];
     free(strs);
-    
+
     return backtrace;
 }
 
@@ -98,27 +97,27 @@ static SignalHandler previousSignalHandler = NULL;
     [errorStr appendFormat:@"Device is jailbreak：%@\n", cc_isJailbreak() ? @"NO" : @"YES"];
     [errorStr appendFormat:@"Error Cause：%@\n", [exception reason]];
     [errorStr appendFormat:@"%@ \n", [[exception userInfo] objectForKey:UncaughtExceptionHandlerAddressesKey]];
-    
+
     NSArray *arr = [CCDebugCrashHelper manager].crashLastStep;
     if (arr.count) {
         [errorStr appendString:@"Last Operation：\n"];
-        [errorStr appendFormat:@"%@",[arr componentsJoinedByString:@"\n"]];
+        [errorStr appendFormat:@"%@", [arr componentsJoinedByString:@"\n"]];
     }
-    
+
     NSMutableDictionary *carsDic = [NSMutableDictionary dictionary];
     [carsDic setObject:exception.name forKey:@"ErrName"];
     [carsDic setObject:[exception reason] forKey:@"ErrCause"];
     [carsDic setObject:[NSDate date] forKey:@"ErrDate"];
     [carsDic setObject:errorStr forKey:@"ErrMsg"];
     [carsDic setObject:@"6" forKey:@"ErrType"];
-    
+
     [[CCDebugCrashHelper manager] saveCrashException:carsDic];
-    
+
     if (!dismissed) {
         NSString *message = [NSString stringWithFormat:NSLocalizedString(@"如果点击继续，程序有可能会出现其他的问题，建议您还是点击退出按钮并重新打开\n\n"
                                                                          @"异常原因如下:\n%@\n%@",
                                                                          nil),
-                             [exception reason], [[exception userInfo] objectForKey:UncaughtExceptionHandlerAddressesKey]];
+                                                       [exception reason], [[exception userInfo] objectForKey:UncaughtExceptionHandlerAddressesKey]];
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"抱歉，程序出现了异常", nil)
                                                         message:message
                                                        delegate:self
@@ -130,24 +129,24 @@ static SignalHandler previousSignalHandler = NULL;
 
 /**
  统一错误处理
- 
+
  @param exception 错误信息
  */
 - (void)unifyHandleException:(NSException *)exception
 {
     dismissed = YES;
     [self validateAndSaveCriticalApplicationData:exception];
-    
+
     CFRunLoopRef runLoop = CFRunLoopGetCurrent();
     CFArrayRef allModes = CFRunLoopCopyAllModes(runLoop);
-    
+
     while (!dismissed) {
         for (NSString *mode in (__bridge NSArray *)allModes)
             CFRunLoopRunInMode((CFStringRef)mode, 0.001, false);
     }
-    
+
     CFRelease(allModes);
-    
+
     NSSetUncaughtExceptionHandler(NULL);
     signal(SIGABRT, SIG_DFL);
     signal(SIGILL, SIG_DFL);
@@ -155,12 +154,12 @@ static SignalHandler previousSignalHandler = NULL;
     signal(SIGFPE, SIG_DFL);
     signal(SIGBUS, SIG_DFL);
     signal(SIGPIPE, SIG_DFL);
-    
+
     if ([[exception name] isEqual:UncaughtExceptionHandlerSignalExceptionName])
         kill(getpid(), [[[exception userInfo] objectForKey:UncaughtExceptionHandlerSignalKey] intValue]);
     else
         [exception raise];
-    
+
     [self performSelector:@selector(setDismissed) withObject:nil afterDelay:2];
 }
 
@@ -177,11 +176,11 @@ void HandleException(NSException *exception)
     int32_t exceptionCount = OSAtomicIncrement32(&UncaughtExceptionCount);
     if (exceptionCount > UncaughtExceptionMaximum)
         return;
-    
+
     NSArray *callStack = [CCUncaughtExceptionHandler backtrace];
     NSMutableDictionary *userInfo = [NSMutableDictionary dictionaryWithDictionary:[exception userInfo]];
     [userInfo setObject:callStack forKey:UncaughtExceptionHandlerAddressesKey];
-    
+
     [[[CCUncaughtExceptionHandler alloc] init] performSelectorOnMainThread:@selector(unifyHandleException:)
                                                                 withObject:[NSException exceptionWithName:[exception name]
                                                                                                    reason:[exception reason]
@@ -197,7 +196,7 @@ void HandleException(NSException *exception)
 void CCExceptionRegister(void)
 {
     previousUncaughtExceptionHandler = NSGetUncaughtExceptionHandler();
-    
+
     NSSetUncaughtExceptionHandler(&HandleException);
 }
 
@@ -207,7 +206,7 @@ static void CCSignalHandler(int signal, siginfo_t *info, void *context)
     int32_t exceptionCount = OSAtomicIncrement32(&UncaughtExceptionCount);
     if (exceptionCount > UncaughtExceptionMaximum)
         return;
-    
+
     NSString *description = nil;
     switch (signal) {
         case SIGABRT:
@@ -231,20 +230,20 @@ static void CCSignalHandler(int signal, siginfo_t *info, void *context)
         default:
             description = [NSString stringWithFormat:@"Signal %d was raised!", signal];
     }
-    
-    
+
+
     NSMutableDictionary *userInfo = [NSMutableDictionary dictionaryWithObject:[NSNumber numberWithInt:signal] forKey:UncaughtExceptionHandlerSignalKey];
-    
+
     NSArray *callStack = [CCUncaughtExceptionHandler backtrace];
     [userInfo setObject:callStack forKey:UncaughtExceptionHandlerAddressesKey];
-    
+
     [[[CCUncaughtExceptionHandler alloc] init] performSelectorOnMainThread:@selector(unifyHandleException:)
                                                                 withObject:[NSException exceptionWithName:UncaughtExceptionHandlerSignalExceptionName
                                                                                                    reason:description
                                                                                                  userInfo:userInfo]
                                                              waitUntilDone:YES];
-    
-    
+
+
     if (previousSignalHandler) // 传递 handler
         previousSignalHandler(signal, info, context);
 }
@@ -266,7 +265,7 @@ void CCSignalInstal(void)
     sigaction(SIGABRT, NULL, &old_action);
     if (old_action.sa_flags & SA_SIGINFO)
         previousSignalHandler = old_action.sa_sigaction;
-    
+
     signal(SIGABRT, CCSignalRegister);
     signal(SIGILL, CCSignalRegister);
     signal(SIGSEGV, CCSignalRegister);
@@ -280,7 +279,7 @@ void InstalCrashHandler(void)
 {
     CCExceptionRegister();
     CCSignalInstal();
-    
+
     [UIControl CCHook];
     [UIViewController CCHook];
 }

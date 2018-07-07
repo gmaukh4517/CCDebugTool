@@ -14,6 +14,7 @@
 #import "CCSpeedTestViewController.h"
 #import "CCCookiesViewController.h"
 #import "DatabaseViewController.h"
+#import "UIViewController+CCDebug.h"
 
 @interface ToolViewController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -111,7 +112,7 @@
     
     if (viewController){
          viewController.hidesBottomBarWhenPushed = YES;
-        [self.navigationController pushViewController:viewController animated:YES];
+        [self pushNewViewController:viewController];
     }
 }
 

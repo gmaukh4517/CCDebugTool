@@ -28,7 +28,7 @@
 #import "CCDebugHttpDetailViewController.h"
 #import "CCHTTPTableViewCell.h"
 #import <pthread.h>
-
+#import "UIViewController+CCDebug.h"
 #import "CCNetworkRecorder.h"
 
 static inline void cc_dispatch_async_on_main_queue(void (^block)(void))
@@ -69,7 +69,7 @@ static inline void cc_dispatch_async_on_main_queue(void (^block)(void))
 {
     UILabel *titleText = [[UILabel alloc] initWithFrame:CGRectMake(([[UIScreen mainScreen] bounds].size.width - 120) / 2, 20, 120, 44)];
     titleText.backgroundColor = [UIColor clearColor];
-    titleText.textColor = [UIColor whiteColor];
+    titleText.textColor = self.navigationController.navigationBar.tintColor;
     titleText.textAlignment = NSTextAlignmentCenter;
     titleText.numberOfLines = 0;
     titleText.text = @"HTTP";
@@ -83,8 +83,7 @@ static inline void cc_dispatch_async_on_main_queue(void (^block)(void))
 {
     CCNetworkInfoViewController *viewController = [CCNetworkInfoViewController new];
     viewController.hidesBottomBarWhenPushed = YES;
-    self.navigationController.topViewController.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"HTTP" style:UIBarButtonItemStylePlain target:self action:nil];
-    [self.navigationController pushViewController:viewController animated:YES];
+    [self pushNewViewController:viewController];
 }
 
 - (void)initControl
@@ -202,6 +201,8 @@ static inline void cc_dispatch_async_on_main_queue(void (^block)(void))
     }
 
     cc_dispatch_async_on_main_queue(^() {
+        UILabel *titleText = (UILabel *)self.navigationItem.titleView;
+
         NSMutableDictionary *flowDic = [NSMutableDictionary dictionaryWithDictionary:[UINavigationBar appearance].titleTextAttributes];
         [flowDic setObject:[UIFont systemFontOfSize:12.0] forKey:NSFontAttributeName];
 
@@ -214,8 +215,9 @@ static inline void cc_dispatch_async_on_main_queue(void (^block)(void))
         NSMutableAttributedString *attrText = [[NSMutableAttributedString alloc] init];
         [attrText appendAttributedString:titleString];
         [attrText appendAttributedString:flowCountString];
-
-        UILabel *titleText = (UILabel *)self.navigationItem.titleView;
+        [attrText addAttribute:NSForegroundColorAttributeName
+                         value:titleText.textColor
+                         range:NSMakeRange(0, attrText.length)];
         titleText.attributedText = attrText;
 
         //        [self.httpViewTableView reloadData];
@@ -253,10 +255,10 @@ static inline void cc_dispatch_async_on_main_queue(void (^block)(void))
     return self.dataArray.count;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return 55;
-}
+//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    return 55;
+//}
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
@@ -296,7 +298,7 @@ static inline void cc_dispatch_async_on_main_queue(void (^block)(void))
     CCDebugHttpDetailViewController *viewController = [[CCDebugHttpDetailViewController alloc] init];
     viewController.hidesBottomBarWhenPushed = YES;
     viewController.detail = [self.dataArray objectAtIndex:indexPath.row];
-    [self.navigationController pushViewController:viewController animated:YES];
+    [self pushNewViewController:viewController];
 }
 
 @end

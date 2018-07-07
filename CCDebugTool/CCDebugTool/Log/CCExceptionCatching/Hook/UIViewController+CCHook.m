@@ -25,19 +25,18 @@ static inline void AutomaticWritingSwizzleSelector(Class class, SEL originalSele
 
 +(void)CCHook
 {
-    AutomaticWritingSwizzleSelector([self class], @selector(viewWillAppear:), @selector(cc_viewWillAppear:));
+    AutomaticWritingSwizzleSelector([self class], @selector(viewWillAppear:), @selector(CCDebutTool_viewWillAppear:));
 }
 
-- (void)cc_viewWillAppear:(BOOL)animated
+- (void)CCDebutTool_viewWillAppear:(BOOL)animated
 {
-    [self cc_viewWillAppear:animated];
-    
     if (self.navigationController.visibleViewController) {
         NSString *mClassName = [NSString stringWithUTF8String:object_getClassName(self.navigationController.visibleViewController)];
         if (![mClassName hasPrefix:@"CC"]){
             [[CCDebugCrashHelper manager].crashLastStep addObject:[NSString stringWithFormat:@"%@ - viewDidAppear", mClassName]];
         }
     }
+    [self CCDebutTool_viewWillAppear:animated];
 }
 
 @end

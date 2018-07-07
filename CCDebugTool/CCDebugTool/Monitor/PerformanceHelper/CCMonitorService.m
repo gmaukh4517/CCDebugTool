@@ -27,7 +27,7 @@
 #import "CCMonitorHelper.h"
 #import "CCPerformanceConfig.h"
 #import "CCPerformanceStatusBar.h"
-#import "Reachability.h"
+#import "CCDebugReachability.h"
 
 @interface CCMonitorService ()
 
@@ -39,7 +39,7 @@
 
 @property (strong, nonatomic) CCPerformanceStatusBar *monitorStatusBar;
 
-@property (strong, nonatomic) UIWindow *statusBarWindow;
+@property (strong, nonatomic) UIView *statusBarView;
 
 @property (strong, nonatomic) NSMutableDictionary *configDictionary;
 
@@ -113,28 +113,28 @@
     [_displayLink removeFromRunLoop:[NSRunLoop currentRunLoop] forMode:NSRunLoopCommonModes];
 }
 
-- (void)setBarWindow:(UIWindow *)window
+- (void)setBarWindow:(UIView *)window
 {
-    self.statusBarWindow = window;
+    self.statusBarView = window;
     _monitorStatusBar = [[CCPerformanceStatusBar alloc] initWithFrame:CGRectMake(0, 2, window.frame.size.width, 20)];
-    self.statusBarWindow.hidden = YES;
-    self.statusBarWindow.windowLevel = UIWindowLevelAlert + 1;
-    [self.statusBarWindow addSubview:self.monitorStatusBar];
+    self.statusBarView.hidden = YES;
+//    self.statusBarWindow.windowLevel = UIWindowLevelAlert + 1;
+    [self.statusBarView addSubview:self.monitorStatusBar];
 }
 
 #pragma mark - Private
 
-- (void)start:(UIWindow *)monitorWindow
+- (void)start:(UIView *)monitorWindow
 {
     [self setBarWindow:monitorWindow];
     _displayLink.paused = NO;
-    self.statusBarWindow.hidden = NO;
+    self.statusBarView.hidden = NO;
 }
 
 - (void)stop
 {
     _displayLink.paused = YES;
-    self.statusBarWindow.hidden = YES;
+    self.statusBarView.hidden = YES;
 }
 
 - (void)setMainColor:(UIColor *)mainColor
@@ -172,7 +172,7 @@
     self.monitorStatusBar.ramLabel.state = [self labelStateWith:CCPerformanceMonitorMemory value:ram];
     
     NSString *networkText = @"↑: -/- ↓: -/-";
-    Reachability *reachability = [Reachability reachabilityWithHostName:@"hah"];
+    CCDebugReachability *reachability = [CCDebugReachability reachabilityWithHostName:@"hah"];
     if (reachability.currentReachabilityStatus == ReachableViaWiFi) {
         float wifiS_preSecond = [[CCMonitorHelper getDataCounters][0] floatValue] - self.preWifi_S;
         float wifiR_preSecond = [[CCMonitorHelper getDataCounters][1] floatValue] - self.preWifi_R;
@@ -262,7 +262,7 @@
 
 #pragma mark API
 
-+ (void)start:(UIWindow *)monitorWindow
++ (void)start:(UIView *)monitorWindow
 {
     [[CCMonitorService sharedService] start:monitorWindow];
 }

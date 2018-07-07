@@ -1,0 +1,6 @@
+framework module CCDebugTool {
+  umbrella header "CCDebugTool.h"
+
+  export *
+  module * { export * }
+}

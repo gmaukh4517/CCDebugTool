@@ -26,6 +26,7 @@
 #import "CCDebugHttpDetailViewController.h"
 #import "CCDebugContentViewController.h"
 #import "CCDebugTool.h"
+#import "UIViewController+CCDebug.h"
 
 #define detailTitles @[ @"Request Url", @"Header Fields", @"Method", @"Status Code", @"Mime Type", @"Start Time", @"Total Duration", @"Request Body", @"Response Body" ]
 
@@ -171,7 +172,7 @@
 {
     NSString *value;
     if (n < KB) {
-        value = [NSString stringWithFormat:@"( %ziB ) Tap to view", n];
+        value = [NSString stringWithFormat:@"( %liB ) Tap to view", (long)n];
     } else if (n < MB) {
         value = [NSString stringWithFormat:@"( %.2fKB ) Tap to view", (float)n / (float)KB];
     } else if (n < GB) {
@@ -189,33 +190,33 @@
     NSString *key = [[self.dataArr objectAtIndex:indexPath.row] allKeys].lastObject;
     NSString *value = [[self.dataArr objectAtIndex:indexPath.row] objectForKey:key];
     
-    CCDebugContentViewController *vc = [[CCDebugContentViewController alloc] init];
+    CCDebugContentViewController *viewController = [[CCDebugContentViewController alloc] init];
     
-    vc.hidesBottomBarWhenPushed = YES;
+    viewController.hidesBottomBarWhenPushed = YES;
     if ([key isEqualToString:@"Request Url"]) {
-        vc.content = self.detail.url.absoluteString;
-        vc.title = @"接口地址";
+        viewController.content = self.detail.url.absoluteString;
+        viewController.title = @"接口地址";
     } else if ([key isEqualToString:@"Request Header"]) {
-        vc.title = @"请求Header";
-        vc.content = self.detail.showRequestAllHeaderFields;
+        viewController.title = @"请求Header";
+        viewController.content = self.detail.showRequestAllHeaderFields;
     } else if ([key isEqualToString:@"Response Header"]) {
-        vc.title = @"返回Header";
-        vc.content = self.detail.showResponseAllHeaderFields;
+        viewController.title = @"返回Header";
+        viewController.content = self.detail.showResponseAllHeaderFields;
     } else if ([key isEqualToString:@"Request Body"] && ![value isEqualToString:@"Empty"]) {
-        vc.content = self.detail.requestBody;
-        vc.title = @"请求数据";
+        viewController.content = self.detail.requestBody;
+        viewController.title = @"请求数据";
     } else if ([key isEqualToString:@"Response Body"] && ![value isEqualToString:@"Empty"]) {
-        vc.content = self.detail.responseBody;
+        viewController.content = self.detail.responseBody;
         if (self.detail.isImage) {
-            vc.content = nil;
-            vc.data = self.detail.responseData;
+            viewController.content = nil;
+            viewController.data = self.detail.responseData;
         }
-        vc.title = @"返回数据";
+        viewController.title = @"返回数据";
     } else {
         return;
     }
-    
-    [self.navigationController pushViewController:vc animated:YES];
+
+    [self pushNewViewController:viewController];
 }
 
 @end

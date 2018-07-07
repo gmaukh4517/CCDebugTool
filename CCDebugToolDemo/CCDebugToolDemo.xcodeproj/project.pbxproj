@@ -27,6 +27,7 @@
 
 /* Begin PBXFileReference section */
 		425F00811FD7D61D00368E4E /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
+		4265FBC420F069BC00DE2854 /* QuickLook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuickLook.framework; path = System/Library/Frameworks/QuickLook.framework; sourceTree = SDKROOT; };
 		42B185081FBD88C1002B066F /* CCDebugTool.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = CCDebugTool.bundle; sourceTree = "<group>"; };
 		42D5AD581FAC6B750063C136 /* libz.1.2.5.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.1.2.5.tbd; path = usr/lib/libz.1.2.5.tbd; sourceTree = SDKROOT; };
 		42EA10AB1FB427BE0078D439 /* CCDebugTool.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CCDebugTool.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -146,6 +147,7 @@
 		42F0A4CD1F593E2F00ACD4FA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4265FBC420F069BC00DE2854 /* QuickLook.framework */,
 				425F00811FD7D61D00368E4E /* libsqlite3.0.tbd */,
 				42EA115E1FB434500078D439 /* CoreTelephony.framework */,
 				42EA115C1FB42F260078D439 /* libstdc++.tbd */,
@@ -188,7 +190,7 @@
 				TargetAttributes = {
 					42F0A4B21F593D7700ACD4FA = {
 						CreatedOnToolsVersion = 8.3.3;
-						DevelopmentTeam = EMAE5F6UE9;
+						DevelopmentTeam = 7W7VQJKLJ2;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -350,7 +352,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = EMAE5F6UE9;
+				DEVELOPMENT_TEAM = 7W7VQJKLJ2;
 				INFOPLIST_FILE = CCDebugToolDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "-ObjC";
@@ -365,7 +367,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = EMAE5F6UE9;
+				DEVELOPMENT_TEAM = 7W7VQJKLJ2;
 				INFOPLIST_FILE = CCDebugToolDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "-ObjC";
