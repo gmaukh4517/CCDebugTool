@@ -35,13 +35,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "CCDebugTool/CCDebugTool/MemoryProfiler/MemoryProfiler/Controller/CCRetainCyclePresenter.m"
-            timestampString = "532418491.482003"
+            filePath = "CCDebugTool/CCDebugTool/Log/CCExceptionCatching/Hook/UIViewController+hook.m"
+            timestampString = "547549026.0607949"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "119"
-            endingLineNumber = "119"
-            landmarkName = "-cycleTableView"
+            startingLineNumber = "32"
+            endingLineNumber = "32"
+            landmarkName = "-bb_viewWillAppear:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -51,13 +51,27 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "CCDebugTool/CCDebugTool/Log/CCExceptionCatching/Hook/UIViewController+hook.m"
-            timestampString = "547549026.0607949"
+            filePath = "CCDebugTool/CCDebugTool/CCDebugTool.m"
+            timestampString = "566208882.242744"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "32"
-            endingLineNumber = "32"
-            landmarkName = "-bb_viewWillAppear:"
+            startingLineNumber = "233"
+            endingLineNumber = "233">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CCDebugTool/CCDebugTool/HTTP/Request/Controller/CCDebugHttpViewController.m"
+            timestampString = "566209006.521068"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "298"
+            endingLineNumber = "298"
+            landmarkName = "-tableView:didSelectRowAtIndexPath:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

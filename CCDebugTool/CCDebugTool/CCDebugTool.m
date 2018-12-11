@@ -50,6 +50,20 @@
     //    [[[UIApplication sharedApplication].delegate window] makeKeyWindow];
 }
 
+- (void)layoutSubviews
+{
+    [super layoutSubviews];
+
+    CGRect frame = self.frame;
+    if (@available(iOS 11.0, *)) {
+        if (!UIEdgeInsetsEqualToEdgeInsets([UIApplication sharedApplication].keyWindow.safeAreaInsets, UIEdgeInsetsZero)) {
+            frame.origin.y = 30;
+        }
+    }
+
+    self.frame = frame;
+}
+
 @end
 
 
