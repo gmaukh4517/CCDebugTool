@@ -26,6 +26,9 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
+#ifndef CCDebugTool_h
+#define CCDebugTool_h
+
 #define kCCNotifyKeyReloadHttp @"kCCNotifyKeyReloadHttp"
 
 @interface CCDebugTool : NSObject
@@ -47,15 +50,31 @@
 /** 启动Debug检测 **/
 - (void)enableDebugMode;
 
+/**
+ 设置服务配置参数多个
+
+ @param parameters 配置
+ @{ @"id":@"自定义唯一ID",
+    @"title":@“显示配置标题”,
+    @"parameter":@{@"所需Key":@"所需value"}}
+ id : 用于区分 （提供编辑功能，不定义以免出现重复）
+ Key : 自定义获取的参数
+ Value : 自定义获取的参数值
+ */
+- (void)setServiceParameters:(NSArray<NSDictionary *> *)parameters;
+- (NSDictionary *)getServiceParameter;
+
 /** 卡顿日志 **/
 - (NSArray *)CatonLogger;
 
 /** 奔溃日志 **/
 - (NSArray *)CrashLogger;
 
-+(UIImage *)cc_bundle:(NSString *)fileName;
++ (UIImage *)cc_bundle:(NSString *)fileName;
 
-+(UIImage *)cc_bundle:(NSString *)fileName
-          inDirectory:(NSString *)inDirectory;
++ (UIImage *)cc_bundle:(NSString *)fileName
+           inDirectory:(NSString *)inDirectory;
 
 @end
+
+#endif

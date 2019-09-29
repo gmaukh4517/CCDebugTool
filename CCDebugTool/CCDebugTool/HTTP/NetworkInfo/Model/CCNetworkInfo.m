@@ -8,14 +8,14 @@
 //
 
 #import "CCNetworkInfo.h"
+#import "getgateway.h"
+#import <CoreFoundation/CoreFoundation.h>
+#import <CoreTelephony/CTCarrier.h>
+#import <CoreTelephony/CTTelephonyNetworkInfo.h>
 #import <SystemConfiguration/CaptiveNetwork.h>
 #import <SystemConfiguration/SystemConfiguration.h>
-#import <CoreFoundation/CoreFoundation.h>
-#import <CoreTelephony/CTTelephonyNetworkInfo.h>
-#import <CoreTelephony/CTCarrier.h>
-#import <ifaddrs.h>
 #import <arpa/inet.h>
-#import "getgateway.h"
+#import <ifaddrs.h>
 
 @implementation CCNetworkinfoEntity
 
@@ -72,7 +72,7 @@ static NSString *kInterfaceNone = @"";
     self.networkInfo.netmask = [self getNetmaskOfInterface:self.currentInterface];
     self.networkInfo.broadcastAddress = [self getBroadcastAddressOfInterface:self.currentInterface];
     self.networkInfo.routerAddress = [self getRouterAddressOfInterface:self.currentInterface];
-
+    self.networkInfo.proxyAddress = [self getProxyAddress];
     return self.networkInfo;
 }
 
@@ -191,7 +191,7 @@ static NSString *kInterfaceNone = @"";
         return ip;
     }
 
-    NSURL *url = [NSURL URLWithString:@"http://www.dyndns.org/cgi-bin/check_ip.cgi"];
+    NSURL *url = [NSURL URLWithString:@"http://ip-api.com/json/?lang=zh-CN"];
     if (!url)
         return ip;
 
@@ -326,6 +326,19 @@ static NSString *kInterfaceNone = @"";
     return router;
 }
 
+- (NSString *)getProxyAddress
+{
+    NSString *proxyAddress = @"-";
+    NSDictionary *proxySettings = (__bridge NSDictionary *)(CFNetworkCopySystemProxySettings());
+    NSString *HTTPSProxy = [proxySettings objectForKey:@"HTTPSProxy"];
+    NSString *HTTPSPort = [proxySettings objectForKey:@"HTTPSPort"];
+    if (HTTPSProxy)
+        proxyAddress = HTTPSProxy;
+    if (HTTPSPort)
+        proxyAddress = [NSString stringWithFormat:@"%@ : %@", proxyAddress, HTTPSPort];
+    return proxyAddress;
+}
+
 #pragma mark -
 #pragma mark :. 初始化对象
 static void reachabilityCallback(SCNetworkReachabilityRef target, SCNetworkReachabilityFlags flags, void *info)
@@ -363,5 +376,3 @@ static void reachabilityCallback(SCNetworkReachabilityRef target, SCNetworkReach
     }
 }
 @end
-
-

@@ -17,6 +17,7 @@
 @property (nonatomic, copy) NSString *netmask;
 @property (nonatomic, copy) NSString *broadcastAddress;
 @property (nonatomic, copy) NSString *routerAddress;
+@property (nonatomic, copy) NSString *proxyAddress;
 
 @end
 

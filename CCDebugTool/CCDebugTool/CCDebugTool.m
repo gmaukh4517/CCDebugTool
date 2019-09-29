@@ -24,20 +24,83 @@
 //
 
 #import "CCDebugTool.h"
+#import <objc/runtime.h>
+
 #import "CCNetworkObserver.h"
 
 #import "CCAppFluecyMonitor.h"
+#import "CCLogMonitoring.h"
 #import "CCMonitorService.h"
 #import "CCUncaughtExceptionHandler.h"
-#import "CCLogMonitoring.h"
 
 #import "FBAllocationTrackerManager.h"
 #import "FBAssociationManager.h"
 
-#import "CCDebugHttpViewController.h"
 #import "CCDebugLogViewController.h"
+#import "CCDebugNetworkViewController.h"
 #import "CCMemoryProfilerViewController.h"
 #import "ToolViewController.h"
+
+
+#pragma mark -
+#pragma mark :. 苹果自带debug
+
+/**
+ 在iOS 11中，Apple添加了额外的检查以禁用此叠加层，除非设备是内部设备。 为了解决这个问题，我们将其淘汰出局
+ - [UIDebuggingInformationOverlay init]方法（如果是，则返回nil该设备是非内部的）
+ **/
+#if defined(DEBUG) && __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_11_0
+
+@interface UIWindow (PrivateMethods)
+- (void)_setWindowControlsStatusBarOrientation:(BOOL)orientation;
+@end
+
+@interface _FakeWindowClass : UIWindow
+@end
+
+@implementation _FakeWindowClass
+
++ (void)load
+{
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        Class UIDebuggingInformationOverlayClass = NSClassFromString(@"UIDebuggingInformationOverlay");
+        Method originalMethod = class_getInstanceMethod(UIDebuggingInformationOverlayClass, @selector(init));
+        Method swizzledMethod = class_getInstanceMethod([_FakeWindowClass class], @selector(initSwizzled));
+        method_exchangeImplementations(originalMethod, swizzledMethod);
+    });
+}
+
+- (instancetype)initSwizzled
+{
+    self = [super init];
+    if (self) {
+        [self _setWindowControlsStatusBarOrientation:NO];
+    }
+    return self;
+}
+
+@end
+
+#endif
+
+
+@interface _FakeGestureRecognizer : UIGestureRecognizer
+- (UIGestureRecognizerState)state;
+@end
+
+@implementation _FakeGestureRecognizer
+// [[UIDebuggingInformationOverlayInvokeGestureHandler mainHandler] _handleActivationGesture:(UIGestureRecognizer *)]
+// requires a UIGestureRecognizer, as it checks the state of it. We just fake that here.
+- (UIGestureRecognizerState)state
+{
+    return UIGestureRecognizerStateEnded;
+}
+@end
+
+
+#pragma mark -
+#pragma mark :. CCDebugTool
 
 @interface CCDebugWindow : UIWindow
 
@@ -56,16 +119,14 @@
 
     CGRect frame = self.frame;
     if (@available(iOS 11.0, *)) {
-        if (!UIEdgeInsetsEqualToEdgeInsets([UIApplication sharedApplication].keyWindow.safeAreaInsets, UIEdgeInsetsZero)) {
+        if ([UIApplication sharedApplication].keyWindow.safeAreaInsets.top == 44)
             frame.origin.y = 30;
-        }
     }
 
     self.frame = frame;
 }
 
 @end
-
 
 @interface CCDebugTool ()
 
@@ -96,7 +157,12 @@
         self.maxCrashCount = 20;
         self.maxLogsCount = 20;
 
-        self.debugWindow = [[CCDebugWindow alloc] initWithFrame:CGRectMake(([UIScreen mainScreen].bounds.size.width - 150) / 2, 0, 150, 20)];
+        [[NSNotificationCenter defaultCenter] addObserverForName:UIApplicationDidFinishLaunchingNotification
+                                                          object:nil
+                                                           queue:nil
+                                                      usingBlock:^(NSNotification *_Nonnull note) {
+                                                          [self showOnStatusBar];
+                                                      }];
     }
     return self;
 }
@@ -108,16 +174,29 @@
  */
 - (void)showOnStatusBar
 {
-    self.debugWindow.windowLevel = UIWindowLevelStatusBar + 1;
-    self.debugWindow.hidden = NO;
+    CCDebugWindow *debugWindow = [[CCDebugWindow alloc] initWithFrame:CGRectMake(([UIScreen mainScreen].bounds.size.width - 150) / 2, 0, 150, 22)];
+    debugWindow.rootViewController = [UIViewController new];
+    debugWindow.rootViewController.view.backgroundColor = [UIColor clearColor];
+    debugWindow.rootViewController.view.userInteractionEnabled = NO;
+    debugWindow.windowLevel = UIWindowLevelStatusBar + 1;
+    debugWindow.hidden = NO;
+    debugWindow.alpha = 1;
 
-    [CCMonitorService start:self.debugWindow];
+    [CCMonitorService start:debugWindow];
     [CCMonitorService mainColor:[UIColor colorWithRed:245 / 255.f green:116 / 255.f blue:91 / 255.f alpha:1.f]];
 
     UIButton *debugButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 150, 22)];
     [debugButton addTarget:self action:@selector(showDebug) forControlEvents:UIControlEventTouchUpInside];
-    [self.debugWindow addSubview:debugButton];
-    [self.debugWindow bringSubviewToFront:debugButton];
+    [debugWindow addSubview:debugButton];
+    [debugWindow bringSubviewToFront:debugButton];
+    _debugWindow = debugWindow;
+
+    //苹果自带debug
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+    id overlayClass = NSClassFromString(@"UIDebuggingInformationOverlay");
+    [overlayClass performSelector:NSSelectorFromString(@"prepareDebuggingOverlay")];
+#pragma clang diagnostic pop
 }
 
 
@@ -134,56 +213,54 @@
     InstalCrashHandler();
     [[CCAppFluecyMonitor sharedMonitor] startMonitoring];
     [self enableProfiler];
-    __weak typeof(self) wSelf = self;
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [wSelf showOnStatusBar];
-    });
 #endif
 }
 
-- (void)enableProfiler
++ (void)toggleVisibility
 {
-    [FBAssociationManager hook];
-    [[FBAllocationTrackerManager sharedManager] startTrackingAllocations];
-    [[FBAllocationTrackerManager sharedManager] enableGenerations];
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+    if (@available(iOS 11.0, *)) {
+        id overlayClass = NSClassFromString(@"UIDebuggingInformationOverlay");
+        [overlayClass performSelector:NSSelectorFromString(@"overlay")];
+        id handlerClass = NSClassFromString(@"UIDebuggingInformationOverlayInvokeGestureHandler");
+
+        id handler = [handlerClass performSelector:NSSelectorFromString(@"mainHandler")];
+        [handler performSelector:NSSelectorFromString(@"_handleActivationGesture:") withObject:[[_FakeGestureRecognizer alloc] init]];
+    } else {
+        id overlayClass = NSClassFromString(@"UIDebuggingInformationOverlay");
+        id overlay = [overlayClass performSelector:NSSelectorFromString(@"overlay")];
+        [overlay performSelector:NSSelectorFromString(@"toggleVisibility")];
+    }
+#pragma clang diagnostic pop
 }
 
-- (void)showDebug
+- (void)setServiceParameters:(NSArray<NSDictionary *> *)parameters
 {
-    if (!self.debugTabBar) {
-        self.debugTabBar = [[UITabBarController alloc] init];
-        self.debugTabBar.tabBar.tintColor = self.mainColor;
+    if (parameters) {
+        NSMutableDictionary *serviceAddressConifg = [NSMutableDictionary dictionaryWithDictionary:[[NSUserDefaults standardUserDefaults] objectForKey:@"serviceAddressConifg"]];
+        NSMutableArray *address = [NSMutableArray arrayWithArray:[serviceAddressConifg objectForKey:@"address"]];
 
+        for (NSDictionary *item in parameters) {
+            id object = [address filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"id == %@", [item objectForKey:@"id"]]].lastObject;
+            if (!object)
+                [address addObject:item];
+        }
 
-        [self initializationNav:[CCDebugHttpViewController new] title:@"HTTP" imageNamed:@"tabbar_http" selectedImage:@"tabbar_http_yes"];
-        [self initializationNav:[CCDebugLogViewController new] title:@"LOG" imageNamed:@"tabbar_log" selectedImage:@"tabbar_log_yes"];
-        [self initializationNav:[CCMemoryProfilerViewController new] title:@"Cycle" imageNamed:@"tabbar_cycle" selectedImage:@"tabbar_cycle_yes"];
-        [self initializationNav:[ToolViewController new] title:@"TOOL" imageNamed:@"tabbar_tool" selectedImage:@"tabbar_tool_yes"];
-        //        UINavigationController *debugMonitorNav = [self initializationNav:[CCMonitorViewController new] tabBarItemName:@"Monitor"];
-
-        UIViewController *rootViewController = [[[UIApplication sharedApplication].windows firstObject] rootViewController];
-        UIViewController *presentedViewController = rootViewController.presentedViewController;
-        [presentedViewController ?: rootViewController presentViewController:self.debugTabBar animated:YES completion:nil];
-    } else {
-        [self.debugTabBar dismissViewControllerAnimated:YES completion:nil];
-        self.debugTabBar = nil;
+        [serviceAddressConifg setObject:address forKey:@"address"];
+        [[NSUserDefaults standardUserDefaults] setObject:serviceAddressConifg forKey:@"serviceAddressConifg"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
     }
 }
 
-- (void)initializationNav:(UIViewController *)viewController title:(NSString *)title imageNamed:(NSString *)imageNamed selectedImage:(NSString *)selectedImage
+- (NSDictionary *)getServiceParameter
 {
-    UINavigationController *debugNav = [[UINavigationController alloc] initWithRootViewController:viewController];
-    debugNav.navigationItem.title = title;
-    debugNav.tabBarItem.title = title;
-    debugNav.tabBarItem.image = [[CCDebugTool tabbarImage:imageNamed] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    debugNav.tabBarItem.selectedImage = [[CCDebugTool tabbarImage:selectedImage] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    [debugNav.navigationBar setBarTintColor:self.mainColor];
-    [debugNav.navigationBar setTintColor:[UIColor whiteColor]];
-    NSMutableDictionary *Attributes = [NSMutableDictionary dictionaryWithDictionary:[UINavigationBar appearance].titleTextAttributes];
-    [Attributes setObject:[UIColor whiteColor] forKey:NSForegroundColorAttributeName];
-    [debugNav.navigationBar setTitleTextAttributes:Attributes];
-
-    [self.debugTabBar addChildViewController:debugNav];
+    NSDictionary *parameter;
+    NSMutableDictionary *serviceAddressConifg = [NSMutableDictionary dictionaryWithDictionary:[[NSUserDefaults standardUserDefaults] objectForKey:@"serviceAddressConifg"]];
+    if ([[serviceAddressConifg objectForKey:@"conifg"] boolValue]) {
+        parameter = [[[serviceAddressConifg objectForKey:@"address"] filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"selected = YES"]].lastObject objectForKey:@"parameter"];
+    }
+    return parameter;
 }
 
 - (NSArray *)CatonLogger
@@ -228,5 +305,53 @@
         path = [[NSBundle mainBundle] pathForResource:@"CCDebugTool" ofType:@"bundle" inDirectory:@"CCDebugTool.framework/"];
     }
     return [NSBundle bundleWithPath:path];
+}
+
+#pragma mark -
+#pragma mark :. UI
+
+- (void)enableProfiler
+{
+    [FBAssociationManager hook];
+    [[FBAllocationTrackerManager sharedManager] startTrackingAllocations];
+    [[FBAllocationTrackerManager sharedManager] enableGenerations];
+}
+
+- (void)showDebug
+{
+    if (!self.debugTabBar) {
+        self.debugTabBar = [[UITabBarController alloc] init];
+        self.debugTabBar.tabBar.tintColor = self.mainColor;
+        self.debugTabBar.tabBar.translucent = NO;
+
+        [self initializationNav:[CCDebugNetworkViewController new] title:@"HTTP" imageNamed:@"tabbar_http" selectedImage:@"tabbar_http_yes"];
+        [self initializationNav:[CCDebugLogViewController new] title:@"LOG" imageNamed:@"tabbar_log" selectedImage:@"tabbar_log_yes"];
+        [self initializationNav:[CCMemoryProfilerViewController new] title:@"Cycle" imageNamed:@"tabbar_cycle" selectedImage:@"tabbar_cycle_yes"];
+        [self initializationNav:[ToolViewController new] title:@"TOOL" imageNamed:@"tabbar_tool" selectedImage:@"tabbar_tool_yes"];
+        //        UINavigationController *debugMonitorNav = [self initializationNav:[CCMonitorViewController new] tabBarItemName:@"Monitor"];
+
+        UIViewController *rootViewController = [[[UIApplication sharedApplication].windows firstObject] rootViewController];
+        UIViewController *presentedViewController = rootViewController.presentedViewController;
+        [presentedViewController ?: rootViewController presentViewController:self.debugTabBar animated:YES completion:nil];
+    } else {
+        [self.debugTabBar dismissViewControllerAnimated:YES completion:nil];
+        self.debugTabBar = nil;
+    }
+}
+
+- (void)initializationNav:(UIViewController *)viewController title:(NSString *)title imageNamed:(NSString *)imageNamed selectedImage:(NSString *)selectedImage
+{
+    UINavigationController *debugNav = [[UINavigationController alloc] initWithRootViewController:viewController];
+    debugNav.navigationItem.title = title;
+    debugNav.tabBarItem.title = title;
+    debugNav.tabBarItem.image = [[CCDebugTool tabbarImage:imageNamed] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    debugNav.tabBarItem.selectedImage = [[CCDebugTool tabbarImage:selectedImage] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    [debugNav.navigationBar setBarTintColor:self.mainColor];
+    [debugNav.navigationBar setTintColor:[UIColor whiteColor]];
+    NSMutableDictionary *Attributes = [NSMutableDictionary dictionaryWithDictionary:[UINavigationBar appearance].titleTextAttributes];
+    [Attributes setObject:[UIColor whiteColor] forKey:NSForegroundColorAttributeName];
+    [debugNav.navigationBar setTitleTextAttributes:Attributes];
+
+    [self.debugTabBar addChildViewController:debugNav];
 }
 @end

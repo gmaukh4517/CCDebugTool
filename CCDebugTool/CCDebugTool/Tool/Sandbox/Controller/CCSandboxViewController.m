@@ -10,9 +10,8 @@
 #import "CCSandboxTableViewCell.h"
 #import "CCFilePathTreeView.h"
 #import "CCSandboxEntity.h"
-#import "UIViewController+CCDebug.h"
 #import "CCPingViewController.h"
-#import "CCPreviewItem.h"
+#import "CCSandboxPreviewItem.h"
 #import <QuickLook/QuickLook.h>
 
 @interface CCSandboxViewController () <UITableViewDelegate, UITableViewDataSource, CCFilePathTreeViewDelegate, QLPreviewControllerDataSource>
@@ -128,7 +127,7 @@
     self.dataArr = array;
     for (CCSandboxEntity *entity in array) {
         if (entity.fileType != CCFileTypeDirectory)
-            [self.fileArray addObject:[CCPreviewItem previewItemWithPaht:entity.filePath title:entity.fileName]];
+            [self.fileArray addObject:[CCSandboxPreviewItem previewItemWithPaht:entity.filePath title:entity.fileName]];
     }
 
     [self.sandboxViewTableView reloadData];
@@ -208,7 +207,7 @@
 
 - (id<QLPreviewItem>)previewController:(QLPreviewController *)controller previewItemAtIndex:(NSInteger)index
 {
-    CCPreviewItem *item = [self.fileArray objectAtIndex:index];
+    CCSandboxPreviewItem *item = [self.fileArray objectAtIndex:index];
     controller.title = item.previewItemTitle;
     return item;
 }

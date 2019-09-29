@@ -7,7 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		424C3A35230A36A500CF4713 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 424C3A34230A36A500CF4713 /* WebViewController.m */; };
 		425F00821FD7D61E00368E4E /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 425F00811FD7D61D00368E4E /* libsqlite3.0.tbd */; };
+		429A6B2723273E300011CA6A /* DebugRequestProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = 429A6B2623273E300011CA6A /* DebugRequestProtocol.m */; };
+		429DC27D2329EF30008D606B /* _clang-format in Resources */ = {isa = PBXBuildFile; fileRef = 429DC27C2329EF30008D606B /* _clang-format */; };
+		429DC2802329EF9D008D606B /* js.txt in Resources */ = {isa = PBXBuildFile; fileRef = 429DC27F2329EF9D008D606B /* js.txt */; };
 		42B185091FBD88C1002B066F /* CCDebugTool.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 42B185081FBD88C1002B066F /* CCDebugTool.bundle */; };
 		42D5AD5A1FAC6F960063C136 /* libz.1.2.5.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 42D5AD581FAC6B750063C136 /* libz.1.2.5.tbd */; };
 		42EA10AA1FB427BE0078D439 /* CCDebugTool.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42EA10AB1FB427BE0078D439 /* CCDebugTool.framework */; };
@@ -26,8 +30,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		424C3A33230A36A500CF4713 /* WebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
+		424C3A34230A36A500CF4713 /* WebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
 		425F00811FD7D61D00368E4E /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 		4265FBC420F069BC00DE2854 /* QuickLook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuickLook.framework; path = System/Library/Frameworks/QuickLook.framework; sourceTree = SDKROOT; };
+		429A6B2523273E300011CA6A /* DebugRequestProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DebugRequestProtocol.h; sourceTree = "<group>"; };
+		429A6B2623273E300011CA6A /* DebugRequestProtocol.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DebugRequestProtocol.m; sourceTree = "<group>"; };
+		429D59D62325F1C2008822C4 /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		429DC27C2329EF30008D606B /* _clang-format */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "_clang-format"; sourceTree = "<group>"; };
+		429DC27F2329EF9D008D606B /* js.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = js.txt; sourceTree = "<group>"; };
 		42B185081FBD88C1002B066F /* CCDebugTool.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = CCDebugTool.bundle; sourceTree = "<group>"; };
 		42D5AD581FAC6B750063C136 /* libz.1.2.5.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.1.2.5.tbd; path = usr/lib/libz.1.2.5.tbd; sourceTree = SDKROOT; };
 		42EA10AB1FB427BE0078D439 /* CCDebugTool.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CCDebugTool.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -80,6 +91,32 @@
 			path = Database;
 			sourceTree = "<group>";
 		};
+		429A6B2423273E160011CA6A /* RequestProtocol */ = {
+			isa = PBXGroup;
+			children = (
+				429A6B2523273E300011CA6A /* DebugRequestProtocol.h */,
+				429A6B2623273E300011CA6A /* DebugRequestProtocol.m */,
+			);
+			path = RequestProtocol;
+			sourceTree = "<group>";
+		};
+		429D59D52325F1C2008822C4 /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				429D59D62325F1C2008822C4 /* PrefixHeader.pch */,
+			);
+			path = Config;
+			sourceTree = "<group>";
+		};
+		429DC27E2329EF36008D606B /* Files */ = {
+			isa = PBXGroup;
+			children = (
+				429DC27F2329EF9D008D606B /* js.txt */,
+				429DC27C2329EF30008D606B /* _clang-format */,
+			);
+			path = Files;
+			sourceTree = "<group>";
+		};
 		42EA11691FB43E100078D439 /* NetworkRequest */ = {
 			isa = PBXGroup;
 			children = (
@@ -118,6 +155,9 @@
 		42F0A4B51F593D7700ACD4FA /* CCDebugToolDemo */ = {
 			isa = PBXGroup;
 			children = (
+				429DC27E2329EF36008D606B /* Files */,
+				429D59D52325F1C2008822C4 /* Config */,
+				429A6B2423273E160011CA6A /* RequestProtocol */,
 				425F00831FD7D6DF00368E4E /* Database */,
 				42EA116B1FB43E3F0078D439 /* Carsh */,
 				42EA11691FB43E100078D439 /* NetworkRequest */,
@@ -130,6 +170,8 @@
 				42F0A4D11F594C7600ACD4FA /* FluecyMonitorViewController.m */,
 				42F0A4C71F593D7700ACD4FA /* Info.plist */,
 				42F0A4B61F593D7700ACD4FA /* Supporting Files */,
+				424C3A33230A36A500CF4713 /* WebViewController.h */,
+				424C3A34230A36A500CF4713 /* WebViewController.m */,
 			);
 			path = CCDebugToolDemo;
 			sourceTree = "<group>";
@@ -190,7 +232,7 @@
 				TargetAttributes = {
 					42F0A4B21F593D7700ACD4FA = {
 						CreatedOnToolsVersion = 8.3.3;
-						DevelopmentTeam = 7W7VQJKLJ2;
+						DevelopmentTeam = M2X75QL6U7;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -200,6 +242,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -218,6 +261,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				429DC27D2329EF30008D606B /* _clang-format in Resources */,
+				429DC2802329EF9D008D606B /* js.txt in Resources */,
 				42EDDFD31FD8024E00B6AB59 /* Car.db in Resources */,
 				42F0A4C61F593D7700ACD4FA /* LaunchScreen.storyboard in Resources */,
 				42B185091FBD88C1002B066F /* CCDebugTool.bundle in Resources */,
@@ -235,7 +280,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				42F0A4D51F594C8B00ACD4FA /* CrashViewController.m in Sources */,
+				424C3A35230A36A500CF4713 /* WebViewController.m in Sources */,
 				42F0A4BE1F593D7700ACD4FA /* ViewController.m in Sources */,
+				429A6B2723273E300011CA6A /* DebugRequestProtocol.m in Sources */,
 				42F0A4BB1F593D7700ACD4FA /* AppDelegate.m in Sources */,
 				42EA11651FB43CB90078D439 /* NetworkRequestViewController.m in Sources */,
 				42F0A4B81F593D7700ACD4FA /* main.m in Sources */,
@@ -367,8 +414,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 7W7VQJKLJ2;
+				DEVELOPMENT_TEAM = M2X75QL6U7;
+				GCC_PREFIX_HEADER = CCDebugToolDemo/Config/PrefixHeader.pch;
 				INFOPLIST_FILE = CCDebugToolDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "-ObjC";
@@ -382,8 +431,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 7W7VQJKLJ2;
+				DEVELOPMENT_TEAM = M2X75QL6U7;
+				GCC_PREFIX_HEADER = CCDebugToolDemo/Config/PrefixHeader.pch;
 				INFOPLIST_FILE = CCDebugToolDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "-ObjC";

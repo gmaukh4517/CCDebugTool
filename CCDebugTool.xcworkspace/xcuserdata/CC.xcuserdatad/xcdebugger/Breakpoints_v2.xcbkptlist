@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Bucket
+   uuid = "E48869D3-810B-4C63-A520-665901F60E7C"
    type = "0"
    version = "2.0">
    <Breakpoints>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.ExceptionBreakpoint">
          <BreakpointContent
+            uuid = "869A368B-DD55-48F3-BE68-B3DF8CF43AE5"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -16,62 +18,32 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+            uuid = "FA34DE66-C964-4CB4-8DA3-2BFC19F5DD21"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "CCDebugTool/CCDebugTool/HTTP/Category/NSURLSession+Swizzling.m"
-            timestampString = "531987940.682345"
+            filePath = "CCDebugToolDemo/CCDebugToolDemo/NetworkRequest/NetworkRequestViewController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "118"
-            endingLineNumber = "118"
-            landmarkName = "NSURLSession(Swizzling)"
-            landmarkType = "3">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "CCDebugTool/CCDebugTool/Log/CCExceptionCatching/Hook/UIViewController+hook.m"
-            timestampString = "547549026.0607949"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "32"
-            endingLineNumber = "32"
-            landmarkName = "-bb_viewWillAppear:"
+            startingLineNumber = "54"
+            endingLineNumber = "54"
+            landmarkName = "-networkRequest"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+            uuid = "51B7C181-15DF-4B2E-9877-CC62231FE756"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "CCDebugTool/CCDebugTool/CCDebugTool.m"
-            timestampString = "566208882.242744"
+            filePath = "CCDebugTool/CCDebugTool/MemoryProfiler/FBRetainCycleDetector/Detector/FBRetainCycleDetector.mm"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "233"
-            endingLineNumber = "233">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "CCDebugTool/CCDebugTool/HTTP/Request/Controller/CCDebugHttpViewController.m"
-            timestampString = "566209006.521068"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "298"
-            endingLineNumber = "298"
-            landmarkName = "-tableView:didSelectRowAtIndexPath:"
+            startingLineNumber = "205"
+            endingLineNumber = "205"
+            landmarkName = "-_extractClassNamesFromGraphObjects:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

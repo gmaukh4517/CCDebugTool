@@ -36,6 +36,7 @@ static NSString *const kDatabaseTableViewCellIdentifer = @"kDatabaseTableViewCel
 {
     UILabel *databaseLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.bounds.size.width, 30)];
     databaseLabel.backgroundColor = [CCDebugTool manager].mainColor; //[UIColor colorWithRed:0.819 green:0.909 blue:0.956 alpha:1];
+    databaseLabel.textColor = [UIColor whiteColor];
     databaseLabel.font = [UIFont systemFontOfSize:15];
     databaseLabel.text = @"  Databases";
     [self addSubview:databaseLabel];
@@ -46,6 +47,7 @@ static NSString *const kDatabaseTableViewCellIdentifer = @"kDatabaseTableViewCel
     CGFloat y = self.databaseTableView.frame.origin.y + self.databaseTableView.frame.size.height;
 
     UILabel *tableLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, y, self.bounds.size.width, 30)];
+    tableLabel.textColor = [UIColor whiteColor];
     tableLabel.backgroundColor = databaseLabel.backgroundColor;
     tableLabel.font = [UIFont systemFontOfSize:15];
     tableLabel.text = @"  Tables";

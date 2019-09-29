@@ -115,11 +115,8 @@
 
 - (void)setBarWindow:(UIView *)window
 {
-    self.statusBarView = window;
     _monitorStatusBar = [[CCPerformanceStatusBar alloc] initWithFrame:CGRectMake(0, 2, window.frame.size.width, 20)];
-    self.statusBarView.hidden = YES;
-//    self.statusBarWindow.windowLevel = UIWindowLevelAlert + 1;
-    [self.statusBarView addSubview:self.monitorStatusBar];
+    [window addSubview:self.monitorStatusBar];
 }
 
 #pragma mark - Private
@@ -128,13 +125,11 @@
 {
     [self setBarWindow:monitorWindow];
     _displayLink.paused = NO;
-    self.statusBarView.hidden = NO;
 }
 
 - (void)stop
 {
     _displayLink.paused = YES;
-    self.statusBarView.hidden = YES;
 }
 
 - (void)setMainColor:(UIColor *)mainColor

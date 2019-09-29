@@ -28,6 +28,10 @@
                          configuration:(nonnull FBObjectGraphConfiguration *)configuration
                               namePath:(nullable NSArray<NSString *> *)namePath;
 
+/**
+ @param object Object this Graph Element will represent.
+ @param configuration Provides detector's configuration that contains filters and options
+ */
 - (nonnull instancetype)initWithObject:(nullable id)object
                          configuration:(nonnull FBObjectGraphConfiguration *)configuration;
 
@@ -52,7 +56,14 @@
  */
 - (size_t)objectAddress;
 
+/**
+ @return class of the object
+ */
 - (nullable Class)objectClass;
+
+/**
+ @return a string of the classname or "(null)"
+ */
 - (nonnull NSString *)classNameOrNull;
 
 @end

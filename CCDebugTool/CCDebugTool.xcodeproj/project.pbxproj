@@ -25,6 +25,8 @@
 		421E6BE31FB13EB70068FB1E /* CCSpeedTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 421E6BE11FB13EB70068FB1E /* CCSpeedTestViewController.m */; };
 		421E6BE71FB140E00068FB1E /* CCSpeedView.h in Headers */ = {isa = PBXBuildFile; fileRef = 421E6BE51FB140E00068FB1E /* CCSpeedView.h */; };
 		421E6BE81FB140E00068FB1E /* CCSpeedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 421E6BE61FB140E00068FB1E /* CCSpeedView.m */; };
+		423B2CC4233DE7D800E82C0B /* LOGCollectionViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 423B2CC2233DE7D800E82C0B /* LOGCollectionViewCell.h */; };
+		423B2CC5233DE7D800E82C0B /* LOGCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 423B2CC3233DE7D800E82C0B /* LOGCollectionViewCell.m */; };
 		424603081FAFF05000467266 /* ToolViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 424603061FAFF05000467266 /* ToolViewController.h */; };
 		424603091FAFF05000467266 /* ToolViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 424603071FAFF05000467266 /* ToolViewController.m */; };
 		424603151FB00FEF00467266 /* CCSpeedTestManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 424603131FB00FEF00467266 /* CCSpeedTestManager.h */; };
@@ -51,20 +53,45 @@
 		4266D3B52008B16400D6EE07 /* getgateway.h in Headers */ = {isa = PBXBuildFile; fileRef = 4266D3B22008B16300D6EE07 /* getgateway.h */; };
 		4266D3B62008B16400D6EE07 /* getgateway.c in Sources */ = {isa = PBXBuildFile; fileRef = 4266D3B32008B16300D6EE07 /* getgateway.c */; };
 		4266D3B72008B16400D6EE07 /* route.h in Headers */ = {isa = PBXBuildFile; fileRef = 4266D3B42008B16300D6EE07 /* route.h */; };
+		426814B723160ABE0061AFD2 /* rcd_fishhook.c in Sources */ = {isa = PBXBuildFile; fileRef = 426814B323160ABE0061AFD2 /* rcd_fishhook.c */; };
+		426814B823160ABE0061AFD2 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 426814B423160ABE0061AFD2 /* LICENSE */; };
+		426814B923160ABE0061AFD2 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 426814B523160ABE0061AFD2 /* README.md */; };
+		426814BA23160ABE0061AFD2 /* rcd_fishhook.h in Headers */ = {isa = PBXBuildFile; fileRef = 426814B623160ABE0061AFD2 /* rcd_fishhook.h */; };
 		426A79AB1FAC3ADA00B328C1 /* CCFilePathTreeView.h in Headers */ = {isa = PBXBuildFile; fileRef = 426A79A91FAC3ADA00B328C1 /* CCFilePathTreeView.h */; };
 		426A79AC1FAC3ADA00B328C1 /* CCFilePathTreeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 426A79AA1FAC3ADA00B328C1 /* CCFilePathTreeView.m */; };
 		426A79AF1FAC3BCC00B328C1 /* CCSandboxCollectionViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 426A79AD1FAC3BCC00B328C1 /* CCSandboxCollectionViewCell.h */; };
 		426A79B01FAC3BCC00B328C1 /* CCSandboxCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 426A79AE1FAC3BCC00B328C1 /* CCSandboxCollectionViewCell.m */; };
-		427408E520F08F9D008C3E6D /* CCPreviewItem.h in Headers */ = {isa = PBXBuildFile; fileRef = 427408E320F08F9D008C3E6D /* CCPreviewItem.h */; };
-		427408E620F08F9D008C3E6D /* CCPreviewItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 427408E420F08F9D008C3E6D /* CCPreviewItem.m */; };
+		427408E520F08F9D008C3E6D /* CCSandboxPreviewItem.h in Headers */ = {isa = PBXBuildFile; fileRef = 427408E320F08F9D008C3E6D /* CCSandboxPreviewItem.h */; };
+		427408E620F08F9D008C3E6D /* CCSandboxPreviewItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 427408E420F08F9D008C3E6D /* CCSandboxPreviewItem.m */; };
+		42743772232A1A4700B5CB1B /* CCDebugKeychain.h in Headers */ = {isa = PBXBuildFile; fileRef = 4274376E232A1A4700B5CB1B /* CCDebugKeychain.h */; };
+		42743773232A1A4700B5CB1B /* CCDebugKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 4274376F232A1A4700B5CB1B /* CCDebugKeychain.m */; };
+		42743774232A1A4700B5CB1B /* CCDebugKeychainQuery.h in Headers */ = {isa = PBXBuildFile; fileRef = 42743770232A1A4700B5CB1B /* CCDebugKeychainQuery.h */; };
+		42743775232A1A4700B5CB1B /* CCDebugKeychainQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 42743771232A1A4700B5CB1B /* CCDebugKeychainQuery.m */; };
 		428B60661FAC056F002577C0 /* CCSandboxEntity.h in Headers */ = {isa = PBXBuildFile; fileRef = 428B60641FAC056F002577C0 /* CCSandboxEntity.h */; };
 		428B60671FAC056F002577C0 /* CCSandboxEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 428B60651FAC056F002577C0 /* CCSandboxEntity.m */; };
 		428B606A1FAC0586002577C0 /* CCSandboxViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 428B60681FAC0586002577C0 /* CCSandboxViewController.h */; };
 		428B606B1FAC0586002577C0 /* CCSandboxViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 428B60691FAC0586002577C0 /* CCSandboxViewController.m */; };
 		428B606E1FAC05A0002577C0 /* CCSandboxTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 428B606C1FAC05A0002577C0 /* CCSandboxTableViewCell.h */; };
 		428B606F1FAC05A0002577C0 /* CCSandboxTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 428B606D1FAC05A0002577C0 /* CCSandboxTableViewCell.m */; };
+		429D59E0232625B4008822C4 /* ServiceManagerViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 429D59DE232625B4008822C4 /* ServiceManagerViewController.h */; };
+		429D59E1232625B4008822C4 /* ServiceManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 429D59DF232625B4008822C4 /* ServiceManagerViewController.m */; };
+		429D59E82326320A008822C4 /* AddressConfigViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 429D59E62326320A008822C4 /* AddressConfigViewController.h */; };
+		429D59E92326320A008822C4 /* AddressConfigViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 429D59E72326320A008822C4 /* AddressConfigViewController.m */; };
+		429D59ED23263423008822C4 /* AddressConfigTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 429D59EB23263423008822C4 /* AddressConfigTableViewCell.h */; };
+		429D59EE23263423008822C4 /* AddressConfigTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 429D59EC23263423008822C4 /* AddressConfigTableViewCell.m */; };
+		429DC2762329E02A008D606B /* BundleDirectoryViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 429DC2742329E02A008D606B /* BundleDirectoryViewController.h */; };
+		429DC2772329E02A008D606B /* BundleDirectoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 429DC2752329E02A008D606B /* BundleDirectoryViewController.m */; };
+		429DC27A2329E03D008D606B /* BundleDirectoryViewTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 429DC2782329E03D008D606B /* BundleDirectoryViewTableViewCell.h */; };
+		429DC27B2329E03D008D606B /* BundleDirectoryViewTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 429DC2792329E03D008D606B /* BundleDirectoryViewTableViewCell.m */; };
+		429DC2922329F680008D606B /* CCDebugKeychainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 429DC2902329F680008D606B /* CCDebugKeychainViewController.m */; };
+		429DC2932329F680008D606B /* CCDebugKeychainViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 429DC2912329F680008D606B /* CCDebugKeychainViewController.h */; };
+		429DC297232A1464008D606B /* CCDebugAlert.h in Headers */ = {isa = PBXBuildFile; fileRef = 429DC295232A1464008D606B /* CCDebugAlert.h */; };
+		429DC298232A1464008D606B /* CCDebugAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 429DC296232A1464008D606B /* CCDebugAlert.m */; };
 		42B185041FBD3EB6002B066F /* CCLogMonitoring.h in Headers */ = {isa = PBXBuildFile; fileRef = 42B185021FBD3EB6002B066F /* CCLogMonitoring.h */; };
 		42B185051FBD3EB6002B066F /* CCLogMonitoring.m in Sources */ = {isa = PBXBuildFile; fileRef = 42B185031FBD3EB6002B066F /* CCLogMonitoring.m */; };
+		42B84F6923288893009583AD /* PrefixHeader.pch in Headers */ = {isa = PBXBuildFile; fileRef = 42B84F6823288893009583AD /* PrefixHeader.pch */; };
+		42B84F702328A639009583AD /* CCNetworkResources.m in Sources */ = {isa = PBXBuildFile; fileRef = 42B84F6E2328A639009583AD /* CCNetworkResources.m */; };
+		42B84F712328A639009583AD /* CCNetworkResources.h in Headers */ = {isa = PBXBuildFile; fileRef = 42B84F6F2328A639009583AD /* CCNetworkResources.h */; };
 		42BA41A01FB5412800B0B0C5 /* UINavigationController+CCHook.h in Headers */ = {isa = PBXBuildFile; fileRef = 42BA419E1FB5412800B0B0C5 /* UINavigationController+CCHook.h */; };
 		42BA41A11FB5412800B0B0C5 /* UINavigationController+CCHook.m in Sources */ = {isa = PBXBuildFile; fileRef = 42BA419F1FB5412800B0B0C5 /* UINavigationController+CCHook.m */; };
 		42BA41A41FB5430200B0B0C5 /* UIViewController+CCHook.h in Headers */ = {isa = PBXBuildFile; fileRef = 42BA41A21FB5430200B0B0C5 /* UIViewController+CCHook.h */; };
@@ -162,8 +189,8 @@
 		42EA115A1FB42CD30078D439 /* FBAllocationTrackerSummary.m in Sources */ = {isa = PBXBuildFile; fileRef = 42EA110D1FB42CD30078D439 /* FBAllocationTrackerSummary.m */; };
 		42EA11611FB435210078D439 /* CCNetwork.h in Headers */ = {isa = PBXBuildFile; fileRef = 42EA115F1FB435210078D439 /* CCNetwork.h */; };
 		42EA11621FB435210078D439 /* CCNetwork.m in Sources */ = {isa = PBXBuildFile; fileRef = 42EA11601FB435210078D439 /* CCNetwork.m */; };
-		42EA11701FB43F0C0078D439 /* CCHTTPTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 42EA116E1FB43F0C0078D439 /* CCHTTPTableViewCell.h */; };
-		42EA11711FB43F0C0078D439 /* CCHTTPTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 42EA116F1FB43F0C0078D439 /* CCHTTPTableViewCell.m */; };
+		42EA11701FB43F0C0078D439 /* CCNetworkTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 42EA116E1FB43F0C0078D439 /* CCNetworkTableViewCell.h */; };
+		42EA11711FB43F0C0078D439 /* CCNetworkTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 42EA116F1FB43F0C0078D439 /* CCNetworkTableViewCell.m */; };
 		42EA11741FB43FE60078D439 /* CCNetworkTransaction.h in Headers */ = {isa = PBXBuildFile; fileRef = 42EA11721FB43FE60078D439 /* CCNetworkTransaction.h */; };
 		42EA11751FB43FE60078D439 /* CCNetworkTransaction.m in Sources */ = {isa = PBXBuildFile; fileRef = 42EA11731FB43FE60078D439 /* CCNetworkTransaction.m */; };
 		42F0A37A1F59350100ACD4FA /* CCDebugTool.h in Headers */ = {isa = PBXBuildFile; fileRef = 42F0A3781F59350100ACD4FA /* CCDebugTool.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -174,8 +201,8 @@
 		42F0A42D1F59355E00ACD4FA /* CCDebugTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 42F0A3871F59355E00ACD4FA /* CCDebugTool.m */; };
 		42F0A42E1F59355E00ACD4FA /* CCUncaughtExceptionHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = 42F0A3891F59355E00ACD4FA /* CCUncaughtExceptionHandler.h */; };
 		42F0A42F1F59355E00ACD4FA /* CCUncaughtExceptionHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 42F0A38A1F59355E00ACD4FA /* CCUncaughtExceptionHandler.m */; };
-		42F0A4381F59355E00ACD4FA /* CCDebugHttpViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 42F0A3951F59355E00ACD4FA /* CCDebugHttpViewController.h */; };
-		42F0A4391F59355E00ACD4FA /* CCDebugHttpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42F0A3961F59355E00ACD4FA /* CCDebugHttpViewController.m */; };
+		42F0A4381F59355E00ACD4FA /* CCDebugNetworkViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 42F0A3951F59355E00ACD4FA /* CCDebugNetworkViewController.h */; };
+		42F0A4391F59355E00ACD4FA /* CCDebugNetworkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42F0A3961F59355E00ACD4FA /* CCDebugNetworkViewController.m */; };
 		42F0A43E1F59355E00ACD4FA /* CCDebugHttpDetailViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 42F0A39D1F59355E00ACD4FA /* CCDebugHttpDetailViewController.h */; };
 		42F0A43F1F59355E00ACD4FA /* CCDebugHttpDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42F0A39E1F59355E00ACD4FA /* CCDebugHttpDetailViewController.m */; };
 		42F0A4401F59355E00ACD4FA /* CCDebugLogViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 42F0A3A01F59355E00ACD4FA /* CCDebugLogViewController.h */; };
@@ -213,6 +240,8 @@
 		421E6BE11FB13EB70068FB1E /* CCSpeedTestViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CCSpeedTestViewController.m; sourceTree = "<group>"; };
 		421E6BE51FB140E00068FB1E /* CCSpeedView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCSpeedView.h; sourceTree = "<group>"; };
 		421E6BE61FB140E00068FB1E /* CCSpeedView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CCSpeedView.m; sourceTree = "<group>"; };
+		423B2CC2233DE7D800E82C0B /* LOGCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LOGCollectionViewCell.h; sourceTree = "<group>"; };
+		423B2CC3233DE7D800E82C0B /* LOGCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LOGCollectionViewCell.m; sourceTree = "<group>"; };
 		424603061FAFF05000467266 /* ToolViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ToolViewController.h; sourceTree = "<group>"; };
 		424603071FAFF05000467266 /* ToolViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ToolViewController.m; sourceTree = "<group>"; };
 		424603131FB00FEF00467266 /* CCSpeedTestManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCSpeedTestManager.h; sourceTree = "<group>"; };
@@ -239,20 +268,45 @@
 		4266D3B22008B16300D6EE07 /* getgateway.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = getgateway.h; sourceTree = "<group>"; };
 		4266D3B32008B16300D6EE07 /* getgateway.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = getgateway.c; sourceTree = "<group>"; };
 		4266D3B42008B16300D6EE07 /* route.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = route.h; sourceTree = "<group>"; };
+		426814B323160ABE0061AFD2 /* rcd_fishhook.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = rcd_fishhook.c; sourceTree = "<group>"; };
+		426814B423160ABE0061AFD2 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		426814B523160ABE0061AFD2 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		426814B623160ABE0061AFD2 /* rcd_fishhook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rcd_fishhook.h; sourceTree = "<group>"; };
 		426A79A91FAC3ADA00B328C1 /* CCFilePathTreeView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCFilePathTreeView.h; sourceTree = "<group>"; };
 		426A79AA1FAC3ADA00B328C1 /* CCFilePathTreeView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CCFilePathTreeView.m; sourceTree = "<group>"; };
 		426A79AD1FAC3BCC00B328C1 /* CCSandboxCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCSandboxCollectionViewCell.h; sourceTree = "<group>"; };
 		426A79AE1FAC3BCC00B328C1 /* CCSandboxCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CCSandboxCollectionViewCell.m; sourceTree = "<group>"; };
-		427408E320F08F9D008C3E6D /* CCPreviewItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCPreviewItem.h; sourceTree = "<group>"; };
-		427408E420F08F9D008C3E6D /* CCPreviewItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CCPreviewItem.m; sourceTree = "<group>"; };
+		427408E320F08F9D008C3E6D /* CCSandboxPreviewItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCSandboxPreviewItem.h; sourceTree = "<group>"; };
+		427408E420F08F9D008C3E6D /* CCSandboxPreviewItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CCSandboxPreviewItem.m; sourceTree = "<group>"; };
+		4274376E232A1A4700B5CB1B /* CCDebugKeychain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCDebugKeychain.h; sourceTree = "<group>"; };
+		4274376F232A1A4700B5CB1B /* CCDebugKeychain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCDebugKeychain.m; sourceTree = "<group>"; };
+		42743770232A1A4700B5CB1B /* CCDebugKeychainQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCDebugKeychainQuery.h; sourceTree = "<group>"; };
+		42743771232A1A4700B5CB1B /* CCDebugKeychainQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCDebugKeychainQuery.m; sourceTree = "<group>"; };
 		428B60641FAC056F002577C0 /* CCSandboxEntity.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCSandboxEntity.h; sourceTree = "<group>"; };
 		428B60651FAC056F002577C0 /* CCSandboxEntity.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CCSandboxEntity.m; sourceTree = "<group>"; };
 		428B60681FAC0586002577C0 /* CCSandboxViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCSandboxViewController.h; sourceTree = "<group>"; };
 		428B60691FAC0586002577C0 /* CCSandboxViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CCSandboxViewController.m; sourceTree = "<group>"; };
 		428B606C1FAC05A0002577C0 /* CCSandboxTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCSandboxTableViewCell.h; sourceTree = "<group>"; };
 		428B606D1FAC05A0002577C0 /* CCSandboxTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CCSandboxTableViewCell.m; sourceTree = "<group>"; };
+		429D59DE232625B4008822C4 /* ServiceManagerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ServiceManagerViewController.h; sourceTree = "<group>"; };
+		429D59DF232625B4008822C4 /* ServiceManagerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ServiceManagerViewController.m; sourceTree = "<group>"; };
+		429D59E62326320A008822C4 /* AddressConfigViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddressConfigViewController.h; sourceTree = "<group>"; };
+		429D59E72326320A008822C4 /* AddressConfigViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddressConfigViewController.m; sourceTree = "<group>"; };
+		429D59EB23263423008822C4 /* AddressConfigTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddressConfigTableViewCell.h; sourceTree = "<group>"; };
+		429D59EC23263423008822C4 /* AddressConfigTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddressConfigTableViewCell.m; sourceTree = "<group>"; };
+		429DC2742329E02A008D606B /* BundleDirectoryViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BundleDirectoryViewController.h; sourceTree = "<group>"; };
+		429DC2752329E02A008D606B /* BundleDirectoryViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BundleDirectoryViewController.m; sourceTree = "<group>"; };
+		429DC2782329E03D008D606B /* BundleDirectoryViewTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BundleDirectoryViewTableViewCell.h; sourceTree = "<group>"; };
+		429DC2792329E03D008D606B /* BundleDirectoryViewTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BundleDirectoryViewTableViewCell.m; sourceTree = "<group>"; };
+		429DC2902329F680008D606B /* CCDebugKeychainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCDebugKeychainViewController.m; sourceTree = "<group>"; };
+		429DC2912329F680008D606B /* CCDebugKeychainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCDebugKeychainViewController.h; sourceTree = "<group>"; };
+		429DC295232A1464008D606B /* CCDebugAlert.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCDebugAlert.h; sourceTree = "<group>"; };
+		429DC296232A1464008D606B /* CCDebugAlert.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CCDebugAlert.m; sourceTree = "<group>"; };
 		42B185021FBD3EB6002B066F /* CCLogMonitoring.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCLogMonitoring.h; sourceTree = "<group>"; };
 		42B185031FBD3EB6002B066F /* CCLogMonitoring.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CCLogMonitoring.m; sourceTree = "<group>"; };
+		42B84F6823288893009583AD /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		42B84F6E2328A639009583AD /* CCNetworkResources.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCNetworkResources.m; sourceTree = "<group>"; };
+		42B84F6F2328A639009583AD /* CCNetworkResources.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCNetworkResources.h; sourceTree = "<group>"; };
 		42BA419E1FB5412800B0B0C5 /* UINavigationController+CCHook.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+CCHook.h"; sourceTree = "<group>"; };
 		42BA419F1FB5412800B0B0C5 /* UINavigationController+CCHook.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+CCHook.m"; sourceTree = "<group>"; };
 		42BA41A21FB5430200B0B0C5 /* UIViewController+CCHook.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+CCHook.h"; sourceTree = "<group>"; };
@@ -350,8 +404,8 @@
 		42EA110D1FB42CD30078D439 /* FBAllocationTrackerSummary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBAllocationTrackerSummary.m; sourceTree = "<group>"; };
 		42EA115F1FB435210078D439 /* CCNetwork.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCNetwork.h; sourceTree = "<group>"; };
 		42EA11601FB435210078D439 /* CCNetwork.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CCNetwork.m; sourceTree = "<group>"; };
-		42EA116E1FB43F0C0078D439 /* CCHTTPTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCHTTPTableViewCell.h; sourceTree = "<group>"; };
-		42EA116F1FB43F0C0078D439 /* CCHTTPTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CCHTTPTableViewCell.m; sourceTree = "<group>"; };
+		42EA116E1FB43F0C0078D439 /* CCNetworkTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCNetworkTableViewCell.h; sourceTree = "<group>"; };
+		42EA116F1FB43F0C0078D439 /* CCNetworkTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CCNetworkTableViewCell.m; sourceTree = "<group>"; };
 		42EA11721FB43FE60078D439 /* CCNetworkTransaction.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCNetworkTransaction.h; sourceTree = "<group>"; };
 		42EA11731FB43FE60078D439 /* CCNetworkTransaction.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CCNetworkTransaction.m; sourceTree = "<group>"; };
 		42F0A3751F59350100ACD4FA /* CCDebugTool.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CCDebugTool.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -364,8 +418,8 @@
 		42F0A3871F59355E00ACD4FA /* CCDebugTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCDebugTool.m; sourceTree = "<group>"; };
 		42F0A3891F59355E00ACD4FA /* CCUncaughtExceptionHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCUncaughtExceptionHandler.h; sourceTree = "<group>"; };
 		42F0A38A1F59355E00ACD4FA /* CCUncaughtExceptionHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCUncaughtExceptionHandler.m; sourceTree = "<group>"; };
-		42F0A3951F59355E00ACD4FA /* CCDebugHttpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCDebugHttpViewController.h; sourceTree = "<group>"; };
-		42F0A3961F59355E00ACD4FA /* CCDebugHttpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCDebugHttpViewController.m; sourceTree = "<group>"; };
+		42F0A3951F59355E00ACD4FA /* CCDebugNetworkViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCDebugNetworkViewController.h; sourceTree = "<group>"; };
+		42F0A3961F59355E00ACD4FA /* CCDebugNetworkViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCDebugNetworkViewController.m; sourceTree = "<group>"; };
 		42F0A39D1F59355E00ACD4FA /* CCDebugHttpDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCDebugHttpDetailViewController.h; sourceTree = "<group>"; };
 		42F0A39E1F59355E00ACD4FA /* CCDebugHttpDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCDebugHttpDetailViewController.m; sourceTree = "<group>"; };
 		42F0A3A01F59355E00ACD4FA /* CCDebugLogViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCDebugLogViewController.h; sourceTree = "<group>"; };
@@ -555,14 +609,25 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		4266D3BA2008B74100D6EE07 /* Request */ = {
+		4266D3BA2008B74100D6EE07 /* Network */ = {
 			isa = PBXGroup;
 			children = (
 				42EA116C1FB43ED50078D439 /* Controller */,
 				42F0A3971F59355E00ACD4FA /* Model */,
 				42F0A39C1F59355E00ACD4FA /* View */,
 			);
-			path = Request;
+			path = Network;
+			sourceTree = "<group>";
+		};
+		426814B223160ABE0061AFD2 /* rcd_fishhook */ = {
+			isa = PBXGroup;
+			children = (
+				426814B323160ABE0061AFD2 /* rcd_fishhook.c */,
+				426814B423160ABE0061AFD2 /* LICENSE */,
+				426814B523160ABE0061AFD2 /* README.md */,
+				426814B623160ABE0061AFD2 /* rcd_fishhook.h */,
+			);
+			path = rcd_fishhook;
 			sourceTree = "<group>";
 		};
 		427010DA1FAB1E6800BE8E8F /* Sandbox */ = {
@@ -580,8 +645,8 @@
 			children = (
 				428B60641FAC056F002577C0 /* CCSandboxEntity.h */,
 				428B60651FAC056F002577C0 /* CCSandboxEntity.m */,
-				427408E320F08F9D008C3E6D /* CCPreviewItem.h */,
-				427408E420F08F9D008C3E6D /* CCPreviewItem.m */,
+				427408E320F08F9D008C3E6D /* CCSandboxPreviewItem.h */,
+				427408E420F08F9D008C3E6D /* CCSandboxPreviewItem.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -606,6 +671,108 @@
 				426A79AE1FAC3BCC00B328C1 /* CCSandboxCollectionViewCell.m */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		429D59D92326248D008822C4 /* ServiceManager */ = {
+			isa = PBXGroup;
+			children = (
+				429D59DB2326254F008822C4 /* ServiceManager */,
+				429D59DA232624E1008822C4 /* AddressConfig */,
+			);
+			path = ServiceManager;
+			sourceTree = "<group>";
+		};
+		429D59DA232624E1008822C4 /* AddressConfig */ = {
+			isa = PBXGroup;
+			children = (
+				429D59EA2326340D008822C4 /* View */,
+				429D59E62326320A008822C4 /* AddressConfigViewController.h */,
+				429D59E72326320A008822C4 /* AddressConfigViewController.m */,
+			);
+			path = AddressConfig;
+			sourceTree = "<group>";
+		};
+		429D59DB2326254F008822C4 /* ServiceManager */ = {
+			isa = PBXGroup;
+			children = (
+				429D59DE232625B4008822C4 /* ServiceManagerViewController.h */,
+				429D59DF232625B4008822C4 /* ServiceManagerViewController.m */,
+			);
+			path = ServiceManager;
+			sourceTree = "<group>";
+		};
+		429D59EA2326340D008822C4 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				429D59EB23263423008822C4 /* AddressConfigTableViewCell.h */,
+				429D59EC23263423008822C4 /* AddressConfigTableViewCell.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		429DC2712329DF7F008D606B /* BundleDirectory */ = {
+			isa = PBXGroup;
+			children = (
+				429DC2732329DFE9008D606B /* View */,
+				429DC2722329DFE1008D606B /* Controller */,
+			);
+			path = BundleDirectory;
+			sourceTree = "<group>";
+		};
+		429DC2722329DFE1008D606B /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				429DC2742329E02A008D606B /* BundleDirectoryViewController.h */,
+				429DC2752329E02A008D606B /* BundleDirectoryViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		429DC2732329DFE9008D606B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				429DC2782329E03D008D606B /* BundleDirectoryViewTableViewCell.h */,
+				429DC2792329E03D008D606B /* BundleDirectoryViewTableViewCell.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		429DC2812329F500008D606B /* Keychain */ = {
+			isa = PBXGroup;
+			children = (
+				429DC2832329F551008D606B /* CCDebugKeychain */,
+				429DC2822329F50E008D606B /* Controller */,
+			);
+			path = Keychain;
+			sourceTree = "<group>";
+		};
+		429DC2822329F50E008D606B /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				429DC2912329F680008D606B /* CCDebugKeychainViewController.h */,
+				429DC2902329F680008D606B /* CCDebugKeychainViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		429DC2832329F551008D606B /* CCDebugKeychain */ = {
+			isa = PBXGroup;
+			children = (
+				4274376E232A1A4700B5CB1B /* CCDebugKeychain.h */,
+				4274376F232A1A4700B5CB1B /* CCDebugKeychain.m */,
+				42743770232A1A4700B5CB1B /* CCDebugKeychainQuery.h */,
+				42743771232A1A4700B5CB1B /* CCDebugKeychainQuery.m */,
+			);
+			path = CCDebugKeychain;
+			sourceTree = "<group>";
+		};
+		429DC294232A1448008D606B /* CCDebugAlert */ = {
+			isa = PBXGroup;
+			children = (
+				429DC295232A1464008D606B /* CCDebugAlert.h */,
+				429DC296232A1464008D606B /* CCDebugAlert.m */,
+			);
+			path = CCDebugAlert;
 			sourceTree = "<group>";
 		};
 		42B185011FBD3E92002B066F /* CCLogMonitor */ = {
@@ -635,6 +802,14 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		42B84F6723288893009583AD /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				42B84F6823288893009583AD /* PrefixHeader.pch */,
+			);
+			path = Config;
+			sourceTree = "<group>";
+		};
 		42BA419D1FB5409400B0B0C5 /* Hook */ = {
 			isa = PBXGroup;
 			children = (
@@ -651,6 +826,9 @@
 		42D5AD3D1FAC61B60063C136 /* Tool */ = {
 			isa = PBXGroup;
 			children = (
+				429DC294232A1448008D606B /* CCDebugAlert */,
+				429DC2812329F500008D606B /* Keychain */,
+				429DC2712329DF7F008D606B /* BundleDirectory */,
 				425F006A1FD79E7300368E4E /* Database */,
 				42FC5B471FC412F700375959 /* Cookies */,
 				424603101FB00F1700467266 /* SpeedTest */,
@@ -712,6 +890,7 @@
 		42EA10AC1FB42CD30078D439 /* MemoryProfiler */ = {
 			isa = PBXGroup;
 			children = (
+				426814B223160ABE0061AFD2 /* rcd_fishhook */,
 				42EA10AD1FB42CD30078D439 /* MemoryProfiler */,
 				42EA10BF1FB42CD30078D439 /* FBRetainCycleDetector */,
 				42EA10FA1FB42CD30078D439 /* FBAllocationTracker */,
@@ -958,8 +1137,8 @@
 			children = (
 				42F0A39D1F59355E00ACD4FA /* CCDebugHttpDetailViewController.h */,
 				42F0A39E1F59355E00ACD4FA /* CCDebugHttpDetailViewController.m */,
-				42F0A3951F59355E00ACD4FA /* CCDebugHttpViewController.h */,
-				42F0A3961F59355E00ACD4FA /* CCDebugHttpViewController.m */,
+				42F0A3951F59355E00ACD4FA /* CCDebugNetworkViewController.h */,
+				42F0A3961F59355E00ACD4FA /* CCDebugNetworkViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -984,13 +1163,14 @@
 		42F0A3771F59350100ACD4FA /* CCDebugTool */ = {
 			isa = PBXGroup;
 			children = (
+				42B84F6723288893009583AD /* Config */,
 				4265FBB720F05FD900DE2854 /* Category */,
-				42EA10AC1FB42CD30078D439 /* MemoryProfiler */,
-				42D5AD3D1FAC61B60063C136 /* Tool */,
+				42F0A4261F59355E00ACD4FA /* ContentController */,
 				42F0A38B1F59355E00ACD4FA /* HTTP */,
 				42F0A39F1F59355E00ACD4FA /* Log */,
+				42EA10AC1FB42CD30078D439 /* MemoryProfiler */,
 				42F0A4111F59355E00ACD4FA /* Monitor */,
-				42F0A4261F59355E00ACD4FA /* ContentController */,
+				42D5AD3D1FAC61B60063C136 /* Tool */,
 				42F0A3781F59350100ACD4FA /* CCDebugTool.h */,
 				42F0A3871F59355E00ACD4FA /* CCDebugTool.m */,
 				42F0A3791F59350100ACD4FA /* Info.plist */,
@@ -1032,7 +1212,8 @@
 		42F0A38B1F59355E00ACD4FA /* HTTP */ = {
 			isa = PBXGroup;
 			children = (
-				4266D3BA2008B74100D6EE07 /* Request */,
+				429D59D92326248D008822C4 /* ServiceManager */,
+				4266D3BA2008B74100D6EE07 /* Network */,
 				4266D3B82008B71200D6EE07 /* NetworkInfo */,
 			);
 			path = HTTP;
@@ -1041,6 +1222,8 @@
 		42F0A3971F59355E00ACD4FA /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				42B84F6F2328A639009583AD /* CCNetworkResources.h */,
+				42B84F6E2328A639009583AD /* CCNetworkResources.m */,
 				42BA41B21FB5A4AB00B0B0C5 /* CCNetworkObserver.h */,
 				42BA41B31FB5A4AB00B0B0C5 /* CCNetworkObserver.m */,
 				42EA11721FB43FE60078D439 /* CCNetworkTransaction.h */,
@@ -1054,8 +1237,8 @@
 		42F0A39C1F59355E00ACD4FA /* View */ = {
 			isa = PBXGroup;
 			children = (
-				42EA116E1FB43F0C0078D439 /* CCHTTPTableViewCell.h */,
-				42EA116F1FB43F0C0078D439 /* CCHTTPTableViewCell.m */,
+				42EA116E1FB43F0C0078D439 /* CCNetworkTableViewCell.h */,
+				42EA116F1FB43F0C0078D439 /* CCNetworkTableViewCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1131,6 +1314,8 @@
 				42F0A4271F59355E00ACD4FA /* CCDebugContentViewController.h */,
 				42F0A4281F59355E00ACD4FA /* CCDebugContentViewController.m */,
 				42F0A4A91F59368C00ACD4FA /* CCMacros.h */,
+				423B2CC2233DE7D800E82C0B /* LOGCollectionViewCell.h */,
+				423B2CC3233DE7D800E82C0B /* LOGCollectionViewCell.m */,
 			);
 			path = ContentController;
 			sourceTree = "<group>";
@@ -1176,19 +1361,21 @@
 				42F0A49D1F59355E00ACD4FA /* CCPerformanceConfig.h in Headers */,
 				42EA114D1FB42CD30078D439 /* FBAllocationTrackerHelpers.h in Headers */,
 				42EA11221FB42CD30078D439 /* fishhook.h in Headers */,
-				42EA11701FB43F0C0078D439 /* CCHTTPTableViewCell.h in Headers */,
+				42EA11701FB43F0C0078D439 /* CCNetworkTableViewCell.h in Headers */,
 				42EA11531FB42CD30078D439 /* FBAllocationTrackerGenerationManager.h in Headers */,
 				42EA112E1FB42CD30078D439 /* BaseType.h in Headers */,
 				42F0A42E1F59355E00ACD4FA /* CCUncaughtExceptionHandler.h in Headers */,
 				42EA11511FB42CD30078D439 /* FBAllocationTrackerFunctors.h in Headers */,
 				42EA11561FB42CD30078D439 /* FBAllocationTrackerNSZombieSupport.h in Headers */,
 				425F00701FD7BD0000368E4E /* DatabaseViewController.h in Headers */,
+				429D59ED23263423008822C4 /* AddressConfigTableViewCell.h in Headers */,
 				42D5AD4A1FAC62AF0063C136 /* STSimplePing.h in Headers */,
 				4266D3B72008B16400D6EE07 /* route.h in Headers */,
 				42EA11161FB42CD30078D439 /* CCMemoryProfilerViewController.h in Headers */,
 				42F0A42B1F59355E00ACD4FA /* CCAppFluecyMonitor.h in Headers */,
 				42EA111C1FB42CD30078D439 /* FBAssociationManager.h in Headers */,
 				42D5AD4E1FAC62CD0063C136 /* CCPingServices.h in Headers */,
+				429DC2762329E02A008D606B /* BundleDirectoryViewController.h in Headers */,
 				42EA11301FB42CD30078D439 /* FBClassStrongLayout.h in Headers */,
 				42F0A4991F59355E00ACD4FA /* CCMonitorHelper.h in Headers */,
 				4265FBBA20F05FF700DE2854 /* UIViewController+CCDebug.h in Headers */,
@@ -1204,6 +1391,8 @@
 				42EA11231FB42CD30078D439 /* FBBlockStrongLayout.h in Headers */,
 				42EA11431FB42CD30078D439 /* FBRetainCycleDetector.h in Headers */,
 				425F00761FD7C36000368E4E /* DatabaseViewModel.h in Headers */,
+				42743774232A1A4700B5CB1B /* CCDebugKeychainQuery.h in Headers */,
+				429D59E82326320A008822C4 /* AddressConfigViewController.h in Headers */,
 				421E6BE21FB13EB70068FB1E /* CCSpeedTestViewController.h in Headers */,
 				42EA11521FB42CD30078D439 /* FBAllocationTrackerGeneration.h in Headers */,
 				42EA113B1FB42CD30078D439 /* FBObjectiveCObject.h in Headers */,
@@ -1215,13 +1404,16 @@
 				42EA111D1FB42CD30078D439 /* FBAssociationManager+Internal.h in Headers */,
 				428B606E1FAC05A0002577C0 /* CCSandboxTableViewCell.h in Headers */,
 				42EA11581FB42CD30078D439 /* FBAllocationTrackerManager.h in Headers */,
+				429DC2932329F680008D606B /* CCDebugKeychainViewController.h in Headers */,
 				42EA113A1FB42CD30078D439 /* FBObjectGraphConfiguration.h in Headers */,
+				423B2CC4233DE7D800E82C0B /* LOGCollectionViewCell.h in Headers */,
 				42EA114C1FB42CD30078D439 /* FBAllocationTrackerSummary.h in Headers */,
 				42EA11411FB42CD30078D439 /* FBObjectiveCGraphElement.h in Headers */,
 				425F007A1FD7C5D900368E4E /* DatabaseManager.h in Headers */,
 				42BA41B01FB588FE00B0B0C5 /* CCNetworkRecorder.h in Headers */,
 				42EA11191FB42CD30078D439 /* ProfilerTableHeader.h in Headers */,
 				42F0A4441F59355E00ACD4FA /* CCDebugDataSource.h in Headers */,
+				429DC297232A1464008D606B /* CCDebugAlert.h in Headers */,
 				428B606A1FAC0586002577C0 /* CCSandboxViewController.h in Headers */,
 				42F0A4421F59355E00ACD4FA /* CCDebugCrashHelper.h in Headers */,
 				424603081FAFF05000467266 /* ToolViewController.h in Headers */,
@@ -1236,7 +1428,7 @@
 				42EA11451FB42CD30078D439 /* FBNodeEnumerator.h in Headers */,
 				428B60661FAC056F002577C0 /* CCSandboxEntity.h in Headers */,
 				42EA11611FB435210078D439 /* CCNetwork.h in Headers */,
-				427408E520F08F9D008C3E6D /* CCPreviewItem.h in Headers */,
+				427408E520F08F9D008C3E6D /* CCSandboxPreviewItem.h in Headers */,
 				42F0A37A1F59350100ACD4FA /* CCDebugTool.h in Headers */,
 				42EA114F1FB42CD30078D439 /* NSObject+FBAllocationTracker.h in Headers */,
 				42FC5B4F1FC418AF00375959 /* CCCookieDetailViewController.h in Headers */,
@@ -1244,6 +1436,7 @@
 				42EA11591FB42CD30078D439 /* FBAllocationTrackerDefines.h in Headers */,
 				42D5AD561FAC65680063C136 /* CCPingViewController.h in Headers */,
 				426A79AF1FAC3BCC00B328C1 /* CCSandboxCollectionViewCell.h in Headers */,
+				429DC27A2329E03D008D606B /* BundleDirectoryViewTableViewCell.h in Headers */,
 				4266D3AF2008A03900D6EE07 /* CCNetworkInfo.h in Headers */,
 				42EA112B1FB42CD30078D439 /* FBStructEncodingParser.h in Headers */,
 				4266D3AB20089EC500D6EE07 /* CCNetworkInfoViewController.h in Headers */,
@@ -1251,10 +1444,14 @@
 				42F0A4A11F59355E00ACD4FA /* CCPerformanceStatusBar.h in Headers */,
 				42B185041FBD3EB6002B066F /* CCLogMonitoring.h in Headers */,
 				42EA110F1FB42CD30078D439 /* ProfilerDataSource.h in Headers */,
+				429D59E0232625B4008822C4 /* ServiceManagerViewController.h in Headers */,
 				42EA11351FB42CD30078D439 /* FBObjectReference.h in Headers */,
-				42F0A4381F59355E00ACD4FA /* CCDebugHttpViewController.h in Headers */,
+				42F0A4381F59355E00ACD4FA /* CCDebugNetworkViewController.h in Headers */,
+				42B84F6923288893009583AD /* PrefixHeader.pch in Headers */,
+				42B84F712328A639009583AD /* CCNetworkResources.h in Headers */,
 				424603151FB00FEF00467266 /* CCSpeedTestManager.h in Headers */,
 				42EA11381FB42CD30078D439 /* FBObjectiveCNSCFTimer.h in Headers */,
+				426814BA23160ABE0061AFD2 /* rcd_fishhook.h in Headers */,
 				425F007F1FD7CB4200368E4E /* LeftDatabaseView.h in Headers */,
 				424B39401FC513DC003B03FC /* CCCookieManager.h in Headers */,
 				42FC5B541FC41AC400375959 /* CCCookiesTableViewCell.h in Headers */,
@@ -1264,6 +1461,7 @@
 				42F0A4481F59355E00ACD4FA /* CCDebugFluencyHelper.h in Headers */,
 				42EA11331FB42CD30078D439 /* FBIvarReference.h in Headers */,
 				42EA11201FB42CD30078D439 /* FBStandardGraphEdgeFilters.h in Headers */,
+				42743772232A1A4700B5CB1B /* CCDebugKeychain.h in Headers */,
 				42F0A4291F59355E00ACD4FA /* CCBacktraceLogger.h in Headers */,
 				42D5AD521FAC64E80063C136 /* CCPingTextView.h in Headers */,
 				42BA41A01FB5412800B0B0C5 /* UINavigationController+CCHook.h in Headers */,
@@ -1318,6 +1516,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 			);
 			mainGroup = 42F0A36B1F59350100ACD4FA;
@@ -1336,6 +1535,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				426814B923160ABE0061AFD2 /* README.md in Resources */,
+				426814B823160ABE0061AFD2 /* LICENSE in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1353,7 +1554,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Sets the target folders and the final framework product.\nFMK_NAME=${PROJECT_NAME}\nFMK_VERSION=CC\nOPEN_PATH=${SRCROOT}/Products\n\n# Install dir will be the final output to the framework or bundle.\n# The following line create it in the root folder of the current project.\nINSTALL_DIR=${OPEN_PATH}/${FMK_NAME}.framework\n#INSTALL_BUNDLE=${OPEN_PATH}/${FMK_NAME}.bundle\n\n# Working dir will be deleted after the framework or bundle creation.\nWRK_DIR=build\n\n# framework\nDEVICE_DIR=${WRK_DIR}/Release-iphoneos/${FMK_NAME}.framework\nSIMULATOR_DIR=${WRK_DIR}/Debug-iphonesimulator/${FMK_NAME}.framework\n\n# bundle\n#DEVICE_BUNDLE=${WRK_DIR}/Release-iphoneos/${FMK_NAME}.bundle\n#SIMULATOR_BUNDLE=${WRK_DIR}/Debug-iphonesimulator/${FMK_NAME}.bundle\n\n# -configuration ${CONFIGURATION}\n# Clean and Building both architectures.\nxcodebuild -configuration \"Release\" -target \"${FMK_NAME}\" -sdk iphoneos clean build\nxcodebuild -configuration \"Debug\" -target \"${FMK_NAME}\" -sdk iphonesimulator clean build\n\n# Cleaning the oldest.\nif [ -d \"${OPEN_PATH}\" ]\nthen\nrm -rf \"${OPEN_PATH}\"\nfi\n\n# Creates and renews the final product folder.\nmkdir -p \"${INSTALL_DIR}\"\nmkdir -p \"${INSTALL_DIR}/Versions\"\nmkdir -p \"${INSTALL_DIR}/Versions/${FMK_VERSION}\"\nmkdir -p \"${INSTALL_DIR}/Versions/${FMK_VERSION}/Resources\"\nmkdir -p \"${INSTALL_DIR}/Versions/${FMK_VERSION}/Headers\"\n\n# bundle\n#mkdir -p \"${INSTALL_BUNDLE}\"\n\n# Creates the internal links.\n# It MUST uses relative path, otherwise will not work when the folder is copied/moved.\nln -s \"${FMK_VERSION}\" \"${INSTALL_DIR}/Versions/Current\"\nln -s \"Versions/Current/Headers\" \"${INSTALL_DIR}/Headers\"\nln -s \"Versions/Current/Resources\" \"${INSTALL_DIR}/Resources\"\nln -s \"Versions/Current/${FMK_NAME}\" \"${INSTALL_DIR}/${FMK_NAME}\"\n\n# Copies the headers and resources files to the final product folder.\ncp -R \"${DEVICE_DIR}/Headers/\" \"${INSTALL_DIR}/Versions/${FMK_VERSION}/Headers/\"\ncp -R \"${DEVICE_DIR}/\" \"${INSTALL_DIR}/Versions/${FMK_VERSION}/Resources/\"\n\n# bundle\n#cp -R \"${DEVICE_BUNDLE}/\" \"${INSTALL_BUNDLE}/\"\n\n# Removes the binary and header from the resources folder.\nrm -r \"${INSTALL_DIR}/Versions/${FMK_VERSION}/Resources/Headers\"\nrm -r \"${INSTALL_DIR}/Versions/${FMK_VERSION}/Resources/${FMK_NAME}\"\n\n# Uses the Lipo Tool to merge both binary files (i386 + armv6/armv7) into one Universal final product.\nlipo -create \"${DEVICE_DIR}/${FMK_NAME}\" \"${SIMULATOR_DIR}/${FMK_NAME}\" -output \"${INSTALL_DIR}/${FMK_NAME}\"\n#lipo -create \"${DEVICE_BUNDLE}/${FMK_NAME}\" \"${SIMULATOR_BUNDLE}/${FMK_NAME}\" -output \"${INSTALL_BUNDLE}/${FMK_NAME}\"\n\nrm -r \"${WRK_DIR}\"\n\nopen \"${OPEN_PATH}\"";
+			shellScript = "# Sets the target folders and the final framework product.\nFMK_NAME=${PROJECT_NAME}\nFMK_VERSION=CC\nOPEN_PATH=${SRCROOT}/Products\n\n# Install dir will be the final output to the framework or bundle.\n# The following line create it in the root folder of the current project.\nINSTALL_DIR=${OPEN_PATH}/${FMK_NAME}.framework\n#INSTALL_BUNDLE=${OPEN_PATH}/${FMK_NAME}.bundle\n\n# Working dir will be deleted after the framework or bundle creation.\nWRK_DIR=build\n\n# framework\nDEVICE_DIR=${WRK_DIR}/Release-iphoneos/${FMK_NAME}.framework\nSIMULATOR_DIR=${WRK_DIR}/Debug-iphonesimulator/${FMK_NAME}.framework\n\n# bundle\n#DEVICE_BUNDLE=${WRK_DIR}/Release-iphoneos/${FMK_NAME}.bundle\n#SIMULATOR_BUNDLE=${WRK_DIR}/Debug-iphonesimulator/${FMK_NAME}.bundle\n\n# -configuration ${CONFIGURATION}\n# Clean and Building both architectures.\nxcodebuild -configuration \"Release\" -target \"${FMK_NAME}\" -sdk iphoneos build\nxcodebuild -configuration \"Debug\" -target \"${FMK_NAME}\" -sdk iphonesimulator build\n\n\n# Cleaning the oldest.\nif [ -d \"${OPEN_PATH}\" ]\nthen\nrm -rf \"${OPEN_PATH}\"\nfi\n\n# Creates and renews the final product folder.\nmkdir -p \"${INSTALL_DIR}\"\nmkdir -p \"${INSTALL_DIR}/Versions\"\nmkdir -p \"${INSTALL_DIR}/Versions/${FMK_VERSION}\"\nmkdir -p \"${INSTALL_DIR}/Versions/${FMK_VERSION}/Resources\"\nmkdir -p \"${INSTALL_DIR}/Versions/${FMK_VERSION}/Headers\"\n\n# bundle\n#mkdir -p \"${INSTALL_BUNDLE}\"\n\n# Creates the internal links.\n# It MUST uses relative path, otherwise will not work when the folder is copied/moved.\nln -s \"${FMK_VERSION}\" \"${INSTALL_DIR}/Versions/Current\"\nln -s \"Versions/Current/Headers\" \"${INSTALL_DIR}/Headers\"\nln -s \"Versions/Current/Resources\" \"${INSTALL_DIR}/Resources\"\nln -s \"Versions/Current/${FMK_NAME}\" \"${INSTALL_DIR}/${FMK_NAME}\"\n\n# Copies the headers and resources files to the final product folder.\ncp -R \"${DEVICE_DIR}/Headers/\" \"${INSTALL_DIR}/Versions/${FMK_VERSION}/Headers/\"\ncp -R \"${DEVICE_DIR}/\" \"${INSTALL_DIR}/Versions/${FMK_VERSION}/Resources/\"\n\n# bundle\n#cp -R \"${DEVICE_BUNDLE}/\" \"${INSTALL_BUNDLE}/\"\n\n# Removes the binary and header from the resources folder.\nrm -r \"${INSTALL_DIR}/Versions/${FMK_VERSION}/Resources/Headers\"\nrm -r \"${INSTALL_DIR}/Versions/${FMK_VERSION}/Resources/${FMK_NAME}\"\n\n# Uses the Lipo Tool to merge both binary files (i386 + armv6/armv7) into one Universal final product.\nlipo -create \"${DEVICE_DIR}/${FMK_NAME}\" \"${SIMULATOR_DIR}/${FMK_NAME}\" -output \"${INSTALL_DIR}/${FMK_NAME}\"\n#lipo -create \"${DEVICE_BUNDLE}/${FMK_NAME}\" \"${SIMULATOR_BUNDLE}/${FMK_NAME}\" -output \"${INSTALL_BUNDLE}/${FMK_NAME}\"\n\nrm -r \"${WRK_DIR}\"\n\nopen \"${OPEN_PATH}\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1382,20 +1583,24 @@
 				42EA11621FB435210078D439 /* CCNetwork.m in Sources */,
 				42EA11321FB42CD30078D439 /* FBObjectInStructReference.m in Sources */,
 				42F0A4431F59355E00ACD4FA /* CCDebugCrashHelper.m in Sources */,
+				429DC27B2329E03D008D606B /* BundleDirectoryViewTableViewCell.m in Sources */,
 				42BA41B51FB5A4AC00B0B0C5 /* CCNetworkObserver.m in Sources */,
 				424603161FB00FEF00467266 /* CCSpeedTestManager.m in Sources */,
 				42F0A4A21F59355E00ACD4FA /* CCPerformanceStatusBar.m in Sources */,
 				42EA11101FB42CD30078D439 /* RetainCycleAnalysisCache.m in Sources */,
 				42D5AD571FAC65680063C136 /* CCPingViewController.m in Sources */,
 				42F0A4A01F59355E00ACD4FA /* CCDebugReachability.m in Sources */,
+				42743775232A1A4700B5CB1B /* CCDebugKeychainQuery.m in Sources */,
 				42EA112A1FB42CD30078D439 /* Struct.mm in Sources */,
 				42EA11461FB42CD30078D439 /* FBRetainCycleDetector.mm in Sources */,
 				42EA11141FB42CD30078D439 /* CCMemoryProfilerViewController.m in Sources */,
 				42EA113F1FB42CD30078D439 /* FBObjectiveCBlock.m in Sources */,
+				429D59EE23263423008822C4 /* AddressConfigTableViewCell.m in Sources */,
 				42F0A42A1F59355E00ACD4FA /* CCBacktraceLogger.m in Sources */,
 				42EA11501FB42CD30078D439 /* FBAllocationTrackerImpl.mm in Sources */,
 				421E6BE81FB140E00068FB1E /* CCSpeedView.m in Sources */,
 				424B39411FC513DC003B03FC /* CCCookieManager.m in Sources */,
+				42743773232A1A4700B5CB1B /* CCDebugKeychain.m in Sources */,
 				42EA11481FB42CD30078D439 /* FBRetainCycleUtils.m in Sources */,
 				426A79AC1FAC3ADA00B328C1 /* CCFilePathTreeView.m in Sources */,
 				42EA11441FB42CD30078D439 /* FBNodeEnumerator.mm in Sources */,
@@ -1407,16 +1612,20 @@
 				42EA11211FB42CD30078D439 /* fishhook.c in Sources */,
 				42EA111A1FB42CD30078D439 /* ProfilerTableHeader.m in Sources */,
 				42F0A49A1F59355E00ACD4FA /* CCMonitorHelper.m in Sources */,
+				429DC298232A1464008D606B /* CCDebugAlert.m in Sources */,
 				42BA41B11FB588FE00B0B0C5 /* CCNetworkRecorder.m in Sources */,
 				42EA113E1FB42CD30078D439 /* FBObjectGraphConfiguration.m in Sources */,
 				42EA11261FB42CD30078D439 /* FBBlockStrongLayout.m in Sources */,
 				425F00771FD7C36000368E4E /* DatabaseViewModel.m in Sources */,
 				42EA112D1FB42CD30078D439 /* FBStructEncodingParser.mm in Sources */,
-				42F0A4391F59355E00ACD4FA /* CCDebugHttpViewController.m in Sources */,
-				427408E620F08F9D008C3E6D /* CCPreviewItem.m in Sources */,
+				42F0A4391F59355E00ACD4FA /* CCDebugNetworkViewController.m in Sources */,
+				427408E620F08F9D008C3E6D /* CCSandboxPreviewItem.m in Sources */,
 				421E6BE31FB13EB70068FB1E /* CCSpeedTestViewController.m in Sources */,
+				429D59E92326320A008822C4 /* AddressConfigViewController.m in Sources */,
+				423B2CC5233DE7D800E82C0B /* LOGCollectionViewCell.m in Sources */,
 				42EA11361FB42CD30078D439 /* FBIvarReference.m in Sources */,
 				42EA11571FB42CD30078D439 /* FBAllocationTrackerNSZombieSupport.mm in Sources */,
+				426814B723160ABE0061AFD2 /* rcd_fishhook.c in Sources */,
 				425F008E1FD7DA1300368E4E /* DatabaseTableViewCell.m in Sources */,
 				42EA11401FB42CD30078D439 /* FBObjectiveCObject.m in Sources */,
 				425F00711FD7BD0000368E4E /* DatabaseViewController.m in Sources */,
@@ -1429,7 +1638,8 @@
 				42BA41A51FB5430200B0B0C5 /* UIViewController+CCHook.m in Sources */,
 				42EA114E1FB42CD30078D439 /* FBAllocationTrackerManager.mm in Sources */,
 				42FC5B551FC41AC400375959 /* CCCookiesTableViewCell.m in Sources */,
-				42EA11711FB43F0C0078D439 /* CCHTTPTableViewCell.m in Sources */,
+				42B84F702328A639009583AD /* CCNetworkResources.m in Sources */,
+				42EA11711FB43F0C0078D439 /* CCNetworkTableViewCell.m in Sources */,
 				426A79B01FAC3BCC00B328C1 /* CCSandboxCollectionViewCell.m in Sources */,
 				42F0A43F1F59355E00ACD4FA /* CCDebugHttpDetailViewController.m in Sources */,
 				42D5AD4B1FAC62AF0063C136 /* STSimplePing.m in Sources */,
@@ -1437,6 +1647,8 @@
 				42EA11751FB43FE60078D439 /* CCNetworkTransaction.m in Sources */,
 				4266D3AC20089EC500D6EE07 /* CCNetworkInfoViewController.m in Sources */,
 				42F0A4A41F59355E00ACD4FA /* CCMonitorLabel.m in Sources */,
+				429D59E1232625B4008822C4 /* ServiceManagerViewController.m in Sources */,
+				429DC2922329F680008D606B /* CCDebugKeychainViewController.m in Sources */,
 				42B185051FBD3EB6002B066F /* CCLogMonitoring.m in Sources */,
 				424603091FAFF05000467266 /* ToolViewController.m in Sources */,
 				42D5AD531FAC64E80063C136 /* CCPingTextView.m in Sources */,
@@ -1445,6 +1657,7 @@
 				42BA41A91FB545B000B0B0C5 /* UIControl+CCHook.m in Sources */,
 				42EA11491FB42CD30078D439 /* NSObject+FBAllocationTracker.mm in Sources */,
 				425F007B1FD7C5D900368E4E /* DatabaseManager.m in Sources */,
+				429DC2772329E02A008D606B /* BundleDirectoryViewController.m in Sources */,
 				428B60671FAC056F002577C0 /* CCSandboxEntity.m in Sources */,
 				42EA11111FB42CD30078D439 /* ProfilerDataSource.m in Sources */,
 				42F0A4491F59355E00ACD4FA /* CCDebugFluencyHelper.m in Sources */,
@@ -1593,6 +1806,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = CCDebugTool/Config/PrefixHeader.pch;
 				INFOPLIST_FILE = CCDebugTool/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -1617,6 +1831,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = CCDebugTool/Config/PrefixHeader.pch;
 				INFOPLIST_FILE = CCDebugTool/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;

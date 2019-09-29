@@ -31,5 +31,6 @@
 @property (nonatomic, copy) NSData *data;
 @property (nonatomic, copy) NSArray *dataArr;
 @property (nonatomic, assign) NSInteger selectedIndex;
+@property (nonatomic, copy) NSString *url;
 
 @end

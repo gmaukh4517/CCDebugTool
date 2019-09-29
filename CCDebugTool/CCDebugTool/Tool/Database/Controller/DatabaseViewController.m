@@ -58,6 +58,7 @@ static NSString *const kUICollectionViewCellIdentify = @"kUICollectionViewCellId
     [self.view addSubview:self.leftDatabaseView];
 
     UILabel *dataLabel = [[UILabel alloc] initWithFrame:CGRectMake(_leftDatabaseView.frame.size.width, 0, self.view.bounds.size.width - _leftDatabaseView.frame.size.width, 30)];
+    dataLabel.textColor = [UIColor whiteColor];
     dataLabel.backgroundColor = [CCDebugTool manager].mainColor;
     dataLabel.font = [UIFont systemFontOfSize:15];
     dataLabel.text = @"  Data";
@@ -76,7 +77,7 @@ static NSString *const kUICollectionViewCellIdentify = @"kUICollectionViewCellId
     verticalLine.hidden = YES;
     [self.contentScrollView addSubview:_verticalLine = verticalLine];
 
-    self.collectionView.frame = CGRectMake(0, verticalLine.frame.origin.y + verticalLine.frame.size.height, self.contentScrollView.frame.size.width, self.contentScrollView.frame.size.height - self.verticalLine.frame.origin.y - self.verticalLine.frame.size.height);
+    self.collectionView.frame = CGRectMake(0, verticalLine.frame.origin.y + verticalLine.frame.size.height, self.contentScrollView.frame.size.width, self.contentScrollView.frame.size.height - self.verticalLine.frame.origin.y - self.verticalLine.frame.size.height - 20);
     [self.contentScrollView addSubview:self.collectionView];
 }
 

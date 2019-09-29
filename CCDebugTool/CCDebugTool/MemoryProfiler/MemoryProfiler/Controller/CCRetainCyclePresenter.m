@@ -101,7 +101,7 @@
     
     CCSingleRetainCycleViewController *viewController = [[CCSingleRetainCycleViewController alloc] init];
     viewController.singleCycle =  [self.retainCycles objectAtIndex:indexPath.row];
-    [self.navigationController pushViewController:viewController animated:YES];
+    [self pushNewViewController:viewController];
 }
 
 

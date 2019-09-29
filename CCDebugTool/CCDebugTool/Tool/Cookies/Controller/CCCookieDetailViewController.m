@@ -26,7 +26,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor whiteColor];
-    self.title = @"详情";
+    self.title = self.cookie.domain;
     [self initControl];
     [self initLoadData];
 }
@@ -83,18 +83,18 @@
     NSString *key = [item objectForKey:@"propertyType"];
     NSString *value = [item objectForKey:@"propertyValue"];
 
-    CCDebugContentViewController *vc = [[CCDebugContentViewController alloc] init];
-    vc.hidesBottomBarWhenPushed = YES;
+    CCDebugContentViewController *viewController = [[CCDebugContentViewController alloc] init];
+    viewController.hidesBottomBarWhenPushed = YES;
     if ([key isEqualToString:@"NSDictionary *"] || [key isEqualToString:@"NSArray *"] ||
         [key isEqualToString:@"NSMutableDictionary *"] || [key isEqualToString:@"NSMutableArray *"] ||
         [[item objectForKey:@"propertyName"] isEqualToString:@"value"]) {
-        vc.content = value;
-        vc.title = [item objectForKey:@"propertyName"];
+        viewController.content = value;
+        viewController.title = [item objectForKey:@"propertyName"];
     } else {
         return;
     }
 
-    [self.navigationController pushViewController:vc animated:YES];
+    [self pushNewViewController:viewController];
 }
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath

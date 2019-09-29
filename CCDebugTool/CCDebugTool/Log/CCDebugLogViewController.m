@@ -27,7 +27,6 @@
 #import "CCDebugContentViewController.h"
 #import "CCDebugDataSource.h"
 #import "CCDebugTool.h"
-#import "UIViewController+CCDebug.h"
 
 @interface CCDebugLogViewController () <UITableViewDelegate, UIScrollViewDelegate>
 
@@ -50,6 +49,18 @@
     [self initControl];
 }
 
+- (void)viewDidLayoutSubviews
+{
+    [super viewDidLayoutSubviews];
+    self.scrollView.frame = self.view.bounds;
+
+    [self.scrollView.subviews enumerateObjectsUsingBlock:^(__kindof UIView *_Nonnull obj, NSUInteger idx, BOOL *_Nonnull stop) {
+        CGRect frame = obj.frame;
+        frame.size.height = self.view.bounds.size.height;
+        obj.frame = frame;
+    }];
+}
+
 - (void)initNavigation
 {
     _itemTitle = @[ @"Crash", @"Caton", @"LOG" ];
@@ -70,13 +81,13 @@
 - (void)didSegmentedControl:(UISegmentedControl *)sender
 {
     [self reloadData:sender.selectedSegmentIndex];
-    
+
     [UIView animateWithDuration:0.5
                      animations:^{
-                         CGPoint offset = self.scrollView.contentOffset;
-                         offset.x = self.scrollView.frame.size.width * sender.selectedSegmentIndex;
-                         self.scrollView.contentOffset = offset;
-                     }];
+        CGPoint offset = self.scrollView.contentOffset;
+        offset.x = self.scrollView.frame.size.width * sender.selectedSegmentIndex;
+        self.scrollView.contentOffset = offset;
+    }];
 }
 
 - (void)dismissViewController
@@ -86,12 +97,11 @@
 
 - (void)initControl
 {
-    
     self.view.backgroundColor = [UIColor whiteColor];
-    
+
     _dataSource = [[CCDebugDataSource alloc] init];
     _dataSource.sourceType = CCDebugDataSourceTypeCrash;
-    
+
     UIScrollView *scrollview = [[UIScrollView alloc] initWithFrame:self.view.bounds];
     scrollview.pagingEnabled = YES;
     scrollview.showsHorizontalScrollIndicator = NO;
@@ -101,19 +111,19 @@
     scrollview.delegate = self;
     scrollview.contentSize = CGSizeMake(scrollview.frame.size.width * 3, 0);
     [self.view addSubview:_scrollView = scrollview];
-    
+
     if (@available(iOS 11.0, *)) {
         scrollview.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
     }
-    
+
     UITableView *crashTableView = [self createTableView:0];
     crashTableView.tag = 1000;
     [scrollview addSubview:crashTableView];
-    
+
     UITableView *cationTableView = [self createTableView:self.view.frame.size.width];
     cationTableView.tag = 2000;
     [scrollview addSubview:cationTableView];
-    
+
     UITableView *logTableView = [self createTableView:self.view.frame.size.width * 2];
     logTableView.tag = 3000;
     [scrollview addSubview:logTableView];
@@ -159,7 +169,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
+
     CCDebugContentViewController *viewController = [[CCDebugContentViewController alloc] init];
     viewController.title = [NSString stringWithFormat:@"%@日志", self.navigationItem.title];
     viewController.hidesBottomBarWhenPushed = YES;
@@ -191,15 +201,15 @@
     logTableView.delegate = self;
     logTableView.dataSource = self.dataSource;
     logTableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
-    
+
     if (@available(iOS 11.0, *)) {
         logTableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
     }
-    
+
     UIView *v = [[UIView alloc] initWithFrame:CGRectZero];
     v.backgroundColor = [UIColor clearColor];
     [logTableView setTableFooterView:v];
-    
+
     return logTableView;
 }
 

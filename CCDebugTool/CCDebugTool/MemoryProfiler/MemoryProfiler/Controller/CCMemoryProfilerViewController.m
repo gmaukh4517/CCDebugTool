@@ -67,6 +67,12 @@ static NSString *const kProfilerSectionHeaderIdentifier = @"kProfilerSectionHead
     [self initLoadData];
 }
 
+-(void)viewDidLayoutSubviews
+{
+    [super viewDidLayoutSubviews];
+    self.profilerTableView.frame = self.view.bounds;
+}
+
 - (void)initNavigation
 {
     self.title = @"Cycle";
@@ -229,7 +235,7 @@ static NSString *const kProfilerSectionHeaderIdentifier = @"kProfilerSectionHead
             
             if ([retainCycles count] > 0) {
                 // We've got a leak
-                [_analysisCache updateAnalysisStatus:CCRetainCyclePresent
+                [self->_analysisCache updateAnalysisStatus:CCRetainCyclePresent
                                      forInGeneration:generationIndex
                                        forClassNamed:className];
                 if (presentDetails) {
@@ -237,12 +243,12 @@ static NSString *const kProfilerSectionHeaderIdentifier = @"kProfilerSectionHead
                         
                         CCRetainCyclePresenter *cyclePressenter = [[CCRetainCyclePresenter alloc] init];
                         cyclePressenter.retainCycles = [retainCycles allObjects];
-                        [self.navigationController pushViewController:cyclePressenter animated:YES];
+                        [self pushNewViewController:cyclePressenter];
                         
                     });
                 }
             } else {
-                [_analysisCache updateAnalysisStatus:CCRetainCycleNotPresent
+                [self->_analysisCache updateAnalysisStatus:CCRetainCycleNotPresent
                                      forInGeneration:generationIndex
                                        forClassNamed:className];
             }

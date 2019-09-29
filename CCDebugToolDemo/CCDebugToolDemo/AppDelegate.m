@@ -7,10 +7,15 @@
 //
 
 #import "AppDelegate.h"
+#import "DebugRequestProtocol.h"
 #import "ViewController.h"
-#import <CCDebugTool/CCDebugTool.h>
 
-@interface AppDelegate () <NSURLConnectionDataDelegate, NSURLSessionDataDelegate>
+#if __has_include(<CCDebugTool/CCDebugTool.h>)
+#import <CCDebugTool/CCDebugTool.h>
+#endif
+
+
+@interface AppDelegate ()
 
 @property (nonatomic, strong) NSMutableArray *connections;
 
@@ -22,30 +27,42 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
-    [self navigationBarColor];
+    [self setUpNavigationBarAppearance:[UIColor colorWithRed:0.223 green:0.698 blue:1 alpha:1.f]];
+#ifdef CCDebugTool_h
     [[CCDebugTool manager] enableDebugMode];
-    
+#endif
+
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     self.window.backgroundColor = [UIColor whiteColor];
     self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:[ViewController new]];
     [self.window makeKeyAndVisible];
-    
-    [self sendExampleNetworkRequests];
-    
+
+    [[DebugRequestProtocol new] sendExampleNetworkRequests];
+
     return YES;
 }
 
-- (void)navigationBarColor
+- (void)setUpNavigationBarAppearance:(UIColor *)color
 {
-    UIColor *color = [UIColor colorWithRed:27 / 255.f green:130 / 255.f blue:210 / 255.f alpha:1.f];
-    [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
-    [[UINavigationBar appearance] setBarTintColor:color];
-    
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
+        [[UINavigationBar appearance] setBarTintColor:color];
+        [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
+        UIImage *backButtonImage = [[UIImage imageNamed:@"nav_back"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+        [[UINavigationBar appearance] setBackIndicatorImage:backButtonImage];
+        [[UINavigationBar appearance] setBackIndicatorTransitionMaskImage:backButtonImage];
+    } else {
+        [[UINavigationBar appearance] setTintColor:color];
+    }
+
     [[UINavigationBar appearance] setTranslucent:NO];
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
-    
+
     [[UINavigationBar appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
-                                                          [UIColor whiteColor], NSForegroundColorAttributeName, [UIFont boldSystemFontOfSize:19], NSFontAttributeName, nil]];
+                                                          [UIColor whiteColor], NSForegroundColorAttributeName, [UIFont systemFontOfSize:18], NSFontAttributeName, nil]];
+
+    [[UIBarButtonItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont systemFontOfSize:16], NSFontAttributeName, nil] forState:UIControlStateNormal];
+    [[UIBarButtonItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont systemFontOfSize:16], NSFontAttributeName, nil] forState:UIControlStateSelected];
+    if (@available(iOS 11.0, *))
+        [[UIScrollView appearance] setContentInsetAdjustmentBehavior:UIScrollViewContentInsetAdjustmentNever];
 }
 
 
@@ -79,93 +96,5 @@
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
-
-#pragma mark - Networking Example
-
-- (void)sendExampleNetworkRequests
-{
-    // Async NSURLConnection
-    [NSURLConnection sendAsynchronousRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"https://api.github.com/repos/gmaukh4517/CCDebugTool/issues"]] queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
-        
-    }];
-    
-    // Sync NSURLConnection
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        [NSURLConnection sendSynchronousRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://lorempixel.com/320/480/"]] returningResponse:NULL error:NULL];
-    });
-    
-    // NSURLSession
-    NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
-    config.timeoutIntervalForRequest = 10.0;
-    NSURLSession *mySession = [NSURLSession sessionWithConfiguration:config delegate:self delegateQueue:[NSOperationQueue mainQueue]];
-    
-    NSMutableArray *pendingTasks = [NSMutableArray array];
-    
-    // NSURLSessionDataTask with delegate
-    [pendingTasks addObject:[mySession dataTaskWithURL:[NSURL URLWithString:@"http://cdn.flipboard.com/serviceIcons/v2/social-icon-flipboard-96.png"]]];
-    
-    // NSURLSessionDownloadTask with delegate
-    [pendingTasks addObject:[mySession downloadTaskWithURL:[NSURL URLWithString:@"https://assets-cdn.github.com/images/icons/emoji/unicode/1f44d.png?v5"]]];
-    
-    // Async NSURLSessionDownloadTask
-    [pendingTasks addObject:[[NSURLSession sharedSession] downloadTaskWithURL:[NSURL URLWithString:@"http://lorempixel.com/1024/1024/"] completionHandler:^(NSURL *location, NSURLResponse *response, NSError *error) {
-        
-    }]];
-    
-    // Async NSURLSessionDataTask
-    [pendingTasks addObject:[[NSURLSession sharedSession] dataTaskWithURL:[NSURL URLWithString:@"https://api.github.com/emojis"] completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-        
-    }]];
-    
-    // Async NSURLSessionUploadTask
-    NSMutableURLRequest *uploadRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"https://google.com/"]];
-    uploadRequest.HTTPMethod = @"POST";
-    NSData *data = [@"q=test" dataUsingEncoding:NSUTF8StringEncoding];
-    [pendingTasks addObject:[mySession uploadTaskWithRequest:uploadRequest fromData:data completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-        
-    }]];
-    
-    // Remaining requests made through NSURLConnection with a delegate
-    NSArray *requestURLStrings = @[ @"http://lorempixel.com/400/400/",
-                                    @"http://google.com",
-                                    @"http://lorempixel.com/750/1334/" ];
-    
-    NSTimeInterval delayTime = 10.0;
-    const NSTimeInterval stagger = 1.0;
-    
-    // Send off the NSURLSessionTasks (staggered)
-    for (NSURLSessionTask *task in pendingTasks) {
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayTime * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [task resume];
-        });
-        delayTime += stagger;
-    }
-    
-    // Begin the NSURLConnection requests (staggered)
-    self.connections = [NSMutableArray array];
-    for (NSString *urlString in requestURLStrings) {
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayTime * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:urlString]];
-            [self.connections addObject:[[NSURLConnection alloc] initWithRequest:request delegate:self]];
-        });
-        delayTime += stagger;
-    }
-}
-
-- (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask didReceiveResponse:(NSURLResponse *)response completionHandler:(void (^)(NSURLSessionResponseDisposition))completionHandler
-{
-    completionHandler(NSURLSessionResponseAllow);
-}
-
-- (void)connectionDidFinishLoading:(NSURLConnection *)connection
-{
-    [self.connections removeObject:connection];
-}
-
-- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
-{
-    [self.connections removeObject:connection];
-}
-
 
 @end

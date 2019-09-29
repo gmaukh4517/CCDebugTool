@@ -53,6 +53,7 @@
     [array addObject:@{ @"子网地址" : self.networkInfo.netmask }];
     [array addObject:@{ @"路由地址" : self.networkInfo.routerAddress }];
     [array addObject:@{ @"广播地址" : self.networkInfo.broadcastAddress }];
+    [array addObject:@{ @"代理地址" : self.networkInfo.proxyAddress }];
 
     _dataArr = array;
 
