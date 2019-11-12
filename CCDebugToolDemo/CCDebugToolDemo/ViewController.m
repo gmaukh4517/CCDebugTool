@@ -9,11 +9,16 @@
 #import "ViewController.h"
 #import "CrashViewController.h"
 #import "FluecyMonitorViewController.h"
+#import "WebLogViewController.h"
 #import "WebViewController.h"
 
-@interface ViewController ()
+@interface ViewController () <UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, strong) UIImageView *imageView;
+
+@property (nonatomic, strong) UITableView *tableView;
+
+@property (nonatomic, strong) NSArray *dataArr;
 
 @end
 
@@ -24,6 +29,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     self.title = @"CCDebugDemo";
+
 
     CGFloat spacing = 10;
 
@@ -37,45 +43,19 @@
     imageView.backgroundColor = [UIColor lightGrayColor];
     [self.view addSubview:_imageView = imageView];
 
-    NSInteger rowNumber = 4;
-    CGFloat x = spacing, y = imageView.frame.origin.y + imageView.frame.size.height + spacing;
-    CGFloat width = (self.view.bounds.size.width - 10 * (rowNumber + 1)) / rowNumber;
-
-    NSArray *arr = @[ @"网页", @"Crash(奔溃)", @"卡顿", @"沙盒" ];
-    for (NSInteger i = 0; i < arr.count; i++) {
-        UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(x, y, width, width)];
-        [button setTitle:[arr objectAtIndex:i] forState:UIControlStateNormal];
-        [button setBackgroundColor:[UIColor redColor]];
-        button.tag = i;
-        [button addTarget:self action:@selector(buttonClick:) forControlEvents:UIControlEventTouchUpInside];
-        [self.view addSubview:button];
-
-        x = button.frame.origin.x + button.frame.size.width + spacing;
-        if ((i + 1) % rowNumber == 0) {
-            x = spacing;
-            y += button.bounds.size.height + spacing;
-        }
-        NSLog(@"%@",button.currentTitle);
-    }
+    CGFloat y = imageView.frame.origin.y + imageView.frame.size.height + spacing;
+    self.dataArr = @[ @"网页", @"网页LOG", @"Crash(奔溃)", @"卡顿", @"沙盒" ];
+    self.tableView.frame = CGRectMake(0, y, self.view.bounds.size.width, self.view.bounds.size.height - y);
+    [self.view addSubview:self.tableView];
 }
 
-- (void)buttonClick:(UIButton *)sender
-{
-    if (sender.tag == 0) {
-        [self.navigationController pushViewController:[WebViewController new] animated:YES];
-    } else if (sender.tag == 1) {
-        [self.navigationController pushViewController:[CrashViewController new] animated:YES];
-    } else if (sender.tag == 2) {
-        [self.navigationController pushViewController:[FluecyMonitorViewController new] animated:YES];
-    } else if (sender.tag == 3) {
-        [self sandboxWrite];
-    }
-}
+#pragma mark -
+#pragma mark :. handler event
 
 - (void)sandboxWrite
 {
     NSString *path = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).lastObject;
-//    NSFileManager *fileManger = [NSFileManager defaultManager];
+    //    NSFileManager *fileManger = [NSFileManager defaultManager];
 
     //    if (![fileManger fileExistsAtPath:path])
     //        [fileManger createFileAtPath:path contents:[NSData data] attributes:nil];
@@ -111,7 +91,7 @@
             NSStringEncoding gbkEncoding = CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGB_18030_2000);
             NSInteger randomH = 0xA1 + arc4random() % (0xFE - 0xA1 + 1);
             NSInteger randomL = 0xB0 + arc4random() % (0xF7 - 0xB0 + 1);
-
+            
             NSInteger number = (randomH << 8) + randomL;
             NSData *data = [NSData dataWithBytes:&number length:2];
             NSString *string = [[NSString alloc] initWithData:data encoding:gbkEncoding];
@@ -138,6 +118,93 @@
         }
     });
 }
+
+#pragma mark -
+#pragma mark :. UITableView Delegate
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return self.dataArr.count;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 40;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *identifer = @"tableViewCellIdentifer";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifer];
+    if (!cell){
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifer];
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    }
+
+    return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+
+    NSString *text = [self.dataArr objectAtIndex:indexPath.row];
+    if ([text isEqualToString:@"网页"]) {
+        [self.navigationController pushViewController:[WebViewController new] animated:YES];
+    } else if ([text isEqualToString:@"网页LOG"]) {
+        [self.navigationController pushViewController:[WebLogViewController new] animated:YES];
+    } else if ([text isEqualToString:@"Crash(奔溃)"]) {
+        [self.navigationController pushViewController:[CrashViewController new] animated:YES];
+    } else if ([text isEqualToString:@"卡顿"]) {
+        [self.navigationController pushViewController:[FluecyMonitorViewController new] animated:YES];
+    } else if ([text isEqualToString:@"沙盒"]) {
+        [self sandboxWrite];
+    }
+}
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if ([cell respondsToSelector:@selector(setSeparatorInset:)])
+        [cell setSeparatorInset:UIEdgeInsetsZero];
+    if ([cell respondsToSelector:@selector(setPreservesSuperviewLayoutMargins:)])
+        [cell setPreservesSuperviewLayoutMargins:NO];
+    if ([cell respondsToSelector:@selector(setLayoutMargins:)])
+        [cell setLayoutMargins:UIEdgeInsetsZero];
+
+    cell.textLabel.text = [self.dataArr objectAtIndex:indexPath.row];
+
+    NSInteger totalRows = [tableView numberOfRowsInSection:indexPath.section];
+    if ((totalRows - indexPath.row) % 2 == 0) {
+        cell.backgroundColor = [UIColor colorWithHue:2.0 / 3.0 saturation:0.02 brightness:0.95 alpha:0.65];
+    } else {
+        cell.backgroundColor = [UIColor whiteColor];
+    }
+}
+
+#pragma mark -
+#pragma mark :. getter/setter
+
+- (UITableView *)tableView
+{
+    if (!_tableView) {
+        UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
+        tableView.backgroundColor = [UIColor clearColor];
+        tableView.delegate = self;
+        tableView.dataSource = self;
+        tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        tableView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+
+        if (@available(iOS 11.0, *))
+            tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+
+        UIView *v = [[UIView alloc] initWithFrame:CGRectZero];
+        v.backgroundColor = [UIColor clearColor];
+        [tableView setTableFooterView:v];
+        _tableView = tableView;
+    }
+    return _tableView;
+}
+
 
 - (void)didReceiveMemoryWarning
 {

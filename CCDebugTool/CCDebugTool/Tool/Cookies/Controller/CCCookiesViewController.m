@@ -78,7 +78,7 @@
     CCCookieDetailViewController *viewController = [CCCookieDetailViewController new];
     viewController.cookie = [self.dataArr objectAtIndex:indexPath.row];
     viewController.hidesBottomBarWhenPushed = YES;
-    [self pushNewViewController:viewController];
+    [self pushCCNewViewController:viewController];
 }
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath

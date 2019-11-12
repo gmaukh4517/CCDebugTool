@@ -77,7 +77,7 @@
     [array addObject:@{ @"Start Time" : self.transaction.showStartTime }];
     [array addObject:@{ @"Total Duration" : self.transaction.showTotalDuration }];
 
-    NSString *total = [NSByteCountFormatter stringFromByteCount:self.transaction.expectedContentLength countStyle:NSByteCountFormatterCountStyleFile];
+    NSString *total = [NSByteCountFormatter stringFromByteCount:self.transaction.requestDataTrafficValue + self.transaction.responseDataTrafficValue countStyle:NSByteCountFormatterCountStyleFile];
     NSString *request = [NSByteCountFormatter stringFromByteCount:self.transaction.requestDataTrafficValue countStyle:NSByteCountFormatterCountStyleFile];
     NSString *response = [NSByteCountFormatter stringFromByteCount:self.transaction.responseDataTrafficValue countStyle:NSByteCountFormatterCountStyleFile];
 
@@ -177,24 +177,6 @@
     }
 }
 
-#define KB (1024)
-#define MB (KB * 1024)
-#define GB (MB * 1024)
-- (NSString *)dataSize:(NSInteger)n
-{
-    NSString *value;
-    if (n < KB) {
-        value = [NSString stringWithFormat:@"( %liB ) Tap to view", (long)n];
-    } else if (n < MB) {
-        value = [NSString stringWithFormat:@"( %.2fKB ) Tap to view", (float)n / (float)KB];
-    } else if (n < GB) {
-        value = [NSString stringWithFormat:@"( %.2fMB ) Tap to view", (float)n / (float)MB];
-    } else {
-        value = [NSString stringWithFormat:@"( %.2fG ) Tap to view", (float)n / (float)GB];
-    }
-    return value;
-}
-
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
@@ -227,7 +209,7 @@
         return;
     }
 
-    [self pushNewViewController:viewController];
+    [self pushCCNewViewController:viewController];
 }
 
 @end

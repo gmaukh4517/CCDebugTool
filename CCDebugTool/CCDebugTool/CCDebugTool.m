@@ -329,13 +329,14 @@
         [self initializationNav:[CCMemoryProfilerViewController new] title:@"Cycle" imageNamed:@"tabbar_cycle" selectedImage:@"tabbar_cycle_yes"];
         [self initializationNav:[ToolViewController new] title:@"TOOL" imageNamed:@"tabbar_tool" selectedImage:@"tabbar_tool_yes"];
         //        UINavigationController *debugMonitorNav = [self initializationNav:[CCMonitorViewController new] tabBarItemName:@"Monitor"];
+    }
 
+    if (self.debugTabBar.isViewLoaded && self.debugTabBar.view.window) {
+        [self.debugTabBar dismissViewControllerAnimated:YES completion:nil];
+    }else{
         UIViewController *rootViewController = [[[UIApplication sharedApplication].windows firstObject] rootViewController];
         UIViewController *presentedViewController = rootViewController.presentedViewController;
         [presentedViewController ?: rootViewController presentViewController:self.debugTabBar animated:YES completion:nil];
-    } else {
-        [self.debugTabBar dismissViewControllerAnimated:YES completion:nil];
-        self.debugTabBar = nil;
     }
 }
 

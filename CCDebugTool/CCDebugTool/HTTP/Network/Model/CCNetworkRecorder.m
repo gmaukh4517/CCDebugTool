@@ -12,6 +12,7 @@
 #import <ImageIO/ImageIO.h>
 #import <UIKit/UIKit.h>
 #import <dlfcn.h>
+#import <objc/runtime.h>
 
 NSString *const kCCNetworkRecorderNewTransactionNotification = @"kCCNetworkRecorderNewTransactionNotification";
 NSString *const kCCNetworkRecorderTransactionUpdatedNotification = @"kCCNetworkRecorderTransactionUpdatedNotification";
@@ -90,6 +91,8 @@ typedef CFHTTPMessageRef (*CCHTTPURLResponseGetHTTPProtocol)(CFURLRef response);
             prettyString = [[NSString alloc] initWithData:[NSJSONSerialization dataWithJSONObject:jsonObject options:NSJSONWritingPrettyPrinted error:NULL] encoding:NSUTF8StringEncoding];
         } else {
             prettyString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+            if (!prettyString)
+                prettyString = [[NSString alloc] initWithData:[CCNetworkRecorder cleanUTF8:data] encoding:NSUTF8StringEncoding];
         }
     }
 
@@ -97,6 +100,80 @@ typedef CFHTTPMessageRef (*CCHTTPURLResponseGetHTTPProtocol)(CFURLRef response);
         prettyString = [prettyString stringByReplacingOccurrencesOfString:@"\\/" withString:@"/"];
 
     return prettyString;
+}
+
++ (NSData *)cleanUTF8:(NSData *)data
+{
+    //保存结果
+    NSMutableData *resData = [[NSMutableData alloc] initWithCapacity:data.length];
+    NSData *replacement = [@"�" dataUsingEncoding:NSUTF8StringEncoding];
+    uint64_t index = 0;
+    const uint8_t *bytes = data.bytes;
+    long dataLength = (long)data.length;
+
+    while (index < dataLength) {
+        uint8_t len = 0;
+        uint8_t firstChar = bytes[ index ];
+
+        // 1个字节
+        if ((firstChar & 0x80) == 0 && (firstChar == 0x09 || firstChar == 0x0A || firstChar == 0x0D || (0x20 <= firstChar && firstChar <= 0x7E))) {
+            len = 1;
+        } else if ((firstChar & 0xE0) == 0xC0 && (0xC2 <= firstChar && firstChar <= 0xDF)) { // 2字节
+            if (index + 1 < dataLength) {
+                uint8_t secondChar = bytes[ index + 1 ];
+                if (0x80 <= secondChar && secondChar <= 0xBF) {
+                    len = 2;
+                }
+            }
+        } else if ((firstChar & 0xF0) == 0xE0) { // 3字节
+            if (index + 2 < dataLength) {
+                uint8_t secondChar = bytes[ index + 1 ];
+                uint8_t thirdChar = bytes[ index + 2 ];
+
+                if (firstChar == 0xE0 && (0xA0 <= secondChar && secondChar <= 0xBF) && (0x80 <= thirdChar && thirdChar <= 0xBF)) {
+                    len = 3;
+                } else if (((0xE1 <= firstChar && firstChar <= 0xEC) || firstChar == 0xEE || firstChar == 0xEF) && (0x80 <= secondChar && secondChar <= 0xBF) && (0x80 <= thirdChar && thirdChar <= 0xBF)) {
+                    len = 3;
+                } else if (firstChar == 0xED && (0x80 <= secondChar && secondChar <= 0x9F) && (0x80 <= thirdChar && thirdChar <= 0xBF)) {
+                    len = 3;
+                }
+            }
+        } else if ((firstChar & 0xF8) == 0xF0) { // 4字节
+            if (index + 3 < dataLength) {
+                uint8_t secondChar = bytes[ index + 1 ];
+                uint8_t thirdChar = bytes[ index + 2 ];
+                uint8_t fourthChar = bytes[ index + 3 ];
+
+                if (firstChar == 0xF0) {
+                    if ((0x90 <= secondChar & secondChar <= 0xBF) && (0x80 <= thirdChar && thirdChar <= 0xBF) && (0x80 <= fourthChar && fourthChar <= 0xBF)) {
+                        len = 4;
+                    }
+                } else if ((0xF1 <= firstChar && firstChar <= 0xF3)) {
+                    if ((0x80 <= secondChar && secondChar <= 0xBF) && (0x80 <= thirdChar && thirdChar <= 0xBF) && (0x80 <= fourthChar && fourthChar <= 0xBF)) {
+                        len = 4;
+                    }
+                } else if (firstChar == 0xF3) {
+                    if ((0x80 <= secondChar && secondChar <= 0x8F) && (0x80 <= thirdChar && thirdChar <= 0xBF) && (0x80 <= fourthChar && fourthChar <= 0xBF)) {
+                        len = 4;
+                    }
+                }
+            }
+        } else if ((firstChar & 0xFC) == 0xF8) { // 5个字节
+            len = 0;
+        } else if ((firstChar & 0xFE) == 0xFC) { // 6个字节
+            len = 0;
+        }
+
+        if (len == 0) {
+            index++;
+            [resData appendData:replacement];
+        } else {
+            [resData appendBytes:bytes + index length:len];
+            index += len;
+        }
+    }
+
+    return resData;
 }
 
 + (UIImage *)thumbnailedImageWithMaxPixelDimension:(NSInteger)dimension
@@ -144,9 +221,10 @@ typedef CFHTTPMessageRef (*CCHTTPURLResponseGetHTTPProtocol)(CFURLRef response);
             transaction.transactionState = CCNetworkTransactionStateFinished;
             transaction.url = transaction.request.URL;
             transaction.method = transaction.request.HTTPMethod;
-            transaction.requestAllHeaderFields = transaction.request.allHTTPHeaderFields?:@{};
+            transaction.requestAllHeaderFields = transaction.request.allHTTPHeaderFields ?: @{};
             transaction.showRequestAllHeaderFields = [CCNetworkRecorder dataToJson:transaction.request.allHTTPHeaderFields];
             [transaction cpmversopmCachePolicy:transaction.request.cachePolicy];
+
             @try {
                 if (transaction.request.HTTPBody) {
                     transaction.requestBody = [CCNetworkRecorder dataToJson:transaction.request.HTTPBody];
@@ -267,7 +345,6 @@ typedef CFHTTPMessageRef (*CCHTTPURLResponseGetHTTPProtocol)(CFURLRef response);
             } else if ([mimeType hasPrefix:@"text"]) {
                 transaction.responseThumbnail = [CCNetworkResources textIcon];
             }
-
 
             [self postUpdateNotificationForTransaction:transaction];
         } @catch (NSException *exception) {

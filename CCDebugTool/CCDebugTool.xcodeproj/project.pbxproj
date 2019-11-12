@@ -21,10 +21,22 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		420A4EFA2375307200268174 /* CCWebLogMonitoring.h in Headers */ = {isa = PBXBuildFile; fileRef = 420A4EF82375307200268174 /* CCWebLogMonitoring.h */; };
+		420A4EFB2375307200268174 /* CCWebLogMonitoring.m in Sources */ = {isa = PBXBuildFile; fileRef = 420A4EF92375307200268174 /* CCWebLogMonitoring.m */; };
+		421B1CAD2379463700DC5488 /* TouchMonitor.h in Headers */ = {isa = PBXBuildFile; fileRef = 421B1CAB2379463700DC5488 /* TouchMonitor.h */; };
+		421B1CAE2379463700DC5488 /* TouchMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 421B1CAC2379463700DC5488 /* TouchMonitor.m */; };
+		421B1CB22379484100DC5488 /* CCTouchFingerView.h in Headers */ = {isa = PBXBuildFile; fileRef = 421B1CB02379484100DC5488 /* CCTouchFingerView.h */; };
+		421B1CB32379484100DC5488 /* CCTouchFingerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 421B1CB12379484100DC5488 /* CCTouchFingerView.m */; };
+		421B1CB62379491100DC5488 /* CCTouchWindow.h in Headers */ = {isa = PBXBuildFile; fileRef = 421B1CB42379491100DC5488 /* CCTouchWindow.h */; };
+		421B1CB72379491100DC5488 /* CCTouchWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 421B1CB52379491100DC5488 /* CCTouchWindow.m */; };
 		421E6BE21FB13EB70068FB1E /* CCSpeedTestViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 421E6BE01FB13EB70068FB1E /* CCSpeedTestViewController.h */; };
 		421E6BE31FB13EB70068FB1E /* CCSpeedTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 421E6BE11FB13EB70068FB1E /* CCSpeedTestViewController.m */; };
 		421E6BE71FB140E00068FB1E /* CCSpeedView.h in Headers */ = {isa = PBXBuildFile; fileRef = 421E6BE51FB140E00068FB1E /* CCSpeedView.h */; };
 		421E6BE81FB140E00068FB1E /* CCSpeedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 421E6BE61FB140E00068FB1E /* CCSpeedView.m */; };
+		4226868F2360425A00D9032B /* WKUserContentController+CCHookAjax.h in Headers */ = {isa = PBXBuildFile; fileRef = 4226868D2360425A00D9032B /* WKUserContentController+CCHookAjax.h */; };
+		422686902360425A00D9032B /* WKUserContentController+CCHookAjax.m in Sources */ = {isa = PBXBuildFile; fileRef = 4226868E2360425A00D9032B /* WKUserContentController+CCHookAjax.m */; };
+		422686932360476700D9032B /* CCWebURLProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 422686912360476700D9032B /* CCWebURLProtocol.h */; };
+		422686942360476700D9032B /* CCWebURLProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = 422686922360476700D9032B /* CCWebURLProtocol.m */; };
 		423B2CC4233DE7D800E82C0B /* LOGCollectionViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 423B2CC2233DE7D800E82C0B /* LOGCollectionViewCell.h */; };
 		423B2CC5233DE7D800E82C0B /* LOGCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 423B2CC3233DE7D800E82C0B /* LOGCollectionViewCell.m */; };
 		424603081FAFF05000467266 /* ToolViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 424603061FAFF05000467266 /* ToolViewController.h */; };
@@ -236,10 +248,23 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		420A4EF82375307200268174 /* CCWebLogMonitoring.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCWebLogMonitoring.h; sourceTree = "<group>"; };
+		420A4EF92375307200268174 /* CCWebLogMonitoring.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CCWebLogMonitoring.m; sourceTree = "<group>"; };
+		421B1CAB2379463700DC5488 /* TouchMonitor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TouchMonitor.h; sourceTree = "<group>"; };
+		421B1CAC2379463700DC5488 /* TouchMonitor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TouchMonitor.m; sourceTree = "<group>"; };
+		421B1CB02379484100DC5488 /* CCTouchFingerView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCTouchFingerView.h; sourceTree = "<group>"; };
+		421B1CB12379484100DC5488 /* CCTouchFingerView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CCTouchFingerView.m; sourceTree = "<group>"; };
+		421B1CB42379491100DC5488 /* CCTouchWindow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCTouchWindow.h; sourceTree = "<group>"; };
+		421B1CB52379491100DC5488 /* CCTouchWindow.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CCTouchWindow.m; sourceTree = "<group>"; };
 		421E6BE01FB13EB70068FB1E /* CCSpeedTestViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCSpeedTestViewController.h; sourceTree = "<group>"; };
 		421E6BE11FB13EB70068FB1E /* CCSpeedTestViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CCSpeedTestViewController.m; sourceTree = "<group>"; };
 		421E6BE51FB140E00068FB1E /* CCSpeedView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCSpeedView.h; sourceTree = "<group>"; };
 		421E6BE61FB140E00068FB1E /* CCSpeedView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CCSpeedView.m; sourceTree = "<group>"; };
+		4226868D2360425A00D9032B /* WKUserContentController+CCHookAjax.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WKUserContentController+CCHookAjax.h"; sourceTree = "<group>"; };
+		4226868E2360425A00D9032B /* WKUserContentController+CCHookAjax.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "WKUserContentController+CCHookAjax.m"; sourceTree = "<group>"; };
+		422686912360476700D9032B /* CCWebURLProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCWebURLProtocol.h; sourceTree = "<group>"; };
+		422686922360476700D9032B /* CCWebURLProtocol.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CCWebURLProtocol.m; sourceTree = "<group>"; };
+		423523702373AAE300A9CF3B /* libiconv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.tbd; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/lib/libiconv.tbd; sourceTree = DEVELOPER_DIR; };
 		423B2CC2233DE7D800E82C0B /* LOGCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LOGCollectionViewCell.h; sourceTree = "<group>"; };
 		423B2CC3233DE7D800E82C0B /* LOGCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LOGCollectionViewCell.m; sourceTree = "<group>"; };
 		424603061FAFF05000467266 /* ToolViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ToolViewController.h; sourceTree = "<group>"; };
@@ -465,6 +490,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		421B1CAA2379456200DC5488 /* TouchMonitor */ = {
+			isa = PBXGroup;
+			children = (
+				421B1CAF2379481700DC5488 /* View */,
+				421B1CAB2379463700DC5488 /* TouchMonitor.h */,
+				421B1CAC2379463700DC5488 /* TouchMonitor.m */,
+			);
+			path = TouchMonitor;
+			sourceTree = "<group>";
+		};
+		421B1CAF2379481700DC5488 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				421B1CB02379484100DC5488 /* CCTouchFingerView.h */,
+				421B1CB12379484100DC5488 /* CCTouchFingerView.m */,
+				421B1CB42379491100DC5488 /* CCTouchWindow.h */,
+				421B1CB52379491100DC5488 /* CCTouchWindow.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		421E6BE41FB140680068FB1E /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -472,6 +518,25 @@
 				421E6BE61FB140E00068FB1E /* CCSpeedView.m */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		422686742360358100D9032B /* CCWebLoader */ = {
+			isa = PBXGroup;
+			children = (
+				4226868C2360423500D9032B /* HookAjax */,
+				422686912360476700D9032B /* CCWebURLProtocol.h */,
+				422686922360476700D9032B /* CCWebURLProtocol.m */,
+			);
+			path = CCWebLoader;
+			sourceTree = "<group>";
+		};
+		4226868C2360423500D9032B /* HookAjax */ = {
+			isa = PBXGroup;
+			children = (
+				4226868D2360425A00D9032B /* WKUserContentController+CCHookAjax.h */,
+				4226868E2360425A00D9032B /* WKUserContentController+CCHookAjax.m */,
+			);
+			path = HookAjax;
 			sourceTree = "<group>";
 		};
 		424603101FB00F1700467266 /* SpeedTest */ = {
@@ -574,6 +639,7 @@
 		4265FBC720F06AEA00DE2854 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				423523702373AAE300A9CF3B /* libiconv.tbd */,
 				4265FBC820F06AEA00DE2854 /* QuickLook.framework */,
 			);
 			name = Frameworks;
@@ -780,6 +846,8 @@
 			children = (
 				42B185021FBD3EB6002B066F /* CCLogMonitoring.h */,
 				42B185031FBD3EB6002B066F /* CCLogMonitoring.m */,
+				420A4EF82375307200268174 /* CCWebLogMonitoring.h */,
+				420A4EF92375307200268174 /* CCWebLogMonitoring.m */,
 			);
 			path = CCLogMonitor;
 			sourceTree = "<group>";
@@ -826,6 +894,7 @@
 		42D5AD3D1FAC61B60063C136 /* Tool */ = {
 			isa = PBXGroup;
 			children = (
+				421B1CAA2379456200DC5488 /* TouchMonitor */,
 				429DC294232A1448008D606B /* CCDebugAlert */,
 				429DC2812329F500008D606B /* Keychain */,
 				429DC2712329DF7F008D606B /* BundleDirectory */,
@@ -1018,11 +1087,11 @@
 		42EA10D21FB42CD30078D439 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				42EA10D31FB42CD30078D439 /* FBClassStrongLayoutHelpers.h */,
-				42EA10D41FB42CD30078D439 /* Parser */,
-				42EA10DB1FB42CD30078D439 /* FBClassStrongLayout.mm */,
 				42EA10DC1FB42CD30078D439 /* FBClassStrongLayout.h */,
+				42EA10DB1FB42CD30078D439 /* FBClassStrongLayout.mm */,
+				42EA10D31FB42CD30078D439 /* FBClassStrongLayoutHelpers.h */,
 				42EA10DD1FB42CD30078D439 /* FBClassStrongLayoutHelpers.m */,
+				42EA10D41FB42CD30078D439 /* Parser */,
 				42EA10DE1FB42CD30078D439 /* Reference */,
 			);
 			path = Classes;
@@ -1222,6 +1291,7 @@
 		42F0A3971F59355E00ACD4FA /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				422686742360358100D9032B /* CCWebLoader */,
 				42B84F6F2328A639009583AD /* CCNetworkResources.h */,
 				42B84F6E2328A639009583AD /* CCNetworkResources.m */,
 				42BA41B21FB5A4AB00B0B0C5 /* CCNetworkObserver.h */,
@@ -1360,6 +1430,7 @@
 				42F0A4A31F59355E00ACD4FA /* CCMonitorLabel.h in Headers */,
 				42F0A49D1F59355E00ACD4FA /* CCPerformanceConfig.h in Headers */,
 				42EA114D1FB42CD30078D439 /* FBAllocationTrackerHelpers.h in Headers */,
+				421B1CAD2379463700DC5488 /* TouchMonitor.h in Headers */,
 				42EA11221FB42CD30078D439 /* fishhook.h in Headers */,
 				42EA11701FB43F0C0078D439 /* CCNetworkTableViewCell.h in Headers */,
 				42EA11531FB42CD30078D439 /* FBAllocationTrackerGenerationManager.h in Headers */,
@@ -1401,6 +1472,7 @@
 				42EA11271FB42CD30078D439 /* FBBlockInterface.h in Headers */,
 				42F0A4401F59355E00ACD4FA /* CCDebugLogViewController.h in Headers */,
 				42EA11251FB42CD30078D439 /* FBBlockStrongRelationDetector.h in Headers */,
+				422686932360476700D9032B /* CCWebURLProtocol.h in Headers */,
 				42EA111D1FB42CD30078D439 /* FBAssociationManager+Internal.h in Headers */,
 				428B606E1FAC05A0002577C0 /* CCSandboxTableViewCell.h in Headers */,
 				42EA11581FB42CD30078D439 /* FBAllocationTrackerManager.h in Headers */,
@@ -1420,7 +1492,9 @@
 				42F0A43E1F59355E00ACD4FA /* CCDebugHttpDetailViewController.h in Headers */,
 				42F0A49F1F59355E00ACD4FA /* CCDebugReachability.h in Headers */,
 				42EA11741FB43FE60078D439 /* CCNetworkTransaction.h in Headers */,
+				421B1CB62379491100DC5488 /* CCTouchWindow.h in Headers */,
 				42EA11281FB42CD30078D439 /* FBClassStrongLayoutHelpers.h in Headers */,
+				4226868F2360425A00D9032B /* WKUserContentController+CCHookAjax.h in Headers */,
 				42F0A49B1F59355E00ACD4FA /* CCMonitorService.h in Headers */,
 				42EA114A1FB42CD30078D439 /* FBAllocationTracker.h in Headers */,
 				42EA110E1FB42CD30078D439 /* RetainCycleAnalysisCache.h in Headers */,
@@ -1458,9 +1532,11 @@
 				42EA114B1FB42CD30078D439 /* FBAllocationTrackerImpl.h in Headers */,
 				42EA11341FB42CD30078D439 /* FBObjectInStructReference.h in Headers */,
 				42BA41A41FB5430200B0B0C5 /* UIViewController+CCHook.h in Headers */,
+				421B1CB22379484100DC5488 /* CCTouchFingerView.h in Headers */,
 				42F0A4481F59355E00ACD4FA /* CCDebugFluencyHelper.h in Headers */,
 				42EA11331FB42CD30078D439 /* FBIvarReference.h in Headers */,
 				42EA11201FB42CD30078D439 /* FBStandardGraphEdgeFilters.h in Headers */,
+				420A4EFA2375307200268174 /* CCWebLogMonitoring.h in Headers */,
 				42743772232A1A4700B5CB1B /* CCDebugKeychain.h in Headers */,
 				42F0A4291F59355E00ACD4FA /* CCBacktraceLogger.h in Headers */,
 				42D5AD521FAC64E80063C136 /* CCPingTextView.h in Headers */,
@@ -1582,6 +1658,7 @@
 				42F0A49E1F59355E00ACD4FA /* CCPerformanceConfig.m in Sources */,
 				42EA11621FB435210078D439 /* CCNetwork.m in Sources */,
 				42EA11321FB42CD30078D439 /* FBObjectInStructReference.m in Sources */,
+				421B1CB72379491100DC5488 /* CCTouchWindow.m in Sources */,
 				42F0A4431F59355E00ACD4FA /* CCDebugCrashHelper.m in Sources */,
 				429DC27B2329E03D008D606B /* BundleDirectoryViewTableViewCell.m in Sources */,
 				42BA41B51FB5A4AC00B0B0C5 /* CCNetworkObserver.m in Sources */,
@@ -1605,6 +1682,7 @@
 				426A79AC1FAC3ADA00B328C1 /* CCFilePathTreeView.m in Sources */,
 				42EA11441FB42CD30078D439 /* FBNodeEnumerator.mm in Sources */,
 				42EA115A1FB42CD30078D439 /* FBAllocationTrackerSummary.m in Sources */,
+				421B1CAE2379463700DC5488 /* TouchMonitor.m in Sources */,
 				42EA11311FB42CD30078D439 /* FBClassStrongLayoutHelpers.m in Sources */,
 				42EA111B1FB42CD30078D439 /* ProfilerGenerationsSectionHeaderView.m in Sources */,
 				4265FBBB20F05FF700DE2854 /* UIViewController+CCDebug.m in Sources */,
@@ -1622,15 +1700,18 @@
 				427408E620F08F9D008C3E6D /* CCSandboxPreviewItem.m in Sources */,
 				421E6BE31FB13EB70068FB1E /* CCSpeedTestViewController.m in Sources */,
 				429D59E92326320A008822C4 /* AddressConfigViewController.m in Sources */,
+				422686902360425A00D9032B /* WKUserContentController+CCHookAjax.m in Sources */,
 				423B2CC5233DE7D800E82C0B /* LOGCollectionViewCell.m in Sources */,
 				42EA11361FB42CD30078D439 /* FBIvarReference.m in Sources */,
 				42EA11571FB42CD30078D439 /* FBAllocationTrackerNSZombieSupport.mm in Sources */,
 				426814B723160ABE0061AFD2 /* rcd_fishhook.c in Sources */,
 				425F008E1FD7DA1300368E4E /* DatabaseTableViewCell.m in Sources */,
 				42EA11401FB42CD30078D439 /* FBObjectiveCObject.m in Sources */,
+				422686942360476700D9032B /* CCWebURLProtocol.m in Sources */,
 				425F00711FD7BD0000368E4E /* DatabaseViewController.m in Sources */,
 				42F0A42D1F59355E00ACD4FA /* CCDebugTool.m in Sources */,
 				42EA111E1FB42CD30078D439 /* FBAssociationManager.mm in Sources */,
+				420A4EFB2375307200268174 /* CCWebLogMonitoring.m in Sources */,
 				428B606B1FAC0586002577C0 /* CCSandboxViewController.m in Sources */,
 				42EA11131FB42CD30078D439 /* CCRetainCyclePresenter.m in Sources */,
 				42EA11551FB42CD30078D439 /* FBAllocationTrackerGeneration.mm in Sources */,
@@ -1647,6 +1728,7 @@
 				42EA11751FB43FE60078D439 /* CCNetworkTransaction.m in Sources */,
 				4266D3AC20089EC500D6EE07 /* CCNetworkInfoViewController.m in Sources */,
 				42F0A4A41F59355E00ACD4FA /* CCMonitorLabel.m in Sources */,
+				421B1CB32379484100DC5488 /* CCTouchFingerView.m in Sources */,
 				429D59E1232625B4008822C4 /* ServiceManagerViewController.m in Sources */,
 				429DC2922329F680008D606B /* CCDebugKeychainViewController.m in Sources */,
 				42B185051FBD3EB6002B066F /* CCLogMonitoring.m in Sources */,

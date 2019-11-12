@@ -75,7 +75,7 @@ const int maxLogSize = 3; // 日志文件最大 3M
 
 - (NSString *)newLogFile
 {
-    NSString *logfileName = [[CCLogMonitoring dateToString:[NSDate date] formatter:@"yyyyMMddHHmmssSSS"] stringByAppendingString:@".log"];
+    NSString *logfileName = [@"App - " stringByAppendingString:[[CCLogMonitoring dateToString:[NSDate date] formatter:@"yyyyMMddHHmmssSSS"] stringByAppendingString:@".log"]];
     [_logPlist insertObject:logfileName atIndex:0];
     [_logPlist writeToFile:[kLogCatalog stringByAppendingPathComponent:logPlistName] atomically:YES];
 

@@ -10,6 +10,6 @@
 
 @interface UIViewController (CCDebug)
 
-- (void)pushNewViewController:(UIViewController *)newViewController;
+- (void)pushCCNewViewController:(UIViewController *)newViewController;
 
 @end

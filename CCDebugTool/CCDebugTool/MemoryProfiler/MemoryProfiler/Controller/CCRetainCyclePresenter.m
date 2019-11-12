@@ -86,7 +86,7 @@
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
 
-    FBObjectiveCGraphElement *model = [self.retainCycles objectAtIndex:indexPath.row];
+    FBObjectiveCGraphElement *model = [self.retainCycles objectAtIndex:indexPath.row][0];
     cell.textLabel.font = [UIFont systemFontOfSize:13];
     cell.textLabel.numberOfLines = 0;
     cell.textLabel.font = [UIFont systemFontOfSize:13];
@@ -101,7 +101,7 @@
     
     CCSingleRetainCycleViewController *viewController = [[CCSingleRetainCycleViewController alloc] init];
     viewController.singleCycle =  [self.retainCycles objectAtIndex:indexPath.row];
-    [self pushNewViewController:viewController];
+    [self pushCCNewViewController:viewController];
 }
 
 

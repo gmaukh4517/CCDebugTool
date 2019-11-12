@@ -9,6 +9,12 @@
 #import "CCNetworkTableViewCell.h"
 #import "CCDebugTool.h"
 
+@interface CCNetworkTableViewCell ()
+
+@property (nonatomic, weak) UILabel *pathLabel;
+
+@end
+
 @implementation CCNetworkTableViewCell
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
@@ -21,9 +27,14 @@
         self.imageView.contentMode = UIViewContentModeScaleAspectFit;
 
         self.textLabel.textColor = [CCDebugTool manager].mainColor;
-        self.textLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:19];
+        self.textLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:14];
 
-        self.detailTextLabel.font =[UIFont fontWithName:@"HelveticaNeue" size:10];
+        UILabel *pathLabel = [UILabel new];
+        pathLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:12];
+        pathLabel.textColor = [UIColor colorWithWhite:0.65 alpha:1.0];
+        [self.contentView addSubview:_pathLabel = pathLabel];
+
+        self.detailTextLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:10];
         self.detailTextLabel.textColor = [UIColor colorWithWhite:0.65 alpha:1.0];
     }
     return self;
@@ -37,21 +48,30 @@
     }
 }
 
-- (void)cc_cellWillDisplayWithModel
+- (NSString *)textLabelText
 {
-    self.imageView.image = self.transaction.responseThumbnail?:[UIImage new];
-    self.textLabel.text = self.transaction.url.host;
+    NSString *title = [NSString stringWithFormat:@"App - %@", self.transaction.url.host];
+    if ([self.transaction.requestMechanism hasSuffix:@"WKCustomProtocolLoader)"])
+        title = [NSString stringWithFormat:@"Web - %@", self.transaction.url.host];
 
-    NSString *transactionDetailsLabelText = [self transactionDetailsLabelText];
-
-    NSMutableAttributedString *detailAtt = [[NSMutableAttributedString alloc] initWithString:transactionDetailsLabelText];
-    [detailAtt addAttribute:NSForegroundColorAttributeName value:[UIColor lightGrayColor] range:NSMakeRange(0, transactionDetailsLabelText.length)];
-    if (self.transaction.statusCode && [self.transaction.statusCode integerValue] != 200)
-        [detailAtt addAttribute:NSForegroundColorAttributeName value:[UIColor redColor] range:[transactionDetailsLabelText rangeOfString:self.transaction.statusCode]];
-    self.detailTextLabel.attributedText = detailAtt;
+    return title;
 }
 
-- (NSString *)transactionDetailsLabelText
+- (NSString *)pathLabelText
+{
+    NSURL *url = self.transaction.request.URL;
+    NSString *name = [url lastPathComponent];
+    if (name.length == 0) {
+        name = @"/";
+    }
+    NSString *query = [url query];
+    if (query)
+        name = [name stringByAppendingFormat:@"?%@", query];
+
+    return name;
+}
+
+- (NSAttributedString *)transactionDetailsLabelText
 {
     NSMutableArray<NSString *> *detailComponents = [NSMutableArray array];
     NSString *timestamp = [[self class] timestampStringFromRequestDate:self.transaction.startTime];
@@ -74,35 +94,45 @@
         [detailComponents addObject:state];
     }
 
-    return [detailComponents componentsJoinedByString:@" ・ "];
+    NSString *transactionDetailsLabelText = [detailComponents componentsJoinedByString:@" ・ "];
+    NSMutableAttributedString *detailAtt = [[NSMutableAttributedString alloc] initWithString:transactionDetailsLabelText];
+    [detailAtt addAttribute:NSForegroundColorAttributeName value:[UIColor lightGrayColor] range:NSMakeRange(0, transactionDetailsLabelText.length)];
+    if (self.transaction.statusCode && [self.transaction.statusCode integerValue] != 200)
+        [detailAtt addAttribute:NSForegroundColorAttributeName value:[UIColor redColor] range:[transactionDetailsLabelText rangeOfString:self.transaction.statusCode]];
+
+    return detailAtt;
 }
 
 - (void)layoutSubviews
 {
     [super layoutSubviews];
 
+    const CGFloat kVerticalPadding = 8.0;
     const CGFloat kLeftPadding = 10.0;
     const CGFloat kImageDimension = 32.0;
 
     CGFloat thumbnailOriginY = round((self.contentView.bounds.size.height - kImageDimension) / 2.0);
-    CGRect imageViewFrame = self.imageView.frame;
-    imageViewFrame.origin.x = kLeftPadding;
-    imageViewFrame.origin.y = thumbnailOriginY;
-    imageViewFrame.size = CGSizeMake(kImageDimension, kImageDimension);
-    self.imageView.frame = imageViewFrame;
+    self.imageView.frame = CGRectMake(kLeftPadding, thumbnailOriginY, kImageDimension, kImageDimension);
+    self.imageView.image = self.transaction.responseThumbnail ?: [UIImage new];
 
-    CGRect textLabelFrame = self.textLabel.frame;
-    textLabelFrame.origin.x = imageViewFrame.origin.x + imageViewFrame.size.width + kLeftPadding;
-    textLabelFrame.origin.y = 7;
-    self.textLabel.frame = textLabelFrame;
+    CGFloat textOriginX = CGRectGetMaxX(self.imageView.frame) + kLeftPadding;
+    CGFloat availableTextWidth = self.contentView.bounds.size.width - textOriginX;
 
-    CGRect detailTextLabelFrame = self.detailTextLabel.frame;
-    detailTextLabelFrame.origin.x = imageViewFrame.origin.x + imageViewFrame.size.width + kLeftPadding;
-    detailTextLabelFrame.origin.y = textLabelFrame.origin.y + textLabelFrame.size.height + 5;
-    detailTextLabelFrame.size.width = self.contentView.bounds.size.width - detailTextLabelFrame.origin.x - kLeftPadding;
-    self.detailTextLabel.frame = detailTextLabelFrame;
+    self.textLabel.text = [self textLabelText];
+    CGSize nameLabelPreferredSize = [self.textLabel sizeThatFits:CGSizeMake(availableTextWidth, CGFLOAT_MAX)];
+    self.textLabel.frame = CGRectMake(textOriginX, kVerticalPadding, availableTextWidth, nameLabelPreferredSize.height);
 
-    [self cc_cellWillDisplayWithModel];
+    self.pathLabel.text = [self pathLabelText];
+    CGSize pathLabelPreferredSize = [self.pathLabel sizeThatFits:CGSizeMake(availableTextWidth, CGFLOAT_MAX)];
+    CGFloat pathLabelOriginY = ceil((self.contentView.bounds.size.height - pathLabelPreferredSize.height) / 2.0);
+    self.pathLabel.frame = CGRectMake(textOriginX, pathLabelOriginY, availableTextWidth, pathLabelPreferredSize.height);
+
+    self.detailTextLabel.attributedText = [self transactionDetailsLabelText];
+    CGSize transactionLabelPreferredSize = [self.detailTextLabel sizeThatFits:CGSizeMake(availableTextWidth, CGFLOAT_MAX)];
+    CGFloat transactionDetailsOriginX = textOriginX;
+    CGFloat transactionDetailsLabelOriginY = CGRectGetMaxY(self.contentView.bounds) - kVerticalPadding - transactionLabelPreferredSize.height;
+    CGFloat transactionDetailsLabelWidth = self.contentView.bounds.size.width - transactionDetailsOriginX;
+    self.detailTextLabel.frame = CGRectMake(transactionDetailsOriginX, transactionDetailsLabelOriginY, transactionDetailsLabelWidth, transactionLabelPreferredSize.height);
 }
 
 + (NSString *)timestampStringFromRequestDate:(NSDate *)date

@@ -28,6 +28,7 @@
 #import "CCDebugFluencyHelper.h"
 #import "CCDebugTool.h"
 #import "CCLogMonitoring.h"
+#import "CCWebLogMonitoring.h"
 
 static NSString *const kCCDebugLogCellIdentifier = @"kCCDebugLogCellIdentifier";
 
@@ -47,9 +48,22 @@ static NSString *const kCCDebugLogCellIdentifier = @"kCCDebugLogCellIdentifier";
         case CCDebugDataSourceTypeFluency:
             _dataArr = [CCDebugFluencyHelper obtainFluencyLogs];
             break;
-        case CCDebugDataSourceTypeLog:
-            _dataArr = [CCLogMonitoring obtainLogs];
+        case CCDebugDataSourceTypeLog: {
+            NSMutableArray *dataArray = [NSMutableArray arrayWithArray:[CCLogMonitoring obtainLogs]];
+            [dataArray addObjectsFromArray:[CCWebLogMonitoring obtainWebLogs]];
+            _dataArr = [dataArray sortedArrayWithOptions:NSSortStable
+                                         usingComparator:^NSComparisonResult(id _Nonnull obj1, id _Nonnull obj2) {
+                NSString *obj1FileName = [[obj1 objectForKey:@"fileName"] stringByReplacingOccurrencesOfString:@"App - " withString:@""];
+                obj1FileName = [obj1FileName stringByReplacingOccurrencesOfString:@"Web - " withString:@""];
+
+                NSString *obj2FileName = [[obj2 objectForKey:@"fileName"] stringByReplacingOccurrencesOfString:@"App - " withString:@""];
+                obj2FileName = [obj2FileName stringByReplacingOccurrencesOfString:@"Web - " withString:@""];
+
+                NSComparisonResult result = [obj1FileName localizedStandardCompare:obj2FileName];
+                return result == NSOrderedAscending;
+            }];
             break;
+        }
         default:
             break;
     }
@@ -59,7 +73,7 @@ static NSString *const kCCDebugLogCellIdentifier = @"kCCDebugLogCellIdentifier";
 {
     BOOL sourceTypeChanged = sourceType != _sourceType;
     _sourceType = sourceType;
-    
+
     if (sourceTypeChanged)
         [self refilter];
 }
@@ -88,20 +102,20 @@ static NSString *const kCCDebugLogCellIdentifier = @"kCCDebugLogCellIdentifier";
         cell.textLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:19];
         cell.detailTextLabel.textColor = [UIColor lightGrayColor];
     }
-    
+
     NSDictionary *dic = [self.dataArr objectAtIndex:indexPath.row];
-    
-    NSString *title,*detail;
+
+    NSString *title, *detail;
     if (_sourceType == CCDebugDataSourceTypeLog) {
         title = [dic objectForKey:@"fileName"];
-    }else{
-        title =  [dic objectForKey:@"ErrDate"];
+    } else {
+        title = [dic objectForKey:@"ErrDate"];
         detail = [dic objectForKey:@"ErrCause"];
     }
-    
+
     cell.textLabel.text = title;
     cell.detailTextLabel.text = detail;
-    
+
     return cell;
 }
 

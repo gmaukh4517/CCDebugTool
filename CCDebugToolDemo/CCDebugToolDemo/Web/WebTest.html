@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" charset="UTF-8">
+    <title>App与WebView交互</title>
+    <style>
+        html { font-family:Helvetica; color:#222; }
+        body{background-color: white;}
+        h1 { color:steelblue; font-size:24px; margin-top:24px; }
+        button { margin:0 3px 10px; font-size:12px; }
+        .logLine { border-bottom:1px solid #ccc; padding:4px 2px; font-family:courier; font-size:11px; }
+    </style>
+</head>
+<body>
+    <h1>Web Javascript Demo</h1>
+    <button onclick="testObjcCallback()">test Objc Callback</button>
+    <button onclick="demoLog()">demo Log</button>
+    <button id='clearButton' onclick="jsClear()">Clear Log</button>
+    <div id='buttons'></div> <div id='log'></div>
+</body>
+<script>
+    //按钮点击事件
+    function testObjcCallback() {
+        console.error("error error error"); //输出错误信息到控制台
+        console.info("info info info"); //控制台输出一条信息
+        console.log("log log log"); //控制台输出一条信息
+        console.warn("warn warn warn"); //输出警告信息，信息最前面加一个黄色三角，表示警告
+        console.debug("debug debug debug"); //
+
+        var obj = { prop1: 'prop1Value', prop2: 'prop2Value', child: { childProp1: 'childProp1Value' } }
+        console.log(obj)
+
+        console.assert("1111"); // 如果断言为 false，则在信息到控制台输出错误信息。
+        console.count(); //记录 count() 调用次数，一般用于计数。
+        console.table("table table table"); //以表格形式显示数据
+        console.time(); //计时器，开始计时间，与 timeEnd() 联合使用，用于算出一个操作所花费的准确时间。
+        console.timeEnd(); //计时结束
+        console.trace(); //显示当前执行的代码在堆栈中的调用路径。
+        console.group(); //在控制台创建一个信息分组。 一个完整的信息分组以 console.group() 开始，console.groupEnd() 结束
+        console.groupCollapsed(); //在控制台创建一个信息分组。 类似 console.group() ，但它默认是折叠的。
+        console.groupEnd(); //设置当前信息分组结束
+         //console.clear();    //清除控制台上的信息。
+        const params = {"id":"666", "message":"传递参数"};
+        showLog('JS calling handler "testObjcCallback"',params);
+    }
+    
+    //Object调用JS
+    function testJavascriptHandler(data){
+        showLog('Object-c calling handler "testJavascriptHandler"', data);
+    }
+
+    //JS调用函数处理
+    function WebInteractionHandle(method,params){
+        //传递参数JSON序列化字符串
+        const jsonStr = JSON.stringify(params);
+        //使用下方方法,会报错,为使界面执行逻辑通畅,因此使用try-catch
+        var u = navigator.userAgent;
+        if(u.indexOf('Android') > -1 || u.indexOf('Linux') > -1) {
+            try{
+                window.android[method](title,content,url);
+            }catch(error){
+            }
+        }else if(u.indexOf('iPhone') > -1 || u.indexOf('iPad') > -1) {
+            try {
+                eval(method+"("+ jsonStr +");");
+            } catch (error) {
+            }
+            try {
+                window.webkit.messageHandlers[method].postMessage(jsonStr)
+            } catch(error) {
+            } 
+        }
+    }
+
+    // 输出日志函数
+    var uniqueId = 1
+    function showLog(message,data){
+        var log = document.getElementById('log');
+        var el = document.createElement('div');
+        el.className = 'logLine';
+        el.innerHTML = uniqueId++ + '. ' + message + ':<br/>' + JSON.stringify(data);
+        if (log.children.length) { 
+            log.insertBefore(el, log.children[0]);
+        }else {
+             log.appendChild(el) ;
+        }
+    }
+
+    //延迟清理显示消息
+    var clearCount = 0;
+    function jsClear(){
+        //记录清理次数
+        clearCount++;
+        const clearButton = document.getElementById('clearButton');
+        clearButton.textContent =  'Clear Log(' + clearCount + ')';
+
+        //传递消息
+        const params = {"clear":"你要被清理干净了！！！ 哈哈哈"};
+        showLog('clear',params);
+        WebInteractionHandle('clearObjcCallback',params);
+
+        //延迟清理
+        setTimeout(function() {
+            uniqueId = 1;
+            document.getElementById('log').innerHTML = "";
+        },1500)
+    }
+    
+    function demoLog(){
+        const params = {"id":"666", "message":"传递参数"};
+        showLog('JS calling handler "demoWebView"',params);
+        WebInteractionHandle('demoWebView',params);
+    }
+
+    // 系统错误消息
+    window.onerror = function(err) {
+        log('window.onerror: ' + err);
+    }
+</script>
+</html>

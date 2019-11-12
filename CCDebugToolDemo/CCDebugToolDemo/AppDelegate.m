@@ -28,6 +28,7 @@
 {
     // Override point for customization after application launch.
     [self setUpNavigationBarAppearance:[UIColor colorWithRed:0.223 green:0.698 blue:1 alpha:1.f]];
+//    [[NSBundle bundleWithPath:@"/Applications/InjectionIII.app/Contents/Resources/iOSInjection.bundle"] load];
 #ifdef CCDebugTool_h
     [[CCDebugTool manager] enableDebugMode];
 #endif
@@ -36,7 +37,8 @@
     self.window.backgroundColor = [UIColor whiteColor];
     self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:[ViewController new]];
     [self.window makeKeyAndVisible];
-
+    if (@available(iOS 13.0, *))
+    self.window.overrideUserInterfaceStyle = UIUserInterfaceStyleLight;
     [[DebugRequestProtocol new] sendExampleNetworkRequests];
 
     return YES;

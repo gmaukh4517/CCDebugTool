@@ -70,6 +70,9 @@
 
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"关闭" style:UIBarButtonItemStyleDone target:self action:@selector(clearAction)];
 
+    UIButton *button  =[UIButton new];
+    [button setImage:[CCDebugTool cc_bundle:@"ccdebug_service_config"] forState:UIControlStateNormal];
+
     UIBarButtonItem *serviceBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[CCDebugTool cc_bundle:@"ccdebug_service_config"] style:UIBarButtonItemStyleDone target:self action:@selector(serviceConfigViewController)];
     UIBarButtonItem *networkBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[CCDebugTool cc_bundle:@"ccdebug_network"] style:UIBarButtonItemStyleDone target:self action:@selector(networkViewController)];
 
@@ -80,14 +83,14 @@
 {
     ServiceManagerViewController *viewController = [ServiceManagerViewController new];
     viewController.hidesBottomBarWhenPushed = YES;
-    [self pushNewViewController:viewController];
+    [self pushCCNewViewController:viewController];
 }
 
 - (void)networkViewController
 {
     CCNetworkInfoViewController *viewController = [CCNetworkInfoViewController new];
     viewController.hidesBottomBarWhenPushed = YES;
-    [self pushNewViewController:viewController];
+    [self pushCCNewViewController:viewController];
 }
 
 - (void)initControl
@@ -233,10 +236,10 @@
     return self.dataArray.count;
 }
 
-//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    return 55;
-//}
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 65;
+}
 
 //- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 //{
@@ -283,7 +286,7 @@
 
     NSInteger totalRows = [tableView numberOfRowsInSection:indexPath.section];
     if ((totalRows - indexPath.row) % 2 == 0) {
-        cell.backgroundColor = [UIColor colorWithHue:2.0 / 3.0 saturation:0.02 brightness:0.95 alpha:1];
+        cell.backgroundColor = [UIColor colorWithHue:2.0 / 3.0 saturation:0.02 brightness:0.95 alpha:0.65];
     } else {
         cell.backgroundColor = [UIColor whiteColor];
     }
@@ -296,7 +299,7 @@
     CCDebugHttpDetailViewController *viewController = [[CCDebugHttpDetailViewController alloc] init];
     viewController.hidesBottomBarWhenPushed = YES;
     viewController.transaction = [self.dataArray objectAtIndex:indexPath.row];
-    [self pushNewViewController:viewController];
+    [self pushCCNewViewController:viewController];
 }
 
 @end

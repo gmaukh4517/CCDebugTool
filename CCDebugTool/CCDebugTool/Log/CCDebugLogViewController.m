@@ -175,7 +175,7 @@
     viewController.hidesBottomBarWhenPushed = YES;
     viewController.dataArr = self.dataSource.dataArr;
     viewController.selectedIndex = indexPath.row;
-    [self pushNewViewController:viewController];
+    [self pushCCNewViewController:viewController];
 }
 
 #pragma mark -

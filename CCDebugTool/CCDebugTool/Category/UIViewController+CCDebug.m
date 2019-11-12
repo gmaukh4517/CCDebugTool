@@ -10,7 +10,7 @@
 
 @implementation UIViewController (CCDebug)
 
-- (void)pushNewViewController:(UIViewController *)newViewController
+- (void)pushCCNewViewController:(UIViewController *)newViewController
 {
      self.navigationController.topViewController.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
     [self.navigationController pushViewController:newViewController animated:YES];

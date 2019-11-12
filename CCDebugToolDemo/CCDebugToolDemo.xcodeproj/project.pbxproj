@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		421B1CA92379290B00DC5488 /* WebLogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 421B1CA82379290B00DC5488 /* WebLogViewController.m */; };
+		4235237A237512C000A9CF3B /* WebTest.html in Resources */ = {isa = PBXBuildFile; fileRef = 42352379237512C000A9CF3B /* WebTest.html */; };
 		424C3A35230A36A500CF4713 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 424C3A34230A36A500CF4713 /* WebViewController.m */; };
 		425F00821FD7D61E00368E4E /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 425F00811FD7D61D00368E4E /* libsqlite3.0.tbd */; };
 		429A6B2723273E300011CA6A /* DebugRequestProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = 429A6B2623273E300011CA6A /* DebugRequestProtocol.m */; };
@@ -30,6 +32,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		421B1CA72379290B00DC5488 /* WebLogViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WebLogViewController.h; sourceTree = "<group>"; };
+		421B1CA82379290B00DC5488 /* WebLogViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WebLogViewController.m; sourceTree = "<group>"; };
+		42352379237512C000A9CF3B /* WebTest.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = WebTest.html; sourceTree = "<group>"; };
 		424C3A33230A36A500CF4713 /* WebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
 		424C3A34230A36A500CF4713 /* WebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
 		425F00811FD7D61D00368E4E /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
@@ -81,6 +86,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		421B1CA6237928F200DC5488 /* WebLog */ = {
+			isa = PBXGroup;
+			children = (
+				42352379237512C000A9CF3B /* WebTest.html */,
+				421B1CA72379290B00DC5488 /* WebLogViewController.h */,
+				421B1CA82379290B00DC5488 /* WebLogViewController.m */,
+			);
+			path = WebLog;
+			sourceTree = "<group>";
+		};
+		423523782375128C00A9CF3B /* Web */ = {
+			isa = PBXGroup;
+			children = (
+				421B1CA6237928F200DC5488 /* WebLog */,
+				424C3A33230A36A500CF4713 /* WebViewController.h */,
+				424C3A34230A36A500CF4713 /* WebViewController.m */,
+			);
+			path = Web;
+			sourceTree = "<group>";
+		};
 		425F00831FD7D6DF00368E4E /* Database */ = {
 			isa = PBXGroup;
 			children = (
@@ -155,6 +180,7 @@
 		42F0A4B51F593D7700ACD4FA /* CCDebugToolDemo */ = {
 			isa = PBXGroup;
 			children = (
+				423523782375128C00A9CF3B /* Web */,
 				429DC27E2329EF36008D606B /* Files */,
 				429D59D52325F1C2008822C4 /* Config */,
 				429A6B2423273E160011CA6A /* RequestProtocol */,
@@ -170,8 +196,6 @@
 				42F0A4D11F594C7600ACD4FA /* FluecyMonitorViewController.m */,
 				42F0A4C71F593D7700ACD4FA /* Info.plist */,
 				42F0A4B61F593D7700ACD4FA /* Supporting Files */,
-				424C3A33230A36A500CF4713 /* WebViewController.h */,
-				424C3A34230A36A500CF4713 /* WebViewController.m */,
 			);
 			path = CCDebugToolDemo;
 			sourceTree = "<group>";
@@ -263,6 +287,7 @@
 			files = (
 				429DC27D2329EF30008D606B /* _clang-format in Resources */,
 				429DC2802329EF9D008D606B /* js.txt in Resources */,
+				4235237A237512C000A9CF3B /* WebTest.html in Resources */,
 				42EDDFD31FD8024E00B6AB59 /* Car.db in Resources */,
 				42F0A4C61F593D7700ACD4FA /* LaunchScreen.storyboard in Resources */,
 				42B185091FBD88C1002B066F /* CCDebugTool.bundle in Resources */,
@@ -284,6 +309,7 @@
 				42F0A4BE1F593D7700ACD4FA /* ViewController.m in Sources */,
 				429A6B2723273E300011CA6A /* DebugRequestProtocol.m in Sources */,
 				42F0A4BB1F593D7700ACD4FA /* AppDelegate.m in Sources */,
+				421B1CA92379290B00DC5488 /* WebLogViewController.m in Sources */,
 				42EA11651FB43CB90078D439 /* NetworkRequestViewController.m in Sources */,
 				42F0A4B81F593D7700ACD4FA /* main.m in Sources */,
 				42F0A4D21F594C7600ACD4FA /* FluecyMonitorViewController.m in Sources */,

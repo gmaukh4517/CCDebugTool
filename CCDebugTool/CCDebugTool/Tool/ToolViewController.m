@@ -17,7 +17,79 @@
 #import "CCSpeedTestViewController.h"
 #import "DatabaseViewController.h"
 
+#import "TouchMonitor.h"
+
+
 @interface ToolTableViewCell : UITableViewCell
+
+@property (nonatomic, weak) UISwitch *switchView;
+
+@end
+
+
+@implementation ToolTableViewCell
+
+- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+{
+    if (self = [super initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentifier]) {
+        self.imageView.layer.borderColor = UIColor.blackColor.CGColor;
+
+        self.textLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:12];
+        self.textLabel.textColor = [CCDebugTool manager].mainColor;
+
+        self.detailTextLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:10];
+        self.detailTextLabel.textColor = [UIColor colorWithWhite:0.65 alpha:1.0];
+
+        UISwitch *switchView = [[UISwitch alloc] initWithFrame:CGRectMake(0, 0, 30, 21)];
+        switchView.onTintColor = [CCDebugTool manager].mainColor;
+        [switchView addTarget:self action:@selector(switchAction:) forControlEvents:UIControlEventValueChanged];
+        switchView.transform = CGAffineTransformMakeScale(0.65, 0.65);
+        [self.contentView addSubview:_switchView = switchView];
+    }
+    return self;
+}
+
+- (void)cc_setData:(NSDictionary *)data
+{
+    self.textLabel.text = [data objectForKey:@"title"];
+    self.imageView.image = [CCDebugTool cc_bundle:[data objectForKey:@"image"] inDirectory:@"tool"];
+
+    self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    self.switchView.hidden = YES;
+    if ([self.textLabel.text isEqualToString:@"Touch Monitor"]) {
+        self.accessoryType = UITableViewCellAccessoryNone;
+        self.switchView.hidden = NO;
+        self.switchView.on = [TouchMonitor touchSwitch];
+    }
+}
+
+- (void)switchAction:(UISwitch *)sender
+{
+    [TouchMonitor setPluginSwitch:sender.on];
+}
+
+- (void)layoutSubviews
+{
+    [super layoutSubviews];
+
+    CGRect switchFrame = self.switchView.frame;
+    switchFrame.origin.x = self.contentView.bounds.size.width - 55;
+    switchFrame.origin.y = 12;
+    self.switchView.frame = switchFrame;
+
+    const CGFloat kLeftPadding = 10.0;
+
+    CGRect imageViewFrame = self.imageView.frame;
+    CGFloat thumbnailOriginY = round((self.contentView.bounds.size.height - imageViewFrame.size.height) / 2.0);
+    imageViewFrame.origin.x = kLeftPadding;
+    imageViewFrame.origin.y = thumbnailOriginY;
+    self.imageView.frame = imageViewFrame;
+
+    CGRect textLabelFrame = self.textLabel.frame;
+    textLabelFrame.origin.x = imageViewFrame.origin.x + imageViewFrame.size.width + kLeftPadding;
+    self.textLabel.frame = textLabelFrame;
+}
+
 
 @end
 
@@ -76,7 +148,9 @@
                       @{ @"image" : @"tool_keychain",
                          @"title" : @"Keychain" },
                       @{ @"image" : @"tool_uidebug",
-                         @"title" : @"UIDebugging" } ];
+                         @"title" : @"UIDebugging" },
+                      @{ @"image" : @"tool_uidebug",
+                         @"title" : @"Touch Monitor" }];
 }
 
 #pragma mark -
@@ -102,15 +176,8 @@
 {
     static NSString *identifer = @"TooTableViewCellIdentifer";
     ToolTableViewCell *cell = (ToolTableViewCell *)[tableView dequeueReusableCellWithIdentifier:identifer];
-    if (!cell) {
+    if (!cell)
         cell = [[ToolTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifer];
-    }
-
-    NSDictionary *item = [self.dataArr objectAtIndex:indexPath.row];
-
-    cell.textLabel.text = [item objectForKey:@"title"];
-    cell.imageView.image = [CCDebugTool cc_bundle:[item objectForKey:@"image"] inDirectory:@"tool"];
-
     return cell;
 }
 
@@ -140,7 +207,7 @@
 
     if (viewController) {
         viewController.hidesBottomBarWhenPushed = YES;
-        [self pushNewViewController:viewController];
+        [self pushCCNewViewController:viewController];
     }
 }
 
@@ -155,6 +222,8 @@
     if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
         [cell setLayoutMargins:UIEdgeInsetsZero];
     }
+
+    [((ToolTableViewCell *)cell) cc_setData:[self.dataArr objectAtIndex:indexPath.row]];
 }
 
 #pragma mark -
@@ -189,43 +258,5 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-@end
-
-@implementation ToolTableViewCell
-
-- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
-{
-    if (self = [super initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentifier]) {
-        self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-
-        self.imageView.layer.borderColor = UIColor.blackColor.CGColor;
-
-        self.textLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:12];
-        self.textLabel.textColor = [CCDebugTool manager].mainColor;
-
-        self.detailTextLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:10];
-        self.detailTextLabel.textColor = [UIColor colorWithWhite:0.65 alpha:1.0];
-    }
-    return self;
-}
-
-- (void)layoutSubviews
-{
-    [super layoutSubviews];
-
-    const CGFloat kLeftPadding = 10.0;
-
-    CGRect imageViewFrame = self.imageView.frame;
-    CGFloat thumbnailOriginY = round((self.contentView.bounds.size.height - imageViewFrame.size.height) / 2.0);
-    imageViewFrame.origin.x = kLeftPadding;
-    imageViewFrame.origin.y = thumbnailOriginY;
-    self.imageView.frame = imageViewFrame;
-
-    CGRect textLabelFrame = self.textLabel.frame;
-    textLabelFrame.origin.x = imageViewFrame.origin.x + imageViewFrame.size.width + kLeftPadding;
-    self.textLabel.frame = textLabelFrame;
-}
-
 
 @end

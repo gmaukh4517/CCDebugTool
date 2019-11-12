@@ -111,7 +111,7 @@
         });
     } else if (self.url) {
         UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
-        pasteboard.string = [self.title copy];
+        pasteboard.string = self.url;
     }
 }
 
@@ -145,7 +145,7 @@
         // Don't allow the current web view to handle the navigation.
         CCDebugContentViewController *viewController = [CCDebugContentViewController new];
         viewController.url = navigationAction.request.URL.absoluteString;
-        [self pushNewViewController:viewController];
+        [self pushCCNewViewController:viewController];
     }
     decisionHandler(policy);
 }

@@ -94,7 +94,7 @@
         return;
     }
 
-    [self pushNewViewController:viewController];
+    [self pushCCNewViewController:viewController];
 }
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath

@@ -176,7 +176,7 @@
         [self.filePathView refreshView];
         [self obtainPathItems:entity.filePath];
     } else { //} if (entity.fileType == ){
-        [self pushNewViewController:self.fileViewerViewController];
+        [self pushCCNewViewController:self.fileViewerViewController];
         id obj = [self.fileArray filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"SELF.previewItemTitle == %@", entity.fileName]].lastObject;
         NSInteger index = [self.fileArray indexOfObject:obj];
         self.fileViewerViewController.currentPreviewItemIndex = index;

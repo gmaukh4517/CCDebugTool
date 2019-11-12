@@ -216,7 +216,7 @@
         NSInteger index = [self.browseFilesArray indexOfObject:obj];
         self.fileViewerViewController.currentPreviewItemIndex = index;
     }
-    [self pushNewViewController:drillInViewController];
+    [self pushCCNewViewController:drillInViewController];
 }
 
 #pragma mark -

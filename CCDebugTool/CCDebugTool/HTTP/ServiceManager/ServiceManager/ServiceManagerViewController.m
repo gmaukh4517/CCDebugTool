@@ -131,7 +131,7 @@
 
 - (void)addConfigButtonClick:(UIButton *)sender
 {
-    [self pushNewViewController:[AddressConfigViewController new]];
+    [self pushCCNewViewController:[AddressConfigViewController new]];
 }
 
 #pragma mark -
@@ -247,7 +247,7 @@ API_AVAILABLE(ios(11.0))
         __strong typeof(weakSelf) strongSelf = weakSelf;
         AddressConfigViewController *viewController = [AddressConfigViewController new];
         viewController.dataItem = [strongSelf.dataArr objectAtIndex:indexPath.row];
-        [strongSelf pushNewViewController:viewController];
+        [strongSelf pushCCNewViewController:viewController];
 
         [tableView setEditing:NO animated:YES];
         completionHandler(true);

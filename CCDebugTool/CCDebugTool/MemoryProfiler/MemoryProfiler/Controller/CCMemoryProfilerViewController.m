@@ -61,13 +61,13 @@ static NSString *const kProfilerSectionHeaderIdentifier = @"kProfilerSectionHead
     // Do any additional setup after loading the view.
     _analysisCache = [RetainCycleAnalysisCache new];
     _dataSource = [[ProfilerDataSource alloc] initWithAnalysisCache:_analysisCache];
-    
+
     [self initNavigation];
     [self initControl];
     [self initLoadData];
 }
 
--(void)viewDidLayoutSubviews
+- (void)viewDidLayoutSubviews
 {
     [super viewDidLayoutSubviews];
     self.profilerTableView.frame = self.view.bounds;
@@ -87,7 +87,7 @@ static NSString *const kProfilerSectionHeaderIdentifier = @"kProfilerSectionHead
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    
+
     _timer = [NSTimer scheduledTimerWithTimeInterval:kCCMemoryProfilerRefreshIntervalInSeconds
                                               target:self
                                             selector:@selector(_loadDataFromTimer:)
@@ -99,6 +99,7 @@ static NSString *const kProfilerSectionHeaderIdentifier = @"kProfilerSectionHead
 {
     [super viewWillDisappear:animated];
     [_timer invalidate];
+    self.timer = nil;
 }
 
 - (void)_loadDataFromTimer:(NSTimer *)timer
@@ -113,7 +114,7 @@ static NSString *const kProfilerSectionHeaderIdentifier = @"kProfilerSectionHead
     self.profilerTableView.delegate = self;
     self.profilerTableView.dataSource = _dataSource;
     [self.view addSubview:self.profilerTableView];
-    
+
     _tableViewHeader = [[ProfilerTableHeader alloc] initWithFrame:CGRectMake(0, 0, self.profilerTableView.frame.size.width, 70)];
     _tableViewHeader.delegate = self;
     self.profilerTableView.tableHeaderView = _tableViewHeader;
@@ -129,7 +130,7 @@ static NSString *const kProfilerSectionHeaderIdentifier = @"kProfilerSectionHead
 
 - (CGFloat)tableView:(nonnull UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 44.0;
+    return 40.0;
 }
 
 - (CGFloat)tableView:(nonnull UITableView *)tableView heightForHeaderInSection:(NSInteger)section
@@ -140,12 +141,12 @@ static NSString *const kProfilerSectionHeaderIdentifier = @"kProfilerSectionHead
 - (UIView *)tableView:(nonnull UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
     ProfilerGenerationsSectionHeaderView *headerView = [tableView dequeueReusableHeaderFooterViewWithIdentifier:kProfilerSectionHeaderIdentifier];
-    
+
     if (!headerView) {
         headerView = [[ProfilerGenerationsSectionHeaderView alloc] initWithReuseIdentifier:kProfilerSectionHeaderIdentifier];
         headerView.delegate = self;
     }
-    
+
     headerView.expanded = [_dataSource isSectionExpanded:section];
     headerView.index = section;
     headerView.textLabel.text = [NSString stringWithFormat:@"Gen %zi - %@", (long)(section + 1), [_dataSource summaryForSection:section]];
@@ -157,7 +158,7 @@ static NSString *const kProfilerSectionHeaderIdentifier = @"kProfilerSectionHead
     // Retain cycle detection kicks in
     NSString *className = [tableView cellForRowAtIndexPath:indexPath].textLabel.text;
     NSInteger generationIndex = indexPath.section;
-    
+
     [self _findRetainCyclesForClassesNamed:@[ className ]
                               inGeneration:generationIndex
                             presentDetails:YES];
@@ -183,7 +184,7 @@ static NSString *const kProfilerSectionHeaderIdentifier = @"kProfilerSectionHead
         // Mode was the same, we are changing the ordering
         CCMemoryProfilerSortingOrder order = (_sortingOrder == CCMemoryProfilerSortingOrderAscending) ? CCMemoryProfilerSortingOrderDescending : CCMemoryProfilerSortingOrderAscending;
         _sortingOrder = order;
-        
+
         _dataSource.sortingOrder = order;
         _dataSource.sortingMode = _sortingMode;
     }
@@ -202,7 +203,7 @@ static NSString *const kProfilerSectionHeaderIdentifier = @"kProfilerSectionHead
 - (void)sectionHeaderRequestedExpandCollapseAction:(ProfilerGenerationsSectionHeaderView *)sectionHeader
 {
     sectionHeader.expanded = !sectionHeader.expanded;
-    
+
     [_dataSource setExpanded:sectionHeader.expanded
                   forSection:sectionHeader.index];
     [self.profilerTableView reloadSections:[NSIndexSet indexSetWithIndex:sectionHeader.index] withRowAnimation:UITableViewRowAnimationFade];
@@ -227,31 +228,30 @@ static NSString *const kProfilerSectionHeaderIdentifier = @"kProfilerSectionHead
                                                                                 inGeneration:generationIndex];
             FBObjectGraphConfiguration *configuration = [FBObjectGraphConfiguration new];
             FBRetainCycleDetector *detector = [[FBRetainCycleDetector alloc] initWithConfiguration:configuration];
-            
+
             for (id object in objects)
                 [detector addCandidate:object];
-            
+
             NSSet<NSArray<FBObjectiveCGraphElement *> *> *retainCycles = [detector findRetainCyclesWithMaxCycleLength:8];
-            
-            if ([retainCycles count] > 0) {
-                // We've got a leak
-                [self->_analysisCache updateAnalysisStatus:CCRetainCyclePresent
-                                     forInGeneration:generationIndex
-                                       forClassNamed:className];
-                if (presentDetails) {
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        
+
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if ([retainCycles count] > 0) {
+                    // We've got a leak
+                    [self->_analysisCache updateAnalysisStatus:CCRetainCyclePresent
+                                               forInGeneration:generationIndex
+                                                 forClassNamed:className];
+                    if (presentDetails) {
                         CCRetainCyclePresenter *cyclePressenter = [[CCRetainCyclePresenter alloc] init];
                         cyclePressenter.retainCycles = [retainCycles allObjects];
-                        [self pushNewViewController:cyclePressenter];
-                        
-                    });
+                        [self pushCCNewViewController:cyclePressenter];
+                    }
+                } else {
+                    [self->_analysisCache updateAnalysisStatus:CCRetainCycleNotPresent
+                                               forInGeneration:generationIndex
+                                                 forClassNamed:className];
                 }
-            } else {
-                [self->_analysisCache updateAnalysisStatus:CCRetainCycleNotPresent
-                                     forInGeneration:generationIndex
-                                       forClassNamed:className];
-            }
+                [self.profilerTableView reloadData];
+            });
         }
     });
 }
@@ -270,12 +270,12 @@ static NSString *const kProfilerSectionHeaderIdentifier = @"kProfilerSectionHead
     if (!_profilerTableView) {
         CGRect frame = self.view.bounds;
         frame.size.height -= 114;
-        
+
         _profilerTableView = [[UITableView alloc] initWithFrame:frame style:UITableViewStylePlain];
         UIView *v = [[UIView alloc] initWithFrame:CGRectZero];
         v.backgroundColor = [UIColor clearColor];
         [_profilerTableView setTableFooterView:v];
-        
+
         if (@available(iOS 11.0, *)) {
             _profilerTableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
         }
