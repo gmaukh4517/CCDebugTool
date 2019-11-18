@@ -1,17 +1,18 @@
 //
-//  BundleDirectoryViewController.m
+//  CCBundleDirectoryViewController.m
 //  CCDebugTool
 //
 //  Created by CC on 2019/9/12.
 //  Copyright © 2019 CC. All rights reserved.
 //
 
-#import "BundleDirectoryViewController.h"
+#import "CCBundleDirectoryViewController.h"
 #import "BundleDirectoryViewTableViewCell.h"
+#import "CCDebugContentViewController.h"
 #import "CCSandboxPreviewItem.h"
 #import <QuickLook/QuickLook.h>
 
-@interface BundleDirectoryViewController () <UITableViewDataSource, UITableViewDelegate, QLPreviewControllerDataSource>
+@interface CCBundleDirectoryViewController () <UITableViewDataSource, UITableViewDelegate, QLPreviewControllerDataSource>
 
 @property (nonatomic, copy) NSString *filePath;
 
@@ -25,7 +26,7 @@
 
 @end
 
-@implementation BundleDirectoryViewController
+@implementation CCBundleDirectoryViewController
 
 - (instancetype)initWithPath:(NSString *)path
 {
@@ -168,7 +169,7 @@
     if (!cell) {
         cell = [[BundleDirectoryViewTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifer];
     }
-    [cell cc_cellWillDisplayWithModel:[self.dataArray objectAtIndex:indexPath.row]];
+
     return cell;
 }
 
@@ -183,6 +184,8 @@
     if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
         [cell setLayoutMargins:UIEdgeInsetsZero];
     }
+
+    [((BundleDirectoryViewTableViewCell *)cell) cc_cellWillDisplayWithModel:[self.dataArray objectAtIndex:indexPath.row]];
 
     NSInteger totalRows = [tableView numberOfRowsInSection:indexPath.section];
     if ((totalRows - indexPath.row) % 2 == 0) {
@@ -211,10 +214,22 @@
     if (isDirectory) {
         drillInViewController = [[[self class] alloc] initWithPath:filePath];
     } else {
-        drillInViewController = self.fileViewerViewController;
-        id obj = [self.browseFilesArray filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"SELF.previewItemTitle == %@", [fileItem objectForKey:@"fileName"]]].lastObject;
-        NSInteger index = [self.browseFilesArray indexOfObject:obj];
-        self.fileViewerViewController.currentPreviewItemIndex = index;
+        if ([[fileItem objectForKey:@"fileExtension"] isEqualToString:@"png"] || [[fileItem objectForKey:@"fileExtension"] isEqualToString:@"jpg"] || [[fileItem objectForKey:@"fileExtension"] isEqualToString:@"jpge"]) {
+            CCDebugContentViewController *viewController = [CCDebugContentViewController new];
+            viewController.title = [fileItem objectForKey:@"fileName"];
+            viewController.image = [fileItem objectForKey:@"image"];
+            drillInViewController = viewController;
+        } else if ([[fileItem objectForKey:@"fileExtension"] isEqualToString:@"txt"]) {
+            CCDebugContentViewController *viewController = [CCDebugContentViewController new];
+            viewController.title = [fileItem objectForKey:@"fileName"];
+            viewController.contentURL = [fileItem objectForKey:@"filePath"];
+            [self pushCCNewViewController:viewController];
+        } else {
+            drillInViewController = self.fileViewerViewController;
+            id obj = [self.browseFilesArray filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"SELF.previewItemTitle == %@", [fileItem objectForKey:@"fileName"]]].lastObject;
+            NSInteger index = [self.browseFilesArray indexOfObject:obj];
+            self.fileViewerViewController.currentPreviewItemIndex = index;
+        }
     }
     [self pushCCNewViewController:drillInViewController];
 }

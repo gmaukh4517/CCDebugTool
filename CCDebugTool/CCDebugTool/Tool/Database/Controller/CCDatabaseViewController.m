@@ -1,19 +1,19 @@
 //
-//  DatabaseViewController.m
+//  CCDatabaseViewController.m
 //  CCDebugTool
 //
 //  Created by CC on 2017/12/6.
 //  Copyright © 2017年 CC. All rights reserved.
 //
 
-#import "DatabaseViewController.h"
+#import "CCDatabaseViewController.h"
 #import "DatabaseViewModel.h"
 #import "LeftDatabaseView.h"
 #import "CCDebugTool.h"
 
 static NSString *const kUICollectionViewCellIdentify = @"kUICollectionViewCellIdentify";
 
-@interface DatabaseViewController () <LeftDatabaseViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UIScrollViewDelegate>
+@interface CCDatabaseViewController () <LeftDatabaseViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UIScrollViewDelegate>
 
 @property (nonatomic, strong) UIScrollView *contentScrollView;
 
@@ -34,7 +34,7 @@ static NSString *const kUICollectionViewCellIdentify = @"kUICollectionViewCellId
 
 @end
 
-@implementation DatabaseViewController
+@implementation CCDatabaseViewController
 
 - (void)viewDidLoad
 {

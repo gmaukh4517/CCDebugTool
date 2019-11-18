@@ -39,14 +39,14 @@
 		422686942360476700D9032B /* CCWebURLProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = 422686922360476700D9032B /* CCWebURLProtocol.m */; };
 		423B2CC4233DE7D800E82C0B /* LOGCollectionViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 423B2CC2233DE7D800E82C0B /* LOGCollectionViewCell.h */; };
 		423B2CC5233DE7D800E82C0B /* LOGCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 423B2CC3233DE7D800E82C0B /* LOGCollectionViewCell.m */; };
-		424603081FAFF05000467266 /* ToolViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 424603061FAFF05000467266 /* ToolViewController.h */; };
-		424603091FAFF05000467266 /* ToolViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 424603071FAFF05000467266 /* ToolViewController.m */; };
+		424603081FAFF05000467266 /* CCToolViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 424603061FAFF05000467266 /* CCToolViewController.h */; };
+		424603091FAFF05000467266 /* CCToolViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 424603071FAFF05000467266 /* CCToolViewController.m */; };
 		424603151FB00FEF00467266 /* CCSpeedTestManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 424603131FB00FEF00467266 /* CCSpeedTestManager.h */; };
 		424603161FB00FEF00467266 /* CCSpeedTestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 424603141FB00FEF00467266 /* CCSpeedTestManager.m */; };
 		424B39401FC513DC003B03FC /* CCCookieManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 424B393E1FC513DC003B03FC /* CCCookieManager.h */; };
 		424B39411FC513DC003B03FC /* CCCookieManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 424B393F1FC513DC003B03FC /* CCCookieManager.m */; };
-		425F00701FD7BD0000368E4E /* DatabaseViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 425F006E1FD7BD0000368E4E /* DatabaseViewController.h */; };
-		425F00711FD7BD0000368E4E /* DatabaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 425F006F1FD7BD0000368E4E /* DatabaseViewController.m */; };
+		425F00701FD7BD0000368E4E /* CCDatabaseViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 425F006E1FD7BD0000368E4E /* CCDatabaseViewController.h */; };
+		425F00711FD7BD0000368E4E /* CCDatabaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 425F006F1FD7BD0000368E4E /* CCDatabaseViewController.m */; };
 		425F00761FD7C36000368E4E /* DatabaseViewModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 425F00741FD7C36000368E4E /* DatabaseViewModel.h */; };
 		425F00771FD7C36000368E4E /* DatabaseViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 425F00751FD7C36000368E4E /* DatabaseViewModel.m */; };
 		425F007A1FD7C5D900368E4E /* DatabaseManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 425F00781FD7C5D900368E4E /* DatabaseManager.h */; };
@@ -85,14 +85,14 @@
 		428B606B1FAC0586002577C0 /* CCSandboxViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 428B60691FAC0586002577C0 /* CCSandboxViewController.m */; };
 		428B606E1FAC05A0002577C0 /* CCSandboxTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 428B606C1FAC05A0002577C0 /* CCSandboxTableViewCell.h */; };
 		428B606F1FAC05A0002577C0 /* CCSandboxTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 428B606D1FAC05A0002577C0 /* CCSandboxTableViewCell.m */; };
-		429D59E0232625B4008822C4 /* ServiceManagerViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 429D59DE232625B4008822C4 /* ServiceManagerViewController.h */; };
-		429D59E1232625B4008822C4 /* ServiceManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 429D59DF232625B4008822C4 /* ServiceManagerViewController.m */; };
-		429D59E82326320A008822C4 /* AddressConfigViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 429D59E62326320A008822C4 /* AddressConfigViewController.h */; };
-		429D59E92326320A008822C4 /* AddressConfigViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 429D59E72326320A008822C4 /* AddressConfigViewController.m */; };
-		429D59ED23263423008822C4 /* AddressConfigTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 429D59EB23263423008822C4 /* AddressConfigTableViewCell.h */; };
-		429D59EE23263423008822C4 /* AddressConfigTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 429D59EC23263423008822C4 /* AddressConfigTableViewCell.m */; };
-		429DC2762329E02A008D606B /* BundleDirectoryViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 429DC2742329E02A008D606B /* BundleDirectoryViewController.h */; };
-		429DC2772329E02A008D606B /* BundleDirectoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 429DC2752329E02A008D606B /* BundleDirectoryViewController.m */; };
+		429D59E0232625B4008822C4 /* CCServiceManagerViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 429D59DE232625B4008822C4 /* CCServiceManagerViewController.h */; };
+		429D59E1232625B4008822C4 /* CCServiceManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 429D59DF232625B4008822C4 /* CCServiceManagerViewController.m */; };
+		429D59E82326320A008822C4 /* CCAddressConfigViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 429D59E62326320A008822C4 /* CCAddressConfigViewController.h */; };
+		429D59E92326320A008822C4 /* CCAddressConfigViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 429D59E72326320A008822C4 /* CCAddressConfigViewController.m */; };
+		429D59ED23263423008822C4 /* CCAddressConfigTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 429D59EB23263423008822C4 /* CCAddressConfigTableViewCell.h */; };
+		429D59EE23263423008822C4 /* CCAddressConfigTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 429D59EC23263423008822C4 /* CCAddressConfigTableViewCell.m */; };
+		429DC2762329E02A008D606B /* CCBundleDirectoryViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 429DC2742329E02A008D606B /* CCBundleDirectoryViewController.h */; };
+		429DC2772329E02A008D606B /* CCBundleDirectoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 429DC2752329E02A008D606B /* CCBundleDirectoryViewController.m */; };
 		429DC27A2329E03D008D606B /* BundleDirectoryViewTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 429DC2782329E03D008D606B /* BundleDirectoryViewTableViewCell.h */; };
 		429DC27B2329E03D008D606B /* BundleDirectoryViewTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 429DC2792329E03D008D606B /* BundleDirectoryViewTableViewCell.m */; };
 		429DC2922329F680008D606B /* CCDebugKeychainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 429DC2902329F680008D606B /* CCDebugKeychainViewController.m */; };
@@ -267,14 +267,14 @@
 		423523702373AAE300A9CF3B /* libiconv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.tbd; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/lib/libiconv.tbd; sourceTree = DEVELOPER_DIR; };
 		423B2CC2233DE7D800E82C0B /* LOGCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LOGCollectionViewCell.h; sourceTree = "<group>"; };
 		423B2CC3233DE7D800E82C0B /* LOGCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LOGCollectionViewCell.m; sourceTree = "<group>"; };
-		424603061FAFF05000467266 /* ToolViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ToolViewController.h; sourceTree = "<group>"; };
-		424603071FAFF05000467266 /* ToolViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ToolViewController.m; sourceTree = "<group>"; };
+		424603061FAFF05000467266 /* CCToolViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCToolViewController.h; sourceTree = "<group>"; };
+		424603071FAFF05000467266 /* CCToolViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CCToolViewController.m; sourceTree = "<group>"; };
 		424603131FB00FEF00467266 /* CCSpeedTestManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCSpeedTestManager.h; sourceTree = "<group>"; };
 		424603141FB00FEF00467266 /* CCSpeedTestManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CCSpeedTestManager.m; sourceTree = "<group>"; };
 		424B393E1FC513DC003B03FC /* CCCookieManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCCookieManager.h; sourceTree = "<group>"; };
 		424B393F1FC513DC003B03FC /* CCCookieManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CCCookieManager.m; sourceTree = "<group>"; };
-		425F006E1FD7BD0000368E4E /* DatabaseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DatabaseViewController.h; sourceTree = "<group>"; };
-		425F006F1FD7BD0000368E4E /* DatabaseViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DatabaseViewController.m; sourceTree = "<group>"; };
+		425F006E1FD7BD0000368E4E /* CCDatabaseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCDatabaseViewController.h; sourceTree = "<group>"; };
+		425F006F1FD7BD0000368E4E /* CCDatabaseViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CCDatabaseViewController.m; sourceTree = "<group>"; };
 		425F00741FD7C36000368E4E /* DatabaseViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DatabaseViewModel.h; sourceTree = "<group>"; };
 		425F00751FD7C36000368E4E /* DatabaseViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DatabaseViewModel.m; sourceTree = "<group>"; };
 		425F00781FD7C5D900368E4E /* DatabaseManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DatabaseManager.h; sourceTree = "<group>"; };
@@ -313,14 +313,14 @@
 		428B60691FAC0586002577C0 /* CCSandboxViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CCSandboxViewController.m; sourceTree = "<group>"; };
 		428B606C1FAC05A0002577C0 /* CCSandboxTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCSandboxTableViewCell.h; sourceTree = "<group>"; };
 		428B606D1FAC05A0002577C0 /* CCSandboxTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CCSandboxTableViewCell.m; sourceTree = "<group>"; };
-		429D59DE232625B4008822C4 /* ServiceManagerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ServiceManagerViewController.h; sourceTree = "<group>"; };
-		429D59DF232625B4008822C4 /* ServiceManagerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ServiceManagerViewController.m; sourceTree = "<group>"; };
-		429D59E62326320A008822C4 /* AddressConfigViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddressConfigViewController.h; sourceTree = "<group>"; };
-		429D59E72326320A008822C4 /* AddressConfigViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddressConfigViewController.m; sourceTree = "<group>"; };
-		429D59EB23263423008822C4 /* AddressConfigTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddressConfigTableViewCell.h; sourceTree = "<group>"; };
-		429D59EC23263423008822C4 /* AddressConfigTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddressConfigTableViewCell.m; sourceTree = "<group>"; };
-		429DC2742329E02A008D606B /* BundleDirectoryViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BundleDirectoryViewController.h; sourceTree = "<group>"; };
-		429DC2752329E02A008D606B /* BundleDirectoryViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BundleDirectoryViewController.m; sourceTree = "<group>"; };
+		429D59DE232625B4008822C4 /* CCServiceManagerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCServiceManagerViewController.h; sourceTree = "<group>"; };
+		429D59DF232625B4008822C4 /* CCServiceManagerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CCServiceManagerViewController.m; sourceTree = "<group>"; };
+		429D59E62326320A008822C4 /* CCAddressConfigViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCAddressConfigViewController.h; sourceTree = "<group>"; };
+		429D59E72326320A008822C4 /* CCAddressConfigViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CCAddressConfigViewController.m; sourceTree = "<group>"; };
+		429D59EB23263423008822C4 /* CCAddressConfigTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCAddressConfigTableViewCell.h; sourceTree = "<group>"; };
+		429D59EC23263423008822C4 /* CCAddressConfigTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CCAddressConfigTableViewCell.m; sourceTree = "<group>"; };
+		429DC2742329E02A008D606B /* CCBundleDirectoryViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCBundleDirectoryViewController.h; sourceTree = "<group>"; };
+		429DC2752329E02A008D606B /* CCBundleDirectoryViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CCBundleDirectoryViewController.m; sourceTree = "<group>"; };
 		429DC2782329E03D008D606B /* BundleDirectoryViewTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BundleDirectoryViewTableViewCell.h; sourceTree = "<group>"; };
 		429DC2792329E03D008D606B /* BundleDirectoryViewTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BundleDirectoryViewTableViewCell.m; sourceTree = "<group>"; };
 		429DC2902329F680008D606B /* CCDebugKeychainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCDebugKeychainViewController.m; sourceTree = "<group>"; };
@@ -592,8 +592,8 @@
 		425F006B1FD79E9800368E4E /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				425F006E1FD7BD0000368E4E /* DatabaseViewController.h */,
-				425F006F1FD7BD0000368E4E /* DatabaseViewController.m */,
+				425F006E1FD7BD0000368E4E /* CCDatabaseViewController.h */,
+				425F006F1FD7BD0000368E4E /* CCDatabaseViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -752,8 +752,8 @@
 			isa = PBXGroup;
 			children = (
 				429D59EA2326340D008822C4 /* View */,
-				429D59E62326320A008822C4 /* AddressConfigViewController.h */,
-				429D59E72326320A008822C4 /* AddressConfigViewController.m */,
+				429D59E62326320A008822C4 /* CCAddressConfigViewController.h */,
+				429D59E72326320A008822C4 /* CCAddressConfigViewController.m */,
 			);
 			path = AddressConfig;
 			sourceTree = "<group>";
@@ -761,8 +761,8 @@
 		429D59DB2326254F008822C4 /* ServiceManager */ = {
 			isa = PBXGroup;
 			children = (
-				429D59DE232625B4008822C4 /* ServiceManagerViewController.h */,
-				429D59DF232625B4008822C4 /* ServiceManagerViewController.m */,
+				429D59DE232625B4008822C4 /* CCServiceManagerViewController.h */,
+				429D59DF232625B4008822C4 /* CCServiceManagerViewController.m */,
 			);
 			path = ServiceManager;
 			sourceTree = "<group>";
@@ -770,8 +770,8 @@
 		429D59EA2326340D008822C4 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				429D59EB23263423008822C4 /* AddressConfigTableViewCell.h */,
-				429D59EC23263423008822C4 /* AddressConfigTableViewCell.m */,
+				429D59EB23263423008822C4 /* CCAddressConfigTableViewCell.h */,
+				429D59EC23263423008822C4 /* CCAddressConfigTableViewCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -788,8 +788,8 @@
 		429DC2722329DFE1008D606B /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				429DC2742329E02A008D606B /* BundleDirectoryViewController.h */,
-				429DC2752329E02A008D606B /* BundleDirectoryViewController.m */,
+				429DC2742329E02A008D606B /* CCBundleDirectoryViewController.h */,
+				429DC2752329E02A008D606B /* CCBundleDirectoryViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -903,8 +903,8 @@
 				424603101FB00F1700467266 /* SpeedTest */,
 				42D5AD3E1FAC61D00063C136 /* PingTest */,
 				427010DA1FAB1E6800BE8E8F /* Sandbox */,
-				424603061FAFF05000467266 /* ToolViewController.h */,
-				424603071FAFF05000467266 /* ToolViewController.m */,
+				424603061FAFF05000467266 /* CCToolViewController.h */,
+				424603071FAFF05000467266 /* CCToolViewController.m */,
 			);
 			path = Tool;
 			sourceTree = "<group>";
@@ -1031,8 +1031,8 @@
 			isa = PBXGroup;
 			children = (
 				42EA10C11FB42CD30078D439 /* FBAssociationManager.h */,
-				42EA10C21FB42CD30078D439 /* Internal */,
 				42EA10C41FB42CD30078D439 /* FBAssociationManager.mm */,
+				42EA10C21FB42CD30078D439 /* Internal */,
 			);
 			path = Associations;
 			sourceTree = "<group>";
@@ -1171,19 +1171,19 @@
 		42EA10FA1FB42CD30078D439 /* FBAllocationTracker */ = {
 			isa = PBXGroup;
 			children = (
-				42EA11011FB42CD30078D439 /* NSObject+FBAllocationTracker.h */,
-				42EA10FB1FB42CD30078D439 /* NSObject+FBAllocationTracker.mm */,
 				42EA10FC1FB42CD30078D439 /* FBAllocationTracker.h */,
+				42EA110C1FB42CD30078D439 /* FBAllocationTrackerDefines.h */,
+				42EA11031FB42CD30078D439 /* FBAllocationTrackerFunctors.h */,
+				42EA10FF1FB42CD30078D439 /* FBAllocationTrackerHelpers.h */,
 				42EA10FD1FB42CD30078D439 /* FBAllocationTrackerImpl.h */,
 				42EA11021FB42CD30078D439 /* FBAllocationTrackerImpl.mm */,
-				42EA10FE1FB42CD30078D439 /* FBAllocationTrackerSummary.h */,
-				42EA110D1FB42CD30078D439 /* FBAllocationTrackerSummary.m */,
-				42EA10FF1FB42CD30078D439 /* FBAllocationTrackerHelpers.h */,
 				42EA110B1FB42CD30078D439 /* FBAllocationTrackerManager.h */,
 				42EA11001FB42CD30078D439 /* FBAllocationTrackerManager.mm */,
-				42EA11031FB42CD30078D439 /* FBAllocationTrackerFunctors.h */,
+				42EA10FE1FB42CD30078D439 /* FBAllocationTrackerSummary.h */,
+				42EA110D1FB42CD30078D439 /* FBAllocationTrackerSummary.m */,
 				42EA11041FB42CD30078D439 /* Generations */,
-				42EA110C1FB42CD30078D439 /* FBAllocationTrackerDefines.h */,
+				42EA11011FB42CD30078D439 /* NSObject+FBAllocationTracker.h */,
+				42EA10FB1FB42CD30078D439 /* NSObject+FBAllocationTracker.mm */,
 			);
 			path = FBAllocationTracker;
 			sourceTree = "<group>";
@@ -1438,15 +1438,15 @@
 				42F0A42E1F59355E00ACD4FA /* CCUncaughtExceptionHandler.h in Headers */,
 				42EA11511FB42CD30078D439 /* FBAllocationTrackerFunctors.h in Headers */,
 				42EA11561FB42CD30078D439 /* FBAllocationTrackerNSZombieSupport.h in Headers */,
-				425F00701FD7BD0000368E4E /* DatabaseViewController.h in Headers */,
-				429D59ED23263423008822C4 /* AddressConfigTableViewCell.h in Headers */,
+				425F00701FD7BD0000368E4E /* CCDatabaseViewController.h in Headers */,
+				429D59ED23263423008822C4 /* CCAddressConfigTableViewCell.h in Headers */,
 				42D5AD4A1FAC62AF0063C136 /* STSimplePing.h in Headers */,
 				4266D3B72008B16400D6EE07 /* route.h in Headers */,
 				42EA11161FB42CD30078D439 /* CCMemoryProfilerViewController.h in Headers */,
 				42F0A42B1F59355E00ACD4FA /* CCAppFluecyMonitor.h in Headers */,
 				42EA111C1FB42CD30078D439 /* FBAssociationManager.h in Headers */,
 				42D5AD4E1FAC62CD0063C136 /* CCPingServices.h in Headers */,
-				429DC2762329E02A008D606B /* BundleDirectoryViewController.h in Headers */,
+				429DC2762329E02A008D606B /* CCBundleDirectoryViewController.h in Headers */,
 				42EA11301FB42CD30078D439 /* FBClassStrongLayout.h in Headers */,
 				42F0A4991F59355E00ACD4FA /* CCMonitorHelper.h in Headers */,
 				4265FBBA20F05FF700DE2854 /* UIViewController+CCDebug.h in Headers */,
@@ -1463,7 +1463,7 @@
 				42EA11431FB42CD30078D439 /* FBRetainCycleDetector.h in Headers */,
 				425F00761FD7C36000368E4E /* DatabaseViewModel.h in Headers */,
 				42743774232A1A4700B5CB1B /* CCDebugKeychainQuery.h in Headers */,
-				429D59E82326320A008822C4 /* AddressConfigViewController.h in Headers */,
+				429D59E82326320A008822C4 /* CCAddressConfigViewController.h in Headers */,
 				421E6BE21FB13EB70068FB1E /* CCSpeedTestViewController.h in Headers */,
 				42EA11521FB42CD30078D439 /* FBAllocationTrackerGeneration.h in Headers */,
 				42EA113B1FB42CD30078D439 /* FBObjectiveCObject.h in Headers */,
@@ -1488,7 +1488,7 @@
 				429DC297232A1464008D606B /* CCDebugAlert.h in Headers */,
 				428B606A1FAC0586002577C0 /* CCSandboxViewController.h in Headers */,
 				42F0A4421F59355E00ACD4FA /* CCDebugCrashHelper.h in Headers */,
-				424603081FAFF05000467266 /* ToolViewController.h in Headers */,
+				424603081FAFF05000467266 /* CCToolViewController.h in Headers */,
 				42F0A43E1F59355E00ACD4FA /* CCDebugHttpDetailViewController.h in Headers */,
 				42F0A49F1F59355E00ACD4FA /* CCDebugReachability.h in Headers */,
 				42EA11741FB43FE60078D439 /* CCNetworkTransaction.h in Headers */,
@@ -1518,7 +1518,7 @@
 				42F0A4A11F59355E00ACD4FA /* CCPerformanceStatusBar.h in Headers */,
 				42B185041FBD3EB6002B066F /* CCLogMonitoring.h in Headers */,
 				42EA110F1FB42CD30078D439 /* ProfilerDataSource.h in Headers */,
-				429D59E0232625B4008822C4 /* ServiceManagerViewController.h in Headers */,
+				429D59E0232625B4008822C4 /* CCServiceManagerViewController.h in Headers */,
 				42EA11351FB42CD30078D439 /* FBObjectReference.h in Headers */,
 				42F0A4381F59355E00ACD4FA /* CCDebugNetworkViewController.h in Headers */,
 				42B84F6923288893009583AD /* PrefixHeader.pch in Headers */,
@@ -1574,7 +1574,7 @@
 		42F0A36C1F59350100ACD4FA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 1000;
+				LastUpgradeCheck = 1120;
 				ORGANIZATIONNAME = "\U001bCC";
 				TargetAttributes = {
 					425A6E4E208B14560097DD5D = {
@@ -1589,11 +1589,11 @@
 			};
 			buildConfigurationList = 42F0A36F1F59350100ACD4FA /* Build configuration list for PBXProject "CCDebugTool" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				English,
 				en,
+				Base,
 			);
 			mainGroup = 42F0A36B1F59350100ACD4FA;
 			productRefGroup = 42F0A3761F59350100ACD4FA /* Products */;
@@ -1672,7 +1672,7 @@
 				42EA11461FB42CD30078D439 /* FBRetainCycleDetector.mm in Sources */,
 				42EA11141FB42CD30078D439 /* CCMemoryProfilerViewController.m in Sources */,
 				42EA113F1FB42CD30078D439 /* FBObjectiveCBlock.m in Sources */,
-				429D59EE23263423008822C4 /* AddressConfigTableViewCell.m in Sources */,
+				429D59EE23263423008822C4 /* CCAddressConfigTableViewCell.m in Sources */,
 				42F0A42A1F59355E00ACD4FA /* CCBacktraceLogger.m in Sources */,
 				42EA11501FB42CD30078D439 /* FBAllocationTrackerImpl.mm in Sources */,
 				421E6BE81FB140E00068FB1E /* CCSpeedView.m in Sources */,
@@ -1699,7 +1699,7 @@
 				42F0A4391F59355E00ACD4FA /* CCDebugNetworkViewController.m in Sources */,
 				427408E620F08F9D008C3E6D /* CCSandboxPreviewItem.m in Sources */,
 				421E6BE31FB13EB70068FB1E /* CCSpeedTestViewController.m in Sources */,
-				429D59E92326320A008822C4 /* AddressConfigViewController.m in Sources */,
+				429D59E92326320A008822C4 /* CCAddressConfigViewController.m in Sources */,
 				422686902360425A00D9032B /* WKUserContentController+CCHookAjax.m in Sources */,
 				423B2CC5233DE7D800E82C0B /* LOGCollectionViewCell.m in Sources */,
 				42EA11361FB42CD30078D439 /* FBIvarReference.m in Sources */,
@@ -1708,7 +1708,7 @@
 				425F008E1FD7DA1300368E4E /* DatabaseTableViewCell.m in Sources */,
 				42EA11401FB42CD30078D439 /* FBObjectiveCObject.m in Sources */,
 				422686942360476700D9032B /* CCWebURLProtocol.m in Sources */,
-				425F00711FD7BD0000368E4E /* DatabaseViewController.m in Sources */,
+				425F00711FD7BD0000368E4E /* CCDatabaseViewController.m in Sources */,
 				42F0A42D1F59355E00ACD4FA /* CCDebugTool.m in Sources */,
 				42EA111E1FB42CD30078D439 /* FBAssociationManager.mm in Sources */,
 				420A4EFB2375307200268174 /* CCWebLogMonitoring.m in Sources */,
@@ -1729,17 +1729,17 @@
 				4266D3AC20089EC500D6EE07 /* CCNetworkInfoViewController.m in Sources */,
 				42F0A4A41F59355E00ACD4FA /* CCMonitorLabel.m in Sources */,
 				421B1CB32379484100DC5488 /* CCTouchFingerView.m in Sources */,
-				429D59E1232625B4008822C4 /* ServiceManagerViewController.m in Sources */,
+				429D59E1232625B4008822C4 /* CCServiceManagerViewController.m in Sources */,
 				429DC2922329F680008D606B /* CCDebugKeychainViewController.m in Sources */,
 				42B185051FBD3EB6002B066F /* CCLogMonitoring.m in Sources */,
-				424603091FAFF05000467266 /* ToolViewController.m in Sources */,
+				424603091FAFF05000467266 /* CCToolViewController.m in Sources */,
 				42D5AD531FAC64E80063C136 /* CCPingTextView.m in Sources */,
 				425F00801FD7CB4200368E4E /* LeftDatabaseView.m in Sources */,
 				42F0A49C1F59355E00ACD4FA /* CCMonitorService.m in Sources */,
 				42BA41A91FB545B000B0B0C5 /* UIControl+CCHook.m in Sources */,
 				42EA11491FB42CD30078D439 /* NSObject+FBAllocationTracker.mm in Sources */,
 				425F007B1FD7C5D900368E4E /* DatabaseManager.m in Sources */,
-				429DC2772329E02A008D606B /* BundleDirectoryViewController.m in Sources */,
+				429DC2772329E02A008D606B /* CCBundleDirectoryViewController.m in Sources */,
 				428B60671FAC056F002577C0 /* CCSandboxEntity.m in Sources */,
 				42EA11111FB42CD30078D439 /* ProfilerDataSource.m in Sources */,
 				42F0A4491F59355E00ACD4FA /* CCDebugFluencyHelper.m in Sources */,
@@ -1769,6 +1769,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -1829,6 +1830,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";

@@ -29,7 +29,7 @@
 #import "CCNetworkInfoViewController.h"
 #import "CCNetworkRecorder.h"
 #import "CCNetworkTableViewCell.h"
-#import "ServiceManagerViewController.h"
+#import "CCServiceManagerViewController.h"
 #import <pthread.h>
 
 @interface CCDebugNetworkViewController () <UITableViewDataSource, UITableViewDelegate>
@@ -70,18 +70,15 @@
 
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"关闭" style:UIBarButtonItemStyleDone target:self action:@selector(clearAction)];
 
-    UIButton *button  =[UIButton new];
-    [button setImage:[CCDebugTool cc_bundle:@"ccdebug_service_config"] forState:UIControlStateNormal];
-
-    UIBarButtonItem *serviceBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[CCDebugTool cc_bundle:@"ccdebug_service_config"] style:UIBarButtonItemStyleDone target:self action:@selector(serviceConfigViewController)];
-    UIBarButtonItem *networkBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[CCDebugTool cc_bundle:@"ccdebug_network"] style:UIBarButtonItemStyleDone target:self action:@selector(networkViewController)];
+    UIBarButtonItem *serviceBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"环境" style:UIBarButtonItemStyleDone target:self action:@selector(serviceConfigViewController)];
+    UIBarButtonItem *networkBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"IP" style:UIBarButtonItemStyleDone target:self action:@selector(networkViewController)];
 
     self.navigationItem.rightBarButtonItems = @[ networkBarButtonItem, serviceBarButtonItem ];
 }
 
 - (void)serviceConfigViewController
 {
-    ServiceManagerViewController *viewController = [ServiceManagerViewController new];
+    CCServiceManagerViewController *viewController = [CCServiceManagerViewController new];
     viewController.hidesBottomBarWhenPushed = YES;
     [self pushCCNewViewController:viewController];
 }

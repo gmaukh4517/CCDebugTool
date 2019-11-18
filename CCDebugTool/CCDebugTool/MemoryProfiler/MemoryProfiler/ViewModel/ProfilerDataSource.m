@@ -154,13 +154,13 @@ static UIColor *CCMemoryProfilerPaleRedColor()
                          [NSPredicate predicateWithBlock:^BOOL(FBAllocationTrackerSummary *entry, NSDictionary *bindings) {
         NSInteger alive = entry.aliveObjects;
         NSInteger byteCount = alive * entry.instanceSize;
-        entry.byteCount = [_byteCountFormatter stringFromByteCount:byteCount];
-        entry.status = [_analysisCache statusInGeneration:index
+        entry.byteCount = [self->_byteCountFormatter stringFromByteCount:byteCount];
+        entry.status = [self->_analysisCache statusInGeneration:index
                                             forClassNamed:entry.className];
         entry.color = [self colorForAnalysisStatus:entry.status];
         
         NSString *className = entry.className.lowercaseString;
-        if (_classFilter && [className rangeOfString:_classFilter].location == NSNotFound) {
+        if (self->_classFilter && [className rangeOfString:self->_classFilter].location == NSNotFound) {
             return NO;
         }
         

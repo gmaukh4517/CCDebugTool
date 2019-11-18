@@ -1,16 +1,16 @@
 //
-//  ServiceManagerViewController.m
+//  CCServiceManagerViewController.m
 //  CCDebugTool
 //
 //  Created by CC on 2019/9/9.
 //  Copyright © 2019 CC. All rights reserved.
 //
 
-#import "ServiceManagerViewController.h"
-#import "AddressConfigViewController.h"
+#import "CCServiceManagerViewController.h"
+#import "CCAddressConfigViewController.h"
 #import "CCDebugTool.h"
 
-@interface ServiceManagerViewController () <UITableViewDelegate, UITableViewDataSource>
+@interface CCServiceManagerViewController () <UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, strong) NSMutableDictionary *serviceAddressConifg;
 
@@ -21,7 +21,7 @@
 
 @end
 
-@implementation ServiceManagerViewController
+@implementation CCServiceManagerViewController
 
 - (void)viewDidLoad
 {
@@ -131,7 +131,7 @@
 
 - (void)addConfigButtonClick:(UIButton *)sender
 {
-    [self pushCCNewViewController:[AddressConfigViewController new]];
+    [self pushCCNewViewController:[CCAddressConfigViewController new]];
 }
 
 #pragma mark -
@@ -214,7 +214,11 @@
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSDictionary *item = [self.dataArr objectAtIndex:indexPath.row];
-    cell.textLabel.text = [item objectForKey:@"title"];
+    NSString *serviceName = [item objectForKey:@"title"];
+    NSString *serviceAddress = [[item objectForKey:@"parameter"] objectForKey:@"ServiceAddress"];
+    if (serviceAddress)
+        serviceName = [NSString stringWithFormat:@"%@ (%@)", serviceName, serviceAddress];
+    cell.textLabel.text = serviceName;
 
     BOOL selected = [[item objectForKey:@"selected"] boolValue];
     cell.accessoryType = UITableViewCellAccessoryNone;
@@ -245,7 +249,7 @@ API_AVAILABLE(ios(11.0))
                                                                             title:@"编辑"
                                                                           handler:^(UIContextualAction *_Nonnull action, __kindof UIView *_Nonnull sourceView, void (^_Nonnull completionHandler)(BOOL)) {
         __strong typeof(weakSelf) strongSelf = weakSelf;
-        AddressConfigViewController *viewController = [AddressConfigViewController new];
+        CCAddressConfigViewController *viewController = [CCAddressConfigViewController new];
         viewController.dataItem = [strongSelf.dataArr objectAtIndex:indexPath.row];
         [strongSelf pushCCNewViewController:viewController];
 

@@ -36,11 +36,11 @@
 
     [parameters addObject:@{ @"id" : @"1",
                              @"title" : @"测试环境",
-                             @"parameter" : @{@"ServiceAddress" : @"测试环境"} }];
+                             @"parameter" : @{@"ServiceAddress" : @"https://www.test.com/"} }];
 
     [parameters addObject:@{ @"id" : @"2",
                              @"title" : @"正式环境",
-                             @"parameter" : @{@"ServiceAddress" : @"正式环境"} }];
+                             @"parameter" : @{@"ServiceAddress" : @"https://www.formal.com/"} }];
 
     [[CCDebugTool manager] setServiceParameters:parameters];
 }

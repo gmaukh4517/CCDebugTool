@@ -10,14 +10,14 @@
 
 @class CCDebugAlert, CCDebugAlertAction;
 
-typedef void (^CCDebugAlertReveal)();
+typedef void (^CCDebugAlertReveal)(void);
 typedef void (^CCDebugAlertBuilder)(CCDebugAlert *make);
 typedef CCDebugAlert *(^CCDebugAlertStringProperty)(NSString *);
 typedef CCDebugAlert *(^CCDebugAlertStringArg)(NSString *);
 typedef CCDebugAlert *(^CCDebugAlertTextField)(void(^configurationHandler)(UITextField *textField));
 typedef CCDebugAlertAction *(^CCDebugAlertAddAction)(NSString *title);
 typedef CCDebugAlertAction *(^CCDebugAlertActionStringProperty)(NSString *);
-typedef CCDebugAlertAction *(^CCDebugAlertActionProperty)();
+typedef CCDebugAlertAction *(^CCDebugAlertActionProperty)(void);
 typedef CCDebugAlertAction *(^CCDebugAlertActionBOOLProperty)(BOOL);
 typedef CCDebugAlertAction *(^CCDebugAlertActionHandler)(void(^handler)(NSArray<NSString *> *strings));
 

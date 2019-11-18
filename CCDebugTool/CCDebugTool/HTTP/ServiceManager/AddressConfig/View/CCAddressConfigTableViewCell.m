@@ -1,22 +1,22 @@
 //
-//  AddressConfigTableViewCell.m
+//  CCAddressConfigTableViewCell.m
 //  CCDebugTool
 //
 //  Created by CC on 2019/9/9.
 //  Copyright © 2019 CC. All rights reserved.
 //
 
-#import "AddressConfigTableViewCell.h"
+#import "CCAddressConfigTableViewCell.h"
 #import "CCDebugTool.h"
 
-@interface AddressConfigTableViewCell ()
+@interface CCAddressConfigTableViewCell ()
 
 @property (nonatomic, weak) UITextField *keyTextField;
 @property (nonatomic, weak) UITextField *valueTextField;
 
 @end
 
-@implementation AddressConfigTableViewCell
+@implementation CCAddressConfigTableViewCell
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {

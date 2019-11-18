@@ -86,12 +86,12 @@ static const CGFloat kEndAngle = 0.51;
 {
     _speedProgress = speedProgress;
     [UIView animateWithDuration:0.2 animations:^{
-        NSInteger index = round(speedProgress)<_progressArray.count?:_progressArray.count ;
+        NSInteger index = round(speedProgress)<self->_progressArray.count?:self->_progressArray.count ;
         if (speedProgress <= 0)
             index = 0;
 
-        for (NSInteger i = 0; i < _progressArray.count; i++) {
-            CAShapeLayer *progressLayer = (CAShapeLayer *)[_progressArray objectAtIndex:i];
+        for (NSInteger i = 0; i < self->_progressArray.count; i++) {
+            CAShapeLayer *progressLayer = (CAShapeLayer *)[self->_progressArray objectAtIndex:i];
             UIColor *color = [UIColor whiteColor];
             if (i > index || index == 0) {
                 color =  [UIColor colorWithRed:0.22 green:0.66 blue:0.87 alpha:1.0];

@@ -6,28 +6,28 @@
 //  Copyright © 2017年 CC. All rights reserved.
 //
 
-#import "ToolViewController.h"
+#import "CCToolViewController.h"
 #import "CCDebugTool.h"
 
-#import "BundleDirectoryViewController.h"
+#import "CCBundleDirectoryViewController.h"
 #import "CCCookiesViewController.h"
 #import "CCDebugKeychainViewController.h"
 #import "CCPingViewController.h"
 #import "CCSandboxViewController.h"
 #import "CCSpeedTestViewController.h"
-#import "DatabaseViewController.h"
+#import "CCDatabaseViewController.h"
 
 #import "TouchMonitor.h"
 
 
-@interface ToolTableViewCell : UITableViewCell
+@interface CCToolTableViewCell : UITableViewCell
 
 @property (nonatomic, weak) UISwitch *switchView;
 
 @end
 
 
-@implementation ToolTableViewCell
+@implementation CCToolTableViewCell
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -94,7 +94,7 @@
 @end
 
 
-@interface ToolViewController () <UITableViewDelegate, UITableViewDataSource>
+@interface CCToolViewController () <UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, strong) UITableView *tooTableView;
 
@@ -102,7 +102,7 @@
 
 @end
 
-@implementation ToolViewController
+@implementation CCToolViewController
 
 - (void)viewDidLoad
 {
@@ -175,9 +175,9 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *identifer = @"TooTableViewCellIdentifer";
-    ToolTableViewCell *cell = (ToolTableViewCell *)[tableView dequeueReusableCellWithIdentifier:identifer];
+    CCToolTableViewCell *cell = (CCToolTableViewCell *)[tableView dequeueReusableCellWithIdentifier:identifer];
     if (!cell)
-        cell = [[ToolTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifer];
+        cell = [[CCToolTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifer];
     return cell;
 }
 
@@ -196,9 +196,9 @@
     } else if ([pushName isEqualToString:@"Cookies"]) {
         viewController = [CCCookiesViewController new];
     } else if ([pushName isEqualToString:@"Database"]) {
-        viewController = [DatabaseViewController new];
+        viewController = [CCDatabaseViewController new];
     } else if ([pushName isEqualToString:@"Bundle Directory"]) {
-        viewController = [[BundleDirectoryViewController alloc] initWithPath:NSBundle.mainBundle.bundlePath];
+        viewController = [[CCBundleDirectoryViewController alloc] initWithPath:NSBundle.mainBundle.bundlePath];
     } else if ([pushName isEqualToString:@"Keychain"]) {
         viewController = [CCDebugKeychainViewController new];
     } else if ([pushName isEqualToString:@"UIDebugging"]) {
@@ -223,7 +223,7 @@
         [cell setLayoutMargins:UIEdgeInsetsZero];
     }
 
-    [((ToolTableViewCell *)cell) cc_setData:[self.dataArr objectAtIndex:indexPath.row]];
+    [((CCToolTableViewCell *)cell) cc_setData:[self.dataArr objectAtIndex:indexPath.row]];
 }
 
 #pragma mark -

@@ -33,6 +33,7 @@
 
 #import "UIControl+CCHook.h"
 #import "UIViewController+CCHook.h"
+#import "UINavigationController+CCHook.h"
 
 @interface CCUncaughtExceptionHandler () {
     BOOL dismissed;
@@ -282,4 +283,5 @@ void InstalCrashHandler(void)
 
     [UIControl CCHook];
     [UIViewController CCHook];
+    [UINavigationController CCHook];
 }

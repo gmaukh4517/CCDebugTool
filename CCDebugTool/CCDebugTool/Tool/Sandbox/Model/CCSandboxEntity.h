@@ -15,6 +15,7 @@ typedef NS_ENUM(NSInteger,CCFileType) {
     CCFileTypeFile,
     CCFileTypeImage,
     CCFileTypeLog,
+    CCFileTypeTXT,
     CCFileTypeMP3,
     CCFileTypePlist,
     CCFileTypePPT,

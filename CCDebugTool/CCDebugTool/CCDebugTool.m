@@ -39,7 +39,7 @@
 #import "CCDebugLogViewController.h"
 #import "CCDebugNetworkViewController.h"
 #import "CCMemoryProfilerViewController.h"
-#import "ToolViewController.h"
+#import "CCToolViewController.h"
 
 
 #pragma mark -
@@ -327,7 +327,7 @@
         [self initializationNav:[CCDebugNetworkViewController new] title:@"HTTP" imageNamed:@"tabbar_http" selectedImage:@"tabbar_http_yes"];
         [self initializationNav:[CCDebugLogViewController new] title:@"LOG" imageNamed:@"tabbar_log" selectedImage:@"tabbar_log_yes"];
         [self initializationNav:[CCMemoryProfilerViewController new] title:@"Cycle" imageNamed:@"tabbar_cycle" selectedImage:@"tabbar_cycle_yes"];
-        [self initializationNav:[ToolViewController new] title:@"TOOL" imageNamed:@"tabbar_tool" selectedImage:@"tabbar_tool_yes"];
+        [self initializationNav:[CCToolViewController new] title:@"TOOL" imageNamed:@"tabbar_tool" selectedImage:@"tabbar_tool_yes"];
         //        UINavigationController *debugMonitorNav = [self initializationNav:[CCMonitorViewController new] tabBarItemName:@"Monitor"];
     }
 

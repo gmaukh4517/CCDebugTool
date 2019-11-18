@@ -1,5 +1,5 @@
 //
-//  AddressConfigTableViewCell.h
+//  CCAddressConfigTableViewCell.h
 //  CCDebugTool
 //
 //  Created by CC on 2019/9/9.
@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface AddressConfigTableViewCell : UITableViewCell
+@interface CCAddressConfigTableViewCell : UITableViewCell
 
 @property (nonatomic, copy) void (^textFieldChange)(UITextField *textField);
 

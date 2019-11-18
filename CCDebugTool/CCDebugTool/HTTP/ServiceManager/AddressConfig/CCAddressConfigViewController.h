@@ -1,5 +1,5 @@
 //
-//  ServiceManagerViewController.h
+//  CCAddressConfigViewController.h
 //  CCDebugTool
 //
 //  Created by CC on 2019/9/9.
@@ -10,7 +10,9 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface ServiceManagerViewController : UIViewController
+@interface CCAddressConfigViewController : UIViewController
+
+@property (nonatomic, copy) NSDictionary *dataItem;
 
 @end
 

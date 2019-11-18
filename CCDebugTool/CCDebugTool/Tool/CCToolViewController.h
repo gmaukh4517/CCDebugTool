@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ToolViewController : UIViewController
+@interface CCToolViewController : UIViewController
 
 @end

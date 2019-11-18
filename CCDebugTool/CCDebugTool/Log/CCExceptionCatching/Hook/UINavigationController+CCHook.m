@@ -6,6 +6,7 @@
 //  Copyright © 2017年 CC. All rights reserved.
 //
 
+#import "CCDebugCrashHelper.h"
 #import "UINavigationController+CCHook.h"
 #import <objc/runtime.h>
 
@@ -22,7 +23,7 @@ static inline void AutomaticWritingSwizzleSelector(Class class, SEL originalSele
     }
 }
 
-+(void)CCHook
++ (void)CCHook
 {
     AutomaticWritingSwizzleSelector([self class], @selector(pushViewController:animated:), @selector(CCDebutTool_pushViewController:animated:));
     AutomaticWritingSwizzleSelector([self class], @selector(popViewControllerAnimated:), @selector(CCDebutTool_popViewControllerAnimated:));
@@ -30,12 +31,24 @@ static inline void AutomaticWritingSwizzleSelector(Class class, SEL originalSele
 
 - (void)CCDebutTool_pushViewController:(UIViewController *)viewController animated:(BOOL)animated
 {
+    NSString *mClassName = [NSString stringWithUTF8String:object_getClassName(viewController)];
+    if (![mClassName hasPrefix:@"CC"]) {
+        NSString *pushInfo = [NSString stringWithFormat:@" %@ - (push) > %@", [NSString stringWithUTF8String:object_getClassName(self.topViewController)], mClassName];
+        [[CCDebugCrashHelper manager].crashLastStep addObject:pushInfo];
+    }
+
     [self CCDebutTool_pushViewController:viewController animated:animated];
 }
 
--(void)CCDebutTool_popViewControllerAnimated:(BOOL)animated
+- (void)CCDebutTool_popViewControllerAnimated:(BOOL)animated
 {
+    NSString *mClassName = [NSString stringWithUTF8String:object_getClassName(self.topViewController)];
     [self CCDebutTool_popViewControllerAnimated:animated];
+    if (![mClassName hasPrefix:@"CC"]) {
+        NSString *previousClassName = [NSString stringWithUTF8String:object_getClassName(self.viewControllers.lastObject)];
+        NSString *popInfo = [NSString stringWithFormat:@" %@ - (pop) > %@", mClassName, previousClassName];
+        [[CCDebugCrashHelper manager].crashLastStep addObject:popInfo];
+    }
 }
 
 @end

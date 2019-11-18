@@ -7,11 +7,13 @@
 //
 
 #import "CCSandboxViewController.h"
-#import "CCSandboxTableViewCell.h"
+#import "CCBundleDirectoryViewController.h"
+#import "CCDebugContentViewController.h"
 #import "CCFilePathTreeView.h"
-#import "CCSandboxEntity.h"
 #import "CCPingViewController.h"
+#import "CCSandboxEntity.h"
 #import "CCSandboxPreviewItem.h"
+#import "CCSandboxTableViewCell.h"
 #import <QuickLook/QuickLook.h>
 
 @interface CCSandboxViewController () <UITableViewDelegate, UITableViewDataSource, CCFilePathTreeViewDelegate, QLPreviewControllerDataSource>
@@ -175,7 +177,27 @@
         [self.filePathView.pathNodeArray addObject:entity];
         [self.filePathView refreshView];
         [self obtainPathItems:entity.filePath];
-    } else { //} if (entity.fileType == ){
+    } else if (entity.fileType == CCFileTypeImage) {
+        NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:entity.filePath]];
+        if (data) {
+            UIImage *image = [UIImage imageWithData:data];
+
+            CCDebugContentViewController *viewController = [CCDebugContentViewController new];
+            viewController.title = entity.fileName;
+            viewController.image = image;
+            [self pushCCNewViewController:viewController];
+        }
+    } else if (entity.fileType == CCFileTypePlist ||
+               entity.fileType == CCFileTypeLog ||
+               entity.fileType == CCFileTypeTXT) {
+        CCDebugContentViewController *viewController = [CCDebugContentViewController new];
+        viewController.title = entity.fileName;
+        viewController.contentURL = entity.filePath;
+        [self pushCCNewViewController:viewController];
+    } else if (entity.fileType == CCFileTypeBundle) {
+        CCBundleDirectoryViewController *viewController = [[CCBundleDirectoryViewController alloc] initWithPath:entity.filePath];
+        [self pushCCNewViewController:viewController];
+    } else {
         [self pushCCNewViewController:self.fileViewerViewController];
         id obj = [self.fileArray filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"SELF.previewItemTitle == %@", entity.fileName]].lastObject;
         NSInteger index = [self.fileArray indexOfObject:obj];

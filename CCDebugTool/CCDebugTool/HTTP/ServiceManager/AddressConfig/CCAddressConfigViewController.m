@@ -1,16 +1,16 @@
 //
-//  AddressConfigViewController.m
+//  CCAddressConfigViewController.m
 //  CCDebugTool
 //
 //  Created by CC on 2019/9/9.
 //  Copyright © 2019 CC. All rights reserved.
 //
 
-#import "AddressConfigViewController.h"
-#import "AddressConfigTableViewCell.h"
+#import "CCAddressConfigViewController.h"
+#import "CCAddressConfigTableViewCell.h"
 #import "CCDebugTool.h"
 
-@interface AddressConfigViewController () <UITableViewDelegate, UITableViewDataSource>
+@interface CCAddressConfigViewController () <UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, strong) UITableView *addressConfigTableView;
 @property (nonatomic, strong) NSMutableArray *dataArray;
@@ -19,7 +19,7 @@
 
 @end
 
-@implementation AddressConfigViewController
+@implementation CCAddressConfigViewController
 
 - (void)viewDidLoad
 {
@@ -151,7 +151,7 @@
     static NSString *identifer = @"serviceAddressIdentifier";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifer];
     if (!cell) {
-        AddressConfigTableViewCell *addressCell = [[AddressConfigTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifer];
+        CCAddressConfigTableViewCell *addressCell = [[CCAddressConfigTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifer];
         addressCell.selectionStyle = UITableViewCellSelectionStyleNone;
         __weak typeof(self) weakSelf = self;
         [addressCell setTextFieldChange:^(UITextField *_Nonnull textField) {
@@ -176,7 +176,7 @@
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    AddressConfigTableViewCell *addressCell = (AddressConfigTableViewCell *)cell;
+    CCAddressConfigTableViewCell *addressCell = (CCAddressConfigTableViewCell *)cell;
     [addressCell cc_cellWillDisplayWithModel:[self.dataArray objectAtIndex:indexPath.row] indexPath:indexPath];
 
     if ([cell respondsToSelector:@selector(setSeparatorInset:)]) {

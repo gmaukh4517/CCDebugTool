@@ -1,5 +1,5 @@
 //
-//  BundleDirectoryViewController.h
+//  CCBundleDirectoryViewController.h
 //  CCDebugTool
 //
 //  Created by CC on 2019/9/12.
@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface BundleDirectoryViewController : UIViewController
+@interface CCBundleDirectoryViewController : UIViewController
 
 - (instancetype)initWithPath:(NSString *)path;
 

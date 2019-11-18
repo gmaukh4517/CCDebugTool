@@ -41,8 +41,8 @@
     [self.filePathCollectionView reloadData];
     
     dispatch_after(dispatch_walltime(DISPATCH_TIME_NOW, (int64_t)(0.001 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        CGFloat x = _filePathCollectionView.contentSize.width + _filePathCollectionView.contentInset.right - _filePathCollectionView.bounds.size.width;
-        [_filePathCollectionView setContentOffset:CGPointMake(x < 0 ? 0 : x, 0.0f) animated:YES];
+        CGFloat x = self->_filePathCollectionView.contentSize.width + self->_filePathCollectionView.contentInset.right - self->_filePathCollectionView.bounds.size.width;
+        [self->_filePathCollectionView setContentOffset:CGPointMake(x < 0 ? 0 : x, 0.0f) animated:YES];
     });
 }
 

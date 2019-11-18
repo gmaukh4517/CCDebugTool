@@ -30,6 +30,8 @@
 
 @interface CCDebugContentViewController () <UICollectionViewDataSource, UICollectionViewDelegate, UIScrollViewDelegate, WKNavigationDelegate>
 
+@property (strong, nonatomic) UIActivityIndicatorView *activityIndicatorView;
+
 @property (nonatomic, strong) UICollectionView *logCollectionView;
 
 @property (nonatomic, weak) WKWebView *webView;
@@ -52,6 +54,12 @@
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"复制" style:UIBarButtonItemStyleDone target:self action:@selector(copyAction:)];
 }
 
+- (void)viewDidLayoutSubviews
+{
+    [super viewDidLayoutSubviews];
+    self.activityIndicatorView.center = self.view.center;
+}
+
 - (void)initControl
 {
     if (self.dataArr) {
@@ -64,22 +72,56 @@
 
         self.title = title;
         [self.logCollectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:self.selectedIndex inSection:0] atScrollPosition:UICollectionViewScrollPositionNone animated:YES];
-    } else if (self.content) {
+    } else if (self.content || self.contentURL) {
         UITextView *contentViewText = [[UITextView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height - 64)];
         [contentViewText setEditable:NO];
         contentViewText.textContainer.lineBreakMode = NSLineBreakByWordWrapping;
         contentViewText.font = [UIFont systemFontOfSize:13];
-        contentViewText.text = self.content;
         contentViewText.tag = 100;
         [self.view addSubview:contentViewText];
 
-        if (@available(iOS 11.0, *)) {
-            contentViewText.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+        if (self.content) {
+            contentViewText.text = self.content;
+        } else {
+            self.activityIndicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+            [self.view addSubview:self.activityIndicatorView];
+
+            [self.activityIndicatorView startAnimating];
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                NSData *data = [NSData dataWithContentsOfFile:self.contentURL];
+                if (data) {
+                    NSString *content = [[NSPropertyListSerialization propertyListWithData:data options:kNilOptions format:nil error:nil] description];
+                    if (!content)
+                        content = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [self.activityIndicatorView stopAnimating];
+                        contentViewText.text = content;
+                    });
+                } else {
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [self.activityIndicatorView stopAnimating];
+                        [[[UIAlertView alloc] initWithTitle:@"Not supported" message:nil delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+                    });
+                }
+            });
         }
-    } else if (self.data) {
-        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height - 64)];
-        imageView.contentMode = UIViewContentModeScaleAspectFit;
-        imageView.image = [UIImage imageWithData:self.data];
+
+        if (@available(iOS 11.0, *))
+            contentViewText.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+    } else if (self.data || self.image) {
+        UIImage *dataImage = self.image;
+        if (!dataImage)
+            dataImage = [UIImage imageWithData:self.data];
+
+        CGRect frame =CGRectMake(0, 0, dataImage.size.width, dataImage.size.height);
+        if (frame.size.width > self.view.bounds.size.width)
+            frame.size.width = self.view.frame.size.width;
+        if (frame.size.height > self.view.bounds.size.height)
+            frame.size.height = self.view.frame.size.width;
+
+        UIImageView *imageView = [[UIImageView alloc] initWithFrame:frame];
+        imageView.image = dataImage;
+        imageView.center = CGPointMake(self.view.center.x, self.view.center.y - self.navigationController.navigationBar.frame.size.height - [[UIApplication sharedApplication] statusBarFrame].size.height);
         [self.view addSubview:imageView];
     } else if (self.url) {
         self.title = self.url;
@@ -119,15 +161,17 @@
 {
     [super viewWillLayoutSubviews];
     [self.view.subviews enumerateObjectsUsingBlock:^(__kindof UIView *_Nonnull obj, NSUInteger idx, BOOL *_Nonnull stop) {
-        CGRect frame = obj.frame;
-        frame.size.height = self.view.bounds.size.height;
-        obj.frame = frame;
-        if ([obj isKindOfClass:[UICollectionView class]]) {
-            _logCollectionView.contentSize = CGSizeMake(self.dataArr.count * (self.view.bounds.size.width + 10), 0);
-            UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout *)_logCollectionView.collectionViewLayout;
-            CGSize size = layout.itemSize;
-            size.height = self.view.bounds.size.height;
-            layout.itemSize = size;
+        if (![obj isKindOfClass:[UIImageView class]]) {
+            CGRect frame = obj.frame;
+            frame.size.height = self.view.bounds.size.height;
+            obj.frame = frame;
+            if ([obj isKindOfClass:[UICollectionView class]]) {
+                _logCollectionView.contentSize = CGSizeMake(self.dataArr.count * (self.view.bounds.size.width + 10), 0);
+                UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout *)_logCollectionView.collectionViewLayout;
+                CGSize size = layout.itemSize;
+                size.height = self.view.bounds.size.height;
+                layout.itemSize = size;
+            }
         }
     }];
 }

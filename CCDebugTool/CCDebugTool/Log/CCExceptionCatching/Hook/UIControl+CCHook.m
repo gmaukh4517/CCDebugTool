@@ -6,9 +6,9 @@
 //  Copyright © 2017年 CC. All rights reserved.
 //
 
+#import "CCDebugCrashHelper.h"
 #import "UIControl+CCHook.h"
 #import <objc/runtime.h>
-#import "CCDebugCrashHelper.h"
 
 @implementation UIControl (CCHook)
 
@@ -32,7 +32,23 @@ static inline void AutomaticWritingSwizzleSelector(Class class, SEL originalSele
 {
     NSString *mClassName = NSStringFromClass([target class]);
     if (![mClassName hasPrefix:@"CC"]) {
-        NSString *actionDetailInfo = [NSString stringWithFormat:@" %@ -> %@ -> %@", mClassName, NSStringFromClass([self class]), NSStringFromSelector(action)];
+        NSString *controlName = NSStringFromClass([self class]);
+        if ([self isKindOfClass:[UIButton class]]) {
+            UIButton *senderButton = (UIButton *)self;
+            if (senderButton.currentTitle)
+                controlName = [NSString stringWithFormat:@"%@(%@)", controlName, senderButton.currentTitle];
+        } else if ([self isKindOfClass:[UIBarButtonItem class]]) {
+            UIBarButtonItem *senderButton = (UIBarButtonItem *)self;
+            if (senderButton.title)
+                controlName = [NSString stringWithFormat:@"%@(%@)", controlName, senderButton.title];
+            else if ([senderButton.customView isKindOfClass:[UIButton class]]) {
+                UIButton *senderCystinViewButton = (UIButton *)senderButton.customView;
+                if (senderCystinViewButton.currentTitle)
+                    controlName = [NSString stringWithFormat:@"%@(%@)", controlName, senderCystinViewButton.currentTitle];
+            }
+        }
+
+        NSString *actionDetailInfo = [NSString stringWithFormat:@" %@ -> %@ -> %@", mClassName, controlName, NSStringFromSelector(action)];
         [[CCDebugCrashHelper manager].crashLastStep addObject:actionDetailInfo];
     }
     [self CCDebutTool_sendAction:action to:target forEvent:event];
