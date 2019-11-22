@@ -34,6 +34,8 @@ typedef NS_ENUM(NSUInteger, CCDebugDataSourceType) {
     CCDebugDataSourceTypeFluency,
     /** 输出日志 **/
     CCDebugDataSourceTypeLog,
+    /** 操作日志 **/
+    CCDebugDataSourceTypeOperate,
 };
 
 @interface CCDebugDataSource : NSObject <UITableViewDataSource>

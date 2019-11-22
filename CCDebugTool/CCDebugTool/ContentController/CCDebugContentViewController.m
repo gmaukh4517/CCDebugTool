@@ -30,7 +30,7 @@
 
 @interface CCDebugContentViewController () <UICollectionViewDataSource, UICollectionViewDelegate, UIScrollViewDelegate, WKNavigationDelegate>
 
-@property (strong, nonatomic) UIActivityIndicatorView *activityIndicatorView;
+@property (nonatomic, strong) UIActivityIndicatorView *activityIndicatorView;
 
 @property (nonatomic, strong) UICollectionView *logCollectionView;
 
@@ -83,27 +83,10 @@
         if (self.content) {
             contentViewText.text = self.content;
         } else {
-            self.activityIndicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-            [self.view addSubview:self.activityIndicatorView];
-
-            [self.activityIndicatorView startAnimating];
-            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-                NSData *data = [NSData dataWithContentsOfFile:self.contentURL];
-                if (data) {
-                    NSString *content = [[NSPropertyListSerialization propertyListWithData:data options:kNilOptions format:nil error:nil] description];
-                    if (!content)
-                        content = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        [self.activityIndicatorView stopAnimating];
-                        contentViewText.text = content;
-                    });
-                } else {
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        [self.activityIndicatorView stopAnimating];
-                        [[[UIAlertView alloc] initWithTitle:@"Not supported" message:nil delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
-                    });
-                }
-            });
+            [self initActivityIndicatorView:self.contentURL
+                               contentBlock:^(NSString *content) {
+                contentViewText.text = content;
+            }];
         }
 
         if (@available(iOS 11.0, *))
@@ -113,7 +96,7 @@
         if (!dataImage)
             dataImage = [UIImage imageWithData:self.data];
 
-        CGRect frame =CGRectMake(0, 0, dataImage.size.width, dataImage.size.height);
+        CGRect frame = CGRectMake(0, 0, dataImage.size.width, dataImage.size.height);
         if (frame.size.width > self.view.bounds.size.width)
             frame.size.width = self.view.frame.size.width;
         if (frame.size.height > self.view.bounds.size.height)
@@ -134,6 +117,33 @@
         [webView loadRequest:request];
         [self.view addSubview:_webView = webView];
     }
+}
+
+- (void)initActivityIndicatorView:(NSString *)path contentBlock:(void (^)(NSString *content))contentBlock
+{
+    if (!_activityIndicatorView) {
+        self.activityIndicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+        [self.view addSubview:self.activityIndicatorView];
+    }
+
+    [self.activityIndicatorView startAnimating];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        NSData *data = [NSData dataWithContentsOfFile:path];
+        if (data) {
+            NSString *content = [[NSPropertyListSerialization propertyListWithData:data options:kNilOptions format:nil error:nil] description];
+            if (!content)
+                content = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.activityIndicatorView stopAnimating];
+                !contentBlock ?: contentBlock(content);
+            });
+        } else {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.activityIndicatorView stopAnimating];
+                [[[UIAlertView alloc] initWithTitle:@"Not supported" message:nil delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+            });
+        }
+    });
 }
 
 - (void)copyAction:(UIBarButtonItem *)sender
@@ -227,7 +237,7 @@
     NSDictionary *dataDic = [self.dataArr objectAtIndex:indexPath.row];
 
     NSString *cellIdentifier = @"ErrorCollectionViewCell";
-    if ([dataDic objectForKey:@"fileName"])
+    if ([dataDic objectForKey:@"fileName"] && [dataDic objectForKey:@"dataArr"])
         cellIdentifier = @"LOGCollectionViewCell";
 
     UICollectionViewCell *logCell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
@@ -243,7 +253,14 @@
             [logCell addSubview:contentViewText];
         }
 
-        contentViewText.text = [dataDic objectForKey:@"ErrMsg"];
+        if ([dataDic objectForKey:@"ErrMsg"]) {
+            contentViewText.text = [dataDic objectForKey:@"ErrMsg"];
+        } else if ([dataDic objectForKey:@"filePath"]) {
+            [self initActivityIndicatorView:[dataDic objectForKey:@"filePath"]
+                               contentBlock:^(NSString *content) {
+                contentViewText.text = content;
+            }];
+        }
     } else {
         [((LOGCollectionViewCell *)logCell) cc_cellWillDisplayWithModel:[dataDic objectForKey:@"dataArr"] indexPath:indexPath];
     }

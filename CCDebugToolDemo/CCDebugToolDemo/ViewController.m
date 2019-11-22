@@ -41,12 +41,30 @@
 
     UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(loadButton.frame.origin.x + loadButton.frame.size.width + spacing, 0, 150, 150)];
     imageView.backgroundColor = [UIColor lightGrayColor];
+    imageView.userInteractionEnabled = YES;
     [self.view addSubview:_imageView = imageView];
 
     CGFloat y = imageView.frame.origin.y + imageView.frame.size.height + spacing;
     self.dataArr = @[ @"网页", @"网页LOG", @"Crash(奔溃)", @"卡顿", @"沙盒" ];
     self.tableView.frame = CGRectMake(0, y, self.view.bounds.size.width, self.view.bounds.size.height - y);
     [self.view addSubview:self.tableView];
+
+    UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(actionPan)];
+    pan.delaysTouchesEnded = YES;
+    [imageView addGestureRecognizer:pan];
+
+
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(actionTap)];
+    [imageView addGestureRecognizer:tap];
+}
+
+- (void)actionPan
+{
+    NSLog(@"View Taped");
+}
+
+- (void)actionTap{
+     NSLog(@"View actionTap");
 }
 
 #pragma mark -
@@ -91,7 +109,7 @@
             NSStringEncoding gbkEncoding = CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGB_18030_2000);
             NSInteger randomH = 0xA1 + arc4random() % (0xFE - 0xA1 + 1);
             NSInteger randomL = 0xB0 + arc4random() % (0xF7 - 0xB0 + 1);
-            
+
             NSInteger number = (randomH << 8) + randomL;
             NSData *data = [NSData dataWithBytes:&number length:2];
             NSString *string = [[NSString alloc] initWithData:data encoding:gbkEncoding];
@@ -136,7 +154,7 @@
 {
     static NSString *identifer = @"tableViewCellIdentifer";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifer];
-    if (!cell){
+    if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifer];
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }

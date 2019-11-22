@@ -12,7 +12,8 @@
 
 - (void)pushCCNewViewController:(UIViewController *)newViewController
 {
-     self.navigationController.topViewController.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
+    self.navigationController.topViewController.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
+    newViewController.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:newViewController animated:YES];
 }
 

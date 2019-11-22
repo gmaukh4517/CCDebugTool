@@ -27,6 +27,7 @@
 #import "CCDebugContentViewController.h"
 #import "CCDebugDataSource.h"
 #import "CCDebugTool.h"
+#import "CCStatisticsViewController.h"
 
 @interface CCDebugLogViewController () <UITableViewDelegate, UIScrollViewDelegate>
 
@@ -63,7 +64,7 @@
 
 - (void)initNavigation
 {
-    _itemTitle = @[ @"Crash", @"Caton", @"LOG" ];
+    _itemTitle = @[ @"Crash", @"Caton", @"LOG", @"Operate" ];
     UISegmentedControl *segmentedControl = [[UISegmentedControl alloc] initWithItems:_itemTitle];
     segmentedControl.selectedSegmentIndex = 0;
     segmentedControl.clipsToBounds = YES;
@@ -74,8 +75,15 @@
     self.navigationItem.titleView = segmentedControl;
     self.navigationItem.title = [_itemTitle objectAtIndex:0];
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"关闭" style:UIBarButtonItemStyleDone target:self action:@selector(dismissViewController)];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"统计" style:UIBarButtonItemStyleDone target:self action:@selector(rightBarButtonItemClick:)];
+
     self.currentIndex = -1;
     [self reloadData:0];
+}
+
+- (void)rightBarButtonItemClick:(UIBarButtonItem *)sender
+{
+    [self pushCCNewViewController:[CCStatisticsViewController new]];
 }
 
 - (void)didSegmentedControl:(UISegmentedControl *)sender
@@ -105,28 +113,22 @@
     UIScrollView *scrollview = [[UIScrollView alloc] initWithFrame:self.view.bounds];
     scrollview.pagingEnabled = YES;
     scrollview.showsHorizontalScrollIndicator = NO;
-    scrollview.showsVerticalScrollIndicator = NO;
+    //    scrollview.showsVerticalScrollIndicator = NO;
     scrollview.bounces = NO;
     scrollview.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
     scrollview.delegate = self;
-    scrollview.contentSize = CGSizeMake(scrollview.frame.size.width * 3, 0);
+    scrollview.contentSize = CGSizeMake(scrollview.frame.size.width * self.itemTitle.count, 0);
     [self.view addSubview:_scrollView = scrollview];
 
     if (@available(iOS 11.0, *)) {
         scrollview.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
     }
 
-    UITableView *crashTableView = [self createTableView:0];
-    crashTableView.tag = 1000;
-    [scrollview addSubview:crashTableView];
-
-    UITableView *cationTableView = [self createTableView:self.view.frame.size.width];
-    cationTableView.tag = 2000;
-    [scrollview addSubview:cationTableView];
-
-    UITableView *logTableView = [self createTableView:self.view.frame.size.width * 2];
-    logTableView.tag = 3000;
-    [scrollview addSubview:logTableView];
+    for (NSInteger i = 0; i < self.itemTitle.count; i++) {
+        UITableView *tableView = [self createTableView:self.view.frame.size.width * i];
+        tableView.tag = [[NSString stringWithFormat:@"%d000", (int)i + 1] integerValue];
+        [scrollview addSubview:tableView];
+    }
 }
 
 #pragma mark -
@@ -152,6 +154,11 @@
         } else if (selectIndex == 2) {
             UITableView *tableView = [_scrollView viewWithTag:3000];
             _dataSource.sourceType = CCDebugDataSourceTypeLog;
+            tableView.scrollEnabled = YES;
+            [tableView reloadData];
+        } else if (selectIndex == 3) {
+            UITableView *tableView = [_scrollView viewWithTag:4000];
+            _dataSource.sourceType = CCDebugDataSourceTypeOperate;
             tableView.scrollEnabled = YES;
             [tableView reloadData];
         }

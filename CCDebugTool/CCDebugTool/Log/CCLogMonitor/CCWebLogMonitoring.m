@@ -233,11 +233,11 @@ static const void *CCHookLogKey = &CCHookLogKey;
 
 - (void)hookLogJS:(CCHookLogHandler *)handler
 {
-    NSString *hookConsoleJS = @"console.{0} = (function(oriLogFunc){\
+    NSString *hookConsoleJS = @"console.{0} = (function(method){\
     return function(str)\
     {\
     window.webkit.messageHandlers.{0}.postMessage(str);\
-    oriLogFunc.call(console,str);\
+    method.call(console,str);\
     }\
     })(console.{0});";
 

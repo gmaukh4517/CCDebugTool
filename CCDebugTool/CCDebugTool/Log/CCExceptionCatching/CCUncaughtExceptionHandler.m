@@ -31,9 +31,7 @@
 #include <libkern/OSAtomic.h>
 #include <sys/signal.h>
 
-#import "UIControl+CCHook.h"
-#import "UIViewController+CCHook.h"
-#import "UINavigationController+CCHook.h"
+#import "CCHook.h"
 
 @interface CCUncaughtExceptionHandler () {
     BOOL dismissed;
@@ -281,7 +279,5 @@ void InstalCrashHandler(void)
     CCExceptionRegister();
     CCSignalInstal();
 
-    [UIControl CCHook];
-    [UIViewController CCHook];
-    [UINavigationController CCHook];
+    [CCHook hookEvent];
 }

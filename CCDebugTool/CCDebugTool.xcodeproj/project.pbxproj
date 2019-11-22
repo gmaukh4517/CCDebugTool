@@ -104,12 +104,6 @@
 		42B84F6923288893009583AD /* PrefixHeader.pch in Headers */ = {isa = PBXBuildFile; fileRef = 42B84F6823288893009583AD /* PrefixHeader.pch */; };
 		42B84F702328A639009583AD /* CCNetworkResources.m in Sources */ = {isa = PBXBuildFile; fileRef = 42B84F6E2328A639009583AD /* CCNetworkResources.m */; };
 		42B84F712328A639009583AD /* CCNetworkResources.h in Headers */ = {isa = PBXBuildFile; fileRef = 42B84F6F2328A639009583AD /* CCNetworkResources.h */; };
-		42BA41A01FB5412800B0B0C5 /* UINavigationController+CCHook.h in Headers */ = {isa = PBXBuildFile; fileRef = 42BA419E1FB5412800B0B0C5 /* UINavigationController+CCHook.h */; };
-		42BA41A11FB5412800B0B0C5 /* UINavigationController+CCHook.m in Sources */ = {isa = PBXBuildFile; fileRef = 42BA419F1FB5412800B0B0C5 /* UINavigationController+CCHook.m */; };
-		42BA41A41FB5430200B0B0C5 /* UIViewController+CCHook.h in Headers */ = {isa = PBXBuildFile; fileRef = 42BA41A21FB5430200B0B0C5 /* UIViewController+CCHook.h */; };
-		42BA41A51FB5430200B0B0C5 /* UIViewController+CCHook.m in Sources */ = {isa = PBXBuildFile; fileRef = 42BA41A31FB5430200B0B0C5 /* UIViewController+CCHook.m */; };
-		42BA41A81FB545B000B0B0C5 /* UIControl+CCHook.h in Headers */ = {isa = PBXBuildFile; fileRef = 42BA41A61FB545B000B0B0C5 /* UIControl+CCHook.h */; };
-		42BA41A91FB545B000B0B0C5 /* UIControl+CCHook.m in Sources */ = {isa = PBXBuildFile; fileRef = 42BA41A71FB545B000B0B0C5 /* UIControl+CCHook.m */; };
 		42BA41B01FB588FE00B0B0C5 /* CCNetworkRecorder.h in Headers */ = {isa = PBXBuildFile; fileRef = 42BA41AE1FB588FE00B0B0C5 /* CCNetworkRecorder.h */; };
 		42BA41B11FB588FE00B0B0C5 /* CCNetworkRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = 42BA41AF1FB588FE00B0B0C5 /* CCNetworkRecorder.m */; };
 		42BA41B41FB5A4AC00B0B0C5 /* CCNetworkObserver.h in Headers */ = {isa = PBXBuildFile; fileRef = 42BA41B21FB5A4AB00B0B0C5 /* CCNetworkObserver.h */; };
@@ -245,6 +239,16 @@
 		42FC5B501FC418AF00375959 /* CCCookieDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42FC5B4E1FC418AF00375959 /* CCCookieDetailViewController.m */; };
 		42FC5B541FC41AC400375959 /* CCCookiesTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 42FC5B521FC41AC400375959 /* CCCookiesTableViewCell.h */; };
 		42FC5B551FC41AC400375959 /* CCCookiesTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 42FC5B531FC41AC400375959 /* CCCookiesTableViewCell.m */; };
+		42FF9A362382374900884998 /* CCOperateMonitor.h in Headers */ = {isa = PBXBuildFile; fileRef = 42FF9A342382374900884998 /* CCOperateMonitor.h */; };
+		42FF9A372382374900884998 /* CCOperateMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 42FF9A352382374900884998 /* CCOperateMonitor.m */; };
+		42FF9A3F23824D2E00884998 /* CCHook.h in Headers */ = {isa = PBXBuildFile; fileRef = 42FF9A3D23824D2E00884998 /* CCHook.h */; };
+		42FF9A4023824D2E00884998 /* CCHook.m in Sources */ = {isa = PBXBuildFile; fileRef = 42FF9A3E23824D2E00884998 /* CCHook.m */; };
+		42FF9A472382944800884998 /* CCStatistics.h in Headers */ = {isa = PBXBuildFile; fileRef = 42FF9A452382944800884998 /* CCStatistics.h */; };
+		42FF9A482382944800884998 /* CCStatistics.m in Sources */ = {isa = PBXBuildFile; fileRef = 42FF9A462382944800884998 /* CCStatistics.m */; };
+		42FF9A4B238381C300884998 /* CCStatisticsViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 42FF9A49238381C300884998 /* CCStatisticsViewController.h */; };
+		42FF9A4C238381C300884998 /* CCStatisticsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42FF9A4A238381C300884998 /* CCStatisticsViewController.m */; };
+		42FF9A4F2383828000884998 /* CCStatisticsTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 42FF9A4D2383828000884998 /* CCStatisticsTableViewCell.h */; };
+		42FF9A502383828000884998 /* CCStatisticsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 42FF9A4E2383828000884998 /* CCStatisticsTableViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -332,12 +336,6 @@
 		42B84F6823288893009583AD /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		42B84F6E2328A639009583AD /* CCNetworkResources.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCNetworkResources.m; sourceTree = "<group>"; };
 		42B84F6F2328A639009583AD /* CCNetworkResources.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCNetworkResources.h; sourceTree = "<group>"; };
-		42BA419E1FB5412800B0B0C5 /* UINavigationController+CCHook.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+CCHook.h"; sourceTree = "<group>"; };
-		42BA419F1FB5412800B0B0C5 /* UINavigationController+CCHook.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+CCHook.m"; sourceTree = "<group>"; };
-		42BA41A21FB5430200B0B0C5 /* UIViewController+CCHook.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+CCHook.h"; sourceTree = "<group>"; };
-		42BA41A31FB5430200B0B0C5 /* UIViewController+CCHook.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+CCHook.m"; sourceTree = "<group>"; };
-		42BA41A61FB545B000B0B0C5 /* UIControl+CCHook.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIControl+CCHook.h"; sourceTree = "<group>"; };
-		42BA41A71FB545B000B0B0C5 /* UIControl+CCHook.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIControl+CCHook.m"; sourceTree = "<group>"; };
 		42BA41AE1FB588FE00B0B0C5 /* CCNetworkRecorder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCNetworkRecorder.h; sourceTree = "<group>"; };
 		42BA41AF1FB588FE00B0B0C5 /* CCNetworkRecorder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CCNetworkRecorder.m; sourceTree = "<group>"; };
 		42BA41B21FB5A4AB00B0B0C5 /* CCNetworkObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCNetworkObserver.h; sourceTree = "<group>"; };
@@ -476,6 +474,16 @@
 		42FC5B4E1FC418AF00375959 /* CCCookieDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CCCookieDetailViewController.m; sourceTree = "<group>"; };
 		42FC5B521FC41AC400375959 /* CCCookiesTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCCookiesTableViewCell.h; sourceTree = "<group>"; };
 		42FC5B531FC41AC400375959 /* CCCookiesTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CCCookiesTableViewCell.m; sourceTree = "<group>"; };
+		42FF9A342382374900884998 /* CCOperateMonitor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCOperateMonitor.h; sourceTree = "<group>"; };
+		42FF9A352382374900884998 /* CCOperateMonitor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CCOperateMonitor.m; sourceTree = "<group>"; };
+		42FF9A3D23824D2E00884998 /* CCHook.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCHook.h; sourceTree = "<group>"; };
+		42FF9A3E23824D2E00884998 /* CCHook.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CCHook.m; sourceTree = "<group>"; };
+		42FF9A452382944800884998 /* CCStatistics.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCStatistics.h; sourceTree = "<group>"; };
+		42FF9A462382944800884998 /* CCStatistics.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CCStatistics.m; sourceTree = "<group>"; };
+		42FF9A49238381C300884998 /* CCStatisticsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCStatisticsViewController.h; sourceTree = "<group>"; };
+		42FF9A4A238381C300884998 /* CCStatisticsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CCStatisticsViewController.m; sourceTree = "<group>"; };
+		42FF9A4D2383828000884998 /* CCStatisticsTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCStatisticsTableViewCell.h; sourceTree = "<group>"; };
+		42FF9A4E2383828000884998 /* CCStatisticsTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CCStatisticsTableViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -878,19 +886,6 @@
 			path = Config;
 			sourceTree = "<group>";
 		};
-		42BA419D1FB5409400B0B0C5 /* Hook */ = {
-			isa = PBXGroup;
-			children = (
-				42BA419E1FB5412800B0B0C5 /* UINavigationController+CCHook.h */,
-				42BA419F1FB5412800B0B0C5 /* UINavigationController+CCHook.m */,
-				42BA41A21FB5430200B0B0C5 /* UIViewController+CCHook.h */,
-				42BA41A31FB5430200B0B0C5 /* UIViewController+CCHook.m */,
-				42BA41A61FB545B000B0B0C5 /* UIControl+CCHook.h */,
-				42BA41A71FB545B000B0B0C5 /* UIControl+CCHook.m */,
-			);
-			path = Hook;
-			sourceTree = "<group>";
-		};
 		42D5AD3D1FAC61B60063C136 /* Tool */ = {
 			isa = PBXGroup;
 			children = (
@@ -1271,7 +1266,6 @@
 			isa = PBXGroup;
 			children = (
 				42B185061FBD8435002B066F /* Model */,
-				42BA419D1FB5409400B0B0C5 /* Hook */,
 				42F0A3891F59355E00ACD4FA /* CCUncaughtExceptionHandler.h */,
 				42F0A38A1F59355E00ACD4FA /* CCUncaughtExceptionHandler.m */,
 			);
@@ -1316,6 +1310,9 @@
 		42F0A39F1F59355E00ACD4FA /* Log */ = {
 			isa = PBXGroup;
 			children = (
+				42FF9A412382940800884998 /* Statistics */,
+				42FF9A3C23824D1800884998 /* Hook */,
+				42FF9A3323822FB100884998 /* OperateMonitor */,
 				42F0A3811F59355E00ACD4FA /* CCAppFluecyMonitor */,
 				42F0A3881F59355E00ACD4FA /* CCExceptionCatching */,
 				42B185011FBD3E92002B066F /* CCLogMonitor */,
@@ -1420,6 +1417,61 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		42FF9A3323822FB100884998 /* OperateMonitor */ = {
+			isa = PBXGroup;
+			children = (
+				42FF9A342382374900884998 /* CCOperateMonitor.h */,
+				42FF9A352382374900884998 /* CCOperateMonitor.m */,
+			);
+			path = OperateMonitor;
+			sourceTree = "<group>";
+		};
+		42FF9A3C23824D1800884998 /* Hook */ = {
+			isa = PBXGroup;
+			children = (
+				42FF9A3D23824D2E00884998 /* CCHook.h */,
+				42FF9A3E23824D2E00884998 /* CCHook.m */,
+			);
+			path = Hook;
+			sourceTree = "<group>";
+		};
+		42FF9A412382940800884998 /* Statistics */ = {
+			isa = PBXGroup;
+			children = (
+				42FF9A442382942300884998 /* View */,
+				42FF9A422382941100884998 /* Controller */,
+				42FF9A432382941700884998 /* Model */,
+			);
+			path = Statistics;
+			sourceTree = "<group>";
+		};
+		42FF9A422382941100884998 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				42FF9A49238381C300884998 /* CCStatisticsViewController.h */,
+				42FF9A4A238381C300884998 /* CCStatisticsViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		42FF9A432382941700884998 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				42FF9A452382944800884998 /* CCStatistics.h */,
+				42FF9A462382944800884998 /* CCStatistics.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		42FF9A442382942300884998 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				42FF9A4D2383828000884998 /* CCStatisticsTableViewCell.h */,
+				42FF9A4E2383828000884998 /* CCStatisticsTableViewCell.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -1453,7 +1505,6 @@
 				42FC5B4B1FC4154700375959 /* CCCookiesViewController.h in Headers */,
 				421E6BE71FB140E00068FB1E /* CCSpeedView.h in Headers */,
 				42EA11421FB42CD30078D439 /* FBRetainCycleUtils.h in Headers */,
-				42BA41A81FB545B000B0B0C5 /* UIControl+CCHook.h in Headers */,
 				42EA11291FB42CD30078D439 /* Type.h in Headers */,
 				42EA11121FB42CD30078D439 /* CCSingleRetainCycleViewController.h in Headers */,
 				42BA41B41FB5A4AC00B0B0C5 /* CCNetworkObserver.h in Headers */,
@@ -1463,6 +1514,7 @@
 				42EA11431FB42CD30078D439 /* FBRetainCycleDetector.h in Headers */,
 				425F00761FD7C36000368E4E /* DatabaseViewModel.h in Headers */,
 				42743774232A1A4700B5CB1B /* CCDebugKeychainQuery.h in Headers */,
+				42FF9A4F2383828000884998 /* CCStatisticsTableViewCell.h in Headers */,
 				429D59E82326320A008822C4 /* CCAddressConfigViewController.h in Headers */,
 				421E6BE21FB13EB70068FB1E /* CCSpeedTestViewController.h in Headers */,
 				42EA11521FB42CD30078D439 /* FBAllocationTrackerGeneration.h in Headers */,
@@ -1508,9 +1560,11 @@
 				42FC5B4F1FC418AF00375959 /* CCCookieDetailViewController.h in Headers */,
 				42EA113D1FB42CD30078D439 /* FBObjectiveCGraphElement+Internal.h in Headers */,
 				42EA11591FB42CD30078D439 /* FBAllocationTrackerDefines.h in Headers */,
+				42FF9A4B238381C300884998 /* CCStatisticsViewController.h in Headers */,
 				42D5AD561FAC65680063C136 /* CCPingViewController.h in Headers */,
 				426A79AF1FAC3BCC00B328C1 /* CCSandboxCollectionViewCell.h in Headers */,
 				429DC27A2329E03D008D606B /* BundleDirectoryViewTableViewCell.h in Headers */,
+				42FF9A362382374900884998 /* CCOperateMonitor.h in Headers */,
 				4266D3AF2008A03900D6EE07 /* CCNetworkInfo.h in Headers */,
 				42EA112B1FB42CD30078D439 /* FBStructEncodingParser.h in Headers */,
 				4266D3AB20089EC500D6EE07 /* CCNetworkInfoViewController.h in Headers */,
@@ -1526,21 +1580,21 @@
 				424603151FB00FEF00467266 /* CCSpeedTestManager.h in Headers */,
 				42EA11381FB42CD30078D439 /* FBObjectiveCNSCFTimer.h in Headers */,
 				426814BA23160ABE0061AFD2 /* rcd_fishhook.h in Headers */,
+				42FF9A472382944800884998 /* CCStatistics.h in Headers */,
 				425F007F1FD7CB4200368E4E /* LeftDatabaseView.h in Headers */,
 				424B39401FC513DC003B03FC /* CCCookieManager.h in Headers */,
 				42FC5B541FC41AC400375959 /* CCCookiesTableViewCell.h in Headers */,
 				42EA114B1FB42CD30078D439 /* FBAllocationTrackerImpl.h in Headers */,
 				42EA11341FB42CD30078D439 /* FBObjectInStructReference.h in Headers */,
-				42BA41A41FB5430200B0B0C5 /* UIViewController+CCHook.h in Headers */,
 				421B1CB22379484100DC5488 /* CCTouchFingerView.h in Headers */,
 				42F0A4481F59355E00ACD4FA /* CCDebugFluencyHelper.h in Headers */,
 				42EA11331FB42CD30078D439 /* FBIvarReference.h in Headers */,
+				42FF9A3F23824D2E00884998 /* CCHook.h in Headers */,
 				42EA11201FB42CD30078D439 /* FBStandardGraphEdgeFilters.h in Headers */,
 				420A4EFA2375307200268174 /* CCWebLogMonitoring.h in Headers */,
 				42743772232A1A4700B5CB1B /* CCDebugKeychain.h in Headers */,
 				42F0A4291F59355E00ACD4FA /* CCBacktraceLogger.h in Headers */,
 				42D5AD521FAC64E80063C136 /* CCPingTextView.h in Headers */,
-				42BA41A01FB5412800B0B0C5 /* UINavigationController+CCHook.h in Headers */,
 				4266D3B52008B16400D6EE07 /* getgateway.h in Headers */,
 				42EA11171FB42CD30078D439 /* CCRetainCyclePresenter.h in Headers */,
 				42EA11181FB42CD30078D439 /* ProfilerGenerationsSectionHeaderView.h in Headers */,
@@ -1700,8 +1754,10 @@
 				427408E620F08F9D008C3E6D /* CCSandboxPreviewItem.m in Sources */,
 				421E6BE31FB13EB70068FB1E /* CCSpeedTestViewController.m in Sources */,
 				429D59E92326320A008822C4 /* CCAddressConfigViewController.m in Sources */,
+				42FF9A372382374900884998 /* CCOperateMonitor.m in Sources */,
 				422686902360425A00D9032B /* WKUserContentController+CCHookAjax.m in Sources */,
 				423B2CC5233DE7D800E82C0B /* LOGCollectionViewCell.m in Sources */,
+				42FF9A4C238381C300884998 /* CCStatisticsViewController.m in Sources */,
 				42EA11361FB42CD30078D439 /* FBIvarReference.m in Sources */,
 				42EA11571FB42CD30078D439 /* FBAllocationTrackerNSZombieSupport.mm in Sources */,
 				426814B723160ABE0061AFD2 /* rcd_fishhook.c in Sources */,
@@ -1716,7 +1772,6 @@
 				42EA11131FB42CD30078D439 /* CCRetainCyclePresenter.m in Sources */,
 				42EA11551FB42CD30078D439 /* FBAllocationTrackerGeneration.mm in Sources */,
 				42FC5B501FC418AF00375959 /* CCCookieDetailViewController.m in Sources */,
-				42BA41A51FB5430200B0B0C5 /* UIViewController+CCHook.m in Sources */,
 				42EA114E1FB42CD30078D439 /* FBAllocationTrackerManager.mm in Sources */,
 				42FC5B551FC41AC400375959 /* CCCookiesTableViewCell.m in Sources */,
 				42B84F702328A639009583AD /* CCNetworkResources.m in Sources */,
@@ -1724,20 +1779,21 @@
 				426A79B01FAC3BCC00B328C1 /* CCSandboxCollectionViewCell.m in Sources */,
 				42F0A43F1F59355E00ACD4FA /* CCDebugHttpDetailViewController.m in Sources */,
 				42D5AD4B1FAC62AF0063C136 /* STSimplePing.m in Sources */,
-				42BA41A11FB5412800B0B0C5 /* UINavigationController+CCHook.m in Sources */,
 				42EA11751FB43FE60078D439 /* CCNetworkTransaction.m in Sources */,
 				4266D3AC20089EC500D6EE07 /* CCNetworkInfoViewController.m in Sources */,
 				42F0A4A41F59355E00ACD4FA /* CCMonitorLabel.m in Sources */,
 				421B1CB32379484100DC5488 /* CCTouchFingerView.m in Sources */,
 				429D59E1232625B4008822C4 /* CCServiceManagerViewController.m in Sources */,
 				429DC2922329F680008D606B /* CCDebugKeychainViewController.m in Sources */,
+				42FF9A502383828000884998 /* CCStatisticsTableViewCell.m in Sources */,
 				42B185051FBD3EB6002B066F /* CCLogMonitoring.m in Sources */,
 				424603091FAFF05000467266 /* CCToolViewController.m in Sources */,
 				42D5AD531FAC64E80063C136 /* CCPingTextView.m in Sources */,
+				42FF9A4023824D2E00884998 /* CCHook.m in Sources */,
 				425F00801FD7CB4200368E4E /* LeftDatabaseView.m in Sources */,
 				42F0A49C1F59355E00ACD4FA /* CCMonitorService.m in Sources */,
-				42BA41A91FB545B000B0B0C5 /* UIControl+CCHook.m in Sources */,
 				42EA11491FB42CD30078D439 /* NSObject+FBAllocationTracker.mm in Sources */,
+				42FF9A482382944800884998 /* CCStatistics.m in Sources */,
 				425F007B1FD7C5D900368E4E /* DatabaseManager.m in Sources */,
 				429DC2772329E02A008D606B /* CCBundleDirectoryViewController.m in Sources */,
 				428B60671FAC056F002577C0 /* CCSandboxEntity.m in Sources */,
