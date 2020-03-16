@@ -11,6 +11,7 @@
 #import "FluecyMonitorViewController.h"
 #import "WebLogViewController.h"
 #import "WebViewController.h"
+#import <CCKit/CCKit.h>
 
 @interface ViewController () <UITableViewDelegate, UITableViewDataSource>
 
@@ -29,31 +30,31 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     self.title = @"CCDebugDemo";
-
-
+    
+    
     CGFloat spacing = 10;
-
+    
     UIButton *loadButton = [[UIButton alloc] initWithFrame:CGRectMake(spacing, spacing, 120, 40)];
     [loadButton setTitle:@"Loading(图片)" forState:UIControlStateNormal];
     [loadButton setBackgroundColor:[UIColor blackColor]];
     [loadButton addTarget:self action:@selector(loadImage) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:loadButton];
-
+    
     UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(loadButton.frame.origin.x + loadButton.frame.size.width + spacing, 0, 150, 150)];
     imageView.backgroundColor = [UIColor lightGrayColor];
     imageView.userInteractionEnabled = YES;
     [self.view addSubview:_imageView = imageView];
-
+    
     CGFloat y = imageView.frame.origin.y + imageView.frame.size.height + spacing;
     self.dataArr = @[ @"网页", @"网页LOG", @"Crash(奔溃)", @"卡顿", @"沙盒" ];
     self.tableView.frame = CGRectMake(0, y, self.view.bounds.size.width, self.view.bounds.size.height - y);
     [self.view addSubview:self.tableView];
-
+    
     UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(actionPan)];
     pan.delaysTouchesEnded = YES;
     [imageView addGestureRecognizer:pan];
-
-
+    
+    
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(actionTap)];
     [imageView addGestureRecognizer:tap];
 }
@@ -63,8 +64,9 @@
     NSLog(@"View Taped");
 }
 
-- (void)actionTap{
-     NSLog(@"View actionTap");
+- (void)actionTap
+{
+    NSLog(@"View actionTap");
 }
 
 #pragma mark -
@@ -74,11 +76,11 @@
 {
     NSString *path = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).lastObject;
     //    NSFileManager *fileManger = [NSFileManager defaultManager];
-
+    
     //    if (![fileManger fileExistsAtPath:path])
     //        [fileManger createFileAtPath:path contents:[NSData data] attributes:nil];
-
-    NSArray *arr = @[ @".bundle", @".xlsx", @".txt", @".png", @".log", @".mp3", @".plist", @".pptx", @".sqlite", @".docx", @".zip", @".pdf" ];
+    
+    NSArray *arr = @[ @".bundle" ]; // @[ @".bundle", @".xlsx", @".txt", @".png", @".log", @".mp3", @".plist", @".pptx", @".sqlite", @".docx", @".zip", @".pdf" ];
     for (NSString *extend in arr) {
         NSString *fileName = [NSString stringWithFormat:@"/%@%@", [self randomString], extend];
         [@"Sandbox example" writeToFile:[path stringByAppendingString:fileName] atomically:YES encoding:NSUTF8StringEncoding error:nil];
@@ -109,7 +111,7 @@
             NSStringEncoding gbkEncoding = CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGB_18030_2000);
             NSInteger randomH = 0xA1 + arc4random() % (0xFE - 0xA1 + 1);
             NSInteger randomL = 0xB0 + arc4random() % (0xF7 - 0xB0 + 1);
-
+            
             NSInteger number = (randomH << 8) + randomL;
             NSData *data = [NSData dataWithBytes:&number length:2];
             NSString *string = [[NSString alloc] initWithData:data encoding:gbkEncoding];
@@ -123,8 +125,12 @@
     return randomStr;
 }
 
+//static const u_int8_t CCBinaryIcon2x[] = {89504e47, 0d0a1a0a};
+
 - (void)loadImage
 {
+    //    [self changeHexadecimal];
+   
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         NSURL *url = [NSURL URLWithString:@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1569746170874&di=7e0114ce23fffb85e0e1a334a6e592a8&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201612%2F02%2F20161202132302_UFcmC.jpeg"];
         NSData *data = [[NSData alloc] initWithContentsOfURL:url];
@@ -136,6 +142,28 @@
         }
     });
 }
+
+- (void)changeHexadecimal
+{
+    NSBundle *imageBundle = [NSBundle mainBundle];
+    
+    NSString *imagePath = [[imageBundle resourcePath] stringByAppendingPathComponent:@"error"];
+    UIImage *imgFromUrl3 = [[UIImage alloc] initWithContentsOfFile:imagePath];
+    
+    NSData *dataObj = UIImagePNGRepresentation(imgFromUrl3);
+    
+    Byte *bytes = (Byte *)[dataObj bytes];
+    NSString *hexStr = @"";
+    for (int i = 0; i < [dataObj length]; i++) {
+        NSString *newHexStr = [NSString stringWithFormat:@"%x", bytes[ i ] & 0xff]; ///16进制数
+        if ([newHexStr length] == 1)
+            hexStr = [NSString stringWithFormat:@"%@, 0x0%@", hexStr, newHexStr];
+        else
+            hexStr = [NSString stringWithFormat:@"%@, 0x%@", hexStr, newHexStr];
+    }
+    NSLog(@"bytes 的16进制数为:%@", hexStr);
+}
+
 
 #pragma mark -
 #pragma mark :. UITableView Delegate
@@ -158,17 +186,20 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifer];
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
-
+    
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-
+    
     NSString *text = [self.dataArr objectAtIndex:indexPath.row];
     if ([text isEqualToString:@"网页"]) {
-        [self.navigationController pushViewController:[WebViewController new] animated:YES];
+        CCWebViewController *viewController = [CCWebViewController new];
+        [viewController loadLocalFiles:@"WebTest" expansion:@"html"];
+        
+        [self.navigationController pushViewController:viewController animated:YES];
     } else if ([text isEqualToString:@"网页LOG"]) {
         [self.navigationController pushViewController:[WebLogViewController new] animated:YES];
     } else if ([text isEqualToString:@"Crash(奔溃)"]) {
@@ -188,9 +219,9 @@
         [cell setPreservesSuperviewLayoutMargins:NO];
     if ([cell respondsToSelector:@selector(setLayoutMargins:)])
         [cell setLayoutMargins:UIEdgeInsetsZero];
-
+    
     cell.textLabel.text = [self.dataArr objectAtIndex:indexPath.row];
-
+    
     NSInteger totalRows = [tableView numberOfRowsInSection:indexPath.section];
     if ((totalRows - indexPath.row) % 2 == 0) {
         cell.backgroundColor = [UIColor colorWithHue:2.0 / 3.0 saturation:0.02 brightness:0.95 alpha:0.65];
@@ -211,10 +242,10 @@
         tableView.dataSource = self;
         tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         tableView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-
+        
         if (@available(iOS 11.0, *))
             tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
-
+        
         UIView *v = [[UIView alloc] initWithFrame:CGRectZero];
         v.backgroundColor = [UIColor clearColor];
         [tableView setTableFooterView:v];

@@ -11,10 +11,12 @@
 		4235237A237512C000A9CF3B /* WebTest.html in Resources */ = {isa = PBXBuildFile; fileRef = 42352379237512C000A9CF3B /* WebTest.html */; };
 		424C3A35230A36A500CF4713 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 424C3A34230A36A500CF4713 /* WebViewController.m */; };
 		425F00821FD7D61E00368E4E /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 425F00811FD7D61D00368E4E /* libsqlite3.0.tbd */; };
+		4280E4FC23BAF68D00CB70DB /* CCDebugTool.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4280E4FB23BAF68C00CB70DB /* CCDebugTool.bundle */; };
+		4286C00423A770C900267ACB /* CCKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4286C00323A770C900267ACB /* CCKit.framework */; };
+		4286C00523A770C900267ACB /* CCKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4286C00323A770C900267ACB /* CCKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		429A6B2723273E300011CA6A /* DebugRequestProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = 429A6B2623273E300011CA6A /* DebugRequestProtocol.m */; };
 		429DC27D2329EF30008D606B /* _clang-format in Resources */ = {isa = PBXBuildFile; fileRef = 429DC27C2329EF30008D606B /* _clang-format */; };
 		429DC2802329EF9D008D606B /* js.txt in Resources */ = {isa = PBXBuildFile; fileRef = 429DC27F2329EF9D008D606B /* js.txt */; };
-		42B185091FBD88C1002B066F /* CCDebugTool.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 42B185081FBD88C1002B066F /* CCDebugTool.bundle */; };
 		42D5AD5A1FAC6F960063C136 /* libz.1.2.5.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 42D5AD581FAC6B750063C136 /* libz.1.2.5.tbd */; };
 		42EA10AA1FB427BE0078D439 /* CCDebugTool.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42EA10AB1FB427BE0078D439 /* CCDebugTool.framework */; };
 		42EA115D1FB42F260078D439 /* libstdc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 42EA115C1FB42F260078D439 /* libstdc++.tbd */; };
@@ -31,6 +33,20 @@
 		42F0A4D51F594C8B00ACD4FA /* CrashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42F0A4D41F594C8B00ACD4FA /* CrashViewController.m */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		4286C00623A770C900267ACB /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				4286C00523A770C900267ACB /* CCKit.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		421B1CA72379290B00DC5488 /* WebLogViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WebLogViewController.h; sourceTree = "<group>"; };
 		421B1CA82379290B00DC5488 /* WebLogViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WebLogViewController.m; sourceTree = "<group>"; };
@@ -39,12 +55,13 @@
 		424C3A34230A36A500CF4713 /* WebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
 		425F00811FD7D61D00368E4E /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 		4265FBC420F069BC00DE2854 /* QuickLook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuickLook.framework; path = System/Library/Frameworks/QuickLook.framework; sourceTree = SDKROOT; };
+		4280E4FB23BAF68C00CB70DB /* CCDebugTool.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = CCDebugTool.bundle; sourceTree = "<group>"; };
+		4286C00323A770C900267ACB /* CCKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CCKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		429A6B2523273E300011CA6A /* DebugRequestProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DebugRequestProtocol.h; sourceTree = "<group>"; };
 		429A6B2623273E300011CA6A /* DebugRequestProtocol.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DebugRequestProtocol.m; sourceTree = "<group>"; };
 		429D59D62325F1C2008822C4 /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		429DC27C2329EF30008D606B /* _clang-format */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "_clang-format"; sourceTree = "<group>"; };
 		429DC27F2329EF9D008D606B /* js.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = js.txt; sourceTree = "<group>"; };
-		42B185081FBD88C1002B066F /* CCDebugTool.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = CCDebugTool.bundle; sourceTree = "<group>"; };
 		42D5AD581FAC6B750063C136 /* libz.1.2.5.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.1.2.5.tbd; path = usr/lib/libz.1.2.5.tbd; sourceTree = SDKROOT; };
 		42EA10AB1FB427BE0078D439 /* CCDebugTool.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CCDebugTool.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		42EA115B1FB42E8E0078D439 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -77,6 +94,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				42EA10AA1FB427BE0078D439 /* CCDebugTool.framework in Frameworks */,
+				4286C00423A770C900267ACB /* CCKit.framework in Frameworks */,
 				42D5AD5A1FAC6F960063C136 /* libz.1.2.5.tbd in Frameworks */,
 				425F00821FD7D61E00368E4E /* libsqlite3.0.tbd in Frameworks */,
 				42EA115D1FB42F260078D439 /* libstdc++.tbd in Frameworks */,
@@ -180,6 +198,7 @@
 		42F0A4B51F593D7700ACD4FA /* CCDebugToolDemo */ = {
 			isa = PBXGroup;
 			children = (
+				4280E4FB23BAF68C00CB70DB /* CCDebugTool.bundle */,
 				423523782375128C00A9CF3B /* Web */,
 				429DC27E2329EF36008D606B /* Files */,
 				429D59D52325F1C2008822C4 /* Config */,
@@ -187,7 +206,6 @@
 				425F00831FD7D6DF00368E4E /* Database */,
 				42EA116B1FB43E3F0078D439 /* Carsh */,
 				42EA11691FB43E100078D439 /* NetworkRequest */,
-				42B185081FBD88C1002B066F /* CCDebugTool.bundle */,
 				42F0A4B91F593D7700ACD4FA /* AppDelegate.h */,
 				42F0A4BA1F593D7700ACD4FA /* AppDelegate.m */,
 				42F0A4BC1F593D7700ACD4FA /* ViewController.h */,
@@ -213,6 +231,7 @@
 		42F0A4CD1F593E2F00ACD4FA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4286C00323A770C900267ACB /* CCKit.framework */,
 				4265FBC420F069BC00DE2854 /* QuickLook.framework */,
 				425F00811FD7D61D00368E4E /* libsqlite3.0.tbd */,
 				42EA115E1FB434500078D439 /* CoreTelephony.framework */,
@@ -235,6 +254,7 @@
 				42F0A4AF1F593D7700ACD4FA /* Sources */,
 				42F0A4B01F593D7700ACD4FA /* Frameworks */,
 				42F0A4B11F593D7700ACD4FA /* Resources */,
+				4286C00623A770C900267ACB /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -256,7 +276,7 @@
 				TargetAttributes = {
 					42F0A4B21F593D7700ACD4FA = {
 						CreatedOnToolsVersion = 8.3.3;
-						DevelopmentTeam = M2X75QL6U7;
+						DevelopmentTeam = 7W7VQJKLJ2;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -288,8 +308,8 @@
 				429DC2802329EF9D008D606B /* js.txt in Resources */,
 				4235237A237512C000A9CF3B /* WebTest.html in Resources */,
 				42EDDFD31FD8024E00B6AB59 /* Car.db in Resources */,
+				4280E4FC23BAF68D00CB70DB /* CCDebugTool.bundle in Resources */,
 				42F0A4C61F593D7700ACD4FA /* LaunchScreen.storyboard in Resources */,
-				42B185091FBD88C1002B066F /* CCDebugTool.bundle in Resources */,
 				42EDDFD41FD8024E00B6AB59 /* test.sqlite in Resources */,
 				42EDDFD51FD8024E00B6AB59 /* Contact.db in Resources */,
 				42F0A4C31F593D7700ACD4FA /* Assets.xcassets in Resources */,
@@ -443,7 +463,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = M2X75QL6U7;
+				DEVELOPMENT_TEAM = 7W7VQJKLJ2;
+				ENABLE_BITCODE = NO;
 				GCC_PREFIX_HEADER = CCDebugToolDemo/Config/PrefixHeader.pch;
 				INFOPLIST_FILE = CCDebugToolDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -460,7 +481,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = M2X75QL6U7;
+				DEVELOPMENT_TEAM = 7W7VQJKLJ2;
+				ENABLE_BITCODE = NO;
 				GCC_PREFIX_HEADER = CCDebugToolDemo/Config/PrefixHeader.pch;
 				INFOPLIST_FILE = CCDebugToolDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

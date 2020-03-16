@@ -22,6 +22,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (UIImage *)videoIcon;
 + (UIImage *)xmlIcon;
 + (UIImage *)binaryIcon;
++ (UIImage *)errorIcon;
 
 @end
 

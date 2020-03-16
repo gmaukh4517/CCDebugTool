@@ -54,7 +54,7 @@
     NSDateFormatter *mDateFormatter = [[NSDateFormatter alloc] init];
     [mDateFormatter setDateStyle:NSDateFormatterMediumStyle];
     [mDateFormatter setTimeStyle:NSDateFormatterShortStyle];
-    [mDateFormatter setDateFormat:@"EEE, d MMM yyyy HH:mm:ss"];
+    [mDateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
     _fileDate = [mDateFormatter stringFromDate:date];
 }
 

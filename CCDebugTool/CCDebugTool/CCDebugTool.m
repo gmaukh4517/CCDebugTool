@@ -41,6 +41,8 @@
 #import "CCMemoryProfilerViewController.h"
 #import "CCToolViewController.h"
 
+#import "CCDebugTabbarResources.h"
+
 
 #pragma mark -
 #pragma mark :. 苹果自带debug
@@ -322,12 +324,13 @@
     if (!self.debugTabBar) {
         self.debugTabBar = [[UITabBarController alloc] init];
         self.debugTabBar.tabBar.tintColor = self.mainColor;
+        self.debugTabBar.tabBar.unselectedItemTintColor = [UIColor blackColor];
         self.debugTabBar.tabBar.translucent = NO;
 
-        [self initializationNav:[CCDebugNetworkViewController new] title:@"HTTP" imageNamed:@"tabbar_http" selectedImage:@"tabbar_http_yes"];
-        [self initializationNav:[CCDebugLogViewController new] title:@"LOG" imageNamed:@"tabbar_log" selectedImage:@"tabbar_log_yes"];
-        [self initializationNav:[CCMemoryProfilerViewController new] title:@"Cycle" imageNamed:@"tabbar_cycle" selectedImage:@"tabbar_cycle_yes"];
-        [self initializationNav:[CCToolViewController new] title:@"TOOL" imageNamed:@"tabbar_tool" selectedImage:@"tabbar_tool_yes"];
+        [self initializationNav:[CCDebugNetworkViewController new] title:@"HTTP" imageNamed:[CCDebugTabbarResources networkNOIcon] selectedImage:[CCDebugTabbarResources networkYESIcon]];
+        [self initializationNav:[CCDebugLogViewController new] title:@"LOG" imageNamed:[CCDebugTabbarResources logNOIcon] selectedImage:[CCDebugTabbarResources logYESIcon]];
+        [self initializationNav:[CCMemoryProfilerViewController new] title:@"Cycle" imageNamed:[CCDebugTabbarResources cycleNOIcon] selectedImage:[CCDebugTabbarResources cycleYESIcon]];
+        [self initializationNav:[CCToolViewController new] title:@"TOOL" imageNamed:[CCDebugTabbarResources toolNOIcon] selectedImage:[CCDebugTabbarResources toolYESIcon]];
         //        UINavigationController *debugMonitorNav = [self initializationNav:[CCMonitorViewController new] tabBarItemName:@"Monitor"];
     }
 
@@ -336,17 +339,18 @@
     }else{
         UIViewController *rootViewController = [[[UIApplication sharedApplication].windows firstObject] rootViewController];
         UIViewController *presentedViewController = rootViewController.presentedViewController;
+        self.debugTabBar.modalPresentationStyle = UIModalPresentationFullScreen;
         [presentedViewController ?: rootViewController presentViewController:self.debugTabBar animated:YES completion:nil];
     }
 }
 
-- (void)initializationNav:(UIViewController *)viewController title:(NSString *)title imageNamed:(NSString *)imageNamed selectedImage:(NSString *)selectedImage
+- (void)initializationNav:(UIViewController *)viewController title:(NSString *)title imageNamed:(UIImage *)imageNamed selectedImage:(UIImage *)selectedImage
 {
     UINavigationController *debugNav = [[UINavigationController alloc] initWithRootViewController:viewController];
     debugNav.navigationItem.title = title;
     debugNav.tabBarItem.title = title;
-    debugNav.tabBarItem.image = [[CCDebugTool tabbarImage:imageNamed] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    debugNav.tabBarItem.selectedImage = [[CCDebugTool tabbarImage:selectedImage] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    debugNav.tabBarItem.image = [imageNamed imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    debugNav.tabBarItem.selectedImage = [selectedImage imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     [debugNav.navigationBar setBarTintColor:self.mainColor];
     [debugNav.navigationBar setTintColor:[UIColor whiteColor]];
     NSMutableDictionary *Attributes = [NSMutableDictionary dictionaryWithDictionary:[UINavigationBar appearance].titleTextAttributes];
@@ -355,4 +359,5 @@
 
     [self.debugTabBar addChildViewController:debugNav];
 }
+
 @end

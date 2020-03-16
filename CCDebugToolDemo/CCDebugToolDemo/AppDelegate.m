@@ -28,19 +28,19 @@
 {
     // Override point for customization after application launch.
     [self setUpNavigationBarAppearance:[UIColor colorWithRed:0.223 green:0.698 blue:1 alpha:1.f]];
-//    [[NSBundle bundleWithPath:@"/Applications/InjectionIII.app/Contents/Resources/iOSInjection.bundle"] load];
+    //    [[NSBundle bundleWithPath:@"/Applications/InjectionIII.app/Contents/Resources/iOSInjection.bundle"] load];
 #ifdef CCDebugTool_h
     [[CCDebugTool manager] enableDebugMode];
 #endif
-
+    
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     self.window.backgroundColor = [UIColor whiteColor];
     self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:[ViewController new]];
     [self.window makeKeyAndVisible];
     if (@available(iOS 13.0, *))
-    self.window.overrideUserInterfaceStyle = UIUserInterfaceStyleLight;
+        self.window.overrideUserInterfaceStyle = UIUserInterfaceStyleLight;
     [[DebugRequestProtocol new] sendExampleNetworkRequests];
-
+    
     return YES;
 }
 
@@ -55,12 +55,12 @@
     } else {
         [[UINavigationBar appearance] setTintColor:color];
     }
-
+    
     [[UINavigationBar appearance] setTranslucent:NO];
-
+    
     [[UINavigationBar appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
                                                           [UIColor whiteColor], NSForegroundColorAttributeName, [UIFont systemFontOfSize:18], NSFontAttributeName, nil]];
-
+    
     [[UIBarButtonItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont systemFontOfSize:16], NSFontAttributeName, nil] forState:UIControlStateNormal];
     [[UIBarButtonItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont systemFontOfSize:16], NSFontAttributeName, nil] forState:UIControlStateSelected];
     if (@available(iOS 11.0, *))

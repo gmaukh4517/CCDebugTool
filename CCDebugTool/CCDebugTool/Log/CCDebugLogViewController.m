@@ -50,6 +50,12 @@
     [self initControl];
 }
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self reloadData:self.currentIndex];
+}
+
 - (void)viewDidLayoutSubviews
 {
     [super viewDidLayoutSubviews];
@@ -76,9 +82,6 @@
     self.navigationItem.title = [_itemTitle objectAtIndex:0];
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"关闭" style:UIBarButtonItemStyleDone target:self action:@selector(dismissViewController)];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"统计" style:UIBarButtonItemStyleDone target:self action:@selector(rightBarButtonItemClick:)];
-
-    self.currentIndex = -1;
-    [self reloadData:0];
 }
 
 - (void)rightBarButtonItemClick:(UIBarButtonItem *)sender
@@ -136,9 +139,7 @@
 
 - (void)reloadData:(NSInteger)selectIndex
 {
-    if (selectIndex != self.currentIndex) {
         self.currentIndex = selectIndex;
-        self.navigationItem.title = [_itemTitle objectAtIndex:selectIndex];
         UISegmentedControl *segmentedControl = (UISegmentedControl *)self.navigationItem.titleView;
         [segmentedControl setSelectedSegmentIndex:selectIndex];
         if (selectIndex == 0) {
@@ -162,7 +163,6 @@
             tableView.scrollEnabled = YES;
             [tableView reloadData];
         }
-    }
 }
 
 #pragma mark -

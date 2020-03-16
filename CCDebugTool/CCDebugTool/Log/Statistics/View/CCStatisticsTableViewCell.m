@@ -88,7 +88,7 @@
     double average = ([[item objectForKey:@"appearDuration"] doubleValue] ?: [[item objectForKey:@"appearDuration"] doubleValue]) / count;
     self.averageLoaingTimeLabel.text = [NSString stringWithFormat:@"平均加载：%.3fs", average];
 
-    average = ([[item objectForKey:@"totalTime"] doubleValue] ?: [[item objectForKey:@"statisticDuration"] doubleValue]) / count;
+    average = ([[item objectForKey:@"totalTime"] doubleValue] ?: [[item objectForKey:@"totalTime"] doubleValue]) / count;
     self.averageStayTimeLabel.text = [NSString stringWithFormat:@"平均停留：%.3fs", average];
 }
 

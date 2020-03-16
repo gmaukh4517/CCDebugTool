@@ -45,6 +45,12 @@ typedef struct Test {
     }
 }
 
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+
+}
+
 -(void)crashButtonClick:(UIButton *)sender
 {
     if (sender.tag == 0) {

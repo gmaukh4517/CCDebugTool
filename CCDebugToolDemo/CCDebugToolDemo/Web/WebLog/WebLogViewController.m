@@ -11,7 +11,7 @@
 #import <WebKit/WebKit.h>
 
 
-@interface CCScriptMessageDelegate : NSObject <WKScriptMessageHandler>
+@interface CCDebugScriptMessageDelegate : NSObject <WKScriptMessageHandler>
 
 @property (nonatomic, weak) id<WKScriptMessageHandler> scriptDelegate;
 
@@ -19,7 +19,7 @@
 
 @end
 
-@implementation CCScriptMessageDelegate
+@implementation CCDebugScriptMessageDelegate
 
 - (instancetype)initWithDelegate:(id<WKScriptMessageHandler>)scriptDelegate
 {
@@ -94,7 +94,7 @@
         WKWebViewConfiguration *configuration = [[WKWebViewConfiguration alloc] init];
 
         WKUserContentController *userCC = [WKUserContentController new];
-        [userCC addScriptMessageHandler:[[CCScriptMessageDelegate alloc] initWithDelegate:self]  name:@"demoWebView"];
+        [userCC addScriptMessageHandler:[[CCDebugScriptMessageDelegate alloc] initWithDelegate:self]  name:@"demoWebView"];
         configuration.userContentController = userCC;
 
         _wkWebView = [[WKWebView alloc] initWithFrame:self.view.frame configuration:configuration];

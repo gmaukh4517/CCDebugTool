@@ -170,27 +170,28 @@ const int maxLogSize = 3; // 日志文件最大 3M
 
     dispatch_source_set_event_handler(source, ^{
         @autoreleasepool {
-            char buffer[ 1024 * 10 ];
+            char buffer[ 1024 * 100 ];
             ssize_t size = read(fd, (void *)buffer, (size_t)(sizeof(buffer)));
             [data setLength:0];
             [data appendBytes:buffer length:size];
 
             NSString *logString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+            if (logString) {
+                NSError *error;
+                NSRegularExpression *regular = [[NSRegularExpression alloc] initWithPattern:wkSelf.timeStr options:NSRegularExpressionCaseInsensitive error:&error];
+                if (!error) {
+                    NSArray *results = [regular matchesInString:logString options:NSMatchingReportProgress range:NSMakeRange(0, logString.length)];
+                    for (NSInteger i = 0; i < results.count; i++) {
+                        NSTextCheckingResult *current = [results objectAtIndex:i];
+                        NSInteger nextIndex = logString.length;
+                        if (i + 1 < results.count)
+                            nextIndex = [[results objectAtIndex:i + 1] range].location;
 
-            NSError *error;
-            NSRegularExpression *regular = [[NSRegularExpression alloc] initWithPattern:wkSelf.timeStr options:NSRegularExpressionCaseInsensitive error:&error];
-            if (!error) {
-                NSArray *results = [regular matchesInString:logString options:NSMatchingReportProgress range:NSMakeRange(0, logString.length)];
-                for (NSInteger i = 0; i < results.count; i++) {
-                    NSTextCheckingResult *current = [results objectAtIndex:i];
-                    NSInteger nextIndex = logString.length;
-                    if (i + 1 < results.count)
-                        nextIndex = [[results objectAtIndex:i + 1] range].location;
-
-                    [wkSelf logWrite:[logString substringWithRange:NSMakeRange(current.range.location, nextIndex - current.range.location)]];
+                        [wkSelf logWrite:[logString substringWithRange:NSMakeRange(current.range.location, nextIndex - current.range.location)]];
+                    }
                 }
+                printf("%s", [logString UTF8String]); //print on STDOUT_FILENO，so that the log can still print on xcode console
             }
-            printf("%s", [logString UTF8String]); //print on STDOUT_FILENO，so that the log can still print on xcode console
         }
     });
     dispatch_resume(source);

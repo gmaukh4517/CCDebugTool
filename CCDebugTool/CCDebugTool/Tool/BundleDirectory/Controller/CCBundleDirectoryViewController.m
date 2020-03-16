@@ -99,7 +99,7 @@
                 subtitle = [NSString stringWithFormat:@"%lu item%@", (unsigned long)count, (count == 1 ? @"" : @"s")];
             } else {
                 NSString *sizeString = [NSByteCountFormatter stringFromByteCount:attributes.fileSize countStyle:NSByteCountFormatterCountStyleFile];
-                subtitle = [NSString stringWithFormat:@"%@ - %@", sizeString, attributes.fileModificationDate ?: @"Never modified"];
+                subtitle = [NSString stringWithFormat:@"%@ - %@", sizeString,[self dataFrom:attributes.fileModificationDate] ?: @"Never modified"];
 
                 [browseFilesArray addObject:[CCSandboxPreviewItem previewItemWithPaht:fullPath title:fullPath.lastPathComponent]];
             }
@@ -123,6 +123,15 @@
 
     _fileViewerViewController = [[QLPreviewController alloc] init];
     _fileViewerViewController.dataSource = self;
+}
+
+-(NSString *)dataFrom:(NSDate *)date
+{
+    NSDateFormatter *mDateFormatter = [[NSDateFormatter alloc] init];
+    [mDateFormatter setDateStyle:NSDateFormatterMediumStyle];
+    [mDateFormatter setTimeStyle:NSDateFormatterShortStyle];
+    [mDateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    return [mDateFormatter stringFromDate:date];
 }
 
 #pragma mark -

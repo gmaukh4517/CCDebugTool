@@ -16,7 +16,7 @@
     if (self = [super initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:reuseIdentifier]) {
         self.textLabel.lineBreakMode = NSLineBreakByTruncatingMiddle;
         self.textLabel.textColor = [CCDebugTool manager].mainColor;
-        self.textLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:19];
+        self.textLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:15];
     }
     return self;
 }
@@ -94,12 +94,12 @@
     
     CGRect textLabelFrame = self.textLabel.frame;
     textLabelFrame.origin.x = imageFrame.origin.x + imageFrame.size.width + 10;
-//    textLabelFrame.origin.y = imageFrame.origin.y - 5;
+    textLabelFrame.origin.y = 5;
     self.textLabel.frame = textLabelFrame;
     
     CGRect detailTextLabelFrame = self.detailTextLabel.frame;
     detailTextLabelFrame.origin.x = textLabelFrame.origin.x;
-//    detailTextLabelFrame.origin.y = detailTextLabelFrame.origin.y + 5;
+    detailTextLabelFrame.origin.y = textLabelFrame.origin.y + textLabelFrame.size.height + 3;
     self.detailTextLabel.frame = detailTextLabelFrame;
 }
 

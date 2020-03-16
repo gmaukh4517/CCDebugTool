@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:../../PrivateWork/Pony/IOS/PonyJob/CCKit/CCKit.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:CCDebugTool/CCDebugTool.xcodeproj">
    </FileRef>
    <FileRef

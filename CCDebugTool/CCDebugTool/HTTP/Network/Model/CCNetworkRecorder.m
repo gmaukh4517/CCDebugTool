@@ -345,6 +345,10 @@ typedef CFHTTPMessageRef (*CCHTTPURLResponseGetHTTPProtocol)(CFURLRef response);
             } else if ([mimeType hasPrefix:@"text"]) {
                 transaction.responseThumbnail = [CCNetworkResources textIcon];
             }
+            
+            if (httpResponse.statusCode != 200 && !transaction.responseThumbnail){
+                transaction.responseThumbnail = [CCNetworkResources errorIcon];
+            }
 
             [self postUpdateNotificationForTransaction:transaction];
         } @catch (NSException *exception) {
@@ -386,11 +390,13 @@ typedef CFHTTPMessageRef (*CCHTTPURLResponseGetHTTPProtocol)(CFURLRef response);
         if (!transaction) {
             return;
         }
+        
+        transaction.responseThumbnail = [CCNetworkResources errorIcon];
         transaction.transactionState = CCNetworkTransactionStateFailed;
         transaction.totalDuration = -[transaction.startTime timeIntervalSinceNow];
         transaction.error = error;
         transaction.statusCode = [NSString stringWithFormat:@"%ld %@", (long)error.code, error.localizedDescription];
-
+        
         [self postUpdateNotificationForTransaction:transaction];
     });
 }

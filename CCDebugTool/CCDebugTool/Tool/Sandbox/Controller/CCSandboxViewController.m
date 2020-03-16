@@ -114,7 +114,7 @@
             NSString *subPath = [path stringByAppendingPathComponent:key];
             BOOL isDir = NO;
             [fileManger fileExistsAtPath:subPath isDirectory:&isDir];
-            NSDictionary *fileAttributes = [fileManger attributesOfItemAtPath:path error:nil];
+            NSDictionary *fileAttributes = [fileManger attributesOfItemAtPath:subPath error:nil];
 
             CCSandboxEntity *entity = [[CCSandboxEntity alloc] init];
             entity.fileName = key;

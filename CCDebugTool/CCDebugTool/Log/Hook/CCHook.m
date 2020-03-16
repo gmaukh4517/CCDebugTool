@@ -24,7 +24,7 @@ static inline void AutomaticWritingSwizzleSelector(Class class, SEL originalSele
     }
 }
 
-void cc_AutomaticWritingExchangeSelector(Class originalClass, SEL originalSelector, Class replacedClass, SEL swizzledSelector)
+void ccdebug_AutomaticWritingExchangeSelector(Class originalClass, SEL originalSelector, Class replacedClass, SEL swizzledSelector)
 {
     Method originalMethod = class_getInstanceMethod(originalClass, originalSelector);
     Method replacedMethod = class_getInstanceMethod(replacedClass, swizzledSelector);
@@ -100,7 +100,7 @@ void cc_AutomaticWritingExchangeSelector(Class originalClass, SEL originalSelect
     if (self.navigationController.visibleViewController) {
         NSString *mClassName = [NSString stringWithUTF8String:object_getClassName(self.navigationController.visibleViewController)];
         if (![mClassName hasPrefix:@"CC"]) {
-            NSString *viewWillAppearInfo = [NSString stringWithFormat:@"%@ - viewDidAppear", mClassName];
+            NSString *viewWillAppearInfo = [NSString stringWithFormat:@"%@ - viewWillAppear", mClassName];
             [[CCDebugCrashHelper manager].crashLastStep addObject:viewWillAppearInfo];
             [[CCOperateMonitor manager] appOperateLogWrite:viewWillAppearInfo];
         }
@@ -185,7 +185,7 @@ void cc_AutomaticWritingExchangeSelector(Class originalClass, SEL originalSelect
 
 - (void)CCDDebugTool_exchangeUIApplicationDelegateMethod:(id)delegate
 {
-    cc_AutomaticWritingExchangeSelector([delegate class], @selector(tableView:didSelectRowAtIndexPath:), [self class], @selector(CCDebugTool_tableView:didSelectRowAtIndexPath:));
+    ccdebug_AutomaticWritingExchangeSelector([delegate class], @selector(tableView:didSelectRowAtIndexPath:), [self class], @selector(CCDebugTool_tableView:didSelectRowAtIndexPath:));
 }
 
 - (void)CCDebugTool_tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -221,7 +221,7 @@ void cc_AutomaticWritingExchangeSelector(Class originalClass, SEL originalSelect
 
 - (void)CCDDebugTool_exchangeUIApplicationDelegateMethod:(id)delegate
 {
-    cc_AutomaticWritingExchangeSelector([delegate class], @selector(collectionView:didSelectItemAtIndexPath:), [self class], @selector(CCDebugTool_collectionView:didSelectItemAtIndexPath:));
+    ccdebug_AutomaticWritingExchangeSelector([delegate class], @selector(collectionView:didSelectItemAtIndexPath:), [self class], @selector(CCDebugTool_collectionView:didSelectItemAtIndexPath:));
 }
 
 - (void)CCDebugTool_collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath;
@@ -347,27 +347,26 @@ static const void *CCHookLogKey = &CCHookLogKey;
 
 - (void)CCHookJS:(CCHookHandler *)handler
 {
-
     //页面URL变化跳转
-       NSString *hashJS = @"var isForward = false; var currentURL = '';\
-       window.onhashchange = function(hash) {\
-       var newURL = event.newURL.slice(-2, -1) == '#' ? event.newURL.slice(-1) : 0;\
-       var oldURL = event.oldURL.slice(-2, -1) == '#' ? event.oldURL.slice(-1) : 0;\
-       const params = { 'url': window.location.href,'obj':currentURL,'newURL':hash.newURL, 'oldURL': hash.oldURL };\
-       if (!isForward) {\
-       if (parseInt(newURL) < parseInt(oldURL)) {\
-       console.log('单页面中业务后退逻辑');\
-       } else {\
-       isForward = true;\
-       params['hashType']='push';\
-       }\
-       } else {\
-       isForward = false;\
-       params['hashType']='pop';\
-       }\
-       window.webkit.messageHandlers.hashURL.postMessage(JSON.stringify(params));\
-       };";
-       [self initHookJS:handler hookKey:@"hashURL" hookJS:hashJS];
+    NSString *hashJS = @"var isForward = false; var currentURL = '';\
+    window.onhashchange = function(hash) {\
+    var newURL = event.newURL.slice(-2, -1) == '#' ? event.newURL.slice(-1) : 0;\
+    var oldURL = event.oldURL.slice(-2, -1) == '#' ? event.oldURL.slice(-1) : 0;\
+    const params = { 'url': window.location.href,'obj':currentURL,'newURL':hash.newURL, 'oldURL': hash.oldURL };\
+    if (!isForward) {\
+    if (parseInt(newURL) < parseInt(oldURL)) {\
+    console.log('单页面中业务后退逻辑');\
+    } else {\
+    isForward = true;\
+    params['hashType']='push';\
+    }\
+    } else {\
+    isForward = false;\
+    params['hashType']='pop';\
+    }\
+    window.webkit.messageHandlers.hashURL.postMessage(JSON.stringify(params));\
+    };";
+    [self initHookJS:handler hookKey:@"hashURL" hookJS:hashJS];
 
     //页面加载
     NSString *enterJS = @"document.addEventListener('DOMContentLoaded',() =>{\
@@ -384,7 +383,6 @@ static const void *CCHookLogKey = &CCHookLogKey;
     window.webkit.messageHandlers.onload.postMessage(JSON.stringify(params));\
     }});";
     [self initHookJS:handler hookKey:@"onload" hookJS:onloadJS];
-
 
 
     NSString *hookJS = @"window.{0} = (function(method) {\
@@ -446,7 +444,7 @@ static const void *CCHookLogKey = &CCHookLogKey;
     [UIViewController CCHook];
     [UIControl CCHook];
 
-    cc_AutomaticWritingExchangeSelector(NSClassFromString(@"UIGestureRecognizerTarget"), NSSelectorFromString(@"_sendActionWithGestureRecognizer:"), self, @selector(CCDebugTool_sendActionWithGestureRecognizer:));
+    ccdebug_AutomaticWritingExchangeSelector(NSClassFromString(@"UIGestureRecognizerTarget"), NSSelectorFromString(@"_sendActionWithGestureRecognizer:"), self, @selector(CCDebugTool_sendActionWithGestureRecognizer:));
 }
 
 - (void)CCDebugTool_sendActionWithGestureRecognizer:(UIGestureRecognizer *)gestureRecognizer

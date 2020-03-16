@@ -71,7 +71,7 @@
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"关闭" style:UIBarButtonItemStyleDone target:self action:@selector(clearAction)];
 
     UIBarButtonItem *serviceBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"环境" style:UIBarButtonItemStyleDone target:self action:@selector(serviceConfigViewController)];
-    UIBarButtonItem *networkBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"IP" style:UIBarButtonItemStyleDone target:self action:@selector(networkViewController)];
+    UIBarButtonItem *networkBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"IP  " style:UIBarButtonItemStyleDone target:self action:@selector(networkViewController)];
 
     self.navigationItem.rightBarButtonItems = @[ networkBarButtonItem, serviceBarButtonItem ];
 }

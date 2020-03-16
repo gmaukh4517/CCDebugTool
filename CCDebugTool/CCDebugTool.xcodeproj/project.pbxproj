@@ -79,6 +79,8 @@
 		42743773232A1A4700B5CB1B /* CCDebugKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 4274376F232A1A4700B5CB1B /* CCDebugKeychain.m */; };
 		42743774232A1A4700B5CB1B /* CCDebugKeychainQuery.h in Headers */ = {isa = PBXBuildFile; fileRef = 42743770232A1A4700B5CB1B /* CCDebugKeychainQuery.h */; };
 		42743775232A1A4700B5CB1B /* CCDebugKeychainQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 42743771232A1A4700B5CB1B /* CCDebugKeychainQuery.m */; };
+		4280E4E723BAE6F300CB70DB /* CCDebugTabbarResources.h in Headers */ = {isa = PBXBuildFile; fileRef = 4280E4E523BAE6F300CB70DB /* CCDebugTabbarResources.h */; };
+		4280E4E823BAE6F300CB70DB /* CCDebugTabbarResources.m in Sources */ = {isa = PBXBuildFile; fileRef = 4280E4E623BAE6F300CB70DB /* CCDebugTabbarResources.m */; };
 		428B60661FAC056F002577C0 /* CCSandboxEntity.h in Headers */ = {isa = PBXBuildFile; fileRef = 428B60641FAC056F002577C0 /* CCSandboxEntity.h */; };
 		428B60671FAC056F002577C0 /* CCSandboxEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 428B60651FAC056F002577C0 /* CCSandboxEntity.m */; };
 		428B606A1FAC0586002577C0 /* CCSandboxViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 428B60681FAC0586002577C0 /* CCSandboxViewController.h */; };
@@ -311,6 +313,8 @@
 		4274376F232A1A4700B5CB1B /* CCDebugKeychain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCDebugKeychain.m; sourceTree = "<group>"; };
 		42743770232A1A4700B5CB1B /* CCDebugKeychainQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCDebugKeychainQuery.h; sourceTree = "<group>"; };
 		42743771232A1A4700B5CB1B /* CCDebugKeychainQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCDebugKeychainQuery.m; sourceTree = "<group>"; };
+		4280E4E523BAE6F300CB70DB /* CCDebugTabbarResources.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCDebugTabbarResources.h; sourceTree = "<group>"; };
+		4280E4E623BAE6F300CB70DB /* CCDebugTabbarResources.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCDebugTabbarResources.m; sourceTree = "<group>"; };
 		428B60641FAC056F002577C0 /* CCSandboxEntity.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCSandboxEntity.h; sourceTree = "<group>"; };
 		428B60651FAC056F002577C0 /* CCSandboxEntity.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CCSandboxEntity.m; sourceTree = "<group>"; };
 		428B60681FAC0586002577C0 /* CCSandboxViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCSandboxViewController.h; sourceTree = "<group>"; };
@@ -714,6 +718,15 @@
 			path = Sandbox;
 			sourceTree = "<group>";
 		};
+		4280E4E423BAE66A00CB70DB /* DebugResources */ = {
+			isa = PBXGroup;
+			children = (
+				4280E4E523BAE6F300CB70DB /* CCDebugTabbarResources.h */,
+				4280E4E623BAE6F300CB70DB /* CCDebugTabbarResources.m */,
+			);
+			path = DebugResources;
+			sourceTree = "<group>";
+		};
 		428B602E1FABF676002577C0 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -889,6 +902,7 @@
 		42D5AD3D1FAC61B60063C136 /* Tool */ = {
 			isa = PBXGroup;
 			children = (
+				4280E4E423BAE66A00CB70DB /* DebugResources */,
 				421B1CAA2379456200DC5488 /* TouchMonitor */,
 				429DC294232A1448008D606B /* CCDebugAlert */,
 				429DC2812329F500008D606B /* Keychain */,
@@ -965,8 +979,8 @@
 		42EA10AD1FB42CD30078D439 /* MemoryProfiler */ = {
 			isa = PBXGroup;
 			children = (
-				42EA10AE1FB42CD30078D439 /* ViewModel */,
 				42EA10B31FB42CD30078D439 /* Controller */,
+				42EA10AE1FB42CD30078D439 /* ViewModel */,
 				42EA10BA1FB42CD30078D439 /* View */,
 			);
 			path = MemoryProfiler;
@@ -1585,6 +1599,7 @@
 				424B39401FC513DC003B03FC /* CCCookieManager.h in Headers */,
 				42FC5B541FC41AC400375959 /* CCCookiesTableViewCell.h in Headers */,
 				42EA114B1FB42CD30078D439 /* FBAllocationTrackerImpl.h in Headers */,
+				4280E4E723BAE6F300CB70DB /* CCDebugTabbarResources.h in Headers */,
 				42EA11341FB42CD30078D439 /* FBObjectInStructReference.h in Headers */,
 				421B1CB22379484100DC5488 /* CCTouchFingerView.h in Headers */,
 				42F0A4481F59355E00ACD4FA /* CCDebugFluencyHelper.h in Headers */,
@@ -1771,6 +1786,7 @@
 				428B606B1FAC0586002577C0 /* CCSandboxViewController.m in Sources */,
 				42EA11131FB42CD30078D439 /* CCRetainCyclePresenter.m in Sources */,
 				42EA11551FB42CD30078D439 /* FBAllocationTrackerGeneration.mm in Sources */,
+				4280E4E823BAE6F300CB70DB /* CCDebugTabbarResources.m in Sources */,
 				42FC5B501FC418AF00375959 /* CCCookieDetailViewController.m in Sources */,
 				42EA114E1FB42CD30078D439 /* FBAllocationTrackerManager.mm in Sources */,
 				42FC5B551FC41AC400375959 /* CCCookiesTableViewCell.m in Sources */,
