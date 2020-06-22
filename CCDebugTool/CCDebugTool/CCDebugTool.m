@@ -118,13 +118,13 @@
 - (void)layoutSubviews
 {
     [super layoutSubviews];
-
+    
     CGRect frame = self.frame;
     if (@available(iOS 11.0, *)) {
         if ([UIApplication sharedApplication].keyWindow.safeAreaInsets.top == 44)
             frame.origin.y = 30;
     }
-
+    
     self.frame = frame;
 }
 
@@ -158,13 +158,13 @@
         self.mainColor = [UIColor colorWithRed:0.223 green:0.698 blue:1 alpha:1.f];
         self.maxCrashCount = 20;
         self.maxLogsCount = 20;
-
+        
         [[NSNotificationCenter defaultCenter] addObserverForName:UIApplicationDidFinishLaunchingNotification
                                                           object:nil
                                                            queue:nil
                                                       usingBlock:^(NSNotification *_Nonnull note) {
-                                                          [self showOnStatusBar];
-                                                      }];
+            [self showOnStatusBar];
+        }];
     }
     return self;
 }
@@ -183,16 +183,16 @@
     debugWindow.windowLevel = UIWindowLevelStatusBar + 1;
     debugWindow.hidden = NO;
     debugWindow.alpha = 1;
-
+    
     [CCMonitorService start:debugWindow];
     [CCMonitorService mainColor:[UIColor colorWithRed:245 / 255.f green:116 / 255.f blue:91 / 255.f alpha:1.f]];
-
+    
     UIButton *debugButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 150, 22)];
     [debugButton addTarget:self action:@selector(showDebug) forControlEvents:UIControlEventTouchUpInside];
     [debugWindow addSubview:debugButton];
     [debugWindow bringSubviewToFront:debugButton];
     _debugWindow = debugWindow;
-
+    
     //苹果自带debug
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
@@ -209,13 +209,11 @@
  */
 - (void)enableDebugMode
 {
-#if DEBUG
     [CCNetworkObserver setEnabled:YES];
     [[CCLogMonitoring manager] startMonitoring];
     InstalCrashHandler();
     [[CCAppFluecyMonitor sharedMonitor] startMonitoring];
     [self enableProfiler];
-#endif
 }
 
 + (void)toggleVisibility
@@ -226,7 +224,7 @@
         id overlayClass = NSClassFromString(@"UIDebuggingInformationOverlay");
         [overlayClass performSelector:NSSelectorFromString(@"overlay")];
         id handlerClass = NSClassFromString(@"UIDebuggingInformationOverlayInvokeGestureHandler");
-
+        
         id handler = [handlerClass performSelector:NSSelectorFromString(@"mainHandler")];
         [handler performSelector:NSSelectorFromString(@"_handleActivationGesture:") withObject:[[_FakeGestureRecognizer alloc] init]];
     } else {
@@ -242,13 +240,13 @@
     if (parameters) {
         NSMutableDictionary *serviceAddressConifg = [NSMutableDictionary dictionaryWithDictionary:[[NSUserDefaults standardUserDefaults] objectForKey:@"serviceAddressConifg"]];
         NSMutableArray *address = [NSMutableArray arrayWithArray:[serviceAddressConifg objectForKey:@"address"]];
-
+        
         for (NSDictionary *item in parameters) {
             id object = [address filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"id == %@", [item objectForKey:@"id"]]].lastObject;
             if (!object)
                 [address addObject:item];
         }
-
+        
         [serviceAddressConifg setObject:address forKey:@"address"];
         [[NSUserDefaults standardUserDefaults] setObject:serviceAddressConifg forKey:@"serviceAddressConifg"];
         [[NSUserDefaults standardUserDefaults] synchronize];
@@ -292,11 +290,11 @@
     NSString *imagePath = [[imageBundle resourcePath] stringByAppendingPathComponent:fileName];
     if (inDirectory)
         imagePath = [[[imageBundle resourcePath] stringByAppendingPathComponent:inDirectory] stringByAppendingPathComponent:fileName];
-
+    
     UIImage *image = [UIImage imageWithContentsOfFile:imagePath];
     if (!image)
         image = [UIImage imageNamed:fileName];
-
+    
     return image;
 }
 
@@ -326,17 +324,17 @@
         self.debugTabBar.tabBar.tintColor = self.mainColor;
         self.debugTabBar.tabBar.unselectedItemTintColor = [UIColor blackColor];
         self.debugTabBar.tabBar.translucent = NO;
-
+        
         [self initializationNav:[CCDebugNetworkViewController new] title:@"HTTP" imageNamed:[CCDebugTabbarResources networkNOIcon] selectedImage:[CCDebugTabbarResources networkYESIcon]];
         [self initializationNav:[CCDebugLogViewController new] title:@"LOG" imageNamed:[CCDebugTabbarResources logNOIcon] selectedImage:[CCDebugTabbarResources logYESIcon]];
         [self initializationNav:[CCMemoryProfilerViewController new] title:@"Cycle" imageNamed:[CCDebugTabbarResources cycleNOIcon] selectedImage:[CCDebugTabbarResources cycleYESIcon]];
         [self initializationNav:[CCToolViewController new] title:@"TOOL" imageNamed:[CCDebugTabbarResources toolNOIcon] selectedImage:[CCDebugTabbarResources toolYESIcon]];
         //        UINavigationController *debugMonitorNav = [self initializationNav:[CCMonitorViewController new] tabBarItemName:@"Monitor"];
     }
-
+    
     if (self.debugTabBar.isViewLoaded && self.debugTabBar.view.window) {
         [self.debugTabBar dismissViewControllerAnimated:YES completion:nil];
-    }else{
+    } else {
         UIViewController *rootViewController = [[[UIApplication sharedApplication].windows firstObject] rootViewController];
         UIViewController *presentedViewController = rootViewController.presentedViewController;
         self.debugTabBar.modalPresentationStyle = UIModalPresentationFullScreen;
@@ -356,7 +354,7 @@
     NSMutableDictionary *Attributes = [NSMutableDictionary dictionaryWithDictionary:[UINavigationBar appearance].titleTextAttributes];
     [Attributes setObject:[UIColor whiteColor] forKey:NSForegroundColorAttributeName];
     [debugNav.navigationBar setTitleTextAttributes:Attributes];
-
+    
     [self.debugTabBar addChildViewController:debugNav];
 }
 

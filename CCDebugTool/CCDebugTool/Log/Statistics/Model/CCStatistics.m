@@ -49,12 +49,12 @@
                                              selector:@selector(onAppWillTerminate:)
                                                  name:UIApplicationWillTerminateNotification
                                                object:nil];
-
+    
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(onAppDidBecomeActive:)
                                                  name:UIApplicationDidBecomeActiveNotification
                                                object:nil];
-
+    
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(onAppDidEnterBackground:)
                                                  name:UIApplicationDidEnterBackgroundNotification
@@ -69,7 +69,7 @@
     for (NSString *key in self.statisticsDic.allKeys) {
         NSMutableDictionary *item = [NSMutableDictionary dictionaryWithDictionary:[self.statisticsDic objectForKey:key]];
         NSTimeInterval duration = [[NSDate date] timeIntervalSinceDate:[item objectForKey:@"EnterDate"]];
-
+        
         /*
          当使用过程中程序进入后台并停留一段时间时，统计时长需要减去该段时间
          */
@@ -108,7 +108,7 @@
     int length = (int)strlen(string);
     unsigned char bytes[ CC_MD5_DIGEST_LENGTH ];
     CC_MD5(string, length, bytes);
-
+    
     NSMutableString *mutableString = @"".mutableCopy;
     for (int i = 0; i < CC_MD5_DIGEST_LENGTH; i++)
         [mutableString appendFormat:@"%02x", bytes[ i ]];
@@ -121,11 +121,11 @@
 {
     NSMutableDictionary *item = [NSMutableDictionary dictionaryWithDictionary:[_statisticsDic objectForKey:[self MD5:key]]];
     [item setObject:key forKey:@"key"];
-
+    
     NSInteger enterCount = [[item objectForKey:@"enterCount"] integerValue];
     [item setObject:@(enterCount + 1) forKey:@"enterCount"];
     [item setObject:[NSDate date] forKey:@"enterDate"];
-
+    
     [_statisticsDic setObject:item forKey:[self MD5:key]];
 }
 
@@ -134,18 +134,20 @@
 - (void)viewControllerAppear:(NSString *)key
 {
     NSMutableDictionary *item = [NSMutableDictionary dictionaryWithDictionary:[_statisticsDic objectForKey:[self MD5:key]]];
-
+    if (!item.allKeys.count)
+        return;
+    
     NSDate *date = [item objectForKey:@"enterDate"];
     NSTimeInterval duration = [[NSDate date] timeIntervalSinceDate:date];
     if (self.backDate && ([self.backDate timeIntervalSinceDate:date] > 0))
         duration = duration - [self.aliveDate timeIntervalSinceDate:self.backDate];
     [item setObject:@(duration) forKey:@"appearDuration"];
-
+    
     //总渲染留时间
     NSTimeInterval totalAppearTime = [[item objectForKey:@"totalAppearTime"] doubleValue];
     totalAppearTime += duration;
     [item setObject:@(totalAppearTime) forKey:@"totalAppearTime"];
-
+    
     [_statisticsDic setObject:item forKey:[self MD5:key]];
 }
 
@@ -156,18 +158,18 @@
     NSMutableDictionary *item = [NSMutableDictionary dictionaryWithDictionary:[_statisticsDic objectForKey:[self MD5:key]]];
     if (!item.allKeys.count)
         return;
-
+    
     NSDate *date = [item objectForKey:@"enterDate"];
     NSTimeInterval duration = [[NSDate date] timeIntervalSinceDate:date];
     if (self.backDate && ([self.backDate timeIntervalSinceDate:date] > 0))
         duration = duration - [self.aliveDate timeIntervalSinceDate:self.backDate];
     [item setObject:@(duration) forKey:@"statisticDuration"];
-
+    
     //总停留时间
     NSTimeInterval totalTime = [[item objectForKey:@"totalTime"] doubleValue];
     totalTime += duration;
     [item setObject:@(totalTime) forKey:@"totalTime"];
-
+    
     [_statisticsDic setObject:item forKey:[self MD5:key]];
 }
 

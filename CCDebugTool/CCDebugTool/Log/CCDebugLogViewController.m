@@ -48,6 +48,7 @@
     [super viewDidLoad];
     [self initNavigation];
     [self initControl];
+    
 }
 
 -(void)viewWillAppear:(BOOL)animated

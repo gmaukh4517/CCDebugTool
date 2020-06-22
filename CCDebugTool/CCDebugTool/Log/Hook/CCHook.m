@@ -44,7 +44,7 @@ void ccdebug_AutomaticWritingExchangeSelector(Class originalClass, SEL originalS
 + (void)CCHook
 {
     AutomaticWritingSwizzleSelector([self class], @selector(pushViewController:animated:), @selector(CCDebugTool_pushViewController:animated:));
-    AutomaticWritingSwizzleSelector([self class], @selector(popViewControllerAnimated:), @selector(CCDebugTool_popViewControllerAnimated:));
+    //    AutomaticWritingSwizzleSelector([self class], @selector(popViewControllerAnimated:), @selector(CCDebugTool_popViewControllerAnimated:)); // 真机闪退 模拟器偶尔闪退 EXC_BAD_ACCESS
 }
 
 - (void)CCDebugTool_pushViewController:(UIViewController *)viewController animated:(BOOL)animated
@@ -55,20 +55,22 @@ void ccdebug_AutomaticWritingExchangeSelector(Class originalClass, SEL originalS
         [[CCDebugCrashHelper manager].crashLastStep addObject:pushInfo];
         [[CCOperateMonitor manager] appOperateLogWrite:pushInfo];
     }
-
+    
     [self CCDebugTool_pushViewController:viewController animated:animated];
 }
 
 - (void)CCDebugTool_popViewControllerAnimated:(BOOL)animated
 {
     NSString *mClassName = [NSString stringWithUTF8String:object_getClassName(self.topViewController)];
-    [self CCDebugTool_popViewControllerAnimated:animated];
     if (![mClassName hasPrefix:@"CC"]) {
         NSString *previousClassName = [NSString stringWithUTF8String:object_getClassName(self.viewControllers.lastObject)];
         NSString *popInfo = [NSString stringWithFormat:@" %@ - (pop) > %@", mClassName, previousClassName];
         [[CCDebugCrashHelper manager].crashLastStep addObject:popInfo];
         [[CCOperateMonitor manager] appOperateLogWrite:popInfo];
     }
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self CCDebugTool_popViewControllerAnimated:animated];
+    });
 }
 
 @end
@@ -91,7 +93,7 @@ void ccdebug_AutomaticWritingExchangeSelector(Class originalClass, SEL originalS
     NSString *mClassName = NSStringFromClass(self.class);
     if (![mClassName hasPrefix:@"CC"] && ![mClassName hasPrefix:@"UI"])
         [[CCStatistics manager] viewControllerEnter:mClassName];
-
+    
     [self CCDebugTool_viewDidLoad];
 }
 
@@ -107,6 +109,7 @@ void ccdebug_AutomaticWritingExchangeSelector(Class originalClass, SEL originalS
     }
     [self CCDebugTool_viewWillAppear:animated];
 }
+
 
 - (void)CCDebugTool_viewDidAppear:(BOOL)animated
 {
@@ -155,7 +158,7 @@ void ccdebug_AutomaticWritingExchangeSelector(Class originalClass, SEL originalS
                     controlName = [NSString stringWithFormat:@"%@(%@)", controlName, senderCystinViewButton.currentTitle];
             }
         }
-
+        
         NSString *actionDetailInfo = [NSString stringWithFormat:@" %@ -> %@ -> %@", mClassName, controlName, NSStringFromSelector(action)];
         [[CCDebugCrashHelper manager].crashLastStep addObject:actionDetailInfo];
         [[CCOperateMonitor manager] appOperateLogWrite:actionDetailInfo];
@@ -254,13 +257,13 @@ void ccdebug_AutomaticWritingExchangeSelector(Class originalClass, SEL originalS
 {
     NSData *jsonData = [message.body dataUsingEncoding:NSUTF8StringEncoding];
     NSDictionary *jsonDic = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers error:nil];
-
+    
     NSString *mClassName = [jsonDic objectForKey:@"url"];
     NSURL *url = [NSURL URLWithString:mClassName];
     NSString *addressName = url.host;
     if (url.scheme && url.host)
         addressName = [NSString stringWithFormat:@"%@://%@", url.scheme, url.host];
-
+    
     if ([message.name isEqualToString:@"enter"]) {
         [CCOperateMonitor manager].webCurrentURL = mClassName;
         [[CCStatistics manager] viewControllerEnter:mClassName];
@@ -339,7 +342,7 @@ static const void *CCHookLogKey = &CCHookLogKey;
 {
     if ([objc_getAssociatedObject(self, CCHookLogKey) boolValue])
         return;
-
+    
     objc_setAssociatedObject(self, CCHookLogKey, @YES, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
     CCHookHandler *handler = [CCHookHandler new];
     [self CCHookJS:handler];
@@ -367,14 +370,14 @@ static const void *CCHookLogKey = &CCHookLogKey;
     window.webkit.messageHandlers.hashURL.postMessage(JSON.stringify(params));\
     };";
     [self initHookJS:handler hookKey:@"hashURL" hookJS:hashJS];
-
+    
     //页面加载
     NSString *enterJS = @"document.addEventListener('DOMContentLoaded',() =>{\
     const params = {'url':window.location.href};\
     window.webkit.messageHandlers.enter.postMessage(JSON.stringify(params));\
     });";
     [self initHookJS:handler hookKey:@"enter" hookJS:enterJS];
-
+    
     //页面加载完成
     NSString *onloadJS = @"document.addEventListener('readystatechange', (event) => {\
     if (document.readyState == 'complete') {\
@@ -383,8 +386,8 @@ static const void *CCHookLogKey = &CCHookLogKey;
     window.webkit.messageHandlers.onload.postMessage(JSON.stringify(params));\
     }});";
     [self initHookJS:handler hookKey:@"onload" hookJS:onloadJS];
-
-
+    
+    
     NSString *hookJS = @"window.{0} = (function(method) {\
     return function(e) {\
     const params = {'url':window.location.href};\
@@ -394,10 +397,10 @@ static const void *CCHookLogKey = &CCHookLogKey;
     }\
     }\
     })(window.{0});";
-
+    
     for (NSString *key in HookKeys)
         [self initHookJS:handler hookKey:key hookJS:[hookJS stringByReplacingOccurrencesOfString:@"{0}" withString:key]];
-
+    
     //页面点击事件
     NSString *clickJS = @"document.onclick = onClick;\
     function onClick(ev) {\
@@ -440,10 +443,11 @@ static const void *CCHookLogKey = &CCHookLogKey;
 
 + (void)hookEvent
 {
-    [UINavigationController CCHook];
-    [UIViewController CCHook];
-    [UIControl CCHook];
-
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [UINavigationController CCHook];
+        [UIViewController CCHook];
+        [UIControl CCHook];
+    });
     ccdebug_AutomaticWritingExchangeSelector(NSClassFromString(@"UIGestureRecognizerTarget"), NSSelectorFromString(@"_sendActionWithGestureRecognizer:"), self, @selector(CCDebugTool_sendActionWithGestureRecognizer:));
 }
 
@@ -452,7 +456,7 @@ static const void *CCHookLogKey = &CCHookLogKey;
     id targetActionPairs = object_getIvar(gestureRecognizer, class_getInstanceVariable([gestureRecognizer class], "_targets"));
     Class targetActionPairClass = NSClassFromString(@"UIGestureRecognizerTarget");
     Ivar targetIvar = class_getInstanceVariable(targetActionPairClass, "_target");
-
+    
     Ivar actionIvar = class_getInstanceVariable(targetActionPairClass, "_action");
     for (id targetActionPair in targetActionPairs) {
         id target = object_getIvar(targetActionPair, targetIvar);
@@ -482,13 +486,13 @@ static const void *CCHookLogKey = &CCHookLogKey;
                 default:
                     break;
             }
-
+            
             NSString *actionDetailInfo = [NSString stringWithFormat:@" %@ -> %@ -> %@ -> %@ -> %@", mClassName, NSStringFromClass([gestureRecognizer.view class]), NSStringFromClass([gestureRecognizer class]), stateStr, NSStringFromSelector(action)];
             [[CCDebugCrashHelper manager].crashLastStep addObject:actionDetailInfo];
             [[CCOperateMonitor manager] appOperateLogWrite:actionDetailInfo];
         }
     }
-
+    
     [self CCDebugTool_sendActionWithGestureRecognizer:gestureRecognizer];
 }
 
